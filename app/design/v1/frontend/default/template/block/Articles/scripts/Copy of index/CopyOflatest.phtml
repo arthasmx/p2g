@@ -1,0 +1,32 @@
+
+<?php if( ! empty($this->latest) ): ?>
+  <?php $date = App::module('Core')->getModel('Dates'); ?>
+
+     <div class="news">
+       <h1>Noticias</h1>
+     <?php foreach($this->latest AS $latest): ?>
+
+        <article class="list">
+          <?php if( file_exists( WP.DS.'media'.DS.$latest['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+            <a href="<?=App::base( App::xlat( $latest['type'].'_singular' ) ."/". $latest['seo']  )?>">
+              <img src="<?=App::media( $latest['folder']."/gallery/aside.jpg" )?>" alt="<?=$latest['title']?>" title="<?=$latest['title']?>" />
+            </a>
+          <?php else: ?>
+            <a href="<?=App::base( App::xlat( $latest['type'].'_singular' ) ."/". $latest['seo']  )?>">
+              <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$latest['title']?>" title="<?=$latest['title']?>" />
+            </a>
+          <?php endif;?>
+
+          <h2><a href="<?=App::base( App::xlat( $latest['type'].'_singular' ) ."/". $latest['seo']  )?>"><?=$latest['title']?></a></h2>
+          <p><?=strip_tags($latest['article'])?></p>
+          <a href="<?=App::base( App::xlat('articulos_singular').'/'. $latest['seo'] )?>">
+            <span class="label label-warning"><?=App::xlat('read_more')?></span>
+          </a>
+          
+
+        </article>
+
+     <?php endforeach; ?>
+     </div>
+
+<?php endif; ?>

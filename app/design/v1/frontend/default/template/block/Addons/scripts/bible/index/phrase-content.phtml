@@ -1,0 +1,15 @@
+<?php
+  if ( ! empty($this->phrase) ) :
+  $url_book = App::base( App::xlat("route_bible")  . $this->phrase['seo']);
+  $url_cap  = $url_book ."/". $this->phrase['cap'];
+  $url_ver  = $url_cap  ."/". $this->phrase['ver'];
+?>
+
+  <blockquote class="pull-right fit-to-design bible-phrase">
+    <p><?=$this->phrase['texto']?></p>
+    <small>
+        <?=$this->phrase['book']?> <?=$this->phrase['cap']?> : <?=$this->phrase['ver']?>
+    </small>
+  </blockquote>
+
+<?php endif; ?>

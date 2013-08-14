@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+  <template>flexar.phtml</template>
+  <include as='head' template='flexar/head.phtml' />
+  <include as='page' template='flexar/page.phtml'>
+    <segment name='content' as='content'/>
+  </include>
+
+</config>

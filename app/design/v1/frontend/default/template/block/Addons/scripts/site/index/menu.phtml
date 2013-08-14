@@ -1,0 +1,63 @@
+
+<div class="navbar top-mar-20 no-padding no-round">
+  <div class="container">
+
+    <button type="button" class="navbar-toggle mar-right-10" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand visible-sm">Menu Principal</a>
+
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+
+      <ul class="left-menu">
+
+          <li class="header hidden-sm"> <h5><?=App::xlat('main_menu_title')?></h5> </li>
+
+          <?php if( strlen($_SERVER['REQUEST_URI']) > 1 ) : ?>
+            <li><a href="<?=App::www()?>"> <span class="icon-home"></span> <?=App::xlat('home')?></a></li>
+          <?php endif; ?>
+
+          <li><a href="<?=App::www()?>"> <span class="icon-question-sign"></span> Mazatlán</a></li>
+
+          <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'hoteles' )?>"> <span class="icon-hospital"></span> Hoteles</a></li>
+          <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'cafes-y-restaurantes' )?>"> <span class="icon-coffee"></span> Cafés &amp; Restaurantes</a></li>
+          <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'bares' )?>"> <span class="icon-glass"></span> Antros &amp; Bares</a></li>
+
+          <li><a tabindex="-1" href="#"> <span class="icon-road"></span> Pueblos</a></li>
+          <li><a tabindex="-1" href="#"> <span class="icon-map-marker"></span> A donde ir ?</a></li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('eventos') )?>"> <span class="icon-music"></span> Eventos</a></li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('articulos') )?>"> <span class="icon-info"></span> Noticias</a></li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('promociones') )?>"> <span class="icon-gift"></span> Promociones</a></li>
+          <li class="hidden"><a tabindex="-1" href="<?=App::www()?>"> <span class="icon-bookmark-empty"></span> Agencia de viajes</a></li>
+          <li class="hidden"><a tabindex="-1" href="<?=App::www()?>"> <span class="icon-building"></span> Bienes y raices</a></li>
+          <li><a tabindex="-1" href="<?=App::www()?>" class="no-border"> <span class="icon-phone"></span> Telefonos SOS</a></li>
+          <li class="hidden"><a tabindex="-1" href="<?=App::www()?>" class="no-border"> <span class="icon-pencil"></span> Registrarse</a></li>
+
+          <li class="header hidden-sm"> <h5><?=App::xlat('join_us')?></h5> </li>
+          <li><a tabindex="-1" href="<?=App::www('login')?>"> <span class="icon-key"></span> <?=App::xlat('login')?></a></li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('LINK_register') )?>" class="no-border"> <span class="icon-book"></span> <?=App::xlat('register')?></a></li>
+
+          <li class="header hidden-sm"> <h5><?=App::xlat('us')?></h5> </li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('LINK_about') )?>"> <span class="icon-user"></span> <?=App::xlat('about_us')?></a></li>
+          <li><a tabindex="-1" href="<?=App::www( App::xlat('LINK_contact') )?>" class="no-border"> <span class="icon-envelope-alt"></span> <?=App::xlat('contact_us')?></a></li>
+
+          <li class="header hidden-sm"> <h5><?=App::xlat('connect_with_us')?></h5> </li>
+          <li class="lm-social-network to-center hidden-sm">
+            <a href="<?=App::getConfig('url_facebook')?>" target="_blank"> <span class="icon-facebook-sign"></span> </a>
+            <a href="<?=App::getConfig('url_twitter')?>" target="_blank"> <span class="icon-twitter"></span> </a>
+            <a href="<?=App::getConfig('url_youtube')?>" target="_blank"> <span class="icon-youtube-play"></span> </a>
+            <a href="<?=App::getConfig('url_google')?>" target="_blank"> <span class="icon-google-plus"></span> </a>
+          </li>
+
+      </ul>
+
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+
+
+

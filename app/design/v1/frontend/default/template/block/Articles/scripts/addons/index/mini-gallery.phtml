@@ -1,0 +1,28 @@
+
+<?php if( ! empty($this->gallery) && ! empty($this->path) ):?>
+  <h3><span class="icon-picture"></span> <?=App::xlat('addon_gallery')?></h3>
+  <div id="mini-gallery">
+  <?php $col=1;
+    foreach($this->gallery AS $image): ?>
+      <a rel="cBox" class="cBox-mini-gallery" href="<?=App::media( $this->path . 'gallery/'.$image );?>">
+	       <img width="65" height="45" title="" alt="" src="<?=App::media( $this->path . 'gallery/thumbnails/'.$image );?>" />
+      </a>
+    <?php $col++;
+          endforeach;?>
+  </div>
+<?php endif;?>
+
+<?php
+/*
+gallery
+Array
+(
+    [0] => 01_07_2012_12_29_12.jpg
+    [1] => 01_07_2012_12_42_13.jpg
+    [2] => barcelona-va-ganandole-al-malaga_105.jpg
+    [3] => barcelona-va-ganandole-al-malaga_125.jpg
+)
+path
+/articles/2013/01/193/
+ */
+?>

@@ -1,0 +1,28 @@
+<head>
+<meta charset="UTF-8" />
+<title><?=isset($this->pageTitle) ? $this->pageTitle:@$this->xd['pageTitle'];?></title>
+<meta name="author" content="<?=isset($this->pageAuthor) ? $this->pageAuthor:@$this->xd['pageAuthor'];?>" />
+<meta name="copyright" content="<?=isset($this->pageCopyright) ? $this->pageCopyright:@$this->xd['pageCopyright'];?>" />
+<meta name="description" content="<?=isset($this->pageDescription) ? $this->pageDescription:@$this->xd['pageDescription'];?>" />
+<meta name="keywords" content="<?=isset($this->pageKeywords) ? $this->pageKeywords:@$this->xd['pageKeywords'];?>" />
+<meta name="Locality" content="Mazatlán, Mexico" />
+<meta name="lang" content="es" />
+
+<!--Links-->
+  <link href="<?=App::getDesign()->getRelativeSkinPath('/css/reset.css');?>" rel="stylesheet" />
+  <link href="<?=App::getDesign()->getRelativeSkinPath('/css/frontend.css');?>" rel="stylesheet" />
+  <link href="<?=App::getDesign()->getRelativeSkinPath('/css/forms.css');?>" rel="stylesheet" />
+
+  <?= App::header()->getLinks();?>
+
+  <?=@$this->xd['_block']['links'];?>
+
+  <?=App::header()->getScripts();?>
+
+  <?=@$this->xd['_block']['scripts'];?>
+
+  <?=@$this->xd['_block']['add'];?>
+
+  <?=App::header()->getCode();?>
+
+</head>

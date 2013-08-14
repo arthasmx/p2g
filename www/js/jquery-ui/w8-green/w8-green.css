@@ -1,0 +1,77 @@
+/* jQuery UI Override */
+
+span.ui-button:hover, button.ui-button:hover{
+  border:1px solid #abcf3a !important;background:#abcf3a;font-weight:normal;
+}
+
+#add-art-tabs, #add-eve-tabs, #ministeries-tab, #add-emp-tabs, #add-banner-tabs, #add-promotions-tabs, #add-town-tabs, #add-social-tabs {
+ background: transparent;
+ border: none;
+ width:89em; 
+}
+  #ministeries-tab ul.min_tabs_title {
+    float:left;
+    min-width: 68.1em;
+    max-width: 95em;
+    width: auto;
+  }
+  #ministeries-tab div#min-1, #ministeries-tab div#min-2{
+    float:left;
+    min-height: 5em;
+    max-height: 95em;
+    height: auto;
+
+    min-width: 72.5em;
+    max-width: 95em;
+    width: auto;
+  }
+  
+#add-art-tabs .ui-tabs-panel, #add-eve-tabs .ui-tabs-panel, #add-emp-tabs .ui-tabs-panel, #add-banner-tabs .ui-tabs-panel, #add-promotions-tabs .ui-tabs-panel, #add-town-tabs .ui-tabs-panel, #add-social-tabs .ui-tabs-panel{
+ background-color: #FFFFFF;
+ border-width: 0px 1px 1px 1px;
+}
+
+#add-art-tabs .ui-widget-header, #add-eve-tabs .ui-widget-header, #add-emp-tabs .ui-widget-header, #add-banner-tabs .ui-widget-header , #add-promotions-tabs .ui-widget-header, #add-town-tabs .ui-widget-header, #add-social-tabs .ui-widget-header{
+ background: transparent;
+ border: none;
+ border-bottom: 1px solid #c0c0c0;
+ -moz-border-radius: 0px;
+ -webkit-border-radius: 0px;
+ border-radius: 0px;
+}
+#add-art-tabs .ui-state-active, #add-eve-tabs .ui-state-active, #add-emp-tabs .ui-state-active, #add-banner-tabs .ui-state-active, #add-promotions-tabs .ui-state-active, #add-town-tabs .ui-state-active, #add-social-tabs .ui-state-active{
+ background: #abcf3a url(/js/jquery-ui/uiTabsArrow.png) no-repeat bottom center !important;
+}
+
+#add-art-tabs .ui-tabs-panel, #add-eve-tabs .ui-tabs-panel, #add-emp-tabs .ui-tabs-panel, #add-town-tabs .ui-tabs-panel { height: 43em; }
+#add-social-tabs .ui-tabs-panel{height: 63em;}
+
+/* datepicker */
+div#ui-datepicker-div.ui-widget-content{
+  background:none !important;
+  background-color: #EFEFEF !important;
+}
+
+/* table listing */
+ /* header */
+   html body section article div div div.ui-jqgrid-hbox table thead tr th.ui-state-default{ background-color: #FBFBFB !important; background-image: none !important;}
+ /* content */
+   html body section article div div div div table tbody tr:hover{ background-color: #F2F7E0 !important; background-image: none !important; }
+   html body section article div div div div table thead tr th.ui-state-default{ border:0px !important; }
+   div.custom-cbox-bar{ background: #CCC url(/js/jquery-ui/w8-green/images/gradient.png)  50% 50% repeat !important; padding:5px; }
+   div.custom-cbox-bar select{ margin-right:10px; }
+
+ /* footer */
+   div#footerBar, div#ministeriesFBar{ background: url("images/ui-bg_flat_25_c7db8a_40x100.png") repeat-x scroll 50% 50% #C7DB8A !important;}
+
+/* uploader */
+  tr.plupload_file{ background-image: none !important; background-color: #f3f3f3 !important; }
+  table.plupload_filelist tbody tr:hover{background: none !important;}
+
+  ul#uploader_f_gallery_filelist { height: 19.5em;}
+
+/* button with actions */
+div.button-wrapper div {display: inline-block;}
+div.button-wrapper .ui-button-text-only .ui-button-text {padding:2.5px 5px;}
+div.button-wrapper .ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {padding:2.5px;}
+div.button-wrapper .ui-menu { position: absolute; }

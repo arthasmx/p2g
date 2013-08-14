@@ -1,0 +1,43 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+          <article class="read-new">
+            <h1><?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?></h1>
+            <?=App::module('Addons')->renderBlock("site/index","town-gallery", array( 'town'=>$this->town['town'], 'folder'=>$this->town['folder'], 'city'=>$this->town['city'] ))?>
+            <?=$this->town['article']?>
+          </article>
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>
+
+<?php 
+/*
+Array
+(
+    [id] => 34
+    [town] => cuan-grande-es-dios
+    [section] => municipios
+    [article] => Y todos le veran.....cuan grannnnnndeeee es Dios!
+    [status] => enabled
+    [created] => 2013-07-01 20:37:50
+    [author] => pue17@gmail.com
+    [city] => mazatlan
+    [name] => Cuan grande es Dios
+    [folder] => /mazatlan/towns/cuan-grande-es-dios/
+)
+ */
+?>

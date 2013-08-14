@@ -1,0 +1,11 @@
+
+<?php if( ! empty($this->promote) ): ?>
+  <div class="promote-described">
+    <h1><?=$this->promote['title']?></h1>
+    <a href="<?=App::base( App::xlat( 'eventos_singular' ) ."/". $this->promote['seo']  )?>" class="btn btn-info pull-right">
+      <span class="icon-file-alt"></span> <?=App::xlat('read_more')?>
+    </a>
+    <img src="<?=App::media( $this->promote['folder'].'gallery/promote.jpg' )?>" alt="<?=$this->promote['title']?>" title="<?=$this->promote['title']?>" />
+  </div>
+  <div class="aside-block-shadow"></div>
+<?php endif; ?>

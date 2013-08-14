@@ -1,0 +1,9 @@
+<div class="block site_map">
+  <h1>
+    <?=App::xlat('MAP_title')?>
+    <span><?=App::xlat('MAP_description')?></span>
+  </h1>
+  <a class="fMap" href='<?=$this->url?>?key=<?=$this->key?>&q=loc:<?=$this->coordinates?>&z=<?=$this->zoom?>&output=embed&sensor=false&hl=<?=$this->language?>&iwloc=near&addr&amp'>
+    <img height="<?=$this->height?>" width="<?=$this->width?>" title="<?=$this->alt?>" alt="<?=$this->alt?>" src="<?=App::media( $this->picture ) ?>" />
+  </a>
+</div>

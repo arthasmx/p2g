@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+  <template>error.phtml</template>
+
+  <include as='head' template='error/head.phtml' />
+  <include as='page' template='error/page.phtml'>
+    <segment name='content' as='content'/>
+  </include>
+
+</config>

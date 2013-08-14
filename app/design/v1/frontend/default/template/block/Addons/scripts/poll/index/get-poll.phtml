@@ -1,0 +1,23 @@
+<?php if( ! empty($this->poll) ): ?>
+  <?php
+    $poll    = $this->poll['poll'];
+    $options = $this->poll['options'];
+    $votes   = $this->poll['votes'];
+  ?>
+  <div class="block poll">
+    <h1>
+      <?=App::xlat('POLL_block_poll')?>
+      <span><?=App::xlat('POLL_block_poll_subtitle')?></span>
+    </h1>
+    <div class="poll" id="poll">
+      <p><?=$poll['question']?></p>
+      <ul class="poll-options" data-poll_id="<?=$poll['id']?>">
+      <?php foreach($options AS $option):?>
+        <li data-id="<?=$option['option_id']?>" class="option"><?=$option['option']?></li>
+        <li class="chart-graph" id="graph_<?=$option['option_id']?>"></li>
+      <?php endforeach;?>
+        <li class="voting"></li>
+      </ul>
+    </div>
+  </div>
+<?php endif; ?>

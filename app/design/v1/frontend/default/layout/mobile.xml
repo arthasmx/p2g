@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+	<template>mobile.phtml</template>
+
+ <include as='head' template='mobile/head.phtml' />
+ <include as='page' template='mobile/page.phtml'>
+
+    <segment name='content' as='content'/>
+
+	</include>
+
+</config>

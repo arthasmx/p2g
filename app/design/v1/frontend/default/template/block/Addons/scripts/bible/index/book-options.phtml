@@ -1,0 +1,148 @@
+
+<div id="<?=$this->section?>-options">
+  <ul class="options">
+    <li class="search"></li>
+    <li class="info"></li>
+    <?php if($this->section == "book" || $this->section == "chapter" || $this->section == "verse"):?>
+      <li class="books"></li>
+    <?php endif; ?>
+    <?php if($this->section == "chapter" || $this->section == "verse"):?>
+      <li class="chapter"></li>
+    <?php endif; ?>
+    <?php if($this->section == "verse"):?>
+      <li class="verse"></li>
+    <?php endif; ?>
+    <?php if($this->section == "search"):?>
+      <li class="summary"></li>
+    <?php endif; ?>
+  </ul>
+</div>
+
+<div class="option search hide">
+  <h1 class="no-line">
+    <?=App::xlat('OPTION_search')?>
+    <span><?=App::xlat('OPTION_search_subtitle')?></span>
+  </h1>
+  <?=$this->form?>
+</div>
+
+<div class="option info hide">
+  <h1 class="no-line">
+    <?=App::xlat('OPTION_info_title')?>
+      <span><?=App::xlat('OPTION_info_subtitle')?></span>
+  </h1>
+  <p><?=App::xlat('OPTION_info_description')?></p>
+
+  <?php if($this->section == "book" || $this->section == "chapter" || $this->section == "verse"):?>
+    <ul>
+      <li class="instruction"> <?=App::xlat('OPTION_book_details')?> </li>
+      <li> <strong><?=App::xlat('OPTION_book_details_name')?></strong>      <?=$this->details['book']?> </li>
+      <li> <strong><?=App::xlat('OPTION_book_details_chapters')?></strong>  <?=$this->details['chapter']?> </li>
+      <li> <strong><?=App::xlat('OPTION_book_details_verses')?></strong>    <?=$this->details['verses']?> </li>
+      <li> <strong><?=App::xlat('OPTION_book_details_testament')?></strong> <?=App::xlat('BIBLE_testament_' . $this->details['testament'])?> </li>
+    </ul>
+  <?php endif; ?>
+  <br />
+  <button id="close"><?=App::xlat('FORM_close')?></button>
+</div>
+
+<?php if($this->section == "book" || $this->section == "chapter" || $this->section == "verse"):?>
+
+  <?php $testament = "old"; ?>
+  <div class="option books hide">
+    <h1 class="no-line">
+      <?=App::xlat('OPTION_books')?>
+      <span><?=App::xlat('OPTION_books_subtitle')?></span>
+    </h1>
+    <form id="book-selection" name="book-selection" method="post" action="">
+      <select multiple >
+        <option class="testament" value=""><?=App::xlat('BIBLE_testament_old')?></option>
+        <?php foreach($this->books AS $book): ?>
+          <?php if($book['testament'] <> $testament):?>
+            <option class="testament" value="" ><?=App::xlat('BIBLE_testament_new')?></option>
+            <?php $testament="new";?>
+          <?php endif;?>
+          <option value="<?=$book['seo']?>" <?=($this->current_book_id==$book['book_id']) ? "selected" : false;?> ><?=$book['book']?></option>
+        <?php endforeach;?>
+      </select>
+      <br />
+      <button id="close"><?=App::xlat('FORM_close')?></button>
+    </form>
+  </div>
+
+<?php endif; ?>
+
+<?php if($this->section == "chapter" || $this->section == "verse"):?>
+
+  <div class="option chapter hide">
+    <h1 class="no-line">
+      <?=App::xlat('BIBLE_chapters_block_topic')?>
+      <span><?=App::xlat('BIBLE_chapters_block_subtitle')?></span>
+      
+    </h1>
+    <form id="chapter-selection" name="chapter-selection" method="post" action="">
+      <select multiple >
+        <?php foreach($this->chapters AS $chapter): ?>
+          <option value="<?=$this->details['seo'].'/'.$chapter['cap']?>" <?=($this->details['current_chapter']==$chapter['cap']) ? "selected" : false;?> ><?=App::xlat('BIBLE_chapter').' '.$chapter['cap']?></option>
+        <?php endforeach;?>
+      </select>
+      <br />
+      <button id="close"><?=App::xlat('FORM_close')?></button>
+    </form>
+  </div>
+
+<?php endif; ?>
+
+<?php if($this->section == "verse"):?>
+
+  <div class="option verse hide">
+    <h1 class="no-line">
+      <?=str_replace(array('%cap%','%book%'), array($this->details['current_chapter'],$this->details['book']), App::xlat('OPTION_book_verses_topic') )?>
+      <span><?=App::xlat('OPTION_book_verses_subtitle')?></span>
+    </h1>
+    <form id="verse-selection" name="verse-selection" method="post" action="">
+      <select multiple >
+        <?php for($i=1; $i<=$this->details['verses_in_chapter']; $i++): ?>
+          <option value="<?=$this->details['seo'].'/'.$this->details['current_chapter']."/$i"?>" <?=($this->details['current_verse']==$i) ? "selected" : false;?> ><?=App::xlat('BIBLE_verse').' '.$i?></option>
+        <?php endfor;?>
+      </select>
+      <br />
+      <button id="close"><?=App::xlat('FORM_close')?></button>
+    </form>
+  </div>
+
+<?php endif; ?>
+
+<?php if($this->section == "search"):?>
+
+  <div class="option summary hide">
+    <h1 class="no-line">
+      <?=App::xlat('OPTION_search_summary_title')?>
+      <span><?=App::xlat('OPTION_search_summary_subtitle')?></span>
+    </h1>
+    
+    <?php
+      $session = App::module('Core')->getModel('Namespace')->get( 'search' );
+      if( ! empty($session->search['summary']) ) : ?>
+
+      <form id="summary-selection" name="summary-selection" method="post" action="<?=App::base( App::xlat('route_bible') ) . App::xlat('route_search')?>">
+        <select multiple >
+          <option value="empty" class="remove-attr">
+            <?=App::xlat('OPTION_search_summary_remove_filter')?>
+          </option>
+          <?php foreach((array)$session->search['summary'] AS $summary): ?>
+            <option value="<?=$summary['seo']?>" data-testament="<?=$summary['testament']?>">
+              <?=$summary['book']?> (<?=$summary['verses'].App::xlat('OPTION_search_summary_results')?> )
+            </option>
+          <?php endforeach;?>
+        </select>
+        <br />
+        <button id="close"><?=App::xlat('FORM_close')?></button>
+        <input type="hidden" name="search" value="<?=$session->search['keyword']?>" />
+      </form>
+
+    <?php endif; ?>
+
+  </div>
+
+<?php endif; ?>

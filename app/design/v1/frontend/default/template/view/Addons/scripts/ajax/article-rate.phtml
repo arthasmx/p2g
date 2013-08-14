@@ -1,0 +1,27 @@
+
+  <ul class="star-rating">
+    <?php for($star = 1; $star <= 5; $star++): ?>
+      <li <?=($this->rating['rating']==$star)? 'class="stars-'.$star.'"' : ''?>>
+        <a href="#" class="star-<?=$star?>">
+          <?=App::xlat('RATING_' . $star)?>
+        </a>
+      </li>
+    <?php endfor;?>
+      <li class="rate-description"></li>
+  </ul>
+
+<?php 
+/*
+$this->rating
+Array
+(
+    [id] => 1
+    [reference] => 149
+    [votes] => 1
+    [points] => 4
+    [type] => article
+    [stat] => 1
+    [rating] => 4
+)
+ */
+?>

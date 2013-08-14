@@ -1,0 +1,52 @@
+<?php
+  $user_data = App::module("Acl")->getModel('acl')->get_logged_user_data();
+  $name      = $user_data['name']." ".$user_data['last_name']. " ". $user_data['maiden_name'];
+  $logout    = "<a href='".App::base('/logout')."'>".App::xlat('HEADER_logout')."</a>";
+
+  if( empty($this->current_menu['menu']) ){
+    $this->current_menu['menu']=0;
+  }
+  if( empty($this->current_menu['sub']) ){
+    $this->current_menu['sub']=0;
+  }
+
+  
+?>
+
+<header>
+  <hgroup>
+    <h1> <?=App::getConfig('website_name') . App::xlat('HEADER_admin_section');?> </h1>
+    <h2> <?=str_replace(array('%user%','%url%'), array($name,$logout), App::xlat('HEADER_welcome'));?> <br /> <?=App::xlat('HEADER_last_login') . App::module('Core')->getModel('Dates')->toDate(7, $user_data['lastlogin']);?> </h2>
+  </hgroup>
+
+  <?php if( ! empty($user_data['menu']['0']['children']) ): ?>
+    <nav>
+      <?php foreach($user_data['menu']['0']['children'] AS $menu): ?>
+        <ul <?=($this->current_menu['menu']==$menu['id']) ? "class='current'" : null; ?>>
+          <li>
+            <a <?= empty($menu['url'])? '': "href='".App::base( $menu['url']."'" ) ?>>
+              <?=$menu['name']?>
+            </a>
+
+            <ul class="submenu<?=($this->current_menu['menu']==$menu['id']) ? ' show' : null; ?>">
+              <?php if( ! empty($menu['children'])  ): ?>
+                <?php foreach((array)$menu['children'] AS $submenu): ?>
+                  <li>
+                    <a href="<?= empty($submenu['url'])? '': App::base( $submenu['url'] ) ?>" <?=($this->current_menu['sub']==$submenu['id']) ? "class='current'" : null; ?> >
+                      <?=$submenu['name']?>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              <?php endif;?>
+            </ul>
+
+          </li>
+        </ul>
+      <?php endforeach; ?>
+    </nav>
+  <?php endif; ?>
+
+</header>
+
+<section>
+  <article>

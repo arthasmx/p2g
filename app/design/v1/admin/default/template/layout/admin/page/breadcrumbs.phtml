@@ -1,0 +1,16 @@
+<?php if (count((array)$this->pageBreadcrumbs) ):?>
+<div id='breadcrumbs'>
+  <ul>
+    <li class='icons breadcrums_home'><a href='<?=App::base()?>'><?=App::xlat('BREADCRUM_home');?></a></li>
+    <?php foreach ((array)$this->pageBreadcrumbs as $breadcrumb):?>
+      <li class='icons breadcrum'>
+        <?php if ( empty($breadcrumb['url']) ): ?>
+          <?=ucfirst($breadcrumb['title'])?>
+        <?php else:?>
+          <a href='<?=$breadcrumb['url']?>' ><?=ucfirst($breadcrumb['title'])?></a>
+        <?php endif;?>
+      </li>
+    <?php endforeach;?>
+  </ul>
+</div>
+<?php endif;?>

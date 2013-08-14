@@ -1,0 +1,16 @@
+<?php if( ! empty($this->preview) ): ?>
+  <div class="preview scroll">
+    <div>
+      <h1>Promoción Mobil</h1>
+      <img title="" alt="" src="<?=App::www( $this->preview['path'].'mobile/'.$this->preview['picture'] ).'?'.date('s');?>" />
+    </div>
+    <div>
+      <h1>Promoción Tablet</h1>
+      <img title="" alt="" src="<?=App::www( $this->preview['path'].'tablet/'.$this->preview['picture'] ).'?'.date('s');?>" />
+    </div>
+    <div>
+      <h1>Promoción</h1>
+      <img title="" alt="" src="<?=App::www( $this->preview['path'].$this->preview['picture'] ).'?'.date('s');?>" />
+    </div>
+  </div>
+<?php endif;?>

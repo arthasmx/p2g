@@ -1,0 +1,59 @@
+
+html body{
+  background: url("/media/images/big-gradient.jpg") no-repeat center center fixed #4483A4;
+  margin: 70px auto;
+  padding: 0;
+  width: 100%;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+div.login, div.business-register{
+    background-clip: padding-box;
+    background-color: white;
+    border: 15px solid rgba(0, 0, 0, 0.3);
+    border-radius: 30px 30px 30px 30px;
+    height: 223px;
+    left: 50%;
+    margin: -130px 0 0 -250px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    width: 310px;
+}
+  div.business-register{
+    height: auto;
+    left: 0;
+    margin: 0 auto;
+    position: relative !important;
+    top: 40px;
+    width: 365px;
+  }
+    div.business-register h3{ border-bottom: 1px solid; margin: 0 0 20px; padding: 0; text-align: right;}
+    div.business-register  #sidebar{ left: -99px; top:-60px; }
+
+div.login img{margin-bottom: 20px; margin-left: 35px; }
+div.login input#captcha-input{ margin:0; }
+div.login button#button{ display: block; }
+
+form#login{padding-top:55px;}
+form#login span#captcha-refresh, form#business-register span#captcha-refresh{cursor: pointer;}
+form#business-register textarea#address{width: 19.3em; height: 4em;}
+
+p.br-success { text-align: justify; }
+
+form#business-register div.captcha{ display: inline-block; margin-top: 20px; width: 100%;}
+div.captcha input#captcha-input{margin: 11px;}
+div.captcha input#button{padding: 15px;}
+
+
+#sidebar{ height: 200px; left: -134px; position: absolute; top: -70px; width: 200px; }
+
+
+/* fieldsets */
+form fieldset { background-color: #FAF8F7; border: 1px solid #D4D4D4; border-radius: 5px 5px 5px 5px; float: left; padding: 23px;}
+fieldset legend { background: none repeat scroll 0 0 #FFFFFF; border-radius: 5px 5px 5px 5px; color: #000000; padding: 5px 10px; font-size: 14px !important; line-height: 10px !important; margin: 0 !important; width: auto !important;}
+  fieldset#br-access {  }
+  fieldset#br-info {  }

@@ -1,0 +1,42 @@
+;MENUS
+
+    ; MAIN MENU
+        MENU_home,"HOME"
+        MENU_doctrine, "DOCTRINE"
+        MENU_events, "EVENTS"
+        MENU_bible, "BIBLE"
+        MENU_radio, "RADIO"
+        MENU_about,"ABOUT US"
+        MENU_contact,"CONTACT"
+
+        ; LINKS TAG a href
+            LINK_doctrine, "doctrine"
+            LINK_events, "events"
+            LINK_bible, "bible"
+            LINK_radio, "radio"
+            LINK_about, "about-us"
+            LINK_contact, "contact-us"
+
+    ; FOOTER MENU
+        MENU_privacy_policy,"Privacy policy"
+        MENU_terms_conditions,"Terms and conditions"
+        MENU_sitemap,"Site map"
+
+        ;LINKS TAG a href
+          LINK_privacy_policy, "privacy-policy"
+          LINK_terms_conditions, "terms-conditions"
+          LINK_sitemap, "site-map"
+
+;ROUTES
+  ; BIBLE
+    route_bible, "/bible/"
+
+;SITE GENERAL
+  SLOGAN_text, "A PURPOSE PEOPLE CHURCH"
+
+;BREADCRUMS
+  BREADCRUM_home, "Home"
+
+;ERROR
+    PUBLIC_ERROR_title, "Oops!"
+    PUBLIC_ERROR_advice, "The requested section does not exist on this page"

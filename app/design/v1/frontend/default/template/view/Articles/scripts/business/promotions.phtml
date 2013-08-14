@@ -1,0 +1,109 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+           <?php if( ! empty($this->promotions['items']) ): ?>
+
+             <h3 class="topic"> <?=App::xlat('business_promotions')?> </h3>
+           
+             <?php foreach($this->promotions['items'] AS $promotion): ?>
+                <article class="promotions_list">
+
+                  <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
+                    <a class="promo-info" href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] ."/". App::xlat('promociones_singular') ."/". $promotion['id'] )?>">
+                      <img src="<?=App::www( $promotion['path']."mobile/".$promotion['picture'] )?>" alt="<?=$promotion['description']?>" title="<?=$promotion['description']?>" />
+                    </a>
+                    <div class="promo-info">
+                      <?=$promotion['description']?>
+                      <br />
+                      <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] )?>" class="business no-padding">
+                        <span class="icon-user"></span> <?=strtolower($promotion['author'])?>
+                      </a>
+                       |
+                      <time> <span class="icon-calendar"></span>  <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6,$promotion['finish'])?> </time>
+                    </div>
+                  <?php else: ?>
+                    <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] ."/". App::xlat('promociones_singular') ."/". $promotion['id'] )?>" class="topic">
+                      <?=$promotion['description']?>
+                    </a>
+                    <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] )?>" class="business">
+                      <span class="icon-user"></span> <?=strtolower($promotion['author'])?>
+                    </a>
+                     |
+                     <time> <span class="icon-calendar"></span>  <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6,$promotion['finish'])?> </time>
+                  <?php endif;?>
+
+                </article>
+
+             <?php endforeach; ?>
+             <?= empty($this->promotions['pagination_html']) ? '' : $this->promotions['pagination_html'];?>
+    
+           <?php else:?>
+             <h3 class="topic"> <?=App::xlat('business_promotions')?> </h3>
+           <?php endif;?>
+
+
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>
+
+  
+  
+<?php 
+/*
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [username] => toys@toys.com
+                    [author] => Toys de mazatlan
+                    [seo] => toys-de-mazatlan
+                    [picture] => toys@toys.com1375244512.jpg
+                    [path] => /media/promotions/2013/07/
+                    [description] => Descripción de la promoción de toys de Mazatlán
+                    [city] => mazatlan
+                    [city_name] => Mazatlan
+                    [state] => 
+                    [state_name] => Sinaloa
+                    [country] => mexico
+                    [country_name] => MÃ©xico
+                    [created] => 2013-07-30 22:21:52
+                    [start] => 2013-07-30
+                    [finish] => 2013-08-09
+                    [main] => yes
+                    [onclick_action] => expand
+                    [onclick_url] => 
+                    [status] => enabled
+                )
+
+        )
+
+    [pagination] => Array
+        (
+            [page_current] => 1
+            [items_per_page] => 10
+            [items_total] => 1
+            [page_total] => 1
+        )
+
+    [pagination_html] => 
+)
+
+ */
+
+?>

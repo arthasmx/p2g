@@ -1,0 +1,45 @@
+<?php
+  $date  = App::module('Core')->getModel('Dates');
+  $class = true;
+?>
+
+<div class="news-tab">
+
+  <?php if( ! empty($this->articles) ): ?>
+    <?php foreach($this->articles AS $article): ?>
+      <article class="news <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
+        <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+          <h3>
+            <a class="news-topic" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+              <?=$article['title']?>
+            </a>
+          </h3>
+          <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+            <img src="<?=App::media( $article['folder']."/gallery/aside.jpg" )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+          </a>
+          <?=$article['article']?>
+
+          <a class="button blue" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+            <?=App::xlat('read_more')?> <i class="icon-chevron-right"></i>
+          </a>
+
+        <?php else: ?>
+          <h3>
+            <a class="news-topic" href="<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo']  )?>">
+              <?=$article['title']?>
+            </a>
+          </h3>
+          <a href="<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo']  )?>">
+            <img src="<?=App::media( '/images/article-preview-promote.jpg' )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+          </a>
+          <?=$article['article']?>
+          <button onclick="location.href='<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo']  )?>'" class="blue"><?=App::xlat('read_more')?></button>
+
+        <?php endif;?>
+      </article>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p> No se han encontrado articulos</p>
+  <?php endif; ?>
+
+</div>

@@ -1,0 +1,112 @@
+<?php
+/*
+$this->tags
+Array
+(
+    [0] => Array
+        (
+            [id] => 112
+            [parent] => 82
+            [name] => 5 Estrellas
+            [seo] => 5-estrellas
+            [izq] => 108
+            [der] => 109
+            [sort] => 0
+            [created] => 2013-01-11 14:02:55
+            [username] => robe@gmail.com
+            [updated] => 2013-01-11 14:02:55
+            [updated_by] => robe@gmail.com
+            [children] => 0
+            [language] => es
+            [status] => enabled
+        )
+
+$this->tag_lists
+Array
+(
+    [0] => Array
+        (
+            [id] => 4
+            [article_id] => 4
+            [title] => Hotel de prueba
+            [seo] => hotel-de-prueba
+            [article] => blablabl
+            [email] => 
+            [phone] => 
+            [address] => 
+            [type_id] => 76
+            [type] => empresas
+            [type_name] => Empresas
+            [created] => 2013-07-16 10:22:42
+            [publicated] => 
+            [event_date] => 
+            [event_hours] => 
+            [stop_publication] => 
+            [username] => hotelprueba
+            [author] => Hotel de prueba  
+            [language] => es
+            [written] => 1
+            [folder] => /business/2013/07/4/
+            [promote] => enabled
+            [mobile] => enabled
+            [addon] => disabled
+            [status] => disabled
+        )
+
+)
+ */
+?>
+
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad mini">
+
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+          <div class="big-image-tag">
+            <?php $colors = array("l_red","l_orange","l_brown","l_gray","l_blue","l_yellow","l_cyan","l_purple","l_pink","l_green"); $loop=0; ?>
+
+            <?php if ( ! empty($this->tags) ): ?>
+              <?php foreach( $this->tags AS $tag ): ?>
+                <section>
+                  <header class="round-top <?=$colors[$loop]?>">
+                    <h1><?=$tag['name']?></h1>
+                  </header>
+                  <a href="<?=App::www( $this->parent . '/' . $tag['seo'] )?>">
+                    <img width="230" height="155" alt="<?=$tag['name']?>" title="<?=$tag['name']?>" src="<?=App::media('/categories/' . $tag['seo']. '.jpg')?>" />
+                  </a>
+                </section>
+                <?php $loop=($loop>=9)?0:$loop+1;?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ( ! empty($this->tag_list) ): ?>
+              <?php foreach( $this->tag_list AS $tag ): ?>
+                <section>
+                  <header class="round-top <?=$colors[$loop]?>">
+                    <h1><?=$tag['title']?></h1>
+                  </header>
+                  <a href="<?=App::www( App::xlat( $tag['type'].'_singular' ) ."/". $tag['seo'] )?>">
+                    <img alt="<?=$tag['title']?>" title="<?=$tag['title']?>" src="<?=App::media( $tag['folder']. 'gallery/categorized.jpg')?>" />
+                  </a>
+                </section>
+                <?php $loop=($loop>=9)?0:$loop+1;?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+
+      </section>
+      <aside class="one fifth left-three mini">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <div class="no-movil">
+          <?=App::module('Addons')->renderBlock("site/index","menu")?>
+        </div>
+      </aside>
+      <aside class="one fifth mini">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>

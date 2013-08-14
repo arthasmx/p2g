@@ -1,0 +1,50 @@
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex">
+<meta name="robots" content="noindex,nofollow">
+<meta name="author" content="<?=isset($this->pageAuthor) ? $this->pageAuthor:@$this->xd['pageAuthor'];?>" />
+
+<!--Links-->
+  <link href="<?=App::getDesign()->getRelativeSkinPath('/css/reset.css');?>" rel="stylesheet" />
+  <link href="<?=App::getDesign()->getRelativeSkinPath('/css/admin.css');?>" rel="stylesheet" />
+  <link href="<?=App::getDesign()->getRelativeJsPath('/jquery-ui/w8-green/custom.css')?>" rel="stylesheet" />
+  <link href="<?=App::getDesign()->getRelativeJsPath('/jquery-ui/w8-green/w8-green.css')?>" rel="stylesheet" />
+
+	<?= App::header()->getLinks();?>
+
+	<?=@$this->xd['_block']['links'];?>
+
+<!--Scripts-->
+  <!--[if IE]>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/html5.js','js');?>"></script>
+  <![endif]-->
+
+  <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-1.8.0.min.js','js');?>" ></script>
+  <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-ui/jquery-ui-1.9.1.custom.min.js','js');?>" ></script>
+  <script src="<?=App::getDesign()->getRelativeJsPath('/shared_methods.js','js');?>" ></script>
+
+  <script>
+    var baseUrl="<?=App::base();?>";
+    var wwwUrl="<?=App::www();?>";
+    var skinUrl="<?=App::skin();?>";
+    var jsUrl="<?=App::url()->get('','js');?>";
+    var jslibUrl="<?=App::url()->get('','jslib');?>";
+    var curLang="<?=App::locale()->getLang();?>";
+    var skinRelative = "<?=App::getDesign()->getRelativeSkinPath()?>";
+    var jsRelative = "<?=App::getDesign()->getRelativeJsPath()?>";
+    var jsLibRelative = "<?=App::getDesign()->getRelativeJsPath("","jslib")?>";
+
+    jQuery(document).ready(function(){
+      <?=App::header()->get_jquery_events();?>
+    });
+  </script>
+
+	<?=App::header()->getScripts();?>
+
+	<?=@$this->xd['_block']['scripts'];?>
+
+	<?=@$this->xd['_block']['add'];?>
+
+	<?=App::header()->getCode();?>
+
+</head>

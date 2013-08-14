@@ -1,0 +1,314 @@
+"HEADER_admin_section", " :: Administración"
+"HEADER_welcome", "Bienvenido, %user% [ %url% ]"
+"HEADER_last_login", "Ultimo acceso: "
+"HEADER_logout", "Cerrar sesión"
+
+; MENUS
+  "MENU_dashboard","Dashboard"
+  "MENU_articles","Artículos"
+  "MENU_articles_list","Listado"
+  "MENU_articles_add","Agregar"
+
+
+
+; TABLE
+  "jqGrid_article_listing_topic","Listado de Artículos"
+  "jqGrid_event_listing_topic","Listado de Eventos"
+  "jqGrid_categories_listing_topic","Listado de Categorías"
+  "jqGrid_ministeries_listing_topic","Listado de usuarios"
+  "jqGrid_social_listing_topic","Eventos Sociales"
+
+  "id","clave"
+  "username","usuario"
+  "business","empresa"
+  "name","nombre"
+  "last_name","apellido paterno"
+  "maiden_name","apellido materno"
+  "section","sección"
+  "language","idioma"
+  "created","creado"
+  "start","inicia"
+  "finish","termina"
+  "publicated","publicado"
+  "event_date","evento"
+  "stop_publication","ocultar"
+  "updated","modificado"
+  "created_by","creado por "
+  "updated_by","modificado por "
+  "records"," registro(s)"
+  "title","título"
+  "city","ciudad"
+  "state","estado"
+  "country","pais"
+  "seo","link"
+  "type","tipo"
+  "author","autor"
+  "status","estado"
+  "address","dirección"
+  "description","descripción"
+  "css_icon","Asigna ícono"
+  "yes","Si"
+  "no","No"
+  "all","Todos"
+  "deleted","Eliminado"
+  "disabled","Inactivo"
+  "enabled","Activo"
+  "image","Imagen"
+  "parent_id","padre"
+  "category","categoría"
+  "subcategory","subcategoría"
+  "children","hijos"
+  "izq","Izq"
+  "der","Der"
+  "ministery_main","Principales"
+
+  "list_column_sort","Ordenar por este campo"
+
+
+
+; CATEGORIES
+  "section_page","seccion-pagina"
+  "section_type","tipo"
+  "type_events","eventos"
+  "section_common_categories","categorias"
+  "CATEGORY_edit","Modificar categoría"
+  "CATEGORY_subcategory","Subcategorías"
+  "CATEGORY_parent","Categoría padre"
+  "CATEGORY_create","Crear Categoría"
+  "CATEGORY_delete_warning","<strong>ADVERTENCIA:</strong> Te dispones a eliminar una categoría la cual podría estar asignada a 1 o mas artículos de tu página<br />Si aceptas eliminarla, <strong>ya no será posible acceder a ellos</strong> <br/><br/><strong>Deseas continuar ?</strong>"
+
+  "CATEGORY_empty_listing_topic","Tabla de categorías vacía"
+  "CATEGORY_empty_listing_pharagraph_1","No se han definido categorías para este sitio y es necesario que sean registradas en la sección de la categoría principal."
+  "CATEGORY_empty_listing_pharagraph_2","Es recomendable crear un arbol de categorías en papel, antes de comenzar a ingresarlas por este medio, ya que el procedimiento (por su naturaleza) es lento y laborioso"
+  "CATEGORY_empty_listing_pharagraph_small","En caso de error, contacta al administrador del sitio [ErMAINCAT]"
+
+; ARTICLES TABS
+
+  "ARTICLE_PREVIEW_title","Título del artículo"
+  "ARTICLE_PREVIEW_written_by_at", "Escrito por: Autor Apellido"
+
+  "article_tab_title_basic","Información Básica"
+
+    "article_tab_basic_FIELDSET_access","Datos de acceso"
+    "article_tab_basic_FIELDSET_info","Información"
+    "article_tab_basic_FIELDSET_options","Opciones"
+    "article_tab_basic_FIELDSET_article","Contenido de artículo"
+
+
+
+  "article_tab_title_images","Imágenes"
+  "article_tab_title_more_info","Más información"
+  "article_tab_title_files","Archivos"
+  "article_tab_title_addons","Complementos"
+
+   "ARTICLE_FIELDSET_main_picture_title","Imágen Principal"
+     "ARTICLE_FIELDSET_main_picture_desc","Imágen que representará el artículo en listados, búsqueda, promociones, sliders, banners, etc."
+     "ARTICLE_main_picture_btn_select","Selecciona Imágen"
+     "ARTICLE_main_picture_btn_upload","Subir Imágen"
+     "ARTICLE_main_picture_btn_preview","Mostrar imagen"
+     "ARTICLE_main_picture_empty","No se ha establecido ninguna imagen como principal"
+   "ARTICLE_FIELDSET_gallery_zipped_title","Galería Comprimida"
+     "ARTICLE_zipped_gallery_btn_select","Seleccione Archivo"
+     "ARTICLE_zipped_gallery_btn_upload","Subir Archivo"
+     "ARTICLE_FIELDSET_gallery_zipped_desc","Carga el archivo <strong>.zip</strong> de imagenes procesadas para crear la galería."
+   "ARTICLE_FIELDSET_gallery_title","Crear Galería: Carga las imágenes que contendrá la galería"
+   "ARTICLE_FIELDSET_gallery_uploaded_images","Imágenes cargadas"
+   "ARTICLE_FIELDSET_plupload_browser_not_supported","Tu navegador no soporta Flash, Silverlight, Google Gears, BrowserPlus o HTML5; por lo tanto, no se pueden subir archivos.<br /><strong>Actualiza tu navegador o utiliza Chrome, Firefox, Opera, Safari o IE10</strong>"
+
+
+   "ARTICLE_FIELDSET_files_audio_title","Archivos <strong>MP3</strong>"
+     "ARTICLE_FIELDSET_files_audio_uploaded_files","Archivos de sonido cargados previamente"
+   "ARTICLE_FIELDSET_files_docs_title","Documentos: <strong>PDF, DOC, XLS, TXT, ZIP, RAR</strong>"
+      "ARTICLE_FIELDSET_files_docs_uploaded_files","Documentos cargados previamente"
+   "ARTICLE_FIELDSET_addons_links_title","Links de interés"
+      "ARTICLE_FIELDSET_addons_links_desc","Indica la descripción/dirección del link que deseas relacionar con este artículo.<br />Solamente puedes agregar 10 links externas"
+      "ARTICLE_FIELDSET_addons_links_empty","No hay links relacionados a este artículo"
+   "ARTICLE_FIELDSET_addons_map_title","Google Map"
+      "ARTICLE_FIELDSET_addons_map_desc","Ubica las coordenadas de mapa deseadas y dá click en el boton <i>Guardar</i>"
+
+   "FORM_FIELDSET_ADDON_links_title","Referencias"
+     "FIELDSET_links_desc","Texto alternativo importante para buscadores"
+     "FIELDSET_links_pick","Selecciona"
+     "FIELDSET_links_ex","Link externo"
+     "FIELDSET_links_in","Link local"
+     "FIELDSET_links_video","Video"
+     
+     "FIELDSET_links_facebook","Facebook"
+     "FIELDSET_links_twitter","Twitter"
+     "FIELDSET_links_gplus","Google +"
+     "FIELDSET_links_youtube","YouTube"
+     "FIELDSET_links_other","Otro"
+
+; BANNER
+  "banner_title","Banner/Logo de su empresa"
+  "banner_choose_image","Cargar imágen"
+  "banner_choose_image_desc","Selecciona una imágen de tu computadora para crear un banner de 150x125 que represente a tu empresa."
+  "banner_preview","Banner cargado"
+
+; SOCIAL
+  "social_title","Nuevo evento social"
+  "social_business","Selecciona la empresa del evento"
+  "social_business_register","No existe tu empresa ? %url%"
+  "social_description","Donde fué ?, Que celebraban ? Que día ? Describe todo!"
+  "social_preview","Fotos cargadas"
+  "gallery_for_event","Carga las fotos del evento"
+  "business_register","Registrar empresa"
+  "no_business_found_topic","No hay empresas registradas!"
+  "no_business_found_desc","Los eventos sociales son asignados a las empresas registradas. Si cuentas con alguna foto-galería de algun negocio/empresa que no esta registrada, la puedes registrar en esta sección [ %url% ]"
+
+; PROMOTIONS
+  "promotions_title","Crear promoción"
+  "promotions_description","información básica"
+  "date_start","inicio de promoción"
+  "date_finish","fin de promoción"
+  "load_image","cargar imagen"
+  "load_image_description","Carga el grafico que contenga la promoción de tus productos/servicios"
+  "promotions_preview","vista previa de la promoción"
+  "promotion_main","Utilizar esta promoción como la principal"
+  "main","principal"
+  "promo_on_click","al dar click sobre promoción..."
+  "promo_expand","Agrandar promoción"
+  "promo_link","Redireccionar a página..."
+  "promo_on_click_url","Página a redireccionar"
+  "promo_description","Describe brevemente la promoción"
+
+; TOWN
+  "FORM_city","Ciudad a la que pertenece el municipio"
+  "town_section_title","Mas información"
+  "town_section_description","<h1>Instrucciones</h1> <ol class='section-list'><li>Dá click sobre el tema que te interese definir para  tu municipio</li> <li>Describe el tema seleccionado dentro del editor que aparecera</li> <li><strong>importante:</strong> cada vez que completes un tema, dá click al boton <strong>GUARDAR TEMA</strong>, pues los temas son independientes y es necesario que se guarden antes de querer definir otro tema.</li> <li><strong>disponible</strong> / <strong>no disponible</strong>, indican que el tema ya ha sido definido con anterioridad o aún no, respectivamente.</li> </ol> <p>&nbsp;</p> <p>Recuerde, esta información es de vital importancia para los buscadores; a más información, mejores resultados de búsqueda para tu página.</p>"
+  "FIELDSET_town_description","Descripción de municipio"
+
+
+; FORMS
+
+  "FORM_title","Título del artículo"
+  "FORM_seo","Link del artículo (SEO)"
+    "FORM_seo_description","<strong>*Muy importante</strong> identificador utilizado por los buscadores."
+  "FORM_event_day","Día del evento"
+  "FORM_date_publication","Publicar"
+  "FORM_date_stop_publication", "Finalizar"
+  "FORM_tags_category_title","Categoría(s): 10 maximo"
+  "FORM_tags_category_desc","Este elemento es de suma importancia para categorizar el artículo"
+    "TAGS_default_text","Selecciona la(s) categoría(s) requeridas"
+    "TAGS_no_results","No existe esta categoría"
+  "FORM_language","Idioma"
+  "FORM_mobile","Mostrar artículo en dispositivos móviles ?"
+  "FORM_promote","Promocionar artículo en página principal ?"
+  "FORM_hours","hrs"
+  "FORM_min","min"
+
+  "FORM_event_title","Título del evento"
+  "FORM_event_seo","Link del evento (SEO)"
+  "FORM_event_mobile","Mostrar evento en dispositivos móviles ?"
+  "FORM_event_promote","Promocionar evento en página principal ?"
+  "FORM_event_address","Lugar del evento"
+
+  "FORM_business_day","Fechas de publicación"
+  "FORM_business_title","Nombre de la empresa"
+  "FORM_business_seo","Link de la empresa(SEO)"
+  "FORM_business_mobile","Mostrar empresa en dispositivos móviles ?"
+  "FORM_business_promote","Promocionar empresa en página principal ?"
+  "FORM_business_describe","Descripción de su empresa/negocio"
+
+  "FORM_user","Usuario"
+  "FORM_user_desc","minimo 6 caracteres"
+  "FORM_password","Contraseña"
+  "FORM_password_desc","minimo 6 caracteres"
+  "FORM_confirmation","Confirmación"
+  "FORM_confirmation_desc","Repetir contraseña"
+
+  "FORM_seo_category","Link de la categoría (SEO)"
+
+
+
+
+
+  "FORM_type","Tipo de artículo"
+  "FORM_category","Categoría de artículo"
+  "FORM_description","Descripción del artículo (500 caracteres máximo)"
+    "FORM_description_justification","<strong>*Muy importante</strong>, es utilizado en listados, mensajes y en content slider."
+  "FORM_image_upload","Selecciona una imágen que represente al artículo"
+  "FORM_add_another_row", "Agregar otro link"
+  "FORM_remove_row","Eliminar último link"
+  "FORM_select_an_option","Selecciona una opción"
+  "FORM_article","Escribe el contenido del artículo"
+
+  "FORM_full_address","Dirección completa"
+  "FORM_phone","Teléfono"
+  "FORM_email","Correo electrónico"
+
+  "FORM_really_important_for_mobile","Este elemento es de suma importancia para dispositivos móviles"
+
+
+  "BUTTON_next","Siguiente"
+  "BUTTON_prev","Anterior"
+  "BUTTON_save_as","Guardar como"
+  "BUTTON_save","Guardar"
+  "BUTTON_save_update","Guardar cambios"
+  "BUTTON_save_close","Guardar y Cerrar"
+  "BUTTON_save_new","Guardar / Agregar Otro"
+  "BUTTON_save_publicate","Publicar/Cerrar"
+  "BUTTON_publicate","Publicar Artículo"
+  "BUTTON_clear_selection","Limpiar Selección"
+
+  "BUTTON_add","Agregar"
+  "BUTTON_delete_all","Quitar Todos"
+  "BUTTON_update","Actualizar"
+  "BUTTON_preview","Vista Previa"
+  "BUTTON_close","Cerrar"
+  "BUTTON_cancel","Cancelar"
+  "BUTTON_delete_category","Eliminar Categoría"
+  "BUTTON_create_category","Crear Categorías"
+  "BUTTON_create_subcategory","Agregar Subcategoría(s)"
+  "BUTTON_del_coordinates","Quitar Coordenadas"
+  "BUTTON_quit_section","Quitar sección"
+
+  ; ACTIONS
+    "operations","operaciones"
+    "del_alt","Eliminar"
+    "edit_alt","Modificar"
+    "status_on_alt","Activar"
+    "status_off_alt","Desactivar"
+
+; ERRORS
+
+"NO_RECORDS_FOUND", "No se han encontrado registros"
+"EXC_no_options_where_given","Faltan parametros necesarios para el metodo OPTIONS del Modelo Grid"
+"EXC_columns_missing","Faltan los parametros necesarios para crear el contenido del Grid [Model/Grid]"
+"EXC_jqGrid_where_condition_missing","Falta el operador lógico en la sentensia WHERE"
+"EXC_filesystem_folder_not_available","El directorio deseado no puede ser utilizado"
+"EXC_article_id_missing","No se ha especificado el ID del artículo"
+"EXC_error_type_was_not_provided","Falta el tipo de render que deseas para el error [ Model_Error->render($type,$msg) ]"
+"EXC_category_id_not_found","No existe la categoría"
+"EXC_user_wasnt_found","No existe el usuario"
+
+; JS MESSAGES
+"sheep_it_remove_all_cloned_element_confirmation","Se dispone a eliminar todos los elementos, esta seguro ?\nSi es así, recuerda que debes de guardar tus cambios"
+
+; jSon Success
+"jSon_success_coordinates_saved","Coordenadas guardadas"
+"jSon_success_addon_relation_saved","Relación de artículo exitosa"
+"jSon_success_links_related_with_article","Los links han sido relacionados con el articulo"
+"jSon_success_saving_changes","Sus cambios han sido registrados"
+"jSon_success_image_deleted","Imágen eliminada"
+"jSon_success_audio_deleted","Archivo de audio eliminado"
+"jSon_success_file_deleted","Documento eliminado"
+"jSon_error_category_updated","Categoría actualizada correctamente"
+
+; jSon Errors
+"jSon_error_all_fields_are_required","Todos los campos son necesarios"
+"jSon_error_saving_coordinates","Error al guardar las coordenadas [art100]"
+"jSon_error_cannot_relate_addon_to_article","Imposible relacionar con el artículo [art101]"
+"jSon_error_cannot_apply_changes_to_article_action_status","Error al modificar el estado de los registros"
+"jSon_error_cannot_apply_changes_to_article_action_language","Error al modificar el idioma de los registros"
+"jSon_error_cannot_apply_changes_to_article_action_promote","Error al modificar el estado de promoción de los registros"
+"jSon_error_cannot_apply_changes_to_article_action_mobile","Error al modificar las opciones moviles de los registros"
+"jSon_error_image_deleted","Imposible eliminar la imágen. Favor de reportar este error lo mas pronto posible"
+"jSon_error_audio_deleted","Imposible eliminar el audio. Favor de reportar este error lo mas pronto posible"
+"jSon_error_file_deleted","Imposible eliminar el documento. Favor de reportar este error lo mas pronto posible"
+"jSon_error_category_not_saved","No se pudo crear la categoría"
+"jSon_error_category_not_empty","<h2>La categoría contiene 1 o más subcategorías y debe estar vacía para poder eliminarla</h2>"
+"jSon_error_category_missing","El parametro 'categoria' esta vacío [CATM]"
+"jSon_error_category_deleting_db_error","No se pudo eliminar la categoría [MYQ]"
+"jSon_error_category_main_cannot_be_deleted","Imposible eliminar categorías principales [MYQSCAT]"
+"jSon_error_category_update_db_error","No se pudo actualizar la(s) categoría(s)"

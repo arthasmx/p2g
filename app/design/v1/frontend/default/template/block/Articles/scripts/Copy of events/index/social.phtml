@@ -1,0 +1,41 @@
+
+<?php if( ! empty($this->latest) ): ?>
+  <?php $date = App::module('Core')->getModel('Dates'); ?>
+
+<div class="block-grey">
+  <!-- Tabs navigation -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#hoy">Hoy</a></li>
+    <li><a data-toggle="tab" href="#mes">Del mes</a></li>
+  </ul>
+
+  <!-- Tabs content -->
+  <div class="tab-content">
+
+    <div id="hoy" class="tab-pane active">
+      <?php foreach($this->latest AS $latest): ?>
+        <article class="list">
+          <?php if( file_exists( WP.DS.'media'.DS.$latest['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+            <a href="<?=App::base( App::xlat( $latest['type'].'_singular' ) ."/". $latest['seo']  )?>">
+              <img src="<?=App::media( $latest['folder']."/gallery/aside.jpg" )?>" alt="<?=$latest['title']?>" title="<?=$latest['title']?>" />
+            </a>
+          <?php else: ?>
+            <a href="<?=App::base( App::xlat( 'eventos_singular' ) ."/". $latest['seo']  )?>">
+              <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$latest['title']?>" title="<?=$latest['title']?>" />
+            </a>
+          <?php endif;?>
+
+          <h2><a href="<?=App::base( App::xlat( $latest['type'].'_singular' ) ."/". $latest['seo']  )?>"><?=$latest['title']?></a></h2>
+          <p><?=App::locale()->toDate( $latest['event_date'] ,'long')?></p>
+        </article>
+      <?php endforeach; ?>
+    </div>
+
+    <div id="mes" class="tab-pane">
+    </div>
+
+  </div>
+</div>
+  
+
+<?php endif; ?>

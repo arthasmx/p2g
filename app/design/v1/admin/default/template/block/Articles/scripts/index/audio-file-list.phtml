@@ -1,0 +1,26 @@
+
+<?php if( ! empty($this->files) ):
+  $paginator=null; ?>
+
+  <?php if( ! empty($this->files['html']) ): ?>
+    <?php $paginator = $this->files['html'];?>
+  <?php endif;?>
+
+    <?=empty($paginator) ? null:$paginator?>
+    <ul class='uploaded_audio'>
+      <?php foreach($this->files['files'] AS $audio): ?>
+        <li class='audio'>
+          <div>
+            <object type="application/x-shockwave-flash" data="<?=App::media('/mp3player/player_mp3_maxi.swf')?>" width="20" height="20">
+              <param name="movie" value="<?=App::media('/mp3player/player_mp3_maxi.swf')?>" />
+              <param name="bgcolor" value="#ffffff" />
+              <param name="FlashVars" value="mp3=<?=App::media( $this->files['path'] ."/". $audio )?>&amp;width=20&amp;showslider=0&amp;buttonwidth=20&amp;sliderwidth=0&amp;sliderheight=0&amp;volumewidth=0&amp;volumeheight=0" />
+            </object>
+          </div>
+          <div><?=$audio?> [<span class='del_audio' data-id="<?=$audio?>" ><?=App::xlat('del_alt')?></span>] </div>
+        </li>
+      <?php endforeach;?>
+    </ul>
+    <?=$paginator?>
+    
+<?php endif;?>

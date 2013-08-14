@@ -1,0 +1,8 @@
+<?php if( ! empty($this->promote) ): ?>
+  <div class="promote">
+    <a href="<?=App::base( App::xlat( 'articulos_singular' ) ."/". $this->promote['seo']  )?>">
+      <img src="<?=App::media( $this->promote['folder'].'gallery/promote.jpg' )?>" alt="<?=$this->promote['title']?>" title="<?=$this->promote['title']?>" />
+    </a>
+  </div>
+  <div class="aside-block-shadow"></div>
+<?php endif; ?>

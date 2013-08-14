@@ -1,0 +1,5 @@
+Este elemento ya no sirve, lo he reemplazado por TinyMce.
+
+Sólo está creado para demostrar que también pueden crearse Elementos locales de la aplicación o personalizar elementos existentes.
+
+Por ejemplo: Pueden crearse aqui plantillas para el elemento TinyMce, aunque éste se encuentre en la librería Xplora.

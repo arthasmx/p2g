@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+
+	<template>:layout.phtml</template>
+
+	<segment name='content' as='content'/>
+
+</config>

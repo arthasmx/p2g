@@ -1,0 +1,13 @@
+<?php if( ! empty($this->video) ): ?>
+
+  <?php if( empty($this->embed) ): ?>
+    <div class="block youtube_video">
+      <a title="<?=$this->video['title']?>" href="http://www.youtube.com/v/<?=$this->video['id']?>?rel=0&wmode=transparent&autoplay=1" class="cBox_youtube">
+        <img src="<?=$this->video['thumbs']['0']['url']?>" title="<?=$this->video['title']?>" alt="<?=$this->video['title']?>" />
+      </a>
+    </div>
+  <?php else:?>
+    <iframe width="690" height="480" src="//www.youtube.com/embed/<?=$this->video['id']?>?rel=0" frameborder="0"></iframe>
+  <?php endif;?>
+
+<?php endif;?>

@@ -1,0 +1,15 @@
+<div class="block youtube_video">
+  <h1>
+    <?=App::xlat('YOUTUBE_video_title')?>
+    <span><?=App::xlat('YOUTUBE_video_subtitle')?></span>
+  </h1>
+
+  <?php if( empty($this->videos) ): ?>
+    <p><?=App::xlat('YOUTUBE_users_videos_not_found')?></p>
+  <?php else:?>
+    <?php
+    echo '<pre>'; print_r( $this->videos ); echo '</pre>';
+    ?>
+  <?php endif;?>
+
+</div>

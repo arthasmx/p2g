@@ -1,0 +1,10 @@
+<?php $errors = App::module('Core')->getModel('Form')->get_error_messages($this->form); ?>
+<?php if( ! empty($errors) ):?>
+  <ul class='form-errors'>
+  <?php foreach($errors AS $error): ?>
+    <li><?=$error?></li>
+  <?php endforeach; ?>
+  </ul>
+<?php endif;?>
+
+<?=$this->form?>

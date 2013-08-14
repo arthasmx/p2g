@@ -1,0 +1,119 @@
+@CHARSET "UTF-8";
+
+/* menu */
+.nav-list .nav-header{
+  color: white;
+  font-family: Open Sans;
+  font-size: 1.5em;
+  font-weight: lighter;
+  padding: 24px 0;
+  text-align: center;
+}
+.nav-list > li > a, .nav-list .nav-header{
+  margin:0;
+}
+
+
+ul.nav li.informacion a { background-image: url(/media/images/menu/informacion.png); }
+ul.nav li.pueblos a { background-image: url(/media/images/menu/pueblos.png); }
+ul.nav li.dondeir a { background-image: url(/media/images/menu/dondeir.png); }
+ul.nav li.eventos a { background-image: url(/media/images/menu/eventos.png); }
+ul.nav li.hoteles a { background-image: url(/media/images/menu/hoteles.png); }
+ul.nav li.bares a { background-image: url(/media/images/menu/bares.png); }
+ul.nav li.actividades_deportivas a { background-image: url(/media/images/menu/actividades_deportivas.png); }
+ul.nav li.agencias a { background-image: url(/media/images/menu/agencias.png); }
+ul.nav li.atractivos_naturales a { background-image: url(/media/images/menu/atractivos_naturales.png); }
+ul.nav li.centro_historico a { background-image: url(/media/images/menu/centro_historico.png); }
+ul.nav li.cerca_de_mi a { background-image: url(/media/images/menu/cerca_de_mi.png); }
+ul.nav li.cines a { background-image: url(/media/images/menu/cines.png); }
+ul.nav li.compras a { background-image: url(/media/images/menu/compras.png); }
+ul.nav li.malecon a { background-image: url(/media/images/menu/malecon.png); }
+ul.nav li.marina a { background-image: url(/media/images/menu/marina.png); }
+ul.nav li.ninos a { background-image: url(/media/images/menu/ninos.png); }
+ul.nav li.pesca a { background-image: url(/media/images/menu/pesca.png); }
+ul.nav li.playas a { background-image: url(/media/images/menu/playas.png); }
+ul.nav li.rv_park a { background-image: url(/media/images/menu/rv_park.png); }
+ul.nav li.sitios_de_interes a { background-image: url(/media/images/menu/sitios_de_interes.png); }
+ul.nav li.telefonos a { background-image: url(/media/images/menu/telefonos.png); }
+ul.nav li.turismo_de_aventura a { background-image: url(/media/images/menu/turismo_de_aventura.png); }
+ul.nav li.zona_dorada a { background-image: url(/media/images/menu/zona_dorada.png); }
+
+ul.nav li a{
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #FFFFFF;
+  font-family: Open Sans;
+  padding: 10px 20px 10px 50px;
+  
+}
+
+ul.nav li a:hover{color:#000;}
+ul.nav li a:hover span.icon-white{background-image: url("/skin/v1/default/frontend/css/img/glyphicons-halflings.png") !important;}
+
+
+.row-fluid > [class*="span"] {
+  margin-left: 0;
+}
+
+
+/* tab */
+.block-grey {
+  background: none repeat scroll 0 0 #F2F2F2;
+  border: 1px solid #CDCDCD;
+  border-radius: 3px 3px 3px 3px;
+  padding: 5px;
+  width: 310px;
+}
+
+.nav-tabs {
+  border-bottom: medium none;
+  margin-bottom: 0;
+}
+  .nav-tabs li.active {
+    border-bottom: medium none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  
+      list-style: none outside none;
+/*
+      margin-bottom: 13px;
+      padding-bottom: 13px;
+  */
+  }
+    ul.nav-tabs li a{
+      padding: 11px !important;
+      color: #777;
+    }
+    .nav-tabs > .active > a {
+      font-weight: 600;
+    }
+    .nav-tabs > li > a:hover, .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+      background: none repeat scroll 0 0 #FBFBFB;
+      border-bottom: medium none;
+      border-color: #E0E0E0 #E0E0E0 -moz-use-text-color;
+    }
+    .nav-tabs > li > a {
+      color: #777777;
+    }  
+
+
+.post-widget a {
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 7px;
+}    
+
+.post-widget img {
+    border: 4px solid #E7E7E7;
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+}    
+
+
+.tab-content {
+  background: none repeat scroll 0 0 #FBFBFB;
+  border: 1px solid #E0E0E0;
+  padding: 20px 0 0;
+}
+.tab-content p{color: #000; margin: 0; padding: 10px;}

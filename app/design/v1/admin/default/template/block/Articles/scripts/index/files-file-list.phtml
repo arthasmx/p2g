@@ -1,0 +1,19 @@
+
+<?php if( ! empty($this->files) ):
+  $paginator=null; ?>
+
+  <?php if( ! empty($this->files['html']) ): ?>
+    <?php $paginator = $this->files['html'];?>
+  <?php endif;?>
+
+    <?=empty($paginator) ? null:$paginator?>
+    <ul class='uploaded_files'>
+      <?php foreach($this->files['files'] AS $file): ?>
+        <li class='file'>
+          - <?=$file?>  [<span class='del_file' data-id="<?=$file?>" ><?=App::xlat('del_alt')?></span>]
+        </li>
+      <?php endforeach;?>
+    </ul>
+    <?=$paginator?>
+
+<?php endif;?>

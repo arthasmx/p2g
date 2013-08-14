@@ -1,0 +1,60 @@
+"form_optional_prefix","<span class='no-required'>"
+
+"form_optional_suffix","</span>:"
+"form_required_prefix","<span class='required'>"
+"form_required_suffix"," *</span>:"
+
+FORM_name, "Nombre"
+FORM_email, "Email"
+FORM_gender, "Género"
+  FORM_gender_male, "Hombre"
+  FORM_gender_female, "Mujer"
+  form_element_gender, "Género"
+
+FORM_comments, "Comentarios"
+FORM_button_cancel, "Cancelar"
+
+FORM_submit,"Enviar"
+FORM_search,"Buscar"
+FORM_cancel,"Cancelar"
+FORM_close,"Cerrar"
+
+FORM_select_option_enabled, "Activo"
+FORM_select_option_disabled, "Inactivo"
+FORM_select_option_deleted, "Eliminado"
+
+FORM_button_send_comment, "Enviar comentario"
+FORM_captcha,"Ingrese el código de la imagen"
+FORM_login_user, "Escriba su nombre de usuario"
+FORM_login_pass, "Escriba su contraseña"
+
+"isEmpty","Campo obligatorio"
+
+"stringLengthTooShort","Mínimo %min% caracteres"
+"stringLengthTooLong","Máximo %min% caracteres"
+
+
+"emailAddressInvalidFormat","Email inválido"
+"emailAddressInvalid","Email inválido"
+"emailAddressInvalidHostname","'%hostname%' no es un hostname válido para el email '%value%'"
+"emailAddressInvalidMxRecord","'%hostname%' no parece tener servicio de correo disponible para el email '%value%'"
+"emailAddressDotAtom","'%localPart%' no corresponde con el formato dot-atom"
+"emailAddressQuotedString","'%localPart%' no corresponde con el formato quoted-string"
+"emailAddressInvalidLocalPart","'%localPart%' no es un buzon de correo válido para el email '%value%'"
+
+"hostnameIpAddressNotAllowed","'%value%' parece ser una dirección IP, pero no son permitidas"
+"hostnameUnknownTld","'%value%' parece ser un hostname correcto, pero no se ha podido resolver su nombre DNS"
+"hostnameDashCharacter","'%value%' parece ser un hostname correcto, pero contiene un guion (-) en una posición incorrecta"
+"hostnameInvalidHostnameSchema","'%value%' parece ser un hostname correcto, pero no sus DNS contienen errores para el TLD '%tld%'"
+"hostnameUndecipherableTld","'%value%' parece ser un hostname correcto, pero no ha podido ser extraida la parte TLD"
+"hostnameInvalidHostname","'%value%' no tiene la estructura correcta para un hostname DNS"
+"hostnameInvalidLocalName","'%value%' no parece tener un nombre de red local válido"
+"hostnameLocalNameNotAllowed","'%value%' parece ser un nombre de red local pero los nombres de red locales no están permitidos."
+
+"valuesDontMatch","Los valores no coinciden"
+"numberTooLow","El valor no puede ser inferior a %min%"
+"numberTooHigh","El valor no puede ser mayor a %max%"
+"numberFloatIncorrect","'%value%' no es un número decimal correcto"
+"numberIntegerIncorrect","'%value%' no es un número entero correcto"
+
+"regexNotMatch","Algunos caracteres no están permitidos o el valor no es correcto."

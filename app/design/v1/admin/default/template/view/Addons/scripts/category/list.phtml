@@ -1,0 +1,25 @@
+
+<?php  if( empty($this->main_category) ):  ?>
+
+  <form>
+    <fieldset id="empty_grid">
+      <h1><?=App::xlat('CATEGORY_empty_listing_topic')?></h1>
+      <p><?=App::xlat('CATEGORY_empty_listing_pharagraph_1')?></p>
+      <p><?=App::xlat('CATEGORY_empty_listing_pharagraph_2')?></p>
+
+      <a href="<?=App::base('/categories/edit/1')?>" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_create_category')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-gear"></span>
+      </a>
+
+      <p><i><?=App::xlat('CATEGORY_empty_listing_pharagraph_small')?></i></p>
+
+    </fieldset>
+  </form>
+
+<?php else: ?>
+
+  <table id="categories-listing"></table>
+  <div id="footerBar"></div>
+
+<?php endif; ?>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+ <template>admin.phtml</template>
+
+ <include as='head' template='ajax_interactive/head.phtml' />
+ <include as='page' template='ajax_interactive/page.phtml'>
+
+    <segment name='content' as='content'/>
+
+ </include>
+
+</config>

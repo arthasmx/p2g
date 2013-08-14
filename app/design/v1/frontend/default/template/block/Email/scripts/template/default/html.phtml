@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title><?=@$this->title?></title>
+</head>
+
+<body style="margin: 10px;padding: 0px; font-size:1em; font-family: Verdana, Tahoma, Arial;" >
+
+<div class='mail_block' style="margin:0;padding:0;font-size:8pt; color:#777;">
+  <div class='mail_data' style="padding-top:5px; letter-spacing:0.07em;">
+    <h4 class='mail_logo' style="border-bottom:4px solid #3B5998; font-size:2em; color:#3B5998; margin:0;font-weight:lighter;">
+      <?=App::getConfig('website_name');?><small>®</small>
+    </h4>
+    <span><?=App::getConfig('website_slogan');?></span>
+  </div>
+</div>
+
+<div class="mail_content" style="padding:30px;">
+	<?=$this->body['html'];?>
+</div>
+
+</body>
+</html>

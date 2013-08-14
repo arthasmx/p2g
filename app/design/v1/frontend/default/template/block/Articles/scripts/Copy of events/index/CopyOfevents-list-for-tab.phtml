@@ -1,0 +1,87 @@
+
+<?php $date = App::module('Core')->getModel('Dates'); ?>
+
+<div class="nested-tabs">
+  <ul>
+    <li><a href="#n1" class="active today"> <img src="<?=App::media( '/images/mobile/hoy.jpg' )?>" /> </a></li>
+    <li><a href="#n2" class="tomorrow"> <img src="<?=App::media( '/images/mobile/manana.jpg' )?>" /> </a></li>
+    <li><a href="#n3" class="month"> <img src="<?=App::media( '/images/mobile/mensual.jpg' )?>" /> </a></li>
+  </ul>
+  
+    <div id="n1" class="active today">
+      <?php if( ! empty($this->today) ): ?>
+        <?php foreach($this->today AS $today): ?>
+          <article class="list">
+            <?php if( file_exists( WP.DS.'media'.DS.$today['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+              <a href="<?=App::base( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>">
+                <img src="<?=App::media( $today['folder']."/gallery/aside.jpg" )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::base( App::xlat( 'eventos_singular' ) ."/". $today['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
+              </a>
+            <?php endif;?>
+  
+            <a href="<?=App::base( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>"><?=$today['title']?></a>
+            <p><?=App::locale()->toDate( $today['event_date'] ,'long')?></p>
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <article class="list">
+          <p> No se han encontrado eventos para hoy </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+    <div id="n2" class="tomorrow">
+      <?php if( ! empty($this->tomorrow) ): ?>
+        <?php foreach($this->tomorrow AS $tomorrow): ?>
+          <article class="list">
+            <?php if( file_exists( WP.DS.'media'.DS.$tomorrow['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+              <a href="<?=App::base( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>">
+                <img src="<?=App::media( $tomorrow['folder']."/gallery/aside.jpg" )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::base( App::xlat( 'eventos_singular' ) ."/". $tomorrow['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
+              </a>
+            <?php endif;?>
+  
+            <a href="<?=App::base( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>"><?=$tomorrow['title']?></a>
+            <p><?=App::locale()->toDate( $tomorrow['event_date'] ,'long')?></p>
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <article class="list">
+          <p> No se han encontrado eventos para esta fecha </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+    <div id="n3" class="month">
+      <?php if( ! empty($this->month) ): ?>
+        <?php foreach($this->month AS $month): ?>
+          <article class="list">
+            <?php if( file_exists( WP.DS.'media'.DS.$month['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+              <a href="<?=App::base( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>">
+                <img src="<?=App::media( $month['folder']."/gallery/aside.jpg" )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::base( App::xlat( 'eventos_singular' ) ."/". $month['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
+              </a>
+            <?php endif;?>
+  
+            <a href="<?=App::base( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>"><?=$month['title']?></a>
+            <p><?=App::locale()->toDate( $month['event_date'] ,'long')?></p>
+          </article>
+        <?php endforeach; ?>
+
+      <?php else: ?>
+        <article class="list">
+          <p> No se han encontrado eventos para este mes </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+</div>

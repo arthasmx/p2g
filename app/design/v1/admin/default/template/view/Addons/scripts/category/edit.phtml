@@ -1,0 +1,124 @@
+
+
+  <fieldset id="f_category">
+    <legend><?=App::xlat('CATEGORY_edit')?></legend>
+    
+    <form id="parent_category">
+      <fieldset id="f_cat_parent">
+        <legend><?=App::xlat('CATEGORY_parent')?></legend>
+        <span id="update_response"></span>
+        <?=$this->parent_form?>
+        <table>
+          <tbody>
+            <tr>
+              <td><?=ucfirst(App::xlat('children'))?>:</td>
+              <td><?=$this->parent['children']?></td>
+            </tr>
+            <tr>
+              <td><?=ucfirst(App::xlat('created'))?>:</td>
+              <td><?=App::locale()->toDate( $this->parent['created'] ,'long')?></td>
+            </tr>
+            <tr>
+              <td><?=App::xlat('izq')?>:</td>
+              <td><?=$this->parent['izq']?></td>
+            </tr>
+            <tr>
+              <td><?=App::xlat('der')?>:</td>
+              <td><?=$this->parent['der']?></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+
+    <form>
+      <fieldset id="f_cat_tree">
+        <legend><?=App::xlat('CATEGORY_parent')?></legend>
+          <div class='cat_tree'>
+            <?php if( ! empty($this->treeview) ):  ?>
+              <?=$this->treeview?>
+            <?php endif; ?>
+          </div>
+      </fieldset>
+      <fieldset id="f_cat_children">
+        <legend><?=App::xlat('CATEGORY_subcategory')?></legend>
+          <table id="categories-listing"></table>
+          <div id="footerBar"></div>
+      </fieldset>
+    </form>
+
+    <div class="button-wrapper">
+
+      <span id="update" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-check"></span>
+      </span>
+
+      <span id="add" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_create_subcategory')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-plus"></span>
+      </span>
+
+      <span id="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_delete_category')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+      </span>
+
+    </div>
+      
+  </fieldset>
+
+
+<div id="subcategory-form" title="<?=App::xlat('CATEGORY_create')?>">
+  <form>
+    <span id="create_response"></span>
+    <fieldset id="f_subcat" style="margin-top:8px;">
+      <dl class="element field-name type-text">
+      <dt class="label"><label for="name"><?=ucfirst(App::xlat('name'))?></label></dt>
+      <dd class="field">
+      <input type="text" size="55" class="required" onkeyup="jQuery('#subcategory-form form input[name=seo]').val(string_to_seo(this.value))" value="" id="name" name="name">
+      </dd>
+      </dl>
+
+      <dl class="element field-seo type-text">
+      <dt class="label"><label for="seo"><?=App::xlat("FORM_seo_category")?></label></dt>
+      <dd class="field">
+      <input type="text" size="55" class="required" value="" id="seo" name="seo">
+      </dd>
+      <dd class="hint"><?=App::xlat('FORM_seo_description')?></dd>
+      </dl>
+
+      <dl class="element field-language type-select">
+      <dt class="label"><label for="language"><?=ucfirst(App::xlat('FORM_language'))?></label></dt>
+      <dd class="field">
+      <select size="2" id="language" name="language">
+          <option selected="selected" label="Español" value="es">Español</option>
+          <option label="English" value="en">English</option>
+      </select>
+      </dd>
+      </dl>
+
+      <dl class="element field-status type-select">
+      <dt class="label"><label for="status"><?=ucfirst(App::xlat('visible'))?></label></dt>
+      <dd class="field">
+      <select size="2" id="status" name="status">
+          <option selected="selected" label="Activo" value="enabled"><?=ucfirst(App::xlat('enabled'))?></option>
+          <option label="Inactivo" value="disabled"><?=ucfirst(App::xlat('disabled'))?></option>
+      </select>
+      </dd>
+      </dl>
+    </fieldset>
+    <input type="hidden" value="<?=$this->parent_id?>" name="parent" id="parent">
+  </form>
+</div>
+
+<div id="del_warning" style="display:none; cursor: default; padding:20px;"> 
+  <h2><?=App::xlat('CATEGORY_delete_warning')?></h2> 
+  <input type="button" id="yes" value="<?=App::xlat('BUTTON_delete_category')?>" />
+  <span id="no" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+    <span class="ui-button-text"><?=App::xlat('BUTTON_cancel')?></span>
+    <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+  </span>
+
+</div> 

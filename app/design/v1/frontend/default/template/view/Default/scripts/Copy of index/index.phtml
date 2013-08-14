@@ -1,0 +1,34 @@
+<div role="main" class="container-fluid main">
+
+  <?=App::module('Articles')->renderBlock("index","slider")?>
+  
+  <div id="screen-w" style="font-size:20px;"></div>
+  <div id="screen-h" style="font-size:20px;"></div>
+  
+  <?=App::module('Articles')->renderBlock("index","welcome")?>
+
+    <div class="row fit-to-design">
+      <div class="span3 intro-block">
+        <h1><a href="<?=App::base( App::xlat('LINK_strategies') )?>"><?=App::xlat('INTRO_strategies')?></a></h1>
+        <p><i class="icon-cogs icon-4x pull-left icon-border fa-intro"></i><?=App::xlat('INTRO_strategies_desc')?></p>
+      </div>
+
+      <div class="span3 intro-block">
+        <h1><a href="<?=App::base( App::xlat('LINK_calendar') )?>"><?=App::xlat('INTRO_calendar')?></a></h1>
+        <p><i class="icon-calendar icon-4x pull-left icon-border fa-intro"></i><?=App::xlat('INTRO_calendar_desc')?></p>
+      </div>
+
+      <div class="span3 intro-block">
+        <h1><a href="<?=App::base( App::xlat('LINK_join') )?>"><?=App::xlat('INTRO_join')?></a></h1>
+        <p><i class="icon-fire icon-4x pull-left icon-border fa-intro"></i><?=App::xlat('INTRO_join_desc')?></p>
+      </div>
+
+      <div class="span3 intro-block">
+        <h1><a href="<?=App::base( App::xlat('LINK_preaching') )?>"><?=App::xlat('INTRO_sermons')?></a></h1>
+        <p><i class="icon-volume-up icon-4x pull-left icon-border fa-intro"></i><?=App::xlat('INTRO_sermons_desc')?></p>
+      </div>
+    </div>
+
+  <?=App::module('Addons')->renderBlock("bible/index","phrase-content")?>
+
+</div>

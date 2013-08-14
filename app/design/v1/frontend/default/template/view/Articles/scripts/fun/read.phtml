@@ -1,0 +1,67 @@
+
+<div role="main" class="container-fluid main article">
+
+    <div class="row-fluid fit-to-design">
+      <div class="span8">
+        <h1> <?=$this->article['title']?> </h1>
+        <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
+        <?php if( file_exists( $file ) ): ?>
+          <img src="<?=App::media( $this->article['folder']."gallery/article.jpg" )?>" alt="<?=$this->article['title']?>" title="<?=$this->article['title']?>" class="article" />
+        <?php else: ?>
+          <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$this->article['title']?>" title="<?=$this->article['title']?>" class="article" />
+        <?php endif;?>
+
+        <div class="post-info">
+          <div class="date">
+            <span class="month">ene</span>
+            <span class="day">22</span>
+            <span class="year">2011</span>
+          </div>
+        </div>
+
+        <?=$this->article['article']?>
+        <?=App::module('Addons')->renderBlock("facebook/index","comments", array('document_route' => App::xlat('articulos_singular'), 'seo' => $this->article['seo'] ))?>
+      </div>
+
+      <div class="span4">
+        <aside>
+          <?=App::module('Addons')->renderBlock("site/index","social-networks", array("style" => "big") )?>
+        </aside>
+      </div>
+
+    </div>
+
+</div>
+
+<?php 
+/*
+Array
+(
+    [id] => 339
+    [article_id] => 196
+    [title] => Escuchando musica cristiana
+    [seo] => escuchando-musica-cristiana
+    [article] => Contenido completo del articulo aqui
+    [email] => 
+    [phone] => 
+    [address] => 
+    [type_id] => 69
+    [type] => articulos
+    [type_name] => Articulos
+    [created] => 2013-01-19 12:38:44
+    [publicated] => 2013-01-19
+    [event_date] => 
+    [stop_publication] => 
+    [username] => robe@gmail.com
+    [author] => Roberto Mejia Bañuelos
+    [language] => es
+    [written] => 1
+    [folder] => /articles/2013/01/196/
+    [promote] => enabled
+    [mobile] => enabled
+    [addon] => enabled
+    [status] => enabled
+)
+ */
+
+?>

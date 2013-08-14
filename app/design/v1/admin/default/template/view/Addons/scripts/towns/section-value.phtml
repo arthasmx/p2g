@@ -1,0 +1,25 @@
+  <?=$this->form->town_section?>
+  <?=$this->form->town_status?>
+  <dl class="element field-section_desc type-textarea">
+    <dt class="label"></dt>
+    <dd class="field">
+      <?=$this->form->section_desc?>
+      </dd>
+  </dl>
+
+  <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="save_section" data-section="<?=$this->section?>">
+    <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+    <span class="ui-button-icon-secondary ui-icon ui-icon-check"></span>
+  </span>
+  <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="save_close_section">
+    <span class="ui-button-text"><?=App::xlat('BUTTON_save_close')?></span>
+    <span class="ui-button-icon-secondary ui-icon ui-icon-disk"></span>
+  </span>
+  <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="section_quit" data-section="<?=$this->section?>">
+    <span class="ui-button-text"><?=App::xlat('BUTTON_quit_section')?></span>
+    <span class="ui-button-icon-secondary ui-icon ui-icon-cancel"></span>
+  </span>
+  <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="close_section">
+    <span class="ui-button-text"><?=App::xlat('BUTTON_close')?></span>
+    <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+  </span>

@@ -1,0 +1,26 @@
+<nav class="top-menu desktop-only show-on-mini">
+
+  <div class="one fourth hotel-mnu">
+    <a class="top-menu hoteles round-bottom" href="<?=App::www('hoteles')?>">
+      <img src="<?=App::media('/images/menu/hotel.png')?>" />
+      <img src="<?=App::media('/images/hoteles.png')?>" />
+    </a>
+  </div>
+  <div class="two fourths cafes-mnu">
+    <a class="top-menu restaurantes round-bottom desktop-only" href="<?=App::www('cafes-y-restaurantes')?>">
+      <img src="<?=App::media('/images/menu/restaurant.png')?>" />
+      <img src="<?=App::media('/images/cafes-restaurantes.png')?>" />
+    </a>
+  </div>
+  <div class="one fourth bares-mnu">
+    <a class="top-menu antros round-bottom desktop-only" href="<?=App::www('bares')?>">
+      <img src="<?=App::media('/images/menu/bares.png')?>" />
+      <img src="<?=App::media('/images/antros-bares.png')?>" />
+    </a>
+  </div>
+
+</nav>
+
+<div class="pad-bottom hide-on-desktop hide-on-ie hide-on-mini no-ipad">
+  <?=App::module('Addons')->renderBlock("site/index","menu")?>
+</div>

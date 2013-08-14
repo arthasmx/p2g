@@ -1,0 +1,581 @@
+/*
+Item Name : Responsive CSS3 Multi Drop Down Menu
+Item URI : http://codecanyon.net/item/responsive-css3-multi-drop-down-menu/4124019
+Author URI : http://codecanyon.net/user/Pixelworkshop
+Version : 1.1
+*/
+
+/*
+
+TABLE OF CONTENTS
+
+01 MENU BAR
+02 DROP DOWNS
+03 MEDIA QUERIES
+04 DESKTOP VERSION
+05 MOBILE VERSION
+
+*/
+
+
+
+
+.page_wrapper {
+    /*width: 85%;*/
+    margin: 0 auto;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    line-height:21px;
+}
+  .page_wrapper input{display: none;}
+.menu_description {margin: 36px auto;color: #262626;text-shadow:1px 1px 1px #ffffff;}
+.menu_description h1 {margin-top: 24px;font-size:24px;line-height:38px;}
+.menu_description h2 {font-size:18px;line-height:24px;}
+.menu_description ul.description {font-size:12px;line-height:21px;list-style: square;margin: 0 0 0 15px;padding: 0;}
+.menu_description a {color: #bbbbbb;text-decoration: none;}
+
+
+
+
+/*  _______________________________________________
+
+    01 MENU BAR
+    _______________________________________________  */
+
+
+
+
+.responsive_menu_container {
+    width: 100%;
+    margin:0 auto;
+    position: relative;
+    z-index:9999;
+    color: #ffffff;
+    text-shadow:1px 1px 1px #000000;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.responsive_menu_fixed {
+    width: inherit;
+    position:fixed;
+    top:0;
+    /* IE7 Fix */
+    *width:expression(this.parentNode.currentStyle['width']);
+}
+.responsive_menu_container a,
+.responsive_menu_container label {
+    color: #eeeeee;
+    text-shadow:1px 1px 1px #000000;
+    cursor: pointer;
+/*
+    -webkit-transition:color .3s;
+    -moz-transition:color .3s;
+    -o-transition:color .3s;
+    -ms-transition:color .3s;
+    transition:color .3s;
+*/
+}
+.responsive_menu a:hover,
+.responsive_menu_container label:hover {
+    color:#ffffff;
+}
+.responsive_menu {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    *zoom: 1;
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+.responsive_menu_fixed .responsive_menu {
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+    .responsive_menu:before,
+    .responsive_menu:after {
+        content: " "; 
+        display: table; 
+    }
+    .responsive_menu:after {
+        clear: both;
+    }
+
+.responsive_menu li {
+    position: relative;
+    /*
+    -webkit-transition:background .3s;
+    -moz-transition:background .3s;
+    -o-transition:background .3s;
+    -ms-transition:background .3s;
+    transition:background .3s;
+    */    
+}
+.responsive_menu > li {
+   /* float: left;*/ /* ArthasMX */
+    padding-right: 15px;
+}
+.responsive_menu li > .parent {
+    background-image: url("img/downArrow_r.png");
+    background-position: right;
+    background-repeat: no-repeat;
+}
+.responsive_menu li > .parent_r {
+    background-image: url("img/downArrow_r.png");
+    background-position: 219px;
+    background-repeat: no-repeat;
+}
+.responsive_menu li > .parent_l {
+    background-image: url("img/downArrow_l.png");
+    background-position: 150px;
+    background-repeat: no-repeat;
+}
+.responsive_menu a {
+    text-decoration: none;
+    padding: 10px 15px;
+}
+.responsive_menu > li > a {
+    display: block;
+}
+
+
+
+
+/*  _______________________________________________
+
+    02 DROP DOWNS
+    _______________________________________________  */
+
+
+
+
+.responsive_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 170px;
+    background: #181818;
+}
+.responsive_menu li li a {
+    display: block;
+    position: relative;
+    z-index:100;
+}
+.responsive_menu li > label {
+    display: block;
+    padding: 10px 20px 10px 15px;
+}
+.responsive_menu .dropdown_trigger {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+
+
+
+/*  _______________________________________________
+
+    03 COLORS
+    _______________________________________________  */
+
+
+
+
+.responsive_menu_black,
+.responsive_menu_black .toggle_menu_label {
+    background: #282828;
+    background: -webkit-linear-gradient(top, #282828 0%, #1f1f1f 100%);
+    background: -moz-linear-gradient(top, #282828 0%, #1f1f1f 100%);
+    background: -o-linear-gradient(top, #282828 0%, #1f1f1f 100%);
+    background: -ms-linear-gradient(top, #282828 0%, #1f1f1f 100%);
+    background: linear-gradient(top, #282828 0%, #1f1f1f 100%);
+}
+
+.responsive_menu_blue,
+.responsive_menu_blue .toggle_menu_label {
+    background: #4979bb;
+    background: -webkit-linear-gradient(top, #4979bb 0%, #3d69a5 100%);
+    background: -moz-linear-gradient(top, #4979bb 0%, #3d69a5 100%);
+    background: -o-linear-gradient(top, #4979bb 0%, #3d69a5 100%);
+    background: -ms-linear-gradient(top, #4979bb 0%, #3d69a5 100%);
+    background: linear-gradient(top, #4979bb 0%, #3d69a5 100%);
+}
+
+.responsive_menu_brown,
+.responsive_menu_brown .toggle_menu_label {
+    background: #837868;
+    background: -webkit-linear-gradient(top, #837868 0%, #706759 100%);
+    background: -moz-linear-gradient(top, #837868 0%, #706759 100%);
+    background: -o-linear-gradient(top, #837868 0%, #706759 100%);
+    background: -ms-linear-gradient(top, #837868 0%, #706759 100%);
+    background: linear-gradient(top, #837868 0%, #706759 100%);
+}
+
+.responsive_menu_deepblue,
+.responsive_menu_deepblue .toggle_menu_label {
+    background: #556270;
+    background: -webkit-linear-gradient(top, #556270 0%, #46515d 100%);
+    background: -moz-linear-gradient(top, #556270 0%, #46515d 100%);
+    background: -o-linear-gradient(top, #556270 0%, #46515d 100%);
+    background: -ms-linear-gradient(top, #556270 0%, #46515d 100%);
+    background: linear-gradient(top, #556270 0%, #46515d 100%);
+}
+
+.responsive_menu_green,
+.responsive_menu_green .toggle_menu_label {
+    background: #52795d;
+    background: -webkit-linear-gradient(top, #52795d 0%, #44654d 100%);
+    background: -moz-linear-gradient(top, #52795d 0%, #44654d 100%);
+    background: -o-linear-gradient(top, #52795d 0%, #44654d 100%);
+    background: -ms-linear-gradient(top, #52795d 0%, #44654d 100%);
+    background: linear-gradient(top, #52795d 0%, #44654d 100%);
+}
+
+.responsive_menu_grey,
+.responsive_menu_grey .toggle_menu_label {
+    background: #444;
+    background: -webkit-linear-gradient(top, #444 0%, #444 100%);
+    background: -moz-linear-gradient(top, #444 0%, #444 100%);
+    background: -o-linear-gradient(top, #444 0%, #444 100%);
+    background: -ms-linear-gradient(top, #444 0%, #444 100%);
+    background: linear-gradient(top, #444 0%, #444 100%);
+}
+
+.responsive_menu_kaki,
+.responsive_menu_kaki .toggle_menu_label {
+    background: #6a6a4f;
+    background: -webkit-linear-gradient(top, #6a6a4f 0%, #565641 100%);
+    background: -moz-linear-gradient(top, #6a6a4f 0%, #565641 100%);
+    background: -o-linear-gradient(top, #6a6a4f 0%, #565641 100%);
+    background: -ms-linear-gradient(top, #6a6a4f 0%, #565641 100%);
+    background: linear-gradient(top, #6a6a4f 0%, #565641 100%);
+}
+
+.responsive_menu_orange,
+.responsive_menu_orange .toggle_menu_label {
+    background: #ee5f00;
+    background: -webkit-linear-gradient(top, #ee5f00 0%, #cc5200 100%);
+    background: -moz-linear-gradient(top, #ee5f00 0%, #cc5200 100%);
+    background: -o-linear-gradient(top, #ee5f00 0%, #cc5200 100%);
+    background: -ms-linear-gradient(top, #ee5f00 0%, #cc5200 100%);
+    background: linear-gradient(top, #ee5f00 0%, #cc5200 100%);
+}
+
+.responsive_menu_pink,
+.responsive_menu_pink .toggle_menu_label {
+    background: #e3638d;
+    background: -webkit-linear-gradient(top, #e3638d 0%, #de4678 100%);
+    background: -moz-linear-gradient(top, #e3638d 0%, #de4678 100%);
+    background: -o-linear-gradient(top, #e3638d 0%, #de4678 100%);
+    background: -ms-linear-gradient(top, #e3638d 0%, #de4678 100%);
+    background: linear-gradient(top, #e3638d 0%, #de4678 100%);
+}
+
+.responsive_menu_purple,
+.responsive_menu_purple .toggle_menu_label {
+    background: #594b69;
+    background: -webkit-linear-gradient(top, #594b69 0%, #493d55 100%);
+    background: -moz-linear-gradient(top, #594b69 0%, #493d55 100%);
+    background: -o-linear-gradient(top, #594b69 0%, #493d55 100%);
+    background: -ms-linear-gradient(top, #594b69 0%, #493d55 100%);
+    background: linear-gradient(top, #594b69 0%, #493d55 100%);
+}
+
+.responsive_menu_red,
+.responsive_menu_red .toggle_menu_label {
+    background: #d84937;
+    background: -webkit-linear-gradient(top, #d84937 0%, #c63927 100%);
+    background: -moz-linear-gradient(top, #d84937 0%, #c63927 100%);
+    background: -o-linear-gradient(top, #d84937 0%, #c63927 100%);
+    background: -ms-linear-gradient(top, #d84937 0%, #c63927 100%);
+    background: linear-gradient(top, #d84937 0%, #c63927 100%);
+}
+
+.responsive_menu_yellow,
+.responsive_menu_yellow .toggle_menu_label {
+    background: #eda304;
+    background: -webkit-linear-gradient(top, #eda304 0%, #cb8c04 100%);
+    background: -moz-linear-gradient(top, #eda304 0%, #cb8c04 100%);
+    background: -o-linear-gradient(top, #eda304 0%, #cb8c04 100%);
+    background: -ms-linear-gradient(top, #eda304 0%, #cb8c04 100%);
+    background: linear-gradient(top, #eda304 0%, #cb8c04 100%);
+}
+
+
+
+
+/*  _______________________________________________
+
+    04 DESKTOP VERSION
+    _______________________________________________  */
+
+
+
+
+/* First Level */
+
+.responsive_menu li ul {
+    position: absolute;
+    top: 60px;
+    left: -999em;
+    opacity:0;
+    visibility:hidden;
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.7);
+    display:none\9;
+}
+
+.responsive_menu li > ul {
+  /*
+    -webkit-transition: opacity .2s .2s ease-in-out, top .2s .2s ease-in-out;
+    -moz-transition: opacity .2s .2s ease-in-out, top .2s .2s ease-in-out;
+    -o-transition: opacity .2s .2s ease-in-out, top .2s .2s ease-in-out;
+    -ms-transition: opacity .2s .2s ease-in-out, top .2s .2s ease-in-out;
+    transition: opacity .2s .2s ease-in-out, top .2s .2s ease-in-out;
+    */
+}
+.responsive_menu li li > ul {
+  /*
+    -webkit-transition: opacity .2s .2s ease-in-out;
+    -moz-transition: opacity .2s .2s ease-in-out;
+    -o-transition: opacity .2s .2s ease-in-out;
+    -ms-transition: opacity .2s .2s ease-in-out;
+    transition: opacity .2s .2s ease-in-out;
+    */
+}
+
+/* Other Levels */
+
+.responsive_menu li li ul,
+.responsive_menu li ul.dropdown_left {
+    top:0;
+}
+.responsive_menu > li:hover {
+    background:#181818;
+}
+.responsive_menu li li:hover {
+    background: #2B2B29;
+}
+
+/* Showing Drop Downs on Mouse Hover */
+
+@media screen and (min-width: 768px) {
+
+    .responsive_menu > li:hover > ul {
+        top:0px;
+        left:235px;
+        visibility:visible;
+        opacity:1;
+        z-index: 999;
+        display:block\9;
+    }
+    .responsive_menu li li:hover > ul {
+        left: 100%;
+        visibility:visible;
+        opacity:1;
+        z-index: 999;
+        display:block\9;
+    }
+    .responsive_menu li li:hover > ul.dropdown_left {
+        left: -100%;
+    }
+    .toggle_menu,
+    .toggle_menu_label {
+        display: none;
+    }
+
+}
+
+
+
+
+/*  _______________________________________________
+
+    05 MOBILE VERSION
+    _______________________________________________  */
+
+
+
+
+@media screen and (max-width: 767px) {
+
+
+    .responsive_menu_container .responsive_menu {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .responsive_menu_container .toggle_menu_label {
+        display: block;
+        padding: 10px 15px;
+        cursor: pointer;
+        color:#ffffff;
+        -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+        -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+    .responsive_menu_fixed .toggle_menu_label {
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+        -moz-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+    .toggle_menu_label:after {
+        width: 24px;
+        height: 24px;
+        content: url("img/toggle.png");
+        float: right;
+    }
+    .toggle_menu,
+    .toggle_menu:checked {
+        width: 100%;
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        height: 40px;
+        margin: 0;
+        opacity: 0;
+    }
+
+    /* Hiding / showing the menu elements */
+
+    .responsive_menu {
+        position: absolute;
+        background: #181818;
+        opacity:0;
+        visibility:hidden;
+    /*
+        -webkit-transition: opacity .3s ease-in-out;
+        -moz-transition: opacity .3s ease-in-out;
+        -o-transition: opacity .3s ease-in-out;
+        -ms-transition: opacity .3s ease-in-out;
+        transition: opacity .3s ease-in-out;
+        */
+    }
+    .toggle_menu:checked + .responsive_menu {
+        opacity:1;
+        visibility:visible;
+    } 
+
+    /* Menu Bar & Elements */
+
+    .responsive_menu li ul {
+        display: block;
+        width: 100%;
+        -webkit-box-shadow: 
+            inset 0px 1px 0px 0px #0f0f0f,
+            inset 0px 2px 1px 0px #202020, 
+            0px 1px 0px 0px #0f0f0f,
+            0px 2px 1px 0px #202020;
+        -moz-box-shadow: 
+            inset 0px 1px 0px 0px #0f0f0f,
+            inset 0px 2px 1px 0px #202020, 
+            0px 1px 0px 0px #0f0f0f,
+            0px 2px 1px 0px #202020;
+        box-shadow: 
+            inset 0px 1px 0px 0px #0f0f0f,
+            inset 0px 2px 1px 0px #202020, 
+            0px 1px 0px 0px #0f0f0f,
+            0px 2px 1px 0px #202020;
+    }
+    .responsive_menu > li {
+        padding-right: 0;
+        float: none;
+    }
+
+    /* Disabling Hover Events */
+
+    .responsive_menu > li:hover,
+    .responsive_menu li li:hover {
+        /*background: transparent;*/
+        background-color: #222 !important;
+    }
+    .responsive_menu > li:hover > ul,
+    .responsive_menu li li:hover > ul {
+        opacity:0;
+        left: -999em;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        -ms-transition: none;
+        transition: none;
+    }
+
+    /* Placing Arrows */
+
+    .responsive_menu > li > .parent {
+        background-position: 95% 50%;
+    }
+    .responsive_menu li li .parent,
+    .responsive_menu li li .parent_r,
+    .responsive_menu li li .parent_l {
+        background-image: url("img/downArrow.png");
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+    }
+
+    /* Threaded Drop Downs */
+
+    .responsive_menu > li ul {
+        top:auto;
+        left:auto;
+        width:auto;
+        z-index: 999;
+        visibility: visible;
+        margin-left: 12px;
+    }
+
+    /* Drop Down Toggle - Animated */
+
+    .responsive_menu .dropdown_trigger + ul {
+        max-height:0;
+        opacity:0;
+        visibility:hidden;
+    /*
+        -webkit-transition: opacity .3s ease-in-out;
+        -moz-transition: opacity .3s ease-in-out;
+        -o-transition: opacity .3s ease-in-out;
+        -ms-transition: opacity .3s ease-in-out;
+        transition: opacity .3s ease-in-out;
+        */
+    }
+    .responsive_menu .dropdown_trigger:checked + ul {
+        position: static;
+        max-height:999px;
+        opacity:1;
+        visibility:visible;
+        z-index: 999;
+    /*
+        -webkit-transition: opacity .3s ease-in-out;
+        -moz-transition: opacity .3s ease-in-out;
+        -o-transition: opacity .3s ease-in-out;
+        -ms-transition: opacity .3s ease-in-out;
+        transition: opacity .3s ease-in-out;
+        */
+   }
+
+    /* Drop Down Toggle - Not Animated */
+
+    /*
+    .responsive_menu .dropdown_trigger + ul {
+        display: none;
+    }
+    .responsive_menu .dropdown_trigger:checked + ul {
+        position: static;
+        display: block;
+    }
+    */
+
+
+}
+

@@ -1,0 +1,28 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+          <article class="read-new">
+            <h3> <?=$this->article['title']?> </h3>
+            <?=App::module('Articles')->renderBlock("addons/index","article-slide-gallery", array('id' => $this->article['article_id'], 'created'=> $this->article['created'], 'folders'=>$this->folders ) )?>
+            <?=$this->article['article']?>
+            <?=App::module('Addons')->renderBlock("site/index","business-promotions", array('business' => $this->article['username'] ))?>
+            <?=App::module('Addons')->renderBlock("social/index","events", array('business' => $this->article['username'] ))?>
+            <?=App::module('Articles')->renderBlock("addons/index","article-addons", array('id' => $this->article['article_id'] ))?>
+          </article>
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>

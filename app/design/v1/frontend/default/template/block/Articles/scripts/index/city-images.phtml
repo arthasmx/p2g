@@ -1,0 +1,34 @@
+
+<?php if( ! empty($this->files) ): ?>
+
+  <div id="carousel_cities" class="carousel slide top-mar-20">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <?php $loop=0;?>
+      <?php foreach($this->files AS $file):?>
+        <div class="item <?=$loop==0?'active':null?> to-center">
+          <img src="<?=App::www( $this->path . $file )?>" alt="" title="" class="img-responsive" />
+        </div>
+        <?php $loop+=1; ?>
+      <?php endforeach;?>
+    </div>
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <?php for($indicator=0; $indicator<=($loop-1); $indicator++): ?>
+        <li data-target="#carousel_cities" data-slide-to="<?=$indicator?>" class="<?=$indicator==0?'active':null?>"></li>
+      <?php endfor; ?>
+    </ol>
+    
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel_cities" data-slide="prev">
+      <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel_cities" data-slide="next">
+      <span class="icon-next"></span>
+    </a>
+  </div>
+
+  
+<?php endif; ?>

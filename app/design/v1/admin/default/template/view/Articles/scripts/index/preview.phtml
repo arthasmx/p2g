@@ -1,0 +1,49 @@
+<?php
+  $article = App::module('Core')->getModel('Namespace')->get( 'article' );
+  $file    = App::module('Core')->getModel('Namespace')->get( 'mainpix' );
+  $user    = App::module('Core')->getModel('Namespace')->get( 'user' );
+  $author  = $user->user['name'].' '.$user->user['last_name'].' '.$user->user['maiden_name'];
+?>
+
+<style>
+  body, div, span, h1, h2, h3, h4, h5, h6, p, font, img, strong {
+      color: #777777;
+      font: 12px/1.8em "Lucida Sans Unicode","Lucida Grande",Tahoma,verdana,arial;
+      margin: 0;
+      padding: 0;
+  }
+  h1, h2, h3, h4, h5 {
+      font-family: "Lucida Sans Unicode","Lucida Grande",Tahoma,verdana,arial;
+      font-weight: lighter;
+      line-height: 1.2;
+  }  
+  div.article_preview{ margin:0 auto; width: 640px; height: 768px; padding:20px 0;  }
+  h1 { font-size: 1.5em; }
+    h4.publicated_at{padding:10px 0;}
+    span.author{color:#000 !important;}
+  h2 { font-size: 1.2em; }
+  img.article_preview{margin-bottom:10px;}
+  p.img_description{color:#f00 !important; margin:0; padding:0 0 10px 0; text-align: center; line-height:0;}
+  div.p_article{text-align: justify;}
+  div.p_article p{padding:10px 0;}
+
+</style>
+
+  <div class="article_preview">
+    <h1 class="title"><?=(empty($article->article['title'])? App::xlat('ARTICLE_PREVIEW_title') : $article->article['title'])?></h1>
+    <h4 class="publicated_at"><?=str_replace( array("%written-date%", "%author%" ), array(App::locale()->toDate(date('Y-m-d'),'long'), $author), App::xlat('ARTICLE_PREVIEW_written_by_at'))?></h4>
+
+    <img class="article_preview" src="<?=(empty($file->mainpix['images']['article'])? App::media('/images/article-preview.jpg') : App::media( $file->mainpix['path']."gallery/".$file->mainpix['images']['article'] ) )?>" width="640" height="360" alt="" title="" />
+    <p class="img_description"><i>Imágen referente al tema del artículo; recuerda, esta imágen es la que lo representa en todo el sitio</i></p>
+
+    <div class="p_article">
+      <?php if (empty($article->article['article']) ) :?>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare, magna sit amet mattis cursus, augue eros malesuada odio, sit amet tincidunt lacus sem in nibh. Nam quis enim sit amet lorem imperdiet tempor. Fusce fermentum dui eget dolor porta gravida. Pellentesque nisi diam, convallis in porttitor vel, mattis consequat enim. Donec faucibus euismod venenatis. Nulla facilisi. Mauris mi mauris, gravida et rhoncus quis, tempus eget libero. Donec tristique lacinia quam, vel bibendum lectus luctus tempor. Integer lobortis porta lectus, et vehicula nunc porttitor et. Etiam nec magna velit.</p>
+        <p>Fusce quis dui ut orci scelerisque suscipit hendrerit ac neque. In a risus dui. Mauris elementum odio eget sem aliquet commodo. Nunc sollicitudin mi sit amet nunc iaculis vel egestas nulla hendrerit. Nam vel auctor mi. Sed faucibus sollicitudin nibh, sit amet sodales nisl fringilla eget. Maecenas ut libero et odio sodales convallis vitae eget risus. In tempor interdum dignissim. Vivamus vulputate blandit malesuada. Integer congue sodales posuere. Vestibulum interdum posuere odio. Aenean blandit diam sed nunc egestas ac sodales nulla dapibus. Maecenas varius interdum arcu et faucibus.</p>
+        <p>Nam venenatis quam vitae tellus pharetra blandit. Vestibulum metus turpis, vestibulum ac gravida id, pharetra et urna. Vivamus et leo leo, eget tristique nisl. Ut sapien tellus, ultricies vitae auctor nec, porta sit amet ligula. Aliquam imperdiet est at dui eleifend sagittis. Suspendisse potenti. Vivamus pretium, magna sit amet placerat aliquet, lectus ante vehicula libero, mattis vulputate lorem sem eget tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc fermentum tempus nulla, vitae varius ipsum eleifend sit amet.</p>
+        <p>Fusce nec mauris lacus, quis pellentesque quam. Curabitur ut tortor pulvinar lorem congue sagittis. Donec non sem eu erat bibendum facilisis. Ut imperdiet metus sed elit porttitor vel aliquam dolor rhoncus. Fusce aliquet neque ac nisl condimentum sed pellentesque lorem condimentum. Ut luctus luctus bibendum. Ut tincidunt malesuada augue, sit amet laoreet nisi vestibulum sed. In quis ligula magna, vitae adipiscing ipsum. Nulla aliquet risus non nulla vulputate viverra pulvinar lacus tempor. Etiam nunc sapien, luctus nec ultricies eu, tincidunt a dui. Morbi suscipit eleifend augue, vel euismod nunc placerat nec. Morbi ut viverra erat. </p>
+      <?php else: ?>
+        <?=$article->article['article'];?>
+      <?php endif; ?>
+    </div>
+  </div>

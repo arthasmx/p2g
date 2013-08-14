@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="es">
+  <?=$this->xd['_block']['head'];?>
+<body>
+
+  <div id="cloud-left" style="display:none;">
+    <?php for($i = 1; $i<=5; $i++): ?>
+      <?php for($tags = 1; $tags<=25; $tags++): ?>
+        <a href="<?=App::base( App::xlat('tag_url_' . $tags) )?>" rel="<?=App::xlat('tag_rel_' . $tags)?>"> <?=App::xlat('tag_name_' . $tags)?> </a>
+      <?php endfor;?>
+    <?php endfor;?>
+  </div>
+
+  <?=$this->xd['_block']['page']?>
+
+  <div id="cloud-right" style="display:none;">
+  <?php for($i = 1; $i<=5; $i++): ?>
+    <?php for($tags = 1; $tags<=25; $tags++): ?>
+      <a href="<?=App::base( App::xlat('tag_url_' . $tags) )?>" rel="<?=App::xlat('tag_rel_' . $tags)?>"> <?=App::xlat('tag_name_' . $tags)?> </a>
+    <?php endfor;?>
+  <?php endfor;?>
+  </div>
+
+</body> </html>

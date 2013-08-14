@@ -1,0 +1,14 @@
+<?php if ( ! empty($this->sections) ): ?>
+  <table class="sections">
+    <tbody>
+    <?php foreach( $this->sections AS $section ): ?>
+      <tr class="<?=$section['key']?>">
+        <td> <a data-status="<?=$section['status']?>" data-section="<?=$section['key']?>"><?=$section['value']?></a> </td>
+        <td class="section-action"> 
+          <img class="<?=$section['key']?>" src="<?=App::media('/images/section-'. $section['status'] .'.png')?>" alt="" title="" />
+        </td>
+      </tr>
+    <?php endforeach;?>
+    </tbody>
+  </table>
+<?php endif; ?>

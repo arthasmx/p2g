@@ -1,0 +1,39 @@
+<?php 
+  $session = App::module('Core')->getModel('Namespace')->get( 'ministeries' );
+
+  srand(mktime());
+  $rand = rand();
+?>
+
+  <form name="user-ministeries" id="user-ministeries">
+    <fieldset id="um-details">
+
+    <div id="FileUpload">
+      <input type="file" size="1" name="user_min" id="user_min" onchange="" />
+      <?php if( empty($this->user['avatar']) ): ?>
+        <div id="BrowserVisible" style="background:url(<?=App::media( '/images/profile-photo.jpg' )?>) 100% 0px no-repeat;"></div>
+        <input type="hidden" id="avatar" name="avatar" value="/ministerios/<?=App::module('Core')->getModel('Parser')->string_to_seo($this->user['name'])?>.jpg" />
+
+      <?php else:?>
+        <div id="BrowserVisible" style="background:url(<?=App::media( $this->user['avatar'] . "?random=".$rand )?>) 100% 0px no-repeat;"></div>
+        <input type="hidden" id="avatar" name="avatar" value="<?=$this->user['avatar']?>" />
+
+      <?php endif;?>
+
+        <input type="hidden" id="user" name="user" value="<?=$this->username?>" />
+    </div>
+
+      <h1><?=$this->user['name']?></h1>
+      <?php if( ! empty($this->user['ministeries']) ): ?>
+        <ul>
+          <?php foreach( $this->user['ministeries'] AS $ministery ):?>
+            <li> <?=$ministery['ministery']?> </li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
+    </fieldset>
+
+    <fieldset id="um-options">
+      <?=$this->form->min_chosen?>
+    </fieldset>
+  </form>

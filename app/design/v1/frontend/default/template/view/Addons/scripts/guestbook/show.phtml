@@ -1,0 +1,77 @@
+<div class="left-panel">
+  <h1>
+    <?=App::xlat('MAINPAGE_column_guestbook_main_title')?>
+    <span><?=App::xlat('MAINPAGE_column_guestbook_main_subtitle')?></span>
+  </h1>
+  <img src="<?=App::media('/images/guestbook.jpg');?>" width="670" height="90" border="0" alt="<?=App::xlat('MAINPAGE_column_guestbook_main_title')?>" title="<?=App::xlat('MAINPAGE_column_guestbook_main_title')?>" />
+  <br /><br /><br />
+  <?php if( empty($this->guestbook['items']) ):?>
+    <h3 class="no-line empty-listing"> <?=App::xlat('LISTING_no_data_found')?> </h3>
+  <?php else:?>
+
+    <?= empty($this->guestbook['pagination_html']) ? '' : $this->guestbook['pagination_html'] ?>
+      <?php $core = App::module('Core')->getModel('Dates');?>
+      <?php foreach( $this->guestbook['items'] AS $sign ): ?>
+        <div class="sign">
+          <span class="created"><?=App::locale()->toDate($sign['created'],'long')?></span>
+          <span class="name"><?=$sign['name']?></span>
+          <blockquote>
+            <span class="<?=$sign['gender']?>"></span>
+            <?=$sign['comment']?>
+          </blockquote>
+        </div>
+      <?php endforeach; ?>
+    <?= empty($this->guestbook['pagination_html']) ? '' : $this->guestbook['pagination_html'] ?>
+
+  <?php endif;?>
+
+
+  <h1>
+    <?=App::xlat('MAINPAGE_column_guestbook_sign_title')?>
+    <span><?=App::xlat('MAINPAGE_column_guestbook_sign_subtitle')?></span>
+  </h1>
+  <div id='guestbook-form' class='corner-all'>
+    <?=$this->form?>
+  </div>
+
+</div>
+
+<div class="right-panel">
+  <?=App::module('Addons')->renderBlock("bible/index","search", array("form_type" => "simple", "location" => "frontend") )?>
+  <?=App::module('Addons')->renderBlock("bible/index","phrase")?>
+  <?=App::module('Articles')->renderBlock("index","promote", array('past_next'=>'next', 'height'=>'445', 'width'=>'290', 'limit'=>"10", 'category'=>'4' ) );?>
+  <?=App::module('Addons')->renderBlock("comments/index","latest");?>
+</div>
+
+<?php 
+/*
+$this->guestbook
+Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => Roberto Mejia
+                    [email] => elrobertomejia@gmail.com
+                    [comment] => Y la tierra estaba desordenada y vacía, y las tinieblas estaban sobre la faz del abismo, y el Espíritu de Dios se movía sobre la faz de las aguas.
+                    [gender] => male
+                    [created] => 2012-03-19 01:44:09
+                    [lang] => es
+                    [status] => enabled
+                )
+        )
+
+    [pagination] => Array
+        (
+            [page_current] => 1
+            [items_per_page] => 20
+            [items_total] => 1
+            [page_total] => 1
+        )
+
+    [pagination_html] => 
+)
+ */
+?>

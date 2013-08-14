@@ -1,0 +1,41 @@
+<head>
+<meta charset="UTF-8" />
+<title><?=isset($this->pageTitle) ? $this->pageTitle:@$this->xd['pageTitle'];?></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="author" content="<?=isset($this->pageAuthor) ? $this->pageAuthor:@$this->xd['pageAuthor'];?>" />
+
+
+<!--Links-->
+    <link href="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/css/groundwork.css')?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/frontend-intro.css');?>" rel="stylesheet" />
+
+	<?= App::header()->getLinks();?>
+
+	<?=@$this->xd['_block']['links'];?>
+
+<!--Scripts-->
+  <!--[if IE]>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/html5.js','js');?>"></script>
+  <![endif]-->
+    <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-1.9.1.min.js','js');?>" ></script>
+
+    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/libs/modernizr-2.6.2.min.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/plugins/jquery.magnific-popup.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/groundwork.all.js','js');?>" ></script>
+
+    <script>
+        jQuery(document).ready(function(){
+          <?=App::header()->get_jquery_events();?>
+        });
+    </script>
+
+	<?=App::header()->getScripts();?>
+
+	<?=@$this->xd['_block']['scripts'];?>
+
+	<?=@$this->xd['_block']['add'];?>
+
+	<?=App::header()->getCode();?>
+
+</head>

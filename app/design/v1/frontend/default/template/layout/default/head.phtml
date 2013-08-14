@@ -1,0 +1,90 @@
+<head>
+<meta charset="UTF-8" />
+<title><?=isset($this->pageTitle) ? $this->pageTitle:@$this->xd['pageTitle'];?></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="author" content="<?=isset($this->pageAuthor) ? $this->pageAuthor:@$this->xd['pageAuthor'];?>" />
+<meta name="copyright" content="<?=isset($this->pageCopyright) ? $this->pageCopyright:@$this->xd['pageCopyright'];?>" />
+<meta name="description" content="<?=isset($this->pageDescription) ? $this->pageDescription:@$this->xd['pageDescription'];?>" />
+<meta name="keywords" content="<?=isset($this->pageKeywords) ? $this->pageKeywords:@$this->xd['pageKeywords'];?>" />
+<meta name="Locality" content="Mazatlan, Mexico" />
+<meta name="lang" content="es" />
+<meta name="revisit-after" content="7 days" />
+
+<!--Links-->
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/css/normalize')?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/icons/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" />
+
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/override.css');?>" rel="stylesheet" />
+
+	<?= App::header()->getLinks();?>
+
+	<?=@$this->xd['_block']['links'];?>
+
+<!--Scripts-->
+  <!--[if IE]>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/html5.js','js');?>"></script>
+  <![endif]-->
+    <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-1.9.1.min.js','js');?>" ></script>
+
+    <script src="<?=App::getDesign()->getRelativeJsPath('/bootstrap/js/bootstrap.min.js','js');?>" ></script>
+
+    <script src="<?=App::getDesign()->getRelativeJsPath('/tag-cloud/jquery.tagcloud.js','js');?>" ></script>
+
+    <script>
+        var baseUrl="<?=App::base();?>";
+        var wwwUrl="<?=App::www();?>";
+        var skinUrl="<?=App::skin();?>";
+        var jsUrl="<?=App::url()->get('','js');?>";
+        var jslibUrl="<?=App::url()->get('','jslib');?>";
+        var curLang="<?=App::locale()->getLang();?>";
+        var skinRelative = "<?=App::getDesign()->getRelativeSkinPath()?>";
+        var jsRelative = "<?=App::getDesign()->getRelativeJsPath()?>";
+        var jsLibRelative = "<?=App::getDesign()->getRelativeJsPath("","jslib")?>";
+
+        jQuery(document).ready(function(){
+          <?=App::header()->get_jquery_events();?>
+
+          $.fn.tagcloud.defaults = {
+            size: {start: 10, end: 14, unit: 'px'},
+            color: {start: '#777', end: '#ddd'}
+          };
+          $(function () {
+            $('.cloud-left a, .cloud-right a').tagcloud();
+          });
+
+          tags();
+          jQuery(window).resize(function() {
+            tags();
+          });
+
+        });
+
+        function tags(){
+          if( jQuery(window).width() >=1350 ){
+            jQuery('#cloud-left, #cloud-right').show();
+          }else{
+            jQuery('#cloud-left, #cloud-right').hide();
+          }
+        }
+
+        // polyfill for HTML5 placeholders
+        Modernizr.load({
+          test: Modernizr.input.placeholder,
+          nope: [
+            jsUrl + '/groundwork-master/css/placeholder_polyfill.css',
+            jsUrl + '/groundwork-master/js/libs/placeholder_polyfill.jquery.js'
+          ]
+        });
+    </script>
+
+	<?=App::header()->getScripts();?>
+
+	<?=@$this->xd['_block']['scripts'];?>
+
+	<?=@$this->xd['_block']['add'];?>
+
+	<?=App::header()->getCode();?>
+
+</head>

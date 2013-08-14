@@ -1,0 +1,54 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+           <?php if( ! empty($this->events['items']) ): ?>
+
+             <?php foreach($this->events['items'] AS $event): ?>
+                <article class="event_list">
+                  <h3> <a class="topic" href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>"><?=$event['title']?></a> </h3>
+
+                  <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+                    <a href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>">
+                      <img src="<?=App::media( $event['folder']."/gallery/article.jpg" )?>" alt="<?=$event['title']?>" title="<?=$event['title']?>" />
+                    </a>
+                  <?php else: ?>
+                    <a href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>">
+                      <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$event['title']?>" title="<?=$event['title']?>" />
+                    </a>
+                  <?php endif;?>
+
+                  <div class="event_list_info">
+                    <span class="icon-home gray"></span> <?=$event['address']?>
+                    <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $event['publicated'] ,'long')?>
+                    <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-time gray"></span> <?=$event['event_hours']?>
+                   <?php if( App::getEnvironment()!=='devel' ):?>
+                      <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-comments gray"></span> <fb:comments-count href="<?=App::www( App::xlat('eventos_singular').'/'. $event['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
+                    <?php endif;?>
+                  </div>
+                  <?=$event['article']?>
+                </article>
+    
+             <?php endforeach; ?>
+             <?= empty($this->events['pagination_html']) ? '' : $this->events['pagination_html'];?>
+    
+           <?php else:?>
+             <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
+           <?php endif;?>
+
+
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>

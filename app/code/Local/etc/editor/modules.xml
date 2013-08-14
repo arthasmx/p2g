@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<configdata>
+
+    <production>
+
+    <Core>
+      <active>1</active>
+      <behaviour>core</behaviour>
+      <observers>
+        <app_action_init>flashmsg/init</app_action_init>
+      </observers>
+    </Core>
+
+    <Articles>
+      <active>1</active>
+    </Articles>
+
+
+    <User>
+      <active>1</active>
+      <behaviour>default</behaviour>
+      <controller>index</controller>
+      <action>index</action>
+      <observers>
+        <module_acl_noprivileges_login>noprivileges/login</module_acl_noprivileges_login>
+        <module_acl_noprivileges>noprivileges</module_acl_noprivileges>
+        <module_acl_timeout>timeout</module_acl_timeout>
+      </observers>
+    </User>
+
+    <Acl>
+      <active>1</active>
+      <observers>
+        <app_front>front</app_front>
+        <app_action_renderdesign>error</app_action_renderdesign>
+        <app_action_init>privileges</app_action_init><!-- Comprueba si la acción requiere privilegios con $aclRequirePrivileges-->
+        <module_user_notfound>logout</module_user_notfound>
+        <!--  <module_user_create>create</module_user_create>  -->
+        <module_user_update>update</module_user_update>
+      </observers>
+    </Acl>
+
+		<Error>
+			<active>1</active>
+			<behaviour>error</behaviour>
+		</Error>
+
+    </production>
+
+    <devel extends="production">
+    	<Debug>
+			<active>1</active>
+			<observers>
+				<!-- JS -->
+					<app_action_renderdesign>js</app_action_renderdesign><!-- Rutinas para hacer debug de javascript -->
+				<!-- LAYOUT -->
+					<!-- <app_front>layout</app_front> --> <!-- Para hacer debug del layout de las acciones -->
+				<!-- APP -->
+					<app_done>tracert</app_done> <!-- Rutinas para hacer debug de javascript -->
+			</observers>
+		</Debug>
+		
+    </devel>
+
+    <devellocal extends="production">
+    </devellocal>
+
+
+</configdata>
+
+<!--
+	Orden de eventos estándar despachados
+		# app_front: al iniciar la aplicación
+			Action request pool {
+				# app_action_init: al comenzar a inicializar la acción, dentro del controlador, justo despues de haber hecho la construccion básica y haber lanzado el método init() del controlador
+					? Si hay excepcion, despacha el modulo de error 
+				# app_action_designmanager_config: al establecer la configuración por defecto del design manager o las especificadas en el controlador mediante las propiedades públicas xdPackage, xdTheme, xdLayout y xdSkin
+				# app_action_construct: al finalizar de inicializar la acción y enlazar todos los métodos y helpers necesarios del engine al controlador.
+					En este punto, ya tenemos nuestro controlador correctamente inicializado y con todos los métodos
+					y helpers disponibles.
+					? Si hay excepcion, despacha el modulo de error
+				# app_action_predispatch: justo antes de despachar la acción
+					? Si hay excepcion cancela el despachado de la acción
+						# app_action_dispatch_exception: en caso de error
+					? Si no hay excepcion despacha la acción
+						# app_action_postdispatch
+				# app_action_prerender: justo antes de renderizar la vista (recibe la acción y el viewRenderer)
+				# app_action_postrender: justo despues de renderizar la vista, que ya ha sido almacenada en la respuesta (recibe la acción y el viewRenderer)
+					Para acceder a la respuesta $options['action']->getResponse()	
+			} Fin del action request pool	
+			# app_action_renderdesign: antes de renderizar el xplora_design una vez la accion ha sido despachada y la vista generada
+				Aqui ya disponemos de la/s vista/s renderizadas en el getResponse() de la acción
+		# app_response: antes de realizar la salida de la respuesta
+		# app_done: al finalizar la aplicación
+-->

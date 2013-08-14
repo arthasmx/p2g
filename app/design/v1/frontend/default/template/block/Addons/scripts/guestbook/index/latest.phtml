@@ -1,0 +1,44 @@
+
+<?php if( ! empty($this->latest) ): ?>
+  <?php
+    $date   = App::module('Core')->getModel('Dates');
+    $parser = App::module('Core')->getModel('Parser');
+  ?>
+  <div class="block latest-guestbook">
+    <h1>
+      <?=App::xlat('GUESTBOOK_latest_title')?>
+      <span><?=App::xlat('GUESTBOOK_latest_subtitle')?></span>
+    </h1>
+    <?php foreach($this->latest AS $latest):?>
+      <article>
+        <time><?=$date->toDate(7, $latest['created'])?></time>
+        <p>
+          <a href="<?=App::base( App::xlat('route_guestbook') )?>">
+            <span class="<?=$latest['gender']?>"></span>
+            <?=$parser->truncate_text($latest['comment'],150)?>
+          </a>
+        </p>
+        <cite><?=$latest['name']?></cite>
+      </article>
+    <?php endforeach;?>
+  </div>
+<?php endif; ?>
+
+<?php
+/*
+$this->latest
+Array
+(
+  [1] => Array
+      (
+          [id] => 2
+          [name] => Paola Sister
+          [email] => paola@placestogo.mx
+          [comment] => Y la tierra estaba desordenada y vacía, y las tinieblas estaban sobre la faz del abismo
+          [gender] => female
+          [created] => 2012-03-19 21:50:24
+          [lang] => es
+          [status] => enabled
+      )
+ */
+?>

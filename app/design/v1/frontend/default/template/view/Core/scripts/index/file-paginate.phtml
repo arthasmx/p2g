@@ -1,0 +1,39 @@
+
+<?php if( ! empty($this->gallery) ):
+  $paginator=null; ?>
+
+  <?php if( ! empty($this->gallery['html']) ): ?>
+    <?php $paginator = $this->gallery['html'];?>
+  <?php endif;?>
+
+    <?=$paginator?>
+    <ul>
+    <?php foreach($this->gallery['files'] AS $image): ?>
+      <li>
+        <a class="cBox" href="<?=App::media( '/images/gallery/' . $this->gallery['path'] . '/' . $image );?>">
+  	      <img width="144" height="90" title="" alt="" src="<?=App::media( '/images/gallery/'. $this->gallery['path'] .'/thumbnails/'. $image );?>" />
+        </a>
+      </li>
+    <?php endforeach;?>
+    </ul>
+    <?=$paginator?>
+
+<?php endif;?>
+
+<?php
+/*
+gallery
+Array
+(
+    [files] => Array
+        (
+            [0] => bautizos-de-mayo-178_001.jpg
+            [1] => bautizos-de-mayo-178_002.jpg
+            [2] => bautizos-de-mayo-178_003.jpg
+            [3] => bautizos-de-mayo-178_004.jpg
+            [4] => bautizos-de-mayo-178_005.jpg
+        )
+    [html] => 12345678 
+    [path] => 2011/05/178
+ */
+?>

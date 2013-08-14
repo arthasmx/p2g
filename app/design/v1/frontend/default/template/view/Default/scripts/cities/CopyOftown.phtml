@@ -1,0 +1,81 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+          <article class="read-new">
+            <h3> <?=$this->town['name']?> </h3>
+            <?=App::module('Addons')->renderBlock("site/index","town-gallery", array( 'town'=>$this->town['seo'], 'folder'=>$this->town['folder'], 'city'=>$this->town['city'] ))?>
+            <?=$this->town['article']?>
+          </article>
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>
+
+<?php 
+/*
+Array
+(
+    [id] => 3
+    [city] => mazatlan
+    [name] => Rosario
+    [seo] => rosario
+    [article] => The last thing weâ€™ll mention here is that, in addition to the Flash fallback content........
+    [author] => robe@gmail.com
+    [folder] => /mazatlan/towns/rosario/
+    [created] => 2013-05-30 16:51:45
+    [sort] => 2
+    [status] => enabled
+    [sections] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [town] => rosario
+                    [section] => informacion
+                    [article] => Esta seria la informacion de rosario
+                    [status] => enabled
+                )
+
+            [1] => Array
+                (
+                    [id] => 3
+                    [town] => rosario
+                    [section] => pueblos-cercanos
+                    [article] => Aqui pondriamos un texto describiendo a los pueblos cercanos de rosario
+                    [status] => enabled
+                )
+
+            [2] => Array
+                (
+                    [id] => 4
+                    [town] => rosario
+                    [section] => hoteles
+                    [article] => Aqui pondriamos un listado creado desde el admin sobre los pueblos de rosario sinaloa
+                    [status] => enabled
+                )
+
+            [3] => Array
+                (
+                    [id] => 5
+                    [town] => rosario
+                    [section] => image-gallery
+                    [article] => 
+                    [status] => enabled
+                )
+        )
+)
+ */
+?>

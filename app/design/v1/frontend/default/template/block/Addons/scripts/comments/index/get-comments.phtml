@@ -1,0 +1,136 @@
+<span class="separator"></span>
+<?php $level = false; ?>
+<div id="comments">
+  <h1 class="comment-title">
+    <?=App::xlat('ADD_COMMENTS_title')?>
+    <span><?=App::xlat('ADD_COMMENTS_subtitle')?></span>
+  </h1>
+
+  <div id="comments-form" class="corner-all">
+    <?=$this->form?>
+  </div>
+
+  <div class="comments">
+
+    <span class="separator"></span>
+    <h1>
+      <?=App::xlat('COMMENTS_title')?>
+      <span><?=App::xlat('COMMENTS_subtitle')?></span>
+    </h1>
+
+  <?php if( empty($this->comments) ):?>
+    <p class="no-comments"><?=App::xlat('COMMENTS_no_comments_found')?></p>
+  <?php else:?>
+    <?php $core = App::module('Core'); ?>
+    <?php foreach ($this->comments['items'] AS $comment): ?>
+
+      <div>
+        <span class="written"><?=App::xlat('COMMENTS_on') . $core->getModel('Dates')->toDate(6,$comment['created']) . App::xlat('COMMENTS_at') . $core->getModel('Dates')->toDate(9,$comment['created'])?></span>
+        <p><?=$comment['comment']?></p>
+        <a href="" class="reply" data-parent="<?=$comment['id']?>" data-child="1">
+          <span class="reply"></span>
+          <?=App::xlat('COMMENTS_reply')?>
+        </a>
+        <?php if( ! empty($comment['replies']) ): ?>
+          <span class="replies_hs" id="reply_<?=$comment['id']?>">Respuestas (<?=count($comment['replies'])?>)</span>
+        <?php endif;?>
+        <div class="reply-form corner-all"></div>
+      </div>
+
+      <?php if( ! empty($comment['replies']) ): ?>
+        <div class="replies reply_<?=$comment['id']?> corner-all">
+        <?php foreach ($comment['replies'] AS $reply): ?>
+          <?php $level = get_child_level( $reply['child_id'] ); ?>
+            <div class="<?=$level?>">
+              <span class="written"><?=App::xlat('COMMENTS_on') . $core->getModel('Dates')->toDate(6,$comment['created']) . App::xlat('COMMENTS_at') . $core->getModel('Dates')->toDate(9,$comment['created'])?></span>
+              <p class="reply"><?=$reply['comment']?></p>
+              <?php if( $level !== "level_10" ): ?>
+                <a class="reply" data-parent="<?=$reply['parent_id']?>" data-child="<?=$reply['child_id']?>">
+                  <span class="reply"></span>
+                  <?=App::xlat('COMMENTS_reply')?>
+                </a>
+                <div class="reply-form corner-all"></div>
+              <?php endif;?>
+            </div>
+        <?php endforeach;?>
+        </div>
+      <?php endif;?>
+
+    <?php endforeach;?>
+
+  <?php endif;?>
+  </div>
+</div>
+
+<?php
+
+function get_child_level($child=null){
+  if( empty($child)){
+    return false;
+  }
+
+  return "level_" . strlen( str_replace(".", "", $child) );
+}
+
+/*
+$this->comments
+
+[0] => Array
+    (
+        [id] => 1
+        [reference] => 176
+        [parent_id] => 0
+        [child_id] =>
+        [type] => article
+        [created] => 2009-11-27 23:01:58
+        [status] => enabled
+        [comment] => Para mi gusto, quedo muy corta
+        [author] =>
+        [email] =>
+        [likes] => 0
+        [dislikes] => 0
+        [reported] => 0
+        [category] => 0
+        [replies] => Array
+            (
+            )
+
+    )
+
+[1] => Array
+    (
+        [id] => 2
+        [reference] => 176
+        [parent_id] => 0
+        [child_id] =>
+        [type] => article
+        [created] => 2009-11-27 23:04:36
+        [status] => enabled
+        [comment] => Fue lo mejor que he visto en mi vida!! Aquienes no les gusto, que se aguanten!
+        [author] =>
+        [email] =>
+        [likes] => 0
+        [dislikes] => 0
+        [reported] => 0
+        [category] => 0
+        [replies] => Array
+            (
+                [0] => Array
+                    (
+                        [id] => 3
+                        [reference] =>
+                        [parent_id] => 2
+                        [child_id] => 1
+                        [type] => article
+                        [created] => 2009-11-27 23:04:36
+                        [status] => enabled
+                        [comment] => Tienes razon
+                        [author] =>
+                        [email] =>
+                        [likes] => 0
+                        [dislikes] => 0
+                        [reported] => 0
+                        [category] => 0
+                    )
+ */
+?>

@@ -1,0 +1,115 @@
+
+; INTRO
+  "WELCOME_hi","Paz de Cristo, bienvenidos!"
+  "WELCOME_description","Es una bendición presentarles a ustedes esta página de internet donde pueda visitarnos. Deseamos que sea de bendición poder conectarse y conocer mejor a nuestra congregación ya que estamos en tiempos donde los medios de comunicación son tan vistos que esperamos llegar también con el mensaje de Cristo a través de ellos. Iglesia La Misión, de la Asamblea Apostólica en Mazatlán Sinaloa les da la más cordial Bienvenida y que la paz de nuestro Señor Jesucristo more en sus corazones"
+
+  "INTRO_strategies","Estrategia de Jesús"
+  "INTRO_strategies_desc","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mauris odio, adipiscing id bibendum non, consectetur a metus. Nam elementum purus in dolor gravida eu imperdiet turpis congue."
+
+  "INTRO_calendar","Actividades"
+  "INTRO_calendar_desc","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mauris odio, adipiscing id bibendum non, consectetur a metus. Nam elementum purus in dolor gravida eu imperdiet turpis congue."
+
+  "INTRO_join","Unete!"
+  "INTRO_join_desc","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mauris odio, adipiscing id bibendum non, consectetur a metus. Nam elementum purus in dolor gravida eu imperdiet turpis congue."
+
+  "INTRO_sermons","Predicaciones"
+  "INTRO_sermons_desc","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mauris odio, adipiscing id bibendum non, consectetur a metus. Nam elementum purus in dolor gravida eu imperdiet turpis congue."
+
+
+; INNER (DEFAULT LAYOUT)
+
+  "addon_files","Descargar archivos"
+  "addon_map","Ubicación"
+  "addon_gallery","Galería"
+  "addon_video","Video"
+  "addon_links","Links"
+
+  "breadcrumb_strategy","Estrategia de Jesus"
+  "breadcrumb_activities","Calendario de eventos"
+  "breadcrumb_join_us","Unete al Movimiento"
+  "breadcrumb_pray","Predicaciones"
+
+  "breadcrumb_about_us","Quienes Somos ?"
+  "breadcrumb_doctrine","Doctrina"
+  "breadcrumb_ministeries","Ministerios"
+  "breadcrumb_cell","Células"
+  "breadcrumb_next_events","Proximos Eventos"
+  "breadcrumb_prev_events","Eventos Anteriores"
+    "breadcrumb_announcements","Anuncios"
+    "breadcrumb_articles","Artículos"
+  "breadcrumb_contact","Contactenos"
+
+  "breadcrumb_map","Mapa del Sitio"
+  "breadcrumb_requirements","Requisitos del Sitio"
+  "breadcrumb_terms","Términos y Condiciones"
+
+  "breadcrumb_strategies","Estrategias de Jesús"
+  "breadcrumb_join","Únete al movimiento"
+  "breadcrumb_preaching","Predicaciones"
+
+
+"event_where_when_time","Donde ? Cuando ? A que hora ?"
+
+
+; GENERIC CONTENT
+
+  "read_more","leer más..."
+  "contact_us","Contáctenos"
+  "how_does_this_work","Cómo funciona ?"
+  "phones","Teléfonos"
+  "contact_email","Correo electrónico"
+  "facebook_comments","Comenta este artículo con tu cuenta de Facebook"
+
+  "preaching_empty", "No se han encontrado predicaciones"
+  "download","Descargar"
+  "latest_events","Últimos Eventos"
+  "latest_articles","Últimos Artículos"
+
+  "business_promotions","Promociones vigentes"
+  "business_pomotion_ends","Válida hasta el "
+  "business_social","Nuestros Eventos Sociales"
+  "registered_business","Empresa registrada!"
+  "registered_business_desc","En unos minutos recibirás un correo electrónico el cual tiene una validez de 3 días, donde te pedimos confirmes tu registro, haciendo click sobre la dirección que te enviamos."
+  "main_page","Página principal"
+
+  "no_data_found","No se han encontrado registros"
+
+; FOOTER
+    "about_site", "Acerca del sitio"
+
+      "terms_conditions","Términos y condiciones"
+        "terms_conditions_link", "terminos-y-condiciones"
+      "site_map","Mapa del sitio"
+        "site_map_link", "mapa-del-sitio"
+      "requirements","Requisitos del sitio"
+        "requirements_link", "requisitos-del-sitio"
+
+    "social_networks","Redes sociales"
+    "recomend", "Recomendaciones"
+
+    "hours","Horarios"
+      "leader_meeting", "Reunión de líderes [<em>6:30 PM</em>]"
+      "pray", "Oración [<em>07:30 PM</em>]"
+      "child_class", "Clases de Juniors [<em>9:00 AM</em>]"
+      "prince_class", "Clases de Principes [<em>11:00 AM</em>]"
+
+      "joy_sermon","Culto de adoración"
+      "first_sermon", "Primer culto [<em>10:00 AM</em>]"
+      "second_sermon", "Segundo culto [<em>12:30 PM</em>]"
+      "third_sermon", "Tercer culto [<em>5:00 PM</em>]"
+
+    "address", "Dirección"
+      "address_full","Avenida de las americas #1212 Benito Juarez, Mazatlán Sinaloa, México"
+      "address_hours", "Lunes a Sábado de 3:00 a 7:00 PM"
+      "address_phone_1","6691-332-199"
+      "address_phone_2","6699-869-475"
+
+    "ALL_RIGHTS_RESERVED","Derechos Reservados"
+    "FLEXAR_slogan","Diseño de aplicaciones para internet"
+
+
+; DEVEL ENVIROMENT ?
+
+  "devel_facebook_like_fan_page_warning","La aplicación se encuentra en DEVEL, por lo que NO se carga el Widget de LIKE FAN PAGE de Facebook. Cambia a PRODUCTION si deseas cargar los comentarios"
+  "devel_facebook_comments_warning","La aplicación se encuentra en DEVEL, por lo que NO se carga el Widget de COMMENTS de Facebook. Cambia a PRODUCTION si deseas cargar los comentarios"
+  "devel_facebook_like_recommend_content_warning","La aplicación se encuentra en DEVEL, por lo que NO se carga el Widget de LIKE & RECOMMEND CONTENT de Facebook. Cambia a PRODUCTION si deseas cargar los comentarios"

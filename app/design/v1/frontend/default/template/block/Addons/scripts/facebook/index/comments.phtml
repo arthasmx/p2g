@@ -1,0 +1,12 @@
+
+<?php if( App::getEnvironment()=== 'devel' ): ?>
+  <div class="pull-left alert alert-warning">
+    <?=App::xlat('devel_facebook_comments_warning')?>
+  </div>
+<?php else:?>
+  <?php if( ! empty( $this->article) ): ?>
+    <h1 class="facebook-comment"><?=App::xlat('facebook_comments')?></h1>
+    <div class="fb-comments" data-href="<?=App::base( $this->article )?>" data-width="545" data-colorscheme="light" data-num-posts="10"></div>
+    <div id="fb-root"></div>
+  <?php endif;?>
+<?php endif;?>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+ <vars>
+  <global></global>
+
+  <local>
+   <head>
+    <var key='pageTitle'>
+     <value><![CDATA[Places to go: Lugares a visitar en la ciudad de Mazatlan Sinaloa]]></value>
+    </var>
+    <var key='pageKeywords'>
+     <value><![CDATA[Hoteles, Restaurantes, Cines, Antros, Bares, Playa, Mar, Vacaciones, Moteles, Hostales, Sushi, Comida China, Japonesa, Tacos, Teatro, Museo]]></value>
+    </var>
+    <var key='pageDescription'>
+     <value><![CDATA[Lugares a visitar en la ciudad de Mazatlan Sinaloa]]></value>
+    </var>
+    <var key='pageAuthor'>
+     <value><![CDATA[ArthasMX]]></value>
+    </var>
+    <var key='pageCopyright'>
+     <value><![CDATA[flexar.com.mx]]></value>
+    </var>
+   </head>
+   <page>
+    <breadcrumbs>
+     <var key='welcome_es'>
+      <value><![CDATA[Places to go les da la mas cordial bienvenida a nuestra página]]></value>
+     </var>
+    </breadcrumbs>
+   </page>
+  </local>
+
+ </vars>
+
+</config>

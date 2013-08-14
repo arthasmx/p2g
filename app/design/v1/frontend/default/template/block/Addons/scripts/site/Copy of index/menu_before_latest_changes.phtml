@@ -1,0 +1,51 @@
+<div class="page_wrapper">
+  <div class="responsive_menu_container responsive_menu_grey"><!-- MENU CONTAINER -->
+    <label for="menu-dropdown-0" class="toggle_menu_label">Menu</label>
+    <input type="checkbox" class="toggle_menu" id="menu-dropdown-0">
+
+      <ul class="responsive_menu"><!-- Menu Bar -->
+
+        <li class="nav-header desktop-only"> Mazatlán</li>
+        <li class="nav-topic desktop-only">Menu Principal</li>
+        <li class="informacion"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-informacion"></span> Información</a> </li>
+
+        <li class="hoteles hide-on-desktop hide-on-ipad"> <a href="<?=App::base('')?>"> <span class="ptg-hoteles"></span> Hoteles</a> </li>
+        <li class="cafes hide-on-desktop hide-on-ipad"> <a href="<?=App::base('')?>"> <span class="ptg-restaurantes"></span> Cafés y Restaurantes</a> </li>
+        <li class="antros hide-on-desktop hide-on-ipad"> <a href="<?=App::base('')?>"> <span class="ptg-antros"></span> Antros &amp; Bares</a> </li>
+
+        <li class="pueblos">
+          <label for="town-mun" class="parent_r">
+           <i class="icon-chevron-right show-on-tablet"></i>
+          <span class="ptg-informacion"></span>
+          Pueblos</label>
+  				<input type="checkbox" class="dropdown_trigger" id="town-mun">
+          <?=App::module('Addons')->renderBlock("site/index","towns")?>
+        </li>
+
+      <li class="dondeir"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-dondeir"></span> A donde ir ?</a> </li>
+      <li class="promos"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-promos"></span> Promociones</a> </li>
+      <li class="eventos"> <a href="<?=App::base('eventos')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-eventos"></span> Eventos</a> </li>
+      <li class="noticias"> <a href="<?=App::base('articulos')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-noticias"></span> Noticias</a> </li>
+      <li class="agencia"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-agencia"></span> Agencia viajes</a> </li>
+      <li class="sitios_de_interes"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-bienes"></span> Bienes Raices</a> </li>
+      <li class="telefonos"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-telefonos"></span> Telefonos</a> </li>
+      <li class="cines"> <a href="<?=App::base('')?>"> <i class="icon-chevron-right show-on-tablet"></i> <span class="ptg-registre"></span> Registrarse</a> </li>
+
+    <li class="nav-facebook desktop-only show-tablet"> <span class="icon-facebook"></span> </li>
+      <li class="facebook desktop-only show-tablet"> <a href="https://www.facebook.com/placestogo.mx">Places To Go</a> </li>
+
+    <li class="nav-twitter desktop-only show-tablet"> <span class="icon-twitter"></span> </li>
+      <li class="twitter desktop-only show-tablet"> <a>@placestogomx</a> </li>
+
+    <li class="nav-youtube desktop-only show-tablet"> <span class="icon-play-circle"></span> </li>
+      <li class="youtube desktop-only show-tablet"> <a>placestogomx</a> </li>
+
+    <li class="nav-email desktop-only show-tablet"> <span class="icon-envelope"></span> </li>
+      <li class="email desktop-only show-tablet"> <a>contacto@placestogo.mx</a> </li>
+    
+		</ul><!-- End Menu Bar -->
+
+	</div><!-- END MENU CONTAINER -->
+
+
+</div>

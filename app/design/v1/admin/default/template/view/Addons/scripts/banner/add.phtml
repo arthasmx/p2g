@@ -1,0 +1,56 @@
+  <?php
+    $namespace = App::module('Core')->getModel('Namespace');
+    $business = $namespace->get( 'business' );
+    $username = $namespace->get( 'user' );
+  ?>
+
+  <div id="add-banner-tabs">
+
+    <ul class="tabs_title">
+      <li><a href="#tabs-1"><?=App::xlat('banner_title')?></a></li>
+    </ul>
+
+    <div id="tabs-1">
+      <form id="banner">
+      <input type="hidden" name="username" id="username" value="<?=$username->user['username']?>" />
+
+        <div>
+          <fieldset id="banner_pix">
+            <legend><?=App::xlat('banner_choose_image')?></legend>
+              <p><?=App::xlat('banner_choose_image_desc')?></p>
+
+              <div id="banner_options">
+                <div id="banner-filelist"></div>
+                [ <a id="banner-pick" href="#"> <?=App::xlat('ARTICLE_main_picture_btn_select')?></a> ]
+                [ <a id="banner-upload" href="#"> <?=App::xlat('ARTICLE_main_picture_btn_upload')?></a> ]
+              </div>
+          </fieldset>
+          <fieldset id="banner_preview">
+            <legend><?=App::xlat('banner_preview')?></legend>
+              <span class="gp_response"></span>
+              <div class="uploaded_images">
+                <?php if( ! empty( $business->business['banner'] ) ): ?>
+                  <?=App::module('Addons')->renderBlock("banner","preview", array("username" => $username->user['username'] ));?>
+                <?php endif;?>
+              </div>
+          </fieldset>
+        </div>
+
+      </form>
+    </div>
+
+    <?php if( ! empty( $business->business['banner'] ) ): ?>
+      <input type="hidden" name="current_status" id="current_status" value="<?=($business->business['banner']['status'] == "enabled") ? 'disabled':'enabled'?>" />
+
+      <div class="button-wrapper">
+          <span id="update" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+            <span class="ui-button-text">
+            <?=App::xlat( ($business->business['banner']['status'] == "enabled") ? 'status_off_alt':'status_on_alt' )?></span>
+            <span class="ui-button-icon-secondary ui-icon ui-icon-<?=($business->business['banner']['status'] == "enabled") ? 'cancel':'check'?>"></span>
+          </span>
+
+      </div>
+
+    <?php endif;?>
+
+  </div>

@@ -1,0 +1,13 @@
+<?php if( ! empty($this->video) ): ?>
+
+  <div class="block youtube_video">
+    <h1>
+      <?=$this->title?>
+      <span><?=$this->subtitle?></span>
+    </h1>
+    <a title="<?=App::xlat('YOUTUBE_video_about_title')?>" href="http://www.youtube.com/v/<?=$this->video['id']?>?rel=0&wmode=transparent&autoplay=1" class="cBox_youtube">
+      <img src="<?=$this->img?>" width="290" height="250" title="<?=App::xlat('YOUTUBE_video_about_title')?>" alt="<?=App::xlat('YOUTUBE_video_about_title')?>" />
+    </a>
+  </div>
+
+<?php endif;?>

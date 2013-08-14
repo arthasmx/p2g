@@ -1,0 +1,77 @@
+
+<div role="main" class="container-fluid main">
+
+    <div class="row-fluid fit-to-design">
+      <div class="span8">
+        <h1><?=ucwords(App::xlat('LINK_preaching'))?></h1>
+        <?php if ( empty( $this->preaching['items'] ) ):  ?>
+          <p><?=App::xlat('preaching_empty')?></p>
+        <?php else:?>
+          <table class="table table-striped">
+            <thead>
+              <tr> <th>Date</th>  <th>Name</th>  <th>Download</th> </tr>
+            </thead>
+            <tbody>
+              <?php $dates = App::module('Core')->getModel('Dates'); ?>
+              <?php foreach($this->preaching['items'] AS $preach): ?>
+              <tr>
+                <td><?=$dates->toDate(7,$preach['event_date'])?></td>
+                <td><?=$preach['description']?></td>
+                <td> 
+                  <a class="btn btn-small btn-info" href="<?=App::base('descargar/audio' .DS. $preach['category'] .DS. $dates->toDate(8,$preach['event_date']) .DS. $preach['reference']) ?>">
+                    <i class="icon-download-alt"></i> <?=App::xlat('download')?> 
+                  </a> 
+                </td>
+              </tr>
+              <?php endforeach;?>
+            </tbody>
+          </table>
+          <?= empty($this->preaching['pagination_html']) ? "<span class='no-pagination'></span>" : $this->preaching['pagination_html'] ?>
+        <?php endif;?>
+      </div>
+
+      <div class="span4">
+        <aside>
+          <?=App::module('Addons')->renderBlock("site/index","social-networks", array("style" => "medium") )?>
+          <?=App::module('Addons')->renderBlock("facebook/index","i-like-this")?>
+          <?=App::module('Articles')->renderBlock("announcement/index","carousel-promote")?>
+          <?=App::module('Articles')->renderBlock("events/index","promote-described", array("seo" => "celebracion-3-de-febrero-2013") )?>
+        </aside>
+      </div>
+
+    </div>
+
+</div>
+
+<?php 
+/*
+[items] => Array
+(
+  [0] => Array
+  (
+    [id] => 32
+    [username] => robe@gmail.com
+    [created] => 2012-08-19 11:05:37
+    [event_date] => 2012-08-19
+    [privilege] => public
+    [doctype] => audio
+    [reference] => elias-paez_dones-de-oficio-m-19.mp3
+    [status] => enabled
+    [name] => Los dones de oficio
+    [description] => Predicación del pastor Elias Páez - Los dones de oficio
+    [category] => predicacion
+    [thumbnail] => 
+    [lang] => es
+    [related_files] => 
+  )
+   [pagination] => Array
+        (
+            [page_current] => 1
+            [items_per_page] => 7
+            [items_total] => 31
+            [page_total] => 5
+        )
+
+    [pagination_html] => 
+ */
+?>

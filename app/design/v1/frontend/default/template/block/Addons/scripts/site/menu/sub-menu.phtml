@@ -1,0 +1,34 @@
+
+<?php if( ! empty( $this->sub_menus ) ): ?>
+  <?php $separator = '/'; ?>
+  <ul>
+    <?php foreach($this->sub_menus AS $sub ):?>
+      <li class="line-3">
+        <a href="<?=App::www( $this->parent .$separator. $sub['seo']  )?>"> <?=$sub['name']?> </a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+<?php endif;?>
+
+<?php 
+/*Array
+(
+  [0] => Array
+    (
+      [id] => 112
+      [parent] => 82
+      [name] => 5 Estrellas
+      [seo] => 5-estrellas
+      [izq] => 104
+      [der] => 105
+      [sort] => 0
+      [created] => 2013-01-11 14:02:55
+      [username] => robe@gmail.com
+      [updated] => 2013-01-11 14:02:55
+      [updated_by] => robe@gmail.com
+      [children] => 0
+      [language] => es
+      [status] => enabled
+    )
+*/
+?>

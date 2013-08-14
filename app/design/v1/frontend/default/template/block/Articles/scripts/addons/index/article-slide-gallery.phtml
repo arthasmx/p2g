@@ -1,0 +1,7 @@
+<?php if( ! empty($this->files) ): ?>
+  <div data-cycle-fx="scrollHorz" data-cycle-log="false" data-cycle-pause-on-hover="true" class="cycle-slideshow">
+    <?php foreach($this->files AS $file):?>
+      <img src="<?=App::media( $this->path . $file )?>" alt="" title="" />
+    <?php endforeach;?>
+  </div>
+<?php endif; ?>

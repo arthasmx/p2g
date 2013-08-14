@@ -1,0 +1,25 @@
+<div class="bible_verses">
+
+  <div class="pagination">
+
+    <?php if($this->current_verse > 1):?>
+      <a class="paginate-link" href="<?=App::base( App::xlat('route_bible') . $this->book ."/$this->current_chapter/1" )?>">
+        <?=App::xlat('page_first')?>
+      </a>
+    <?php endif;?>
+
+    <?php foreach($this->verses AS $verse): ?>
+      <a class="paginate-link<?=($verse['ver']==$this->current_verse)? ' current':''?>" href="<?=App::base( App::xlat('route_bible') . $this->book ."/$this->current_chapter/". $verse['ver'] )?>" title="<?=App::xlat('BIBLE_verse') . ' ' . $verse['ver']?>">
+        <?=$verse['ver']?>
+      </a>
+    <?php endforeach;?>
+
+    <?php if($this->current_verse < $this->verses_total):?>
+      <a class="paginate-link" href="<?=App::base( App::xlat('route_bible') . $this->book ."/$this->current_chapter/" . $this->verses_total )?>">
+        <?=App::xlat('page_last')?>
+      </a>
+    <?php endif;?>
+
+  </div>
+
+</div>

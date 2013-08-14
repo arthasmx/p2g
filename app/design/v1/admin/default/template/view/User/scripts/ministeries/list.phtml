@@ -1,0 +1,46 @@
+<?php $session = App::module('Core')->getModel('Namespace')->get( 'ministeries' ); ?>
+
+<!-- tabs -->
+<div id="ministeries-tab">
+
+  <ul class="min_tabs_title">
+    <li><a href="#min-1"><?=App::xlat('ministeries_tab_title')?></a></li>
+  </ul>
+
+  <div id="min-1">
+
+    <form id="multiselect" style="float:left;">
+      <fieldset class="hide" id="min-options"  style="height: 32.5em; float: left; margin-right: 10px;">
+        <legend><?=App::xlat('FIELDSET_ministeries')?></legend>
+        <select multiple style="height: 25em; float: left;" name="multi_mini" id="multi_mini">
+          <?=$session->ministeries['html']?>
+        </select>
+
+        <div class="button-wrapper">
+          <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="save">
+            <span class="ui-button-text">Guardar</span>
+            <span class="ui-button-icon-secondary ui-icon ui-icon-disk"></span>
+          </span>
+
+          <span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary " id="clear">
+            <span class="ui-button-text">Limpiar</span>
+            <span class="ui-button-icon-secondary ui-icon ui-icon-cancel"></span>
+          </span>
+        </div>
+
+      </fieldset>
+    </form>
+
+    <form  style="float:left;">
+      <fieldset id="min-list">
+        <legend><?=App::xlat('FIELDSET_users_to_ministeries')?></legend>
+
+        <table id="ministeries-listing"></table>
+        <div id="ministeriesFBar"></div>
+      </fieldset>
+    </form>
+  </div>
+
+</div>
+
+<div id="edit-ministeries"></div>

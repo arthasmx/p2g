@@ -1,0 +1,21 @@
+
+<div role="main" class="container-fluid main">
+
+    <div class="row-fluid fit-to-design">
+      <div class="span8 requirements">
+        <?=$this->article['article']?>        
+      </div>
+
+      <div class="span4">
+        <aside>
+          <?=App::module('Addons')->renderBlock("site/index","social-networks", array("style" => "medium") )?>
+          <?=App::module('Addons')->renderBlock("facebook/index","i-like-this")?>
+          <?=App::module('Articles')->renderBlock("announcement/index","carousel-promote")?>
+          <?=App::module('Articles')->renderBlock("events/index","promote-described", array("seo" => "celebracion-3-de-febrero-2013") )?>
+          <?=App::module('Articles')->renderBlock("index","carousel-promote-described")?>
+        </aside>
+      </div>
+
+    </div>
+
+</div>

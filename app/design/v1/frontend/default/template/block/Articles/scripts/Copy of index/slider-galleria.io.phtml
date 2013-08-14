@@ -1,0 +1,67 @@
+
+<?php if( ! empty($this->articles)): ?>
+  <?php $core = App::module('Core')->getModel('Dates');?>
+  <?php if( App::getDesign()->getCurrentLayout()==="default"): ?>
+    <h1>
+      <?=App::xlat('EVENTS_coming_soon')?>
+    </h1>
+  <?php endif;?>
+
+<div id="galleria-bk">
+
+  <div id="galleria-container" class="fit-to-design">
+    <div id="galleria">
+
+      <?php foreach ($this->articles AS $article): ?>
+
+        <a href="<?=App::media( $article['folder'] . "gallery/article.jpg" )?>">
+            <img 
+                src="<?=App::media( $article['folder'] . "gallery/thumbnails/slider.jpg" )?>"
+                data-title="<?=$article['title']?>"
+                data-description="<?=strip_tags($article['article'])?>"
+                data-link="<?=App::base( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"
+            >
+        </a>
+
+      <?php endforeach;?>
+
+    </div>
+  </div>
+
+</div>
+
+<?php endif;?>
+
+<?php 
+/*
+Array
+(
+    [0] => Array
+        (
+            [id] => 337
+            [article_id] => 194
+            [title] => Terminando de trabajar por ahora
+            [seo] => terminando-de-trabajar-por-ahora
+            [article] => Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare, magna sit amet mattis cursus, augue eros malesuada odio, sit amet tincidunt lacus sem in nibh. Nam quis enim sit amet lorem imperdiet tempor. Fusce fermentum dui eget dolor porta gravida. 
+            [email] => 
+            [phone] => 
+            [address] => 
+            [type_id] => 69 
+            [type] => articulos 
+            [type_name] => Articulos 
+            [created] => 2013-01-16 18:09:34 
+            [publicated] => 2013-01-16 
+            [event_date] => 
+            [stop_publication] => 
+            [username] => robe@gmail.com 
+            [author] => Roberto Mejia Bañuelos 
+            [language] => es 
+            [written] => 1 
+            [folder] => /articles/2013/01/194/ 
+            [promote] => enabled 
+            [mobile] => enabled 
+            [addon] => enabled 
+            [status] => enabled 
+         )
+ */
+?>

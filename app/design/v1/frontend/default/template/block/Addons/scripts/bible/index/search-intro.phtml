@@ -1,0 +1,18 @@
+<div class="<?=($this->location=='intro') ? 'col' : 'block search-block' ?>">
+  <h1 <?=($this->location=='intro') ? 'class="no-line"' : null ?>>
+    <?=App::xlat('OPTION_search')?>
+    <span><?=App::xlat('BIBLE_search_intro_subtitle')?></span>
+  </h1>
+  <a href="<?=App::url_translate('LINK_bible')?>">
+    <img src="<?=App::media('/images/holy-bible.jpg')?>" alt=" <?=App::xlat('OPTION_search')?> " title=" <?=App::xlat('OPTION_search')?> " class="none" height="95" width="<?=($this->location=='intro') ? '300' : '290' ?>" />
+  </a>
+  <?=$this->form?>
+  <?php if( $this->location=='intro' ): ?>
+    <p class="col_description intro"><?=App::xlat('BIBLE_search_intro_description')?></p>
+    <p class="right">
+      <a href="<?=App::url_translate('LINK_bible')?>">
+        <?=App::xlat('ARTICLE_go_to_section')?>
+      </a>
+    </p>
+  <?php endif; ?>
+</div>

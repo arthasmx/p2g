@@ -1,0 +1,125 @@
+
+/* DATAEXPORTER */
+	.dataset a.export {
+		font-size:8pt;
+		padding:4px 5px 4px 5px;
+		background-color:#f5f5f5;
+		margin-left:10px;
+	}
+	.dataset a.export-xls {
+		padding-left:22px;
+		background:url('../../art/icons/mime-xls.gif') no-repeat 2px 50%;
+		margin-left:5px;
+	}
+
+
+
+/* DATAFILTER */
+
+  body section article table thead th{}
+    body section article table thead th span{}
+
+	table tr.datafilter {
+		background-color:#f5f5f5;
+	}
+	table tr.datafilter-active td {}
+	table tr.datafilter-active {
+		background-color:#e5f4ff;
+	}
+
+	.datafilter-cancel a {
+		color:#a00;
+	}
+	.datafilter-field-notvalid {
+		background-color:#ffe5e5;
+		border:1px solid #f00;
+	}
+	.datafilter-field-active {
+		background-color:#e5f4ff;
+		color:#005da6;
+		border:1px solid #008fff;
+	}
+	.datafilter-buttons {
+		background-color:#f5f5f5;
+	}
+	.datafilter-options {
+		/*background-color:#f5f5f5;*/
+	}
+	.datafilter-options a:hover {
+		opacity:.60;filter: alpha(opacity=60); -moz-opacity: 0.60;
+	}
+	.datafilter-cancel {}
+	.datafilter-save {}
+
+
+/* DATASORTER */
+	a.datasorter {
+		width: 19px;
+		height: 40px;
+		float:right;
+	  background:url(/skin/v1/default/admin/art/bks/sort-arrows.jpg) no-repeat right;
+	}
+    a.datasorter-active.datasorter-type-asc {
+      background-position: -18px 0;
+    }
+    a.datasorter-active.datasorter-type-desc {
+      background-position: 0 0px;
+    }
+
+	a.datasorter:hover {
+		opacity:.60;filter: alpha(opacity=60); -moz-opacity: 0.60;
+	}
+
+
+	a.datasorter span {
+		display:none;
+	}
+
+
+
+/* PAGINATION */
+
+div.pagination { padding:5px; }
+
+div.pagination a:link, div.pagination a:visited{
+    padding:7px;
+    padding-top:2px;
+    padding-bottom:2px;
+    margin-left:5px;
+    text-decoration:none;
+    background-color:#F3F3F3;
+    color:#0072bc;
+    width:22px;
+    font-weight:normal;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+div.pagination a:hover {
+    background-color:#D1D1D1;
+    color:#000;
+}
+
+div.pagination a.current, div.pagination .current a {
+    padding:7px;
+    padding-top:2px;
+    padding-bottom:2px;
+    margin-left:10px;
+    text-decoration:none;
+    background-color:#777;
+    color:#fff !important;
+    cursor:default;
+}
+
+div.pagination .disabled_tnt_pagination {
+    padding:7px;
+    padding-top:2px;
+    padding-bottom:2px;
+    border:1px solid #EBEBEB;
+    margin-left:10px;
+    text-decoration:none;
+    background-color:#F5F5F5;
+    color:#D7D7D7;
+    cursor:default;
+}

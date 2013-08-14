@@ -1,0 +1,35 @@
+html,body{height: 100%;}
+
+body{ background-color: #222;}
+
+div.error {
+    height: 100%;
+    margin: 0 auto;
+    width: 140px;
+}
+
+h1 {
+    color: #EEF9C1;
+    font-size: 93px;
+    line-height: 64px;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #ABCF3A;
+    font-size: 31px;
+    font-weight: lighter;
+    letter-spacing: 11px;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    color: #ABCF3A;
+    font-size: 31px;
+    font-weight: lighter;
+    line-height: 21px;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,57 @@
+
+<div class="container">
+  <article class="row">
+
+    <section class="three fifths right-one padded no-top-pad">
+
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+          <article class="read-new">
+            <?php $file = WP . str_replace('/', DS, $this->promo['path']) . $this->promo['picture']; ?>
+            <?php if( file_exists( $file ) ): ?>
+              <?php $image = App::www( $this->promo['path'].$this->promo['picture'] ); ?>
+            <?php else: ?>
+              <?php $image = App::media( '/promotions/promo-preview.jpg' ); ?>
+            <?php endif;?>
+
+            <img src="<?=$image?>" alt="<?=$this->promo['author']?>"  title="<?=$this->promo['author']?>" class="article" />
+            <?=$this->promo['description']?>
+          </article>
+
+    </section>
+    <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+    <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+  </article>
+
+</div>
+
+<?php 
+/*
+Array
+(
+  [id] => 16
+  [username] => hotline
+  [author] => Hotline Adultos  
+  [seo] => hotline-adultos
+  [picture] => hotline1369592767.jpg
+  [path] => /media/promotions/2013/05/
+  [description] => Primera promocion del negocio de HOT LINE
+  [city] => mazatlan
+  [city_name] => Mazatlan
+  [state] => 
+  [state_name] => Sinaloa
+  [country] => mexico
+  [country_name] => MÃ©xico
+  [created] => 2013-05-26 12:26:07
+  [start] => 2013-05-26
+  [finish] => 2013-06-26
+  [main] => yes
+  [status] => enabled
+)
+ */
+?>

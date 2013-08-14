@@ -1,0 +1,141 @@
+  <?php
+    $namespace = App::module('Core')->getModel('Namespace');
+    $business = $namespace->get( 'business' );
+    $username = $namespace->get( 'user' );
+  ?>
+
+  <div id="add-social-tabs">
+
+    <ul class="tabs_title">
+      <li><a href="#tabs-1"><?=App::xlat('social_title')?></a></li>
+    </ul>
+
+    <div id="tabs-1">
+
+
+        <div class="left-fieldset">
+         <form id="social">
+         <?=$this->form->action?>
+         <?=$this->form->social_id?>
+          <fieldset id="social_info">
+            <legend><?=App::xlat('article_tab_title_basic')?></legend>
+
+                <?php if( ! empty($this->form->business) ): ?>
+
+                    <?php if( ! empty($this->form->business->options) ): ?>
+                    <?php $url = '<a href="'.App::base('/business/add').'"> '. App::xlat('business_register') .' </a>'; ?>
+
+                      <dl class="element field-business type-text">
+                        <dt class="label"><label for="business"><?=App::xlat('social_business')?></label></dt>
+                        <dd class="field">
+                          <?=$this->form->business?>
+                        </dd>
+                        <dd class="hint"><?=str_replace( '%url%', $url, App::xlat('social_business_register'));?></dd>
+                      </dl>
+
+                      <dl class="element field-description type-text">
+                        <dt class="label"><label for="description"><?=App::xlat('social_description')?></label></dt>
+                        <dd class="field">
+                          <?=$this->form->description?>
+                        </dd>
+                      </dl>
+
+                      <dl class="element field-tags type-tags">
+                        <dt class="label"><label for="tags"><?=App::xlat('FORM_tags_category_title')?></label></dt>
+                        <dd class="field">
+                          <?=$this->form->tags?>
+                        </dd>
+                        <dd class="hint"><?=App::xlat('FORM_tags_category_desc')?></dd>
+                      </dl>
+
+                      <dl class="element field-event type-text">
+                        <dt class="label"><label for="event"><?=App::xlat('FORM_event_day')?></label></dt>
+                        <dd class="field">
+                          <?=$this->form->event?>
+                        </dd>
+                      </dl>
+
+                    <?php else: ?>
+                      <h1 class="error"><?=App::xlat('no_business_found_topic')?></h1>
+                      <p><?=str_replace( '%url%', $url, App::xlat('no_business_found_desc'));?></p>
+                    <?php endif; ?>    
+
+                <?php else:?>
+
+                  <dl class="element field-seo type-text">
+                    <dt class="label"><label for="description"><?=App::xlat('social_description')?></label></dt>
+                    <dd class="field">
+                      <?=$this->form->description?>
+                    </dd>
+                  </dl>
+
+                  <dl class="element field-tags type-tags">
+                    <dt class="label"><label for="tags"><?=App::xlat('FORM_tags_category_title')?></label></dt>
+                    <dd class="field">
+                      <?=$this->form->tags?>
+                    </dd>
+                    <dd class="hint"><?=App::xlat('FORM_tags_category_desc')?></dd>
+                  </dl>
+
+                  <dl class="element field-event type-text">
+                    <dt class="label"><label for="event"><?=App::xlat('FORM_event_day')?></label></dt>
+                    <dd class="field">
+                      <?=$this->form->event?>
+                    </dd>
+                  </dl>
+
+                <?php endif; ?>
+
+          </fieldset>
+
+          <fieldset id="f_gallery">
+            <legend><?=App::xlat('gallery_for_event')?></legend>
+              <div id="uploader_f_gallery">
+                <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+              </div>
+          </fieldset>
+
+          
+          </form>
+        </div>
+
+        <div class="right-fieldset">
+          <form id="main-pix">
+            <fieldset id="f_main_pix">
+              <legend><?=App::xlat('ARTICLE_FIELDSET_main_picture_title')?></legend>
+                <p><?=App::xlat('ARTICLE_FIELDSET_main_picture_desc')?></p>
+
+                <div id="uploader_f_main_pix">
+                  <div id="main-pix-filelist"></div>
+                  <a id="main-pix-pick" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_select')?> ]</a>
+                  <a id="main-pix-upload" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_upload')?> ]</a>
+                  <a id="mainpix_preview"  href="<?=App::base('/social/main-pix-preview/')?>">[ <?=App::xlat('ARTICLE_main_picture_btn_preview')?> ]</a>
+                </div>
+            </fieldset>
+
+            <fieldset id="social_preview">
+              <legend><?=App::xlat('social_preview')?></legend>
+                <span class="gp_response"></span>
+                <div class="uploaded_images">
+                  <?php if( ! empty( $business->business['social']['id'] ) ): ?>
+                    <?=App::module('Addons')->renderBlock("social","reload-gallery", array("id" => $business->business['social']['id'] ));?>
+                  <?php endif;?>
+                </div>
+            </fieldset>
+          </form>
+        </div>
+
+
+    </div>
+
+    
+    <div class="button-wrapper">
+
+      <span id="save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-check"></span>
+      </span>
+
+    </div>
+
+  </div>

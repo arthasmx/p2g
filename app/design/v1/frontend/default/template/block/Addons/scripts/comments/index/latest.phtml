@@ -1,0 +1,49 @@
+<?php if( ! empty($this->latest) ): ?>
+  <?php
+    $date    = App::module('Core')->getModel('Dates');
+    $comment = App::module('Addons')->getModel('Comments');
+  ?>
+  <div class="block latest-comments">
+    <h1>
+      <?=App::xlat('COMMENTS_latest_title')?>
+      <span><?=App::xlat('COMMENTS_latest_subtitle')?></span>
+    </h1>
+    <?php foreach($this->latest AS $latest):?>
+      <article>
+        <time><?=$date->toDate(7, $latest['created'])?></time>
+        <p>
+          <a href="<?=$comment->comment_url($latest['reference'],$latest['type'])?>">
+            <?=$latest['comment']?>
+          </a>
+        </p>
+        <cite><?=$latest['author']?></cite>
+      </article>
+    <?php endforeach;?>
+  </div>
+<?php endif; ?>
+
+<?php
+/*
+$this->latest
+Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [reference] => 176
+            [parent_id] => 1
+            [child_id] => 1.1
+            [type] => events
+            [created] => 2012-08-22 07:39:52
+            [status] => enabled
+            [comment] => respComments respComments respComments respComments respComments 
+            [author] => respnombre
+            [email] => respemail@gmail.com
+            [likes] => 0
+            [dislikes] => 0
+            [reported] => 0
+            [category] => 0
+        )
+
+ */
+?>

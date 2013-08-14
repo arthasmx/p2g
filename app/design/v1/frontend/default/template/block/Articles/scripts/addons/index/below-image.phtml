@@ -1,0 +1,77 @@
+
+<?php if( ! empty($this->addons) ): ?>
+  <?php $addon_icon = array('link'=>'link','audio'=>'play','video'=>'facetime-video','files'=>'file-alt ','gallery'=>'picture','map'=>'map-marker');  ?>
+
+  <div class="addons-bar-below">
+
+      <ul id="addon-list">
+        <?php foreach($this->addons AS $key=>$addon): ?>
+
+          <?php if( ! array_key_exists('id', $addon) ): ?>
+              <li>
+                <a href="#"> <span class="icon-<?=$addon_icon[$key]?>"></span> <?=$key?></a>
+                <ul class="submenu">
+                  <?php foreach($addon AS $child_addon): ?>
+                    <li>
+                      <?=get_addon_link($child_addon['type'],$child_addon['reference'],$child_addon['description'],$child_addon['class'],$child_addon['article_id'],$this->created)?>
+                    </li>
+                  <?php endforeach;?>
+                </ul>
+              </li>
+
+          <?php else: ?>
+
+              <?php if( $key=='map' ): ?>
+                <li class='map-addon'> <a class='map-addon' href="#"><span class="icon-map-marker"></span>Map</a>
+                  <ul class="submenu">
+                    <li>
+                      <?=App::module('Articles')->renderBlock("addons/index","map", array('id' => 'article-map','launcher'=>'li.map-addon','coordinates'=>$addon['reference'] ))?>                      
+                    </li>
+                  </ul>
+                </li>
+              <?php else: ?>
+                <li class="mini-gallery" ><a href="#"><span class="icon-picture"></span> Gallery</a>
+                  <ul class="submenu">
+                    <li>
+                      <?=App::module('Articles')->renderBlock("addons/index","mini-gallery", array( 'path'=>$this->folders['url'], 'thumb'=>$this->folders['thumbnails'] ) )?>
+                    </li>
+                  </ul>
+                </li>
+              <?php endif; ?>
+
+          <?php endif; ?>
+        <?php endforeach;?>
+      </ul>
+
+  </div>
+
+  <div class="modal hide" id="myModal">
+    <div class="modal-body"></div>
+  </div>
+
+<?php endif;?>
+
+<?php 
+/*
+ * @todo: coderefactor
+ */
+
+ function get_addon_link($type=null,$reference=null,$description=null,$class=null,$id=null,$created=null){
+   switch($type){
+     case 'link':
+       return "<a href='$reference' target='".(($class=='exlink')? '_blank':'_self')."' > $description </a>";
+       break;
+     case 'video':
+       return "<a class='video' rel='http://www.youtube.com/v/$reference?rel=0&wmode=transparent&autoplay=1&showinfo=0' > $description </a>";
+       break;
+     case 'audio':
+     case 'files':
+     case 'gallery':
+       $url=App::base( 'download/'.strtotime($created).'/'.$type.'/'.$id.'/'.$reference );
+       return "<a href='$url'> $reference </a>";
+       break;
+   }
+
+ }
+
+?>

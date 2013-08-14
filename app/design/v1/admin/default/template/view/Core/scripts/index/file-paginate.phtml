@@ -1,0 +1,24 @@
+
+<?php if( ! empty($this->files) ):
+  $paginator=null; ?>
+
+  <?php if( ! empty($this->files['html']) ): ?>
+    <?php $paginator = $this->files['html'];?>
+  <?php endif;?>
+
+    <?=empty($paginator) ? null:$paginator?>
+    <ul class='uploaded_images'>
+    <?php foreach($this->files['files'] AS $image): ?>
+      <li class='img_hover_actions'>
+        <a class="cBox" href="<?=App::www( $this->files['path'] . $image );?>">
+  	      <img title="" alt="" src="<?=App::www( $this->files['path'] .'thumbnails/'. $image );?>" />
+        </a>
+          <span class="info">
+              <span class="iha_del" data-id="<?=$image?>"><small>[ <?=strtolower(App::xlat('del_alt'))?> ]</small></span>
+          </span>
+      </li>
+    <?php endforeach;?>
+    </ul>
+    <?=$paginator?>
+
+<?php endif;?>

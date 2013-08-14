@@ -1,0 +1,8 @@
+
+  <div class="hidden">
+    <?php foreach( $this->images AS $image): ?>
+      <a class="sGal_<?=$this->id?>" rel="sGal_<?=$this->id?>" href="<?=App::www( $this->path .'/gallery/' . $image )?>">
+        hidden-image <?=$this->id?>
+      </a>
+    <?php endforeach;?>
+  </div>

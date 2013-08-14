@@ -1,0 +1,36 @@
+  <div class="row">
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+
+    <div class="col-lg-2 col-sm-3">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+      <?=App::module('Articles')->renderBlock("index","city-images", array('city'=> 'mazatlan' ))?>
+
+        <div class="container top-mar-20">
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-6 events">
+              <?=App::module('Articles')->renderBlock("events/index","events")?>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-6 news">
+              <?=App::module('Articles')->renderBlock("index","latest")?>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="col-lg-2 col-sm-3">
+      
+    </div>
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
+
+  </div>

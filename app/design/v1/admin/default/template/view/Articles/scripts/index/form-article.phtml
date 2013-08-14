@@ -1,0 +1,305 @@
+<?php $article_session = App::module('Core')->getModel('Namespace')->get( 'article' ); ?>
+
+  <!-- tabs -->
+  <div id="add-art-tabs">
+
+    <ul class="tabs_title">
+      <li><a href="#tabs-1"><?=App::xlat('article_tab_title_basic')?></a></li>
+      <li><a href="#tabs-2"><?=App::xlat('article_tab_title_images')?></a></li>
+      <li><a href="#tabs-3"><?=App::xlat('article_tab_title_files')?></a></li>
+      <li><a href="#tabs-4"><?=App::xlat('article_tab_title_addons')?></a></li>
+    </ul>
+
+    <div id="tabs-1">
+      <form id="add-article">
+        <?=$this->basic_data->article_id?>
+        <?=$this->basic_data->type?>
+
+          <div class="left-fieldset">
+
+            <fieldset class="group info" id="info">
+              <legend><?=App::xlat('article_tab_basic_FIELDSET_info')?></legend>
+
+                <dl class="element field-title type-text">
+                  <dt class="label"><label for="title"><?=App::xlat('FORM_title')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->title?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-seo type-text">
+                  <dt class="label"><label for="seo"><?=App::xlat('FORM_seo')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->seo?>
+                  </dd>
+                  <dd class="hint"><?=App::xlat('FORM_seo_description')?></dd>
+                </dl>
+
+                <dl class="element field-event_date type-text">
+                  <dt class="label"><label for="event_date"><?=App::xlat('FORM_event_day')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->event_date?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-publicate_at type-text">
+                  <dt class="label"><label for="publicate_at"><?=App::xlat('FORM_date_publication')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->publicate_at?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-stop_publicate type-text">
+                  <dt class="label"><label for="stop_publicate"><?=App::xlat('FORM_date_stop_publication')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->stop_publicate?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-tags type-tags">
+                  <dt class="label"><label for="tags"><?=App::xlat('FORM_tags_category_title')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->tags?>
+                  </dd>
+                  <dd class="hint"><?=App::xlat('FORM_tags_category_desc')?></dd>
+                </dl>
+
+            </fieldset>
+
+            <fieldset class="group options" id="options">
+              <legend><?=App::xlat('article_tab_basic_FIELDSET_options')?></legend>
+
+                <dl class="element field-language type-select">
+                  <dt class="label"><label for="language"><?=App::xlat('FORM_language')?></label></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->language?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-mobile type-checkbox">
+                  <dt class="label"></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->mobile?>
+                    <span class="add append"><label for="mobile"><?=App::xlat('FORM_mobile')?></label></span>
+                  </dd>
+                </dl>
+
+                <dl class="element field-promote type-checkbox">
+                  <dt class="label"></dt>
+                  <dd class="field">
+                    <?=$this->basic_data->promote?>
+                    <span class="add append"><label for="promote"><?=App::xlat('FORM_promote')?></label></span>
+                  </dd>
+                </dl>
+
+            </fieldset>
+
+          </div>      
+
+          <div class="right-fieldset">      
+
+
+            <fieldset id="ckeditor">
+              <legend><?=App::xlat('article_tab_basic_FIELDSET_article')?></legend>
+
+              <dl class="element field-article type-textarea">
+                <dt class="label"></dt>
+                <dd class="field">
+                  <?=$this->basic_data->article?>
+                </dd>
+              </dl>
+            </fieldset>
+
+          </div>
+
+      </form>
+
+    </div>
+
+    <div id="tabs-2">
+      <form id="main-pix">
+
+        <div class="left-fieldset">
+          <fieldset id="f_gallery_zipped">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_zipped_title')?></legend>
+              <p><?=App::xlat('ARTICLE_FIELDSET_gallery_zipped_desc')?></p>
+              <div id="uploader_f_zipped">
+                <div id="zip-filelist"></div>
+                <a id="zipped-file-pick" href="#">[ <?=App::xlat('ARTICLE_zipped_gallery_btn_select')?> ]</a>
+                <a id="zip-upload" href="#">[ <?=App::xlat('ARTICLE_zipped_gallery_btn_upload')?> ]</a>
+              </div>
+          </fieldset>
+
+          <fieldset id="f_gallery">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_title')?></legend>
+              <div id="uploader_f_gallery">
+                <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+              </div>
+          </fieldset>
+        </div>
+
+        <div class="right-fieldset">
+          <fieldset id="f_main_pix">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_main_picture_title')?></legend>
+              <p><?=App::xlat('ARTICLE_FIELDSET_main_picture_desc')?></p>
+
+              <div id="uploader_f_main_pix">
+                <div id="main-pix-filelist"></div>
+                <a id="main-pix-pick" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_select')?> ]</a>
+                <a id="main-pix-upload" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_upload')?> ]</a>
+                <a id="mainpix_preview"  href="<?=App::base('/articles-fi/main-pix-preview/')?>">[ <?=App::xlat('ARTICLE_main_picture_btn_preview')?> ]</a>
+              </div>
+          </fieldset>
+          <fieldset id="gallery_uploaded">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_uploaded_images')?></legend>
+              <span class="gp_response"></span>
+              <div class="uploaded_images">
+                <?php if( ! empty( $article_session->article['article_id'] ) ): ?>
+                  <?=App::module('Articles')->renderBlock("index","gallery-file-list");?>
+                <?php endif;?>
+              </div>
+          </fieldset>
+        </div>
+
+      </form>
+    </div>
+
+    <div id="tabs-3">
+      <form id="audio_docs_up">
+        <div class="left-fieldset">
+          <fieldset id="f_files_audio">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_files_audio_title')?></legend>
+              <div id="upload_f_audio">
+                <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+              </div>
+  
+              <p><?=App::xlat('ARTICLE_FIELDSET_files_audio_uploaded_files')?></p>
+              <div class="uploaded_audio">
+                <?php if( ! empty( $article_session->article['article_id'] ) ): ?>
+                  <?=App::module('Articles')->renderBlock("index","audio-file-list");?>
+                <?php endif;?>
+              </div>
+  
+          </fieldset>
+        </div>
+
+        <div class="right-fieldset">
+          <fieldset id="f_files_docs">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_files_docs_title')?></legend>
+              <div id="upload_f_docs">
+                <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+              </div>
+  
+              <p><?=App::xlat('ARTICLE_FIELDSET_files_docs_uploaded_files')?></p>
+              <div class="uploaded_files">
+                <?php if( ! empty( $article_session->article['article_id'] ) ): ?>
+                  <?=App::module('Articles')->renderBlock("index","files-file-list");?>
+                <?php endif;?>
+              </div>
+  
+          </fieldset>
+        </div>
+      </form>
+    </div>
+
+    <div id="tabs-4">
+      <form id="links_rel" enctype="application/x-www-form-urlencoded" action="" method="post">
+
+        <div class="left-fieldset">
+
+          <fieldset id="f_addons_links">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_addons_links_title')?></legend>
+              <p><?=App::xlat('ARTICLE_FIELDSET_addons_links_desc')?></p>
+
+              <div id="links_ge">
+                <div id="links_ge_template" class="grouped-elements">
+                  <input id="links_ge_#index#_desc" name="links[#index#][desc]" type="text" class="placeholder desc" placeholder="Descripción del link">
+                  <input id="links_ge_#index#_url" name="links[#index#][url]" type="text" class="placeholder url" placeholder="URL de la dirección">
+                  <select id="links_ge_#index#_type" name="links[#index#][type]" class="type">
+                    <option value="inlink"><?=App::xlat('FIELDSET_links_in')?></option>
+                    <option value="exlink"><?=App::xlat('FIELDSET_links_ex')?></option>
+                    <option value="video"><?=App::xlat('FIELDSET_links_video')?></option>
+                  </select>
+                  [<a id="links_ge_remove_current"><?=App::xlat('del_alt')?></a>]
+                </div>
+                <div id="links_ge_noforms_template" class="error"><?=App::xlat('ARTICLE_FIELDSET_addons_links_empty')?></div>
+              </div>
+
+              <div id="links_ge_controls">
+                <span class="links_response"></span>
+                <span id="links_ge_add" class="ui-button ui-widget ui-state-default ui-button-text-icon-secondary">
+                  <span class="ui-button-text"><?=App::xlat('BUTTON_add')?></span>
+                  <span class="ui-button-icon-secondary ui-icon ui-icon-plus"></span>
+                </span>
+                <span id="links_ge_remove_all" class="ui-button ui-widget ui-state-default ui-button-text-icon-secondary">
+                  <span class="ui-button-text"><?=App::xlat('BUTTON_delete_all')?></span>
+                  <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+                </span>
+                <span id="save_links_rel" class="ui-button ui-widget ui-state-default ui-button-text-icon-secondary">
+                  <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+                  <span class="ui-button-icon-secondary ui-icon ui-icon-disk"></span>
+                </span>
+              </div>
+          </fieldset>
+        </div>
+
+        <div class="right-fieldset">
+          <fieldset id="f_addons_map">
+            <legend><?=App::xlat('ARTICLE_FIELDSET_addons_map_title')?></legend>
+              <p><?=App::xlat('ARTICLE_FIELDSET_addons_map_desc')?></p>
+              <div id="googleMap" style="width:44.5em;height:31em;"></div>
+              <p class="coordinates">Coordenadas: <span id="current_cors"><?=(empty($article_session->article['addons']['map']['reference']))? null: $article_session->article['addons']['map']['reference']?></span></p>
+
+              <span id="del_coordinates" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+                <span class="ui-button-text"><?=App::xlat('BUTTON_del_coordinates')?></span>
+                <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+              </span>
+              <span id="save_coordinates" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+                <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+                <span class="ui-button-icon-secondary ui-icon ui-icon-disk"></span>
+              </span>
+              <span class="coord_response"></span>
+
+          </fieldset>
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <div class="button-wrapper">
+
+      <span id="next" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary <?=( empty($article_session->article['article_id'])? null:'hide' ) ?>">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_next')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-carat-1-e"></span>
+      </span>
+
+      <span id="article_preview" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"> <?=App::xlat('BUTTON_preview')?> </span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-zoomin"></span>
+      </span>
+
+      <span id="save" class="<?=( empty($article_session->article['article_id'])? 'hide ':null ) ?>ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-check"></span>
+      </span>
+
+      <span id="save_new" class="<?=( empty($article_session->article['article_id'])? 'hide ':null ) ?>ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save_new')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-plus"></span>
+      </span>
+
+      <span id="save_close" class="<?=( empty($article_session->article['article_id'])? 'hide ':null ) ?>ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save_close')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+      </span>
+
+      <span id="save_publicate" class="<?=( empty($article_session->article['article_id'])? 'hide ':null ) ?>ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save_publicate')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-close"></span>
+      </span>
+
+    </div>
+
+  </div>

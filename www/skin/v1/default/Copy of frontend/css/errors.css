@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+.errors{padding-top:50px;}
+
+.error{background: none !important;}
+  .error h1, .error p{ color: #FFFFFF; font-family: "Open Sans",helvetica,verdana,arial; font-size: 5em; font-weight: lighter; text-align: right; line-height:85px;}
+  .error p{ background-color: #000000; font-size: 1em; line-height: 30px; padding: 20px;}

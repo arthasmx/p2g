@@ -1,0 +1,35 @@
+
+<?php if( ! empty($this->latest) ): ?>
+  <?php $date = App::module('Core')->getModel('Dates'); ?>
+
+  <div class="latest-blue-topic"> <?=App::xlat('latest_articles')?> </div>
+  <div class="well well-shadow latest-blue">
+    <div class="carousel carousel-fade slide latest-blue-carousel" id="latest-articles-carousel">
+      <div class="carousel-inner">
+      <?php $first=true; ?>
+      <?php foreach($this->latest AS $latest):?>
+        <div class="item<?=($first===true)? ' active':null ?>">
+          <img src="<?=App::media( $latest['folder'].'gallery/aside-big.jpg' )?>" alt="<?=$latest['title']?>" title="<?=$latest['title']?>" />
+          <div class="latest-blue-date pull-right"><span class="icon-calendar"></span> <?=$date->toDate(7, $latest['publicated'])?></div>
+          <p><?=substr(strip_tags($latest['article']),0,170).'...'?></p>
+          <a href="<?=App::base( App::xlat( 'articulos_singular' ) ."/". $latest['seo']  )?>" class="btn btn-info pull-right">
+            <span class="icon-file-alt"></span> <?=App::xlat('read_more')?>
+          </a>
+        </div>
+        <?php $first=false;?>
+      <?php endforeach;?>
+      </div>
+    </div>
+
+    <div class="pull-right latest-blue-nav">
+      <a data-slide="prev" href="#latest-articles-carousel">
+        <i class="icon-chevron-left"></i>
+      </a>
+      <a data-slide="next" href="#latest-articles-carousel">
+        <i class="icon-chevron-right"></i>
+      </a>
+    </div>
+
+  </div>
+  <div class="aside-block-shadow"></div>
+<?php endif; ?>

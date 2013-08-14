@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+	<template>default.phtml</template>
+
+ <include as='head' template='default/head.phtml' />
+ <include as='page' template='intro/page.phtml'>
+
+    <include as='header' template='intro/page/header.phtml'/>
+    <include as='footer' template='intro/page/footer.phtml'/>
+
+    <segment name='content' as='content'/>
+
+	</include>
+
+</config>

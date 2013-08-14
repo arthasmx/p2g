@@ -1,0 +1,48 @@
+
+  <?php if( ! empty( $this->promotions ) ): ?>
+  <?php $separator = "/"; ?>
+    <h3><span class="icon-link"></span> <?=App::xlat('business_promotions')?></h3>
+    <div class="row business-promotions">
+      <?php foreach( $this->promotions AS $promotion ): ?>
+        <div class="four mobile twelfths promo-img">
+          <a href="<?=App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] )?>">
+            <img src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$promotion['description']?>" title="<?=$promotion['description']?>" />
+          </a>
+          <p class="hide-on-desktop hide-on-mini"><?=$promotion['description']?></p>
+        </div>
+      <?php endforeach;?>
+    </div>
+  <?php endif;?>
+
+<?php 
+/*
+
+<div class="row">
+  <div class="four mobile twelfths" data-title="four mobile twelfths" data-text="1/3">1/3</div>
+  <div class="four mobile twelfths" data-title="four mobile twelfths" data-text="1/3">1/3</div>
+  <div class="four mobile twelfths" data-title="four mobile twelfths" data-text="1/3">1/3</div>
+</div>
+
+Array
+(
+  [id] => 16
+  [username] => hotline
+  [author] => Hotline Adultos  
+  [seo] => hotline-adultos
+  [picture] => hotline1369592767.jpg
+  [path] => /media/promotions/2013/05/
+  [description] => Primera promocion del negocio de HOT LINE
+  [city] => mazatlan
+  [city_name] => Mazatlan
+  [state] => 
+  [state_name] => Sinaloa
+  [country] => mexico
+  [country_name] => MÃ©xico
+  [created] => 2013-05-26 12:26:07
+  [start] => 2013-05-26
+  [finish] => 2013-06-26
+  [main] => yes
+  [status] => enabled
+)
+*/
+?>

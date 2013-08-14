@@ -1,0 +1,130 @@
+
+<div role="main" class="container-fluid main">
+
+    <div class="row-fluid fit-to-design">
+      <div class="span8 requirements">
+
+      <?php if( ! empty($this->cells) ): ?>
+        <h1><span class="icon-group"></span> <?=App::xlat('breadcrumb_cell')?></h1>
+        <p><?=App::xlat('CELL_pharagraph_1')?></p>
+        <p><?=App::xlat('CELL_pharagraph_2')?></p>
+        <p><?=App::xlat('CELL_pharagraph_3')?></p>
+        <p><?=App::xlat('CELL_pharagraph_4')?></p>
+
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <?php $first=true; $iteration=1; ?>
+            <?php foreach( $this->zones AS $zone): ?>
+              <li class="tab_<?=$iteration?><?=($first===true)?' active':null?>"><a href="#tab_<?=$iteration?>" data-toggle="tab">Z - <?=$zone['zone_id']?></a></li>
+              <?php $first=false; $iteration++;?>
+            <?php endforeach;?>
+          </ul>
+
+          <div class="tab-content">
+            <?php $first=true; $iteration=1; ?>
+            <?php foreach( $this->cells AS $zone=>$cells): ?>
+              <div class="tab-pane<?=($first===true)?' active':null?>" id="tab_<?=$iteration?>">
+                <h2> <?=App::xlat('CELL_zone_shepherd').$this->zones[$zone]['shepherd']?> </h2>
+
+                <?php $sector=null; $well=null;?>
+                <?php foreach( $cells AS $cell ): ?>
+
+                  <?php if($sector != $cell['sector_id']):?>
+                    <?php if( ! is_null($sector )) :?>
+                      <?='</div>'?>
+                    <?php endif?>
+
+                    <div class="well pull-left">
+                      <?php $sector = $cell['sector_id']; ?>
+                        <h3>
+                          <?=$this->sectors[ $cell['sector_id'] ]['sector']?><br />
+                          <?=App::xlat('CELL_sector_supervisor').$this->sectors[ $cell['sector_id'] ]['supervisor'];?>
+                        </h3>
+                      <?php endif; ?>
+                        <ul class="unstyled pull-left cell-address">
+                          <li> <span class="icon-home"></span> <?=$cell['landlord']?> </li>
+                          <li> 
+                              <span class="icon-road address-icon"></span>
+                              <span class="address-text"><?=$cell['address']?></span>
+                          </li>
+                          <li> <span class="icon-time"></span> <?=$cell['hours']?> </li>
+                          <li> <span class="icon-user"></span> <?=$cell['leader']?> </li>
+                        </ul>
+                <?php endforeach;?>
+                    </div>
+              </div>
+              <?php $first=false; $iteration++;?>
+            <?php endforeach;?>
+          </div>
+        </div>
+
+      <?php else:?>
+
+      <?php endif; ?>
+
+      </div>
+
+      <div class="span4">
+        <aside>
+        <?=App::module('Addons')->renderBlock("site/index","social-networks", array("style" => "medium") )?>
+        <?=App::module('Addons')->renderBlock("facebook/index","i-like-this")?>
+        <?=App::module('Articles')->renderBlock("index","carousel-promote-described")?>
+        <?=App::module('Articles')->renderBlock("announcement/index","carousel-promote")?>
+        </aside>
+      </div>
+
+    </div>
+
+</div>
+
+<?php
+/*
+
+cells
+Array
+(
+  [1] => Array
+    (
+      [0] => Array
+        (
+          [id] => 1
+          [sector_id] => 1
+          [leader_id] => gabriela_cota@lamision.mx
+          [landlord] => Gabriela Cota
+          [address] => Del Valle #635 Casa Blanca
+          [hours] => Martes 7:30 Pm
+          [map_cordinates] => 
+          [language] => es
+          [status] => enabled
+          [leader] => Gabriela Cota 
+          [zone_id] => 1
+        )
+
+
+sectors
+Array
+(
+    [1] => Array
+        (
+            [sector_id] => 1
+            [sector] => Sector 1
+            [seo] => sector-1
+            [zone_id] => 1
+            [supervisor_id] => hector_mejia@lamision.mx
+            [supervisor] => Hector Mejia 
+        )
+
+
+zones
+Array
+(
+    [1] => Array
+        (
+            [shepherd] => Miguel Paez 
+            [zone_id] => 1
+            [name] => Zona 1
+            [seo] => zona-1
+            [shepherd_id] => miguel_paez@lamision.mx
+        )
+ */
+?>

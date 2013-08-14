@@ -1,0 +1,24 @@
+
+<?php if( ! empty($this->files) ): ?>
+
+  <?php $date = App::module('Core')->getModel('Dates'); ?>
+
+  <div class="carousel-files">
+    <div class="carousel carousel-fade slide files-carousel" id="articles-carousel">
+      <div class="carousel-inner">
+      <?php $first=true; ?>
+      <?php foreach($this->files AS $file):?>
+
+        <div class="item files<?=($first===true)? ' active':null ?>">
+          <img src="<?=App::www( $this->path . $file )?>" alt="" title="" />
+        </div>
+
+        <?php $first=false;?>
+      <?php endforeach;?>
+      </div>
+
+    </div>
+
+  </div>
+
+<?php endif; ?>

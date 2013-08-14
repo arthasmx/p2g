@@ -1,0 +1,34 @@
+
+<?php if( ! empty($this->promote) ): ?>
+
+  <?php $date = App::module('Core')->getModel('Dates'); ?>
+
+  <div class="carousel-promote">
+    <div class="carousel carousel-fade slide promote-carousel" id="announcement-carousel">
+      <div class="carousel-inner">
+      <?php $first=true; ?>
+      <?php foreach($this->promote AS $promote):?>
+
+        <div class="item promote<?=($first===true)? ' active':null ?>">
+            <img src="<?=App::media( $promote['folder'].'gallery/promote.jpg' )?>" alt="<?=$promote['title']?>" title="<?=$promote['title']?>" />
+        </div>
+
+        <?php $first=false;?>
+      <?php endforeach;?>
+      </div>
+
+      <div class="pull-right promote-nav">
+        <a data-slide="prev" href="#announcement-carousel">
+          <i class="icon-chevron-left"></i>
+        </a>
+        <a data-slide="next" href="#announcement-carousel">
+          <i class="icon-chevron-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="aside-block-shadow"></div>
+
+<?php endif; ?>

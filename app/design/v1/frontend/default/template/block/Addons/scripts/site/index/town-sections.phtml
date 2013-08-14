@@ -1,0 +1,32 @@
+<?php if( ! empty( $this->sections ) ): ?>
+  <ul>
+    <?php foreach($this->sections AS $section):?>
+      <li class="line-3">
+        <a href="<?= App::www( $this->city . App::xlat('municipio') .  $this->town . '/' . $section['section'] )?>"> <?=App::xlat($section['section'])?> </a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+<?php endif;?>
+
+<?php 
+/*
+Array
+(
+[0] => Array
+    (
+      [id] => 2
+      [town] => rosario
+      [section] => informacion
+      [status] => enabled
+    )
+
+[1] => Array
+    (
+      [id] => 3
+      [town] => rosario
+      [section] => pueblos-cercanos
+      [status] => enabled
+    )
+
+ */
+?>

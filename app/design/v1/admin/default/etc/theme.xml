@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+ <vars>
+  <global></global>
+
+  <local>
+   <head>
+    <var key='pageTitle'>
+     <value><![CDATA[Places to go! : Diversi&oacute;n para todos]]></value>
+    </var>
+    <var key='pageKeywords'>
+     <value><![CDATA[Hotel, Restaurante, Antro, Fiesta, Alcohol, Cine, Musica, Eventos, Articulos]]></value>
+    </var>
+    <var key='pageDescription'>
+     <value><![CDATA[Los mejores lugares a conocer, pasear de tu ciudad]]></value>
+    </var>
+    <var key='pageAuthor'>
+     <value><![CDATA[ArthasMX]]></value>
+    </var>
+    <var key='pageCopyright'>
+     <value><![CDATA[flexar.com.mx]]></value>
+    </var>
+   </head>
+   <page>
+    <breadcrumbs>
+     <var key='welcome_es'>
+      <value><![CDATA[Places to go les da la mas cordial bienvenida a nuestra página]]></value>
+     </var>
+    </breadcrumbs>
+   </page>
+  </local>
+
+ </vars>
+
+</config>

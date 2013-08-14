@@ -1,0 +1,33 @@
+/*
+Item Name : Responsive CSS3 Multi Drop Down Menu
+Item URI : http://codecanyon.net/item/responsive-css3-multi-drop-down-menu/4124019
+Author URI : http://codecanyon.net/user/Pixelworkshop
+Version : 1.1
+*/
+
+/*
+INTERNET EXPLORER 7 & 8
+*/
+
+.responsive_menu > li:hover > ul {
+    top:41px;
+    left:auto;
+    visibility:visible;
+    opacity:1;
+    z-index: 999;
+    display:block\9;
+}
+.responsive_menu li li:hover > ul {
+    left: 100%;
+    visibility:visible;
+    opacity:1;
+    z-index: 999;
+    display:block\9;
+}
+.responsive_menu li li:hover > ul.dropdown_left {
+    left: -100%;
+}
+.toggle_menu,
+.toggle_menu_label {
+    display: none;
+}

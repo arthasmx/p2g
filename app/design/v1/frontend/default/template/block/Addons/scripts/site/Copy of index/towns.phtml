@@ -1,0 +1,27 @@
+
+<?php if( ! empty( $this->towns ) ): ?>
+  <ul>
+    <?php $loop = 1; ?>
+    <?php foreach($this->towns AS $town):?>
+      <li class="line-2">
+        <label for="mun-sub_<?=$loop?>" class="parent_r"> <?=$town['name']?> </label>
+        <input type="checkbox" id="mun-sub_<?=$loop?>" class="dropdown_trigger">
+        <?=App::module('Addons')->renderBlock("site/index","town-sections", array('town'=> $town['seo'], 'city'=> $town['city'] ))?>
+      </li>
+        <?php $loop++; ?>
+    <?php endforeach; ?>
+  </ul>
+<?php endif;?>
+
+<?php 
+/*
+Array
+(
+  [0] => Array
+    (
+        [name] => Rosario
+        [seo] => rosario
+        [city] => mazatlan
+    )
+ */
+?>

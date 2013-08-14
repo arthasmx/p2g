@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+
+	<template>admin.phtml</template>
+
+	<include as='head' template='admin/head.phtml' />
+	<include as='page' template='admin/page.phtml'>
+
+    <include as='flashmsg' template='admin/page/flashmsg.phtml'/>
+    <include as='header' template='admin/page/header.phtml' />
+    <include as='breadcrumbs' template='admin/page/breadcrumbs.phtml'/>
+
+    <segment name='content' as='content'/>
+
+    <include as='footer' template='admin/page/footer.phtml'/>
+
+	</include>
+
+</config>

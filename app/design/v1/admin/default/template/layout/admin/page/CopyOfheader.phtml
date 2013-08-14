@@ -1,0 +1,40 @@
+<?php
+  $user_data = App::module("Acl")->getModel('acl')->get_logged_user_data();
+  $name      = $user_data['name']." ".$user_data['last_name']. " ". $user_data['maiden_name'];
+  $logout    = "<a href='".App::base('/logout')."'>".App::xlat('HEADER_logout')."</a>";
+  $top_menu  = App::module('Addons')->getModel('Menu')->get($user_data['username']);
+?>
+
+<header>
+  <hgroup>
+    <h1> <?=App::getConfig('website_name') . App::xlat('HEADER_admin_section');?> </h1>
+    <h2> <?=App::module('Core')->getModel('Dates')->toDate(7, $user_data['lastlogin']);?> <br /> <?=str_replace(array('%user%','%url%'), array($name,$logout), App::xlat('HEADER_welcome'));?> </h2>
+  </hgroup>
+</header>
+
+<nav>
+  <?php foreach($top_menu AS $menu): ?>
+    <ul <?=($this->current_menu['menu']==$menu['id']) ? "class='current'" : null; ?>>
+      <li>
+        <a <?= empty($menu['url'])? '': "href='".App::base( $menu['url']."'" ) ?>>
+          <?=$menu['name']?>
+          <!--[if IE 7]><!--></a><!--<![endif]-->
+          <!--[if lte IE 6]><table><tr><td><![endif]-->
+
+            <ul class="submenu<?=($this->current_menu['menu']==$menu['id']) ? ' show' : null; ?>">
+              <?php if( ! empty($menu['submenu']) ): ?>
+                <?php foreach((array)$menu['submenu'] AS $submenu): ?>
+                  <li>
+                    <a href="<?= empty($submenu['url'])? '': App::base( $submenu['url'] ) ?>" <?=($this->current_menu['sub']==$submenu['id']) ? "class='current'" : null; ?> >
+                      <?=$submenu['name']?>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              <?php endif;?>
+            </ul>
+
+          <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+      </li>
+    </ul>
+  <?php endforeach; ?>
+</nav>

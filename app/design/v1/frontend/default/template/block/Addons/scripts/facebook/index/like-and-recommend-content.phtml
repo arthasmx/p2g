@@ -1,0 +1,15 @@
+
+<?php if( ! empty($this->article)): ?>
+
+  <?php if( App::getEnvironment()== 'devel' ): ?>
+
+    <div class="pull-left alert alert-warning">
+      <?=App::xlat('devel_facebook_like_recommend_content_warning')?>
+    </div>
+  <?php else:?>
+    <div class="facebook-like-content">
+      <div class="fb-like" data-href="<?=App::base( $this->article)?>" data-send="true" data-width="400" data-show-faces="false"></div>
+    </div>
+  <?php endif;?>
+
+<?php endif;?>

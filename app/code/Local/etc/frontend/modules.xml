@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<configdata>
+
+  <production>
+
+    <Default>
+      <active>1</active>
+      <behaviour>default</behaviour>
+      <controller>index</controller>
+      <action>index</action>
+    </Default>
+
+    <Core>
+      <active>1</active>
+      <behaviour>core</behaviour>
+      <observers>
+        <app_action_init>flashmsg/init</app_action_init>
+      </observers>
+    </Core>
+
+    <Addons>
+      <active>1</active>
+    </Addons>
+
+    <Articles>
+      <active>1</active>
+    </Articles>
+
+    <User>
+      <active>1</active>
+      <observers>
+        <app_action_renderdesign>error</app_action_renderdesign>
+      </observers>
+    </User>
+
+    <Acl>
+      <active>1</active>
+      <observers>
+        <app_front>front</app_front>
+        <app_action_renderdesign>error</app_action_renderdesign>
+      </observers>
+    </Acl>
+
+    <Error>
+      <active>1</active>
+      <behaviour>error</behaviour>
+    </Error>
+
+    <Debug><active>1</active></Debug>
+
+    <Email>
+      <active>1</active>
+      <observers>
+        <!-- Default -->
+          <module_default_contacto>default/contact</module_default_contacto> <!-- Captura el envío de email de contacto -->
+          <module_default_flexar>default/flexar</module_default_flexar>
+          <module_acl_business_register>business/register</module_acl_business_register>
+
+      </observers>
+    </Email>
+
+    <Search>
+      <active>1</active>
+    </Search>
+
+    <Mobile>
+      <active>1</active>
+    </Mobile>
+
+  </production>
+
+  <devel extends="production">
+    <Debug>
+      <active>1</active>
+      <observers>
+        <!-- JS -->
+          <app_action_renderdesign>js</app_action_renderdesign><!-- Rutinas para hacer debug de javascript -->
+        <!-- APP -->
+          <app_done>tracert</app_done><!-- Rutinas para hacer debug de javascript -->
+      </observers>
+    </Debug>
+  </devel>
+
+</configdata>

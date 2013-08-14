@@ -1,0 +1,17 @@
+<?php if( empty($this->sign) ):?>
+
+  <?php $errors = App::module('Core')->getModel('Form')->get_error_messages($this->form); ?>
+  <?php if( ! empty($errors) ):?>
+    <ul class='form-errors'>
+    <?php foreach($errors AS $error): ?>
+      <li><?=$error?></li>
+    <?php endforeach; ?>
+    </ul>
+  <?php endif;?>
+  <?=$this->form?>
+
+<?php else:?>
+
+  <h3 class="no-line empty-listing"> <?=App::xlat('MAINPAGE_column_guestbook_signed_up')?> </h3>
+
+<?php endif;?>

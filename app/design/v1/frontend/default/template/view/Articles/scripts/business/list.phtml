@@ -1,0 +1,52 @@
+
+  <div class="container">
+    <article class="row">
+
+      <section class="three fifths right-one padded no-top-pad">
+          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+           <?php if( ! empty($this->articles['items']) ): ?>
+
+             <?php foreach($this->articles['items'] AS $article): ?>
+                <article class="event_list">
+                  <h3> <a class="topic" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"><?=$article['title']?></a> </h3>
+
+                  <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+                      <img src="<?=App::media( $article['folder']."/gallery/article.jpg" )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+                    </a>
+                  <?php else: ?>
+                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+                      <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+                    </a>
+                  <?php endif;?>
+
+                  <div class="event_list_info">
+                    <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $article['publicated'] ,'long')?> <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$article['author']?> 
+                    <?php if( App::getEnvironment()!=='devel' ):?>
+                      <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-comments gray"></span> <fb:comments-count href="<?=App::www( App::xlat('articulos_singular').'/'. $article['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
+                    <?php endif;?>
+                  </div>
+                  <?=$article['article']?>
+                </article>
+    
+             <?php endforeach; ?>
+             <?= empty($this->articles['pagination_html']) ? '' : $this->articles['pagination_html'];?>
+    
+           <?php else:?>
+             <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
+           <?php endif;?>
+
+
+
+      </section>
+      <aside class="one fifth left-three desktop-only">
+        <?=App::module('Addons')->renderBlock("site/index","logo")?>
+        <?=App::module('Addons')->renderBlock("site/index","menu")?>
+      </aside>
+      <aside class="one fifth">
+        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+      </aside>
+    </article>
+
+  </div>

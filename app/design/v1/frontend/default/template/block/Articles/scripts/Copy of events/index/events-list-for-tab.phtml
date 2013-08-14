@@ -1,0 +1,112 @@
+<?php
+  $date = App::module('Core')->getModel('Dates');
+  $class = true;
+?>
+
+<div class="nested-tabs<?=$this->mobile?>">
+  <ul>
+    <li><a href="#n1" class="active today"> <img src="<?=App::media( '/images/mobile/hoy.jpg' )?>" /> </a></li>
+    <li><a href="#n2" class="tomorrow"> <img src="<?=App::media( '/images/mobile/manana.jpg' )?>" /> </a></li>
+    <li><a href="#n3" class="month"> <img src="<?=App::media( '/images/mobile/mensual.jpg' )?>" /> </a></li>
+  </ul>
+
+    <div id="n1" class="active today<?=$this->mobile?>">
+      <?php if( ! empty($this->today) ): ?>
+        <?php foreach($this->today AS $today): ?>
+          <article class="events_today <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
+             <h3>
+              <a class="events_link" href="<?=App::www( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>">
+                <?=$today['title']?>
+              </a>
+            </h3>
+            <?php if( file_exists( WP.DS.'media'.DS.$today['folder'].DS.'gallery'.DS.'promote.jpg' ) ): ?>
+              <a href="<?=App::www( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>">
+                <img src="<?=App::media( $today['folder']."/gallery/aside-big.jpg" )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $today['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview-promote.jpg' )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
+              </a>
+            <?php endif;?>
+            <div class="event_list_info">
+              <span class="icon-home  gray"></span> <?=$today['address']?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $today['event_date'] ,'long')?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-time gray"></span> <?=$today['event_hours']?>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <article class="events_today">
+          <p> No se han encontrado eventos para hoy </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+    <div id="n2" class="tomorrow<?=$this->mobile?>">
+      <?php if( ! empty($this->tomorrow) ): ?>
+       <?php $class=true;?>
+        <?php foreach($this->tomorrow AS $tomorrow): ?>
+          <article class="events_tomorrow <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
+             <h3>
+              <a class="tomorrow-topic" href="<?=App::www( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>">
+                <?=$tomorrow['title']?>
+              </a>
+            </h3>
+            <?php if( file_exists( WP.DS.'media'.DS.$tomorrow['folder'].DS.'gallery'.DS.'promote.jpg' ) ): ?>
+              <a href="<?=App::www( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>">
+                <img src="<?=App::media( $tomorrow['folder']."/gallery/promote.jpg" )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $tomorrow['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview-promote.jpg' )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
+              </a>
+            <?php endif;?>
+            <div class="event_list_info">
+              <span class="icon-home gray"></span> <?=$tomorrow['address']?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $tomorrow['event_date'] ,'long')?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-time gray"></span> <?=$tomorrow['event_hours']?>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <article class="events_tomorrow">
+          <p> No se han encontrado eventos para esta fecha </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+    <div id="n3" class="month<?=$this->mobile?>">
+      <?php if( ! empty($this->month) ): ?>
+        <?php $class=true;?>
+        <?php foreach($this->month AS $month): ?>
+          <article class="events_month <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
+             <h3>
+              <a class="month-topic" href="<?=App::www( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>">
+                <?=$month['title']?>
+              </a>
+            </h3>
+            <?php if( file_exists( WP.DS.'media'.DS.$month['folder'].DS.'gallery'.DS.'promote.jpg' ) ): ?>
+              <a href="<?=App::www( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>">
+                <img src="<?=App::media( $month['folder']."/gallery/promote.jpg" )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
+              </a>
+            <?php else: ?>
+              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $month['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview-promote.jpg' )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
+              </a>
+            <?php endif;?>
+            <div class="event_list_info">
+              <span class="icon-home gray"></span> <?=$month['address']?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $month['event_date'] ,'long')?>
+              <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-time gray"></span> <?=$month['event_hours']?>
+            </div>
+          </article>
+        <?php endforeach; ?>
+
+      <?php else: ?>
+        <article class="events_month">
+          <p> No se han encontrado eventos para este mes </p>
+        </article>
+      <?php endif; ?>
+    </div>
+
+</div>

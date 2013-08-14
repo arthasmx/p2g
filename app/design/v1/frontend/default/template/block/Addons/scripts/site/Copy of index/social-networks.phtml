@@ -1,0 +1,41 @@
+
+<h1><?=App::xlat('social_networks')?></h1>
+<div class="social-networks-<?=$this->style?>">
+
+  <div class="facebook to-blur">
+    <a href="<?=App::getConfig('url_facebook')?>">
+      <span class="icon-facebook"></span>
+      <?php if( $this->style!='icon' ): ?>
+        <p><?=App::xlat('facebook')?></p>
+      <?php endif; ?>
+    </a>
+  </div>
+
+  <div class="twitter to-blur">
+    <a href="<?=App::getConfig('url_twitter')?>">
+      <span class="icon-twitter"></span>
+      <?php if( $this->style!='icon' ): ?>
+        <p><?=App::xlat('twitter')?></p>
+      <?php endif; ?>
+    </a>
+  </div>
+
+  <div class="youtube to-blur">
+    <a href="<?=App::getConfig('url_youtube')?>">
+      <span class="icon-facetime-video"></span>
+      <?php if( $this->style!='icon' ): ?>
+        <p><?=App::xlat('youtube')?></p>
+      <?php endif; ?>
+    </a>
+  </div>
+
+  <div class="gplus to-blur">
+    <a href="<?=App::getConfig('url_google')?>">
+      <span class="icon-google-plus"></span>
+      <?php if( $this->style!='icon' ): ?>
+        <p><?=App::xlat('gplus')?></p>
+      <?php endif; ?>
+    </a>
+  </div>
+
+</div>

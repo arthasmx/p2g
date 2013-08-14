@@ -1,0 +1,69 @@
+
+<?php if( ! empty($this->articles)): ?>
+  <?php $core = App::module('Core')->getModel('Dates');?>
+  <?php if( App::getDesign()->getCurrentLayout()==="default"): ?>
+    <h1>
+      <?=App::xlat('EVENTS_coming_soon')?>
+    </h1>
+  <?php endif;?>
+
+    <div id="rg-gallery" class="rg-gallery">
+      <div class="rg-thumbs fit-to-design">
+        <div class="es-carousel-wrapper">
+
+          <div class="es-nav">
+            <span class="es-nav-prev">Previous</span>
+            <span class="es-nav-next">Next</span>
+          </div>
+
+          <div class="es-carousel">
+            <ul>
+              <?php foreach ($this->articles AS $article): ?>
+                <li>
+                  <a href="<?=App::base( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+                    <img src="<?=App::media( $article['folder'] . "gallery/thumbnails/slider.jpg" )?>" data-url="<?=App::base( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>" data-large="<?=App::media( $article['folder'] . "gallery/slider.jpg" )?>" alt="<?=$article['title']?>" data-description="<?=$article['title']?>" />
+                  </a>
+                </li>
+              <?php endforeach;?>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<?php endif;?>
+
+<?php 
+/*
+Array
+(
+    [0] => Array
+        (
+            [id] => 374
+            [article_id] => 233
+            [title] => Ojala que ganen los yaquis
+            [seo] => ojala-que-ganen-los-yaquis
+            [article] => Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare, magna sit amet mattis cursus, augue eros malesuada odio, sit amet tincidunt lacus sem in nibh. Nam quis enim sit amet lorem imperdiet tempor. Fusce fermentum dui eget dolor porta gravida. 
+            [email] => 
+            [phone] => 
+            [address] => 
+            [type_id] => 70
+            [type] => eventos
+            [type_name] => Eventos
+            [created] => 2013-01-23 00:38:29
+            [publicated] => 2013-01-23
+            [event_date] => 2013-01-23 00:00:00
+            [stop_publication] => 
+            [username] => robe@gmail.com
+            [author] => Roberto Mejia Bañuelos
+            [language] => es
+            [written] => 1
+            [folder] => /events/2013/01/233/
+            [promote] => enabled
+            [mobile] => enabled
+            [addon] => enabled
+            [status] => enabled
+        )
+ */
+?>

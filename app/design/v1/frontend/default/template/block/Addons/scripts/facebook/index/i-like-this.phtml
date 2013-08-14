@@ -1,0 +1,11 @@
+
+<?php if( App::getEnvironment()== 'devel' ): ?>
+  <div class="pull-left alert alert-warning">
+    <?=App::xlat('devel_facebook_like_fan_page_warning')?>
+  </div>
+<?php else:?>
+  <div class="facebook-like" style="margin-top:30px; width: 100%; background-color:#fff; ">
+    <div class="fb-like-box" data-href="http://www.facebook.com/iglesialamisionmzt" data-width="330" data-show-faces="true" data-stream="false" data-border-color="#ffffff" data-header="false"></div>
+  </div>
+  <div class="aside-block-shadow"></div>
+<?php endif;?>

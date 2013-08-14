@@ -1,0 +1,70 @@
+<head>
+<meta charset="UTF-8" />
+<title><?=isset($this->pageTitle) ? $this->pageTitle:@$this->xd['pageTitle'];?></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0; user-scalable=0;">
+<meta name="author" content="<?=isset($this->pageAuthor) ? $this->pageAuthor:@$this->xd['pageAuthor'];?>" />
+<meta name="copyright" content="<?=isset($this->pageCopyright) ? $this->pageCopyright:@$this->xd['pageCopyright'];?>" />
+<meta name="description" content="<?=isset($this->pageDescription) ? $this->pageDescription:@$this->xd['pageDescription'];?>" />
+<meta name="keywords" content="<?=isset($this->pageKeywords) ? $this->pageKeywords:@$this->xd['pageKeywords'];?>" />
+<meta name="Locality" content="Mazatlan, Mexico" />
+<meta name="lang" content="es" />
+<meta name="revisit-after" content="7 days" />
+
+<!--Links-->
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/bootstrap.css');?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/base.css');?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/docs.css');?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/frontend-intro.css');?>" rel="stylesheet" />
+
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/media-queries/mq.css');?>" rel="stylesheet" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic" rel="stylesheet" type="text/css" />
+
+	<?= App::header()->getLinks();?>
+
+	<?=@$this->xd['_block']['links'];?>
+
+<!--Scripts-->
+  <!--[if IE]>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/html5.js','js');?>"></script>
+  <![endif]-->
+    <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-1.9.1.min.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/bootstrap/bootstrap.min.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/cycle/jquery.cycle.lite.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/jquery.easing.1.3.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/tag-cloud/jquery.tagcloud.js','js');?>" ></script>
+
+    <script>
+        var baseUrl="<?=App::base();?>";
+        var wwwUrl="<?=App::www();?>";
+        var skinUrl="<?=App::skin();?>";
+        var jsUrl="<?=App::url()->get('','js');?>";
+        var jslibUrl="<?=App::url()->get('','jslib');?>";
+        var curLang="<?=App::locale()->getLang();?>";
+        var skinRelative = "<?=App::getDesign()->getRelativeSkinPath()?>";
+        var jsRelative = "<?=App::getDesign()->getRelativeJsPath()?>";
+        var jsLibRelative = "<?=App::getDesign()->getRelativeJsPath("","jslib")?>";
+
+        jQuery(document).ready(function(){
+          <?=App::header()->get_jquery_events();?>
+
+          $.fn.tagcloud.defaults = {
+            size: {start: 12, end: 30, unit: 'px'},
+            color: {start: '#777', end: '#ddd'}
+          };
+          $(function () {
+            $('#cloud-tags a').tagcloud();
+          });
+
+        });
+    </script>
+
+	<?=App::header()->getScripts();?>
+
+	<?=@$this->xd['_block']['scripts'];?>
+
+	<?=@$this->xd['_block']['add'];?>
+
+	<?=App::header()->getCode();?>
+
+</head>

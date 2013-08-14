@@ -1,0 +1,109 @@
+  <?php
+    $namespace = App::module('Core')->getModel('Namespace');
+    $business = $namespace->get( 'business' );
+    $username = $namespace->get( 'user' );
+  ?>
+
+  <div id="add-promotions-tabs">
+
+    <ul class="tabs_title">
+      <li><a href="#tabs-1"><?=App::xlat('promotions_title')?></a></li>
+    </ul>
+
+    <div id="tabs-1">
+      <form id="promotions">
+
+        <div class="left-fieldset">
+
+          <fieldset id="promotions_pix">
+            <legend><?=App::xlat('promotions_description')?></legend>
+
+                <dl class="element field-start type-text">
+                  <dt class="label"><label for="start"><?=App::xlat('date_start')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->start?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-finish type-text">
+                  <dt class="label"><label for="finish"><?=App::xlat('date_finish')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->finish?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-onclick_action type-text">
+                  <dt class="label"><label for="onclick_action"><?=App::xlat('promo_on_click')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->onclick_action?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-onclick_url type-text hidden">
+                  <dt class="label"><label for="onclick_url"><?=App::xlat('promo_on_click_url')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->onclick_url?>
+                  </dd>
+                  <dd class="hint">ex: http://www.google.com</dd>
+                </dl>
+
+                <dl class="element field-main type-checkbox">
+                  <dt class="label"></dt>
+                  <dd class="field">
+                    <?=$this->form->main?>
+                    <span class="add append"><label for="main"><?=App::xlat('promotion_main')?></label></span>
+                  </dd>
+                </dl>
+
+                <dl class="element field-seo type-text">
+                  <dd class="field">
+                    <?=$this->form->description?>
+                  </dd>
+                  <dd class="hint"><?=App::xlat('promo_description')?></dd>
+                </dl>
+
+          </fieldset>
+
+        </div>
+
+        <div class="right-fieldset">
+
+          <fieldset id="promotions_pix">
+            <legend><?=App::xlat('load_image')?></legend>
+              <p><?=App::xlat('load_image_description')?></p>
+
+              <div id="promotions_options">
+                <div id="promotions-filelist"></div>
+                [ <a id="promotions-pick" href="#"> <?=App::xlat('ARTICLE_main_picture_btn_select')?></a> ]
+                [ <a id="promotions-upload" href="#"> <?=App::xlat('ARTICLE_main_picture_btn_upload')?></a> ]
+              </div>
+          </fieldset>
+
+        </div>
+
+
+        <fieldset id="promotions_preview">
+          <legend><?=App::xlat('promotions_preview')?></legend>
+            <span class="gp_response"></span>
+            <div class="uploaded_images">
+              <?php if( ! empty( $business->business['promotions'] ) ): ?>
+                <?=App::module('Addons')->renderBlock("promotions","preview", array("id" => $business->business['promotions']['id'] ));?>
+              <?php endif;?>
+            </div>
+        </fieldset>
+
+
+      </form>
+    </div>
+
+    
+    <div class="button-wrapper">
+
+      <span id="save" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary">
+        <span class="ui-button-text"><?=App::xlat('BUTTON_save')?></span>
+        <span class="ui-button-icon-secondary ui-icon ui-icon-check"></span>
+      </span>
+
+    </div>
+
+  </div>

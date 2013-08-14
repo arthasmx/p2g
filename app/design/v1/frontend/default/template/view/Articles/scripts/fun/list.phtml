@@ -1,0 +1,62 @@
+
+<div role="main" class="container-fluid article">
+
+    <div class="row-fluid fit-to-design">
+      <div class="span8">
+
+       <?php if( ! empty($this->fun['items']) ): ?>
+         <?php $dates = App::module('Core')->getModel('Dates'); ?>
+         <?php foreach($this->fun['items'] AS $fun): ?>
+           <?php $created = $dates->toDate( 11, $fun['created']); ?>
+            <article class="list">
+              <h1><a href="<?=App::base( App::xlat( 'donde_ir' ) ."/". $fun['seo']  )?>"><?=$fun['title']?></a></h1>
+              <?php if( file_exists( WP.DS.'media'.DS.$fun['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+                <a href="<?=App::base( App::xlat( 'donde_ir' ) ."/". $fun['seo']  )?>">
+                  <img src="<?=App::media( $fun['folder']."/gallery/article.jpg" )?>" alt="<?=$fun['title']?>" title="<?=$fun['title']?>" />
+                </a>
+              <?php else: ?>
+                <a href="<?=App::base( App::xlat( 'donde_ir' ) ."/". $fun['seo']  )?>">
+                  <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$fun['title']?>" title="<?=$fun['title']?>" />
+                </a>
+              <?php endif;?>
+
+              <div class="post-info">                        
+                <div class="date">
+                  <span class="month"><?=$dates->translate_date($created['month'],1)?></span>
+                  <span class="day"><?=$created['day']?></span>
+                  <span class="year"><?=$created['year']?></span>
+                </div>                    
+              </div>
+              <div class="post-content">    
+                <p><?=strip_tags($fun['article'])?></p>
+              </div>
+
+              <p class="span pull-right info">
+                <span class="icon-calendar"></span> <?=App::locale()->toDate( $this->article['publicated'] ,'long')?> |
+                <span class="icon-user"></span> <?=$fun['author']?> 
+                <?php if( App::getEnvironment()!=='devel' ):?>
+                  | <span class="icon-comments"></span> <fb:comments-count href="<?=App::base( App::xlat('articulos_singular').'/'. $fun['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
+                <?php endif;?>
+              </p>
+
+            </article>
+
+         <?php endforeach; ?>
+
+         <?= empty($this->fun['pagination_html']) ? '' : $this->fun['pagination_html'];?>
+
+       <?php else:?>
+
+       <?php endif;?>
+
+      </div>
+
+      <div class="span4">
+        <aside>
+          <?=App::module('Addons')->renderBlock("site/index","social-networks", array("style" => "big") )?>
+        </aside>
+      </div>
+
+    </div>
+
+</div>

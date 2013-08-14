@@ -1,0 +1,41 @@
+
+  <?php if( ! empty( $this->events ) ): ?>
+  <?php $separator = "/"; ?>
+  <div class="desktop-only show-on-mini">
+    <h3><span class="icon-star-empty"></span> <?=App::xlat('business_social')?></h3>
+    <div class="row business-social">
+      <?php foreach( $this->events AS $social ): ?>
+        <div class="four mobile twelfths promo-img">
+          <a class="sGal_<?=$social['id']?>_btn">
+            <img src="<?=App::media( '/social'. App::module('Core')->getModel('Dates')->toDate(12, $social['created'] ) . $social['id'] . '/gallery/social.jpg' )?>" alt="<?=$social['description']?>" title="<?=$social['description']?>" />
+          </a>
+          <p class="hide-on-mini date">
+            <?=App::module('Core')->getModel('Dates')->toDate(7, $social['event'] )?> <span class="icon-calendar"></span>
+          </p>
+          <p class="hide-on-mini description"><?=$social['description']?></p>
+          <?=App::module('Addons')->renderBlock("social/index","hidden-images", array('id' => $social['id'], 'created' => $social['created'] ))?>
+        </div>
+      <?php endforeach;?>
+    </div>
+  </div>
+  <?php endif;?>
+
+<?php
+/*
+Array
+(
+  [0] => Array
+    (
+      [id] => 20
+      [business] => toys@toys.com
+      [business_name] => Toys de mazatlan  
+      [username] => 
+      [description] => Mi cumpleaños numero 36, si Dios quiere
+      [event] => 2013-08-12 17:21:43
+      [created] => 2013-07-31 16:13:51
+      [city] => mazatlan
+      [folder] => 1375308204
+      [status] => enabled
+    )
+*/
+?>
