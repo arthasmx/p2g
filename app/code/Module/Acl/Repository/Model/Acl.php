@@ -25,9 +25,9 @@ class Module_Acl_Repository_Model_Acl extends Core_Model_Repository_Model {
 
       // TOWN USERS
       if( ! empty( $this->user_data['privileges']['4'] ) && sizeof($this->user_data['privileges'])===1  ){
-        header("Location: " . App::base() . 'admin/user/town/' . $this->user_data['seo'] );
+        header("Location: " . App::www() . 'www/admin/user/town/' . $this->user_data['seo'] );
       }else{
-        header("Location: " . App::base() . 'admin/' );
+        header("Location: " . App::www() . 'admin/' );
       }
       exit;
     }
