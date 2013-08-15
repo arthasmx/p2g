@@ -1,10 +1,53 @@
+
+<?php
+  $date  = App::module('Core')->getModel('Dates');
+  $class = true;
+?>
+
 <section>
   <ul class="nav nav-tabs news">
     <li class="active"><a href="#news" data-toggle="tab"> <img src="<?=App::media( '/images/mobile/noticias.png' )?>" /> </a></li>
   </ul>
-  <ul class="tab-content news_content">
+  <ul class="tab-content news_content round-bottom">
     <li class="tab-pane active" id="news">
-      <p>cargar los articulos</p>
+
+      <?php if( ! empty($this->articles) ): ?>
+        <?php foreach($this->articles AS $article): ?>
+
+          <article class="news <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
+            <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+              <h5>
+                <a class="news-topic" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+                  <?=$article['title']?>
+                </a>
+              </h5>
+              <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
+                <img src="<?=App::media( $article['folder']."/gallery/aside.jpg" )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+              </a>
+              <time> <span class="icon-calendar"></span> <?=$date->toDate(3, $article['publicated'])?> </time>  
+              <?=$article['article']?>
+              <a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"> <?=App::xlat('read_more')?> <span class="icon-chevron-right"></span> </a>
+
+            <?php else: ?>
+              <h5>
+                <a class="news-topic" href="<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo']  )?>">
+                  <?=$article['title']?>
+                </a>
+              </h5>
+              <a href="<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo']  )?>">
+                <img src="<?=App::media( '/images/article-preview-aside.jpg' )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+              </a>
+              <time> <span class="icon-calendar"></span> <?=$date->toDate(3, $article['publicated'])?> </time>
+              <?=$article['article']?>
+              <a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"> <?=App::xlat('read_more')?> <span class="icon-chevron-right"></span> </a>
+
+            <?php endif;?>
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <h6 class="no-news">No se han encontrado articulos</h6>
+      <?php endif; ?>
+
     </li>
   </ul>
 </section>
