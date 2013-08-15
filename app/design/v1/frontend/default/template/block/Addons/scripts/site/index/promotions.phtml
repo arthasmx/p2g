@@ -1,49 +1,42 @@
 
+<section>
+  <div class="promotions">
+    <p>promociones</p>
 
-<div class="row">
-  <img src="<?=App::media( '/images/mobile/promos.jpg' )?>" alt="" title="" />
-</div>
-
-
-
-
-<div class="promotions pad-top row">
-
-  <div class="row">
-    <img src="<?=App::media( '/images/mobile/promos.jpg' )?>" alt="" title="" />
-  </div>
-
-  <?php if( ! empty( $this->promotions ) ): ?>
-  <?php $separator = "/"; ?>
-    <div class="row">
-      <?php foreach( $this->promotions AS $promotion ): ?>
-        <div class="six mobile twelfths promo-img">
-
+      <?php if( ! empty( $this->promotions ) ): ?>
+        <?php $separator = "/"; ?>
+        <?php foreach( $this->promotions AS $promotion ): ?>
+          <?php $description = App::module('Core')->getModel('Parser')->truncate_string($promotion['description'],50); ?>
           <?php if( $promotion['onclick_action']=='link' && ! empty($promotion['onclick_url'])  ):  ?>
             <?php $url = $promotion['onclick_url'];?>
           <?php else:?>
             <?php $url = App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] );?>
           <?php endif;?>
 
-          <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
-            <a href="<?=$url?>">
-              <img src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$promotion['author']?>" title="<?=$promotion['author']?>" />
-            </a>
-          <?php else: ?>
-            <a href="<?=$url?>" class="business">
-              <?=$promotion['description']?>
-            </a>
-            <br />
-            <time> <span class="icon-calendar"></span> <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6,$promotion['finish'])?> </time>
-          <?php endif;?>
+          <article>
 
-        </div>
-      <?php endforeach;?>
-    </div>
-  <?php else:?>
+            <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
+              <a href="<?=$url?>">
+                <img class="img-responsive" src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$promotion['author']?>" title="<?=$promotion['author']?>" />
+              </a>
+              <p><?=$description?></p>
+            <?php else: ?>
+              <p class="capitalize"> <span class="icon-certificate"></span> <a href="<?=$url?>"> <?=$description?> </a> </p>
 
-  <?php endif;?>
-</div>
+            <?php endif;?>
+
+          </article>
+
+        <?php endforeach;?>
+
+      <?php else:?>
+        <article>
+          <p>No existen promociones vigentes</p>
+        </article>
+      <?php endif;?>
+
+  </div>
+</section>
 
 <?php 
 /*

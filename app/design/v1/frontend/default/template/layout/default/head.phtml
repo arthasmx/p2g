@@ -46,6 +46,13 @@
         jQuery(document).ready(function(){
           <?=App::header()->get_jquery_events();?>
 
+
+          $(window).resize(function() {
+            $('#screen-w').html($(window).width())
+            $('#screen-h').html($(window).height())
+          });
+
+
           $.fn.tagcloud.defaults = {
             size: {start: 10, end: 14, unit: 'px'},
             color: {start: '#777', end: '#ddd'}
