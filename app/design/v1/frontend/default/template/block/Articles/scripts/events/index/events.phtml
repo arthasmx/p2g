@@ -38,7 +38,7 @@
                 <?php endif;?>
                 <div class="event_list_info">
                   <span class="icon-home  gray"></span> <?=$today['address']?>
-                  <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $today['event_date'] ,'long')?>
+                  <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=$date->toDate(3,$today['event_date'])?>
                   <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-time gray"></span> <?=$today['event_hours']?>
                 </div>
               </article>
@@ -73,7 +73,7 @@
                 <?php endif;?>
                 <div class="event_list_info">
                   <span class="icon-home gray"></span> <?=$tomorrow['address']?>
-                  <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $tomorrow['event_date'] ,'long')?>
+                  <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-calendar gray"></span> <?=$date->toDate(3, $tomorrow['event_date'])?>
                   <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span>  <span class="icon-time gray"></span> <?=$tomorrow['event_hours']?>
                 </div>
               </article>
@@ -107,7 +107,7 @@
                 <?php endif;?>
                 <div class="event_list_info">
                   <span class="icon-home gray"></span> <?=$month['address']?>
-                  <br class="show-when-small" /> <span class="hide-from-small">|</span>  <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $month['event_date'] ,'long')?>
+                  <br class="show-when-small" /> <span class="hide-from-small">|</span>  <span class="icon-calendar gray"></span> <?=$date->toDate(3, $month['event_date'])?>
                   <br class="show-when-small" /> <span class="hide-from-small">|</span>  <span class="icon-time gray"></span> <?=$month['event_hours']?>
                 </div>
               </article>
