@@ -16,28 +16,40 @@
 "dormir_en","dormir-en"
 "donde_ir","a-donde-ir"
 
-"municipio","/municipio/"
-"municipios","/municipios/"
+"route_municipio","/municipio/"
+"route_municipios","/municipios/"
+
+
+
+
 
 ; SECTIONS
-"image-gallery","Galería de fotos"
-"municipios","Municipios"
-"informacion","Información"
-"historia","Historia"
-"gastronomia","Gastronomía"
-"como-llegar","Como llegar ?"
-"hoteles","Hoteles"
-"restaurantes","Restaurantes"
-"antros-bares","Antros & Bares"
-"artesanias","Artesanías"
-"mapa-turistico","Mapa Turístico"
-"lugares-interes","Lugares de Interés"
-"personajes-ilustres","Personajes ilustres"
-"pueblos-cercanos","Pueblos Cercanos"
-"eventos-annio","Eventos del año"
-"playas","Playas"
-"zona-turistica","Zona Turística"
-"malecon","Malecón"
+
+  "cafes-y-restaurantes","Cafés y Restaurantes"
+  "ninos","Niños"
+  "atractivos-culturales","Atractivos Culturales"
+  "atractivos-naturales","Atractivos Naturales"
+  "actividades-recreativas","Actividades Recreativas"
+   
+
+  "image-gallery","Galería de fotos"
+  "municipios","Municipios"
+  "informacion","Información"
+  "historia","Historia"
+  "gastronomia","Gastronomía"
+  "como-llegar","Como llegar ?"
+  "hoteles","Hoteles"
+  "restaurantes","Restaurantes"
+  "antros-bares","Antros & Bares"
+  "artesanias","Artesanías"
+  "mapa-turistico","Mapa Turístico"
+  "lugares-interes","Lugares de Interés"
+  "personajes-ilustres","Personajes ilustres"
+  "pueblos-cercanos","Pueblos Cercanos"
+  "eventos-annio","Eventos del año"
+  "playas","Playas"
+  "zona-turistica","Zona Turística"
+  "malecon","Malecón"
 
 
 ;ROUTES

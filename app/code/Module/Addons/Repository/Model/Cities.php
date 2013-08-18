@@ -31,6 +31,27 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
 
   }
 
+  function get_towns_from_city($city='mazatlan', $enabled_only = true){
+    $select    = $this->_db->select()
+                           ->from(array('st'  => 'site_towns') )
+                           ->where('st.city = ?', $city)
+                           ->where('st.seo != ?', $city)
+                           ->order('st.sort ASC');
+
+    if( $enabled_only===true ){
+      $select->where('st.status = ?','enabled');
+    }
+
+    $towns = $this->_db->query( $select )->fetchAll();
+
+    if ( empty( $towns ) ){
+      return null;
+    }else{
+      return $towns;
+    }
+
+  }
+
 
 
   function town($town='town-was-not-given!',$section_style='edit', $status=null){
@@ -167,9 +188,10 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
       return array();
     }
     $select = $this->_db->select()
-                        ->from(array('st'  => 'site_town_sections') )
-                        ->where('st.town   = ?', $town)
-                        ->where('st.status = ?', 'enabled');
+                        ->from(array('sts'  => 'site_town_sections') )
+                        ->join(array('st'  => 'site_towns'),'st.seo = sts.town',array('folder') )
+                        ->where('sts.town   = ?', $town)
+                        ->where('sts.status = ?', 'enabled');
     $sections = $this->_db->query( $select )->fetchAll();
 
     return empty($sections)? array(): $sections;

@@ -1,0 +1,71 @@
+
+  <div class="row">
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+
+
+
+    <div class="col-lg-6 col-sm-6 sections">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+      <?php $icon_by_tag = array( "cafes-y-restaurantes"    => "icon-coffee",
+                                  "ninos"                   => "icon-gamepad",
+                                  "hoteles"                 => "icon-hospital",
+                                  "bares"                   => "icon-glass",
+                                  "atractivos-culturales"   => "icon-smile",
+                                  "atractivos-naturales"    => "icon-leaf",
+                                  "actividades-recreativas" => "icon-dribbble" );
+      ?>
+
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li> <span class="icon-map-marker"></span> <a href="<?=App::www( App::xlat('donde_ir') )?>"> <?=App::xlat('breadcrumb_donde_ir')?> </a> </li>
+        <li> <span class="<?=$icon_by_tag[$this->category]?>"></span> <a href="<?=App::www( App::xlat('donde_ir') . '/' . $this->category )?>"> <?=App::xlat($this->category)?> </a> </li>
+        <li class="active"> <span class="icon-question-sign"></span> <?=$this->tag['name']?> </li>
+      </ol>
+
+      <h3><?=$this->tag['name']?></h3>
+
+      <?php $colors = array("l_red","l_orange","l_brown","l_gray","l_blue","l_yellow","l_cyan","l_purple","l_pink","l_green"); $loop=0; ?>
+
+      <?php if ( ! empty($this->business) ): ?>
+
+        <?php foreach( $this->business AS $business ): ?>
+
+            <figure class="<?=$colors[$loop]?> round-top">
+              <header><?=$business['title']?></header>
+              <a href="<?=App::www( App::xlat('empresas_singular') . '/' . $business['seo']  )?>">
+                <?php if( file_exists( WP . DS . 'media' . DS . $business['folder'] . DS . 'gallery'. DS .'category.jpg' ) ): ?>
+                  <?php $img = App::media( $business['folder'] .'gallery/category.jpg'); ?>
+                <?php else: ?>
+                  <?php $img = App::media('/images/missing-category.png'); ?>
+                <?php endif; ?>
+                <img class="img-responsive" src="<?=$img?>" alt="<?=$business['title']?>" />
+              </a>
+              <figcaption>
+                <?=substr( $business['article'] , 0, 100)?>...
+              </figcaption>
+            </figure>
+            <?php $loop=($loop>=9)?0:$loop+1;?>
+
+        <?php endforeach; ?>
+      <?php endif; ?>
+      
+    </div>
+
+
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+    </div>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
+
+  </div>

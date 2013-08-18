@@ -10,42 +10,16 @@ class IndexController extends Module_Default_Controller_Action_Frontend {
   }
 
   function aboutUsAction(){
-    $this->view->current_menu    = $this->getRequest()->getParam('action');
     $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action'),true,true );
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_about_us'), 'icon'=>'icon-group' );
-  }
-
-  function doctrineAction(){
-    $this->view->current_menu    = 'doctrina';
-    App::module('Core')->getModel('Libraries')->twitter_bootstrap_slider('#doctrine-carousel');
-
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_doctrine'), 'icon'=>'icon-briefcase' );
-  }
-
-  function ministeryAction(){
-    $this->view->current_main_menu = 2;
-    $this->view->article           = App::module('Articles')->getModel('Article')->get_article( 'ministerios' );
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_ministeries'), 'icon'=>'icon-briefcase' );
-  }
-
-  function cellAction(){
-    $this->view->current_menu = 'celulas';
-    $this->view->cells        = App::module('Addons')->getModel('Cells')->cells(true,true);
-    $this->view->sectors      = App::module('Addons')->getModel('Cells')->sectors(true,true);
-    $this->view->zones        = App::module('Addons')->getModel('Cells')->zones(true,true);
-
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_cell'), 'icon'=>'icon-group' );
   }
 
   function contactUsAction(){
     $libraries = App::module('Core')->getModel('Libraries');
     $libraries->contact();
     $libraries->block_ui();
-    $libraries->jquery_vegas_default('contact','01');
 
     $this->view->current_menu    = $this->getRequest()->getParam('action');
     $this->view->form            = $this->_module->getModel('Forms/Contact')->get();
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_contact'), 'icon'=>'icon-envelope' );
   }
 
   function captchaContactRefreshAction(){
@@ -81,32 +55,21 @@ class IndexController extends Module_Default_Controller_Action_Frontend {
     exit;
   }
 
-
-
-  function howThisWorksAction(){
-    $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action') ,true,true );
-    App::module('Core')->getModel('Libraries')->jquery_vegas_default('how-it-works');
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_terms'), 'icon'=>'icon-edit' );
+  function registerAction(){
+    
   }
 
-  function siteRequirementsAction(){
-    $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action'),true,true );
-    App::module('Core')->getModel('Libraries')->jquery_vegas_default('requirement');
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_requirements'), 'icon'=>'icon-cog' );
+  function phoneSosAction(){
+  
   }
-
-  function termsConditionsAction(){
-    $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action'),true,true );
-    App::module('Core')->getModel('Libraries')->jquery_vegas_default('conditions');
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_terms'), 'icon'=>'icon-edit' );
-  }
+  
 
 
 
-  function strategiesAction(){
-//    $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action'),true,true );
-    $this->view->pageBreadcrumbs = array('title'=> App::xlat('breadcrumb_strategies'), 'icon'=>'icon-cogs' );
-  }
+
+
+
+
 
   function calendarAction(){
 //    $this->view->article         = App::module('Articles')->getModel('Article')->read_full_article( $this->getRequest()->getParam('action'),true,true );
@@ -173,6 +136,8 @@ class IndexController extends Module_Default_Controller_Action_Frontend {
     $this->hotelesAction();
   }
 
+  
+  
 /* DOWNLOADS */
 
   function downloadArticleAddonAction(){

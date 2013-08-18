@@ -1,0 +1,74 @@
+
+  <div class="row">
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+
+
+
+    <div class="col-lg-6 col-sm-6 sections">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li> <span class="icon-road"></span> <a href="<?=App::www('pueblos')?>"><?=App::xlat('breadcrumb_town')?></a></li>
+        <li class="active"> <span class="icon-question-sign"></span> <?=$this->town?> </li>
+      </ol>
+
+      <h3><?=App::xlat('getting_to_know')?> <?=$this->town?></h3>
+      
+      <?php $colors = array("l_red","l_orange","l_brown","l_gray","l_blue","l_yellow","l_cyan","l_purple","l_pink","l_green"); $loop=0; ?>
+
+      <?php if ( ! empty($this->sections) ): ?>
+        <?php foreach( $this->sections AS $section ): ?>
+          <figure  class="<?=$colors[$loop]?> round-top">
+            <header><?=App::xlat($section['section'])?></header>
+            <a href="<?=App::www( $section['town'] . '/municipio/' . $section['town'] . '/' . $section['section'] )?>">
+              <img width="160" class="img-responsive" src="<?=App::media('/cities' . $section['folder']. 'sections/'.$section['section'].'/main.jpg')?>" alt="<?=App::xlat($section['section'])?>" />
+            </a>
+            <figcaption>
+              <?=substr( $section['article'] , 0, 100)?>...
+            </figcaption>
+          </figure>
+          <?php $loop=($loop>=9)?0:$loop+1;?>
+        <?php endforeach; ?>
+      <?php endif; ?>
+
+    </div>
+
+
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+    </div>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
+
+  </div>
+
+
+<?php 
+/*
+Array
+(
+  [0] => Array
+    (
+      [id] => 26
+      [town] => concordia
+      [section] => informacion
+      [article] => Concordia - Aliquam erat volutpat. Maecenas rutrum malesuada pulvinar. Donec auctor fringilla ligula eu fringilla. Donec rutrum aliquet elit. Maecenas tempor laoreet lacus ac egestas. Aliquam aliquam, ante a suscipit tempus, dui tortor eleifend magna, egestas vulputate justo nibh dignissim diam. Mauris nunc nulla, malesuada blandit rutrum ac, dignissim vitae nibh. Proin pharetra blandit neque consequat condimentum. Aliquam dapibus consectetur consectetur. Pellentesque porta sagittis massa. Nullam scelerisque metus non lorem semper non ullamcorper purus congue. Ut ac condimentum tellus. Nulla nunc turpis, dignissim ac pulvinar a, dictum quis mauris. Phasellus ut arcu id ipsum congue convallis. Nullam pharetra adipiscing orci, ut semper leo pellentesque at.
+      [status] => enabled
+      [created] => 2013-07-04 22:00:33
+      [author] => robe@gmail.com
+      [folder] => /mazatlan/towns/concordia/
+    )
+ */
+
+?>

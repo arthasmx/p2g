@@ -20,21 +20,20 @@
             <li><a href="<?=App::www()?>"> <span class="icon-home"></span> <?=App::xlat('home')?></a></li>
           <?php endif; ?>
 
-          <li><a href="<?=App::www()?>"> <span class="icon-question-sign"></span> Mazatlán</a></li>
+          <li><a href="<?=App::www('mazatlan/municipio/mazatlan')?>"> <span class="icon-question-sign"></span> Mazatlán</a></li>
 
           <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'hoteles' )?>"> <span class="icon-hospital"></span> Hoteles</a></li>
           <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'cafes-y-restaurantes' )?>"> <span class="icon-coffee"></span> Cafés &amp; Restaurantes</a></li>
           <li class="visible-sm"><a tabindex="-1" href="<?=App::www( 'bares' )?>"> <span class="icon-glass"></span> Antros &amp; Bares</a></li>
 
-          <li><a tabindex="-1" href="#"> <span class="icon-road"></span> Pueblos</a></li>
-          <li><a tabindex="-1" href="#"> <span class="icon-map-marker"></span> A donde ir ?</a></li>
+          <li><a tabindex="-1" href="<?=App::www( 'pueblos' )?>"> <span class="icon-road"></span> Pueblos</a></li>
+          <li><a tabindex="-1" href="<?=App::www( 'a-donde-ir' )?>"> <span class="icon-map-marker"></span> A donde ir ?</a></li>
           <li><a tabindex="-1" href="<?=App::www( App::xlat('eventos') )?>"> <span class="icon-music"></span> Eventos</a></li>
           <li><a tabindex="-1" href="<?=App::www( App::xlat('articulos') )?>"> <span class="icon-info"></span> Noticias</a></li>
           <li><a tabindex="-1" href="<?=App::www( App::xlat('promociones') )?>"> <span class="icon-gift"></span> Promociones</a></li>
           <li class="hidden"><a tabindex="-1" href="<?=App::www()?>"> <span class="icon-bookmark-empty"></span> Agencia de viajes</a></li>
           <li class="hidden"><a tabindex="-1" href="<?=App::www()?>"> <span class="icon-building"></span> Bienes y raices</a></li>
-          <li><a tabindex="-1" href="<?=App::www()?>" class="no-border"> <span class="icon-phone"></span> Telefonos SOS</a></li>
-          <li class="hidden"><a tabindex="-1" href="<?=App::www()?>" class="no-border"> <span class="icon-pencil"></span> Registrarse</a></li>
+          <li><a tabindex="-1" href="<?=App::www('telefonos-emergencia')?>" class="no-border"> <span class="icon-phone"></span> Telefonos SOS</a></li>
 
           <li class="header hidden-sm"> <h5><?=App::xlat('join_us')?></h5> </li>
           <li><a tabindex="-1" href="<?=App::www('login')?>"> <span class="icon-key"></span> <?=App::xlat('login')?></a></li>

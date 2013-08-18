@@ -4,7 +4,7 @@ require_once 'Module/Acl/Controller/Action/Frontend.php';
 class Acl_IndexController extends Module_Acl_Controller_Action_Frontend {
 
   function preDispatch(){
-    $this->designManager()->setCurrentLayout('login');
+    // $this->designManager()->setCurrentLayout('login');
   }
 
   function loginAction(){

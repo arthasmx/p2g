@@ -24,28 +24,11 @@
   "addon_video","Video"
   "addon_links","Links"
 
-  "breadcrumb_strategy","Estrategia de Jesus"
-  "breadcrumb_activities","Calendario de eventos"
-  "breadcrumb_join_us","Unete al Movimiento"
-  "breadcrumb_pray","Predicaciones"
 
-  "breadcrumb_about_us","Quienes Somos ?"
-  "breadcrumb_doctrine","Doctrina"
-  "breadcrumb_ministeries","Ministerios"
-  "breadcrumb_cell","Células"
-  "breadcrumb_next_events","Proximos Eventos"
-  "breadcrumb_prev_events","Eventos Anteriores"
-    "breadcrumb_announcements","Anuncios"
-    "breadcrumb_articles","Artículos"
-  "breadcrumb_contact","Contactenos"
+;BREADCRUMBS
 
-  "breadcrumb_map","Mapa del Sitio"
-  "breadcrumb_requirements","Requisitos del Sitio"
-  "breadcrumb_terms","Términos y Condiciones"
-
-  "breadcrumb_strategies","Estrategias de Jesús"
-  "breadcrumb_join","Únete al movimiento"
-  "breadcrumb_preaching","Predicaciones"
+  "breadcrumb_town","Pueblos"
+  "breadcrumb_donde_ir","A donde ir ?"
 
 
 "event_where_when_time","Donde ? Cuando ? A que hora ?"
@@ -55,10 +38,15 @@
 
   "read_more","leer más..."
   "contact_us","Contáctenos"
+  "phone_sos","Telefonos de Emergencia"
   "how_does_this_work","Cómo funciona ?"
   "phones","Teléfonos"
   "contact_email","Correo electrónico"
   "facebook_comments","Comenta este artículo con tu cuenta de Facebook"
+
+  "getting_to_know","Conoce "
+  "town_list_of","Municipios de la ciudad de "
+  "town",""
 
   "preaching_empty", "No se han encontrado predicaciones"
   "download","Descargar"

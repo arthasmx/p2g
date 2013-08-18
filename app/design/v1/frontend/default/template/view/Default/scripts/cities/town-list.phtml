@@ -1,0 +1,75 @@
+
+  <div class="row">
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+
+
+
+    <div class="col-lg-6 col-sm-6 sections town-list">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li> <span class="icon-question-sign"></span> <a href="<?=App::www('mazatlan/municipio/mazatlan')?>"> Mazatlán </a></li>
+        <li class="active"> <span class="icon-road"></span> Pueblos</li>
+      </ol>
+
+      <h3><?=App::xlat('town_list_of')?> Mazatlán</h3>
+
+      <?php $colors = array("l_red","l_orange","l_brown","l_gray","l_blue","l_yellow","l_cyan","l_purple","l_pink","l_green"); $loop=0; ?>
+
+      <?php if ( ! empty($this->towns) ): ?>
+        <?php foreach( $this->towns AS $town ): ?>
+          <figure  class="<?=$colors[$loop]?> round-top">
+            <header><?=App::xlat($town['name'])?></header>
+            <a href="<?=App::www( $town['city'] . '/municipio/' . $town['seo'] )?>">
+              <img class="img-responsive" src="<?=App::media('/cities/' . $town['folder']. '/gallery/listing.jpg')?>" alt="<?=$town['name']?>" />
+            </a>
+            <figcaption>
+              <?=substr( $town['article'] , 0, 100)?>...
+            </figcaption>
+          </figure>
+          <?php $loop=($loop>=9)?0:$loop+1;?>
+        <?php endforeach; ?>
+      <?php endif; ?>
+
+    </div>
+
+
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","promotions")?>
+    </div>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
+
+  </div>
+
+
+<?php 
+/*
+Array
+(
+  [0] => Array
+    (
+      [id] => 3
+      [city] => mazatlan
+      [name] => Rosario
+      [seo] => rosario
+      [article] => El pueblo del Rosario Sinaloa
+      [author] => robe@gmail.com
+      [folder] => /mazatlan/towns/rosario/
+      [created] => 2013-07-04 21:55:11
+      [sort] => 2
+      [status] => enabled
+    )
+ */
+?>
