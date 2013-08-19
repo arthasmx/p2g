@@ -48,6 +48,10 @@ class Addons_Site_IndexBlockController extends Core_Controller_Block {
   }
 
   function topMenuAction(){
+    $padding = $this->getParam('padding');
+    if( ! empty( $padding ) ){
+      $this->view->set_padding = " pad-left-right-10 ";
+    }
   }
 
   function promotionsAction(){

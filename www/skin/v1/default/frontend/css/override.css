@@ -240,6 +240,10 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .panel #captcha-input{width: 5em; display: inline-block;}
 
 
+  /* ABOUT US */
+  .about-us p{color: white;}
+  
+  
 
 /* MEDIA QUERIES FOR THIS SITE */
 
