@@ -17,7 +17,6 @@ class Articles_EventsController extends Module_Articles_Controller_Action_Fronte
 
   function listAction(){
     $this->view->events = $this->_module->getModel('Article')->get_article_list( $this->getRequest()->getParam( App::xlat('route_paginator_page') ), App::xlat('eventos') ,false,false,false,'enabled' );
-    $this->view->pageBreadcrumbs = array('title'=> ucwords( App::xlat('eventos') ), 'icon'=>'icon-file');
   }
 
   function nextAction(){

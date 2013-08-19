@@ -9,7 +9,7 @@ class Module_Core_Repository_Model_Abstract extends Core_Model_Repository_Model 
   public $filter_section      = false;
 
   protected $ajax_callback_method = null;
-  protected $items_per_page  = 10;
+  protected $items_per_page  = 3;
   protected $datafilter      = false;
   protected $datasorter	     = false;
   protected $datafilter_render_style = false;

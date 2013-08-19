@@ -21,6 +21,7 @@ class Module_Core_Repository_Model_Dates extends Core_Model_Repository_Model {
       date_default_timezone_set('America/Mazatlan');
     }
 
+    $full_day = null;
     $datetime = new DateTime($date);
     switch ($formato) {
       case 0:
@@ -45,6 +46,7 @@ class Module_Core_Repository_Model_Dates extends Core_Model_Repository_Model {
         $fecha=$datetime->format('D j M Y');
         break;
       case 7:
+        $full_day = true;
         $fecha=$datetime->format('l j F Y');
         break;
       case 8:
@@ -68,6 +70,9 @@ class Module_Core_Repository_Model_Dates extends Core_Model_Repository_Model {
       case 12: // Convers Year/Month using the operating system directory separator
         $fecha  = $datetime->format(DS.'Y'.DS.'m'.DS);
         break;
+      case 13: // Convers Year/Month using the operating system directory separator
+          $fecha=$datetime->format('j M');
+          break;
 
       default:
         //$fecha=$datetime->format('M j, Y');
@@ -77,7 +82,7 @@ class Module_Core_Repository_Model_Dates extends Core_Model_Repository_Model {
 
     // Si locale NO es INGLES, traducimos; Porque ? porque el mySQL que tengo x default esta en ingles
     if(App::locale()->getLang()!='en'){
-      if($formato>6){
+      if($full_day==true){
         // Dias completos
         $englishDates=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
         $spanishDates=array(App::xlat('dates_long_day_7'),App::xlat('dates_long_day_1'),App::xlat('dates_long_day_2'),App::xlat('dates_long_day_3'),App::xlat('dates_long_day_4'),App::xlat('dates_long_day_5'),App::xlat('dates_long_day_6'));

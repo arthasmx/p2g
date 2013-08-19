@@ -10,49 +10,43 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections">
+    <div class="col-lg-8 col-sm-9 sections events">
 
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('about_us')?> </li>
+        <li class="active"> <span class="icon-music"></span> <?=App::xlat('event_list')?> </li>
       </ol>
 
-      <h3><?=App::xlat('about_us')?></h3>
+      <h3><?=App::xlat('event_list')?></h3>
 
-           <?php if( ! empty($this->events['items']) ): ?>
+       <?php if( ! empty($this->events['items']) ): ?>
+         <?php $dates = App::module('Core')->getModel('Dates'); ?>
 
-             <?php foreach($this->events['items'] AS $event): ?>
-                <article class="event_list">
-                  <h3> <a class="topic" href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>"><?=$event['title']?></a> </h3>
+         <?php foreach($this->events['items'] AS $event): ?>
 
-                  <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
-                    <a href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>">
-                      <img src="<?=App::media( $event['folder']."/gallery/article.jpg" )?>" alt="<?=$event['title']?>" title="<?=$event['title']?>" />
-                    </a>
-                  <?php else: ?>
-                    <a href="<?=App::www( App::xlat( $event['type'].'_singular' ) ."/". $event['seo']  )?>">
-                      <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$event['title']?>" title="<?=$event['title']?>" />
-                    </a>
-                  <?php endif;?>
+           <figure class="round-bottom" >
+             <a href="<?=App::www( App::xlat('eventos_singular') . '/' . $event['seo'] )?>">
+               <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
+                 <?php $img = App::media( $event['folder']."/gallery/category.jpg" ); ?>
+               <?php else: ?>
+                 <?php $img = App::media('/images/missing-category.png'); ?>
+               <?php endif; ?>
+               <img class="img-responsive" src="<?=$img?>" alt="<?=App::xlat($event['title'])?>" />
+             </a>
+             <figcaption>
+               <h1><?=$event['address']?></h1>
+               <time><?=$dates->toDate(13,$event['created'])?></time><br />
+               <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
+             </figcaption>
+           </figure>
+         <?php endforeach; ?>
 
-                  <div class="event_list_info">
-                    <span class="icon-home gray"></span> <?=$event['address']?>
-                    <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $event['publicated'] ,'long')?>
-                    <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-time gray"></span> <?=$event['event_hours']?>
-                   <?php if( App::getEnvironment()!=='devel' ):?>
-                      <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-comments gray"></span> <fb:comments-count href="<?=App::www( App::xlat('eventos_singular').'/'. $event['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
-                    <?php endif;?>
-                  </div>
-                  <?=$event['article']?>
-                </article>
-    
-             <?php endforeach; ?>
-             <?= empty($this->events['pagination_html']) ? '' : $this->events['pagination_html'];?>
-    
-           <?php else:?>
-             <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
-           <?php endif;?>
+         <?=$this->events['pagination_html']?>
+
+       <?php else:?>
+         <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
+       <?php endif;?>
 
     </div>
 
@@ -62,3 +56,38 @@
     </div>
 
   </div>
+
+<?php 
+/*
+
+Array
+(
+    [id] => 7
+    [article_id] => 7
+    [title] => Evento probando las horas y minutos
+    [seo] => evento-probando-las-horas-y-minutos
+    [article] => Descripcion del evento
+    [email] => 
+    [phone] => 
+    [address] => Preparatoria Ruben Jaramillo
+    [type_id] => 70
+    [type] => eventos
+    [type_name] => Eventos
+    [created] => 2013-08-04 02:54:44
+    [publicated] => 2013-08-04
+    [event_date] => 2013-08-23
+    [event_hours] => 10:00
+    [stop_publication] => 2013-08-24
+    [username] => robe@gmail.com
+    [author] => Places to go! 
+    [language] => es
+    [written] => 1
+    [folder] => /events/2013/08/7/
+    [promote] => enabled
+    [mobile] => enabled
+    [addon] => enabled
+    [status] => enabled
+)
+
+ */
+?>

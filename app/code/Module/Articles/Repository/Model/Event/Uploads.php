@@ -48,6 +48,10 @@ class Module_Articles_Repository_Model_Event_Uploads extends Core_Model_Reposito
     $uploaded_file      = App::module('Core')->getModel('Filesystem')->plUploader_upload( $path_to_save , "main.jpg" );
 
     $image = App::module('Core')->getModel('Image');
+
+// category listing
+    $image->resize_image($uploaded_file, $this->image_config['category_width'], $this->image_config['category_height'],'crop');
+    $image->saveImage( $path_to_save . 'category.jpg', 80 );
 // listing
     $image->resize_image($uploaded_file, $this->image_config['list_width'], $this->image_config['list_height'],'crop');
     $image->saveImage( $path_to_save . 'listing.jpg', 80 );

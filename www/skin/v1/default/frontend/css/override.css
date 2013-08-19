@@ -221,9 +221,9 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
   .sections ol.breadcrumb span{color: white;}
   .sections ol.breadcrumb a{color: white; text-decoration: underline;}
   .sections ol.breadcrumb a:hover{color: #ccc;}
-  
-  .sections h3{margin:0 0 10px; color:white;}  
-  
+
+  .sections h3{margin:0 0 10px; color:white;}
+
   .sections figure{display:inline-block; width: 170px; text-align: center; margin:10px 5px;}
     .sections.town-list figure{width: 265px;}
   .sections figure header{padding: 10px; color:white;}
@@ -242,6 +242,16 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
   /* ABOUT US */
   .about-us p{color: white;}
+
+
+  /* EVENTOS LISTING */
+    .events figure{width: 160px; float: left;}
+    .events figure figcaption h1{color: white; font-size: 12px; margin: 0 0 10px;}
+    .events figure figcaption time{color:#1C7DB2; font-weight: bold;}
+    .events figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:5px;}
+  
+  
+  
   
   
 
