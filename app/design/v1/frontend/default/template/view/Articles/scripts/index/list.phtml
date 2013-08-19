@@ -1,9 +1,24 @@
 
-  <div class="container">
-    <article class="row">
+  <div class="row">
 
-      <section class="three fifths right-one padded no-top-pad">
-          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+
+
+    <div class="col-lg-8 col-sm-9 sections">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('about_us')?> </li>
+      </ol>
+
+      <h3><?=App::xlat('about_us')?></h3>
 
            <?php if( ! empty($this->articles['items']) ): ?>
 
@@ -37,16 +52,11 @@
              <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
            <?php endif;?>
 
+    </div>
 
 
-      </section>
-      <aside class="one fifth left-three desktop-only">
-        <?=App::module('Addons')->renderBlock("site/index","logo")?>
-        <?=App::module('Addons')->renderBlock("site/index","menu")?>
-      </aside>
-      <aside class="one fifth">
-        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-      </aside>
-    </article>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
 
   </div>

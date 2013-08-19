@@ -1,14 +1,27 @@
 
-  <div class="container">
-    <article class="row">
+  <div class="row">
 
-      <section class="three fifths right-one padded no-top-pad">
-          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
+
+
+    <div class="col-lg-8 col-sm-9 sections promotions">
+
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('business_promotions')?> </li>
+      </ol>
+
+      <h3> <?=App::xlat('business_promotions')?> </h3>
 
            <?php if( ! empty($this->promotions['items']) ): ?>
 
-             <h3 class="topic"> <?=App::xlat('business_promotions')?> </h3>
-           
              <?php foreach($this->promotions['items'] AS $promotion): ?>
                 <article class="promotions_list">
 
@@ -40,26 +53,19 @@
 
              <?php endforeach; ?>
              <?= empty($this->promotions['pagination_html']) ? '' : $this->promotions['pagination_html'];?>
-    
-           <?php else:?>
-             <h3 class="topic"> <?=App::xlat('business_promotions')?> </h3>
+
            <?php endif;?>
 
 
+    </div>
 
-      </section>
-      <aside class="one fifth left-three desktop-only">
-        <?=App::module('Addons')->renderBlock("site/index","logo")?>
-        <?=App::module('Addons')->renderBlock("site/index","menu")?>
-      </aside>
-      <aside class="one fifth">
-        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-      </aside>
-    </article>
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
 
   </div>
-
-  
+ 
   
 <?php 
 /*

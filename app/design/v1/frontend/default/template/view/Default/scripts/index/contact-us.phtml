@@ -10,9 +10,9 @@
     </div>
 
 
+    <div class="col-lg-8 col-sm-9 sections contact-us">
 
-    <div class="col-lg-6 col-sm-6 sections">
-      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
         <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('contact_us')?> </li>
@@ -23,10 +23,6 @@
     </div>
 
 
-
-    <div class="col-lg-2 col-sm-3 pad-left-right-5">
-      <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>

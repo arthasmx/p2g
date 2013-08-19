@@ -1,26 +1,36 @@
 
-  <div class="container">
-    <article class="row">
+  <div class="row">
 
-      <section class="three fifths right-one padded no-top-pad">
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
 
-          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
 
-          <article class="read-new">
-            <h1><?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?></h1>
-            <?=App::module('Addons')->renderBlock("site/index","town-gallery", array( 'town'=>$this->town['town'], 'folder'=>$this->town['folder'], 'city'=>$this->town['city'] ))?>
-            <?=$this->town['article']?>
-          </article>
+    <div class="col-lg-8 col-sm-9 sections about-us">
 
-      </section>
-      <aside class="one fifth left-three desktop-only">
-        <?=App::module('Addons')->renderBlock("site/index","logo")?>
-        <?=App::module('Addons')->renderBlock("site/index","menu")?>
-      </aside>
-      <aside class="one fifth">
-        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-      </aside>
-    </article>
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li class="active"> <span class="icon-envelope"></span> <?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?> </li>
+      </ol>
+
+      <h3><?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?></h3>
+
+      <article class="read-new">
+        <?=App::module('Addons')->renderBlock("site/index","town-gallery", array( 'town'=>$this->town['town'], 'folder'=>$this->town['folder'], 'city'=>$this->town['city'] ))?>
+        <?=$this->town['article']?>
+      </article>
+
+    </div>
+
+
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
 
   </div>
 
