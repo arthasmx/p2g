@@ -21,7 +21,8 @@ class Acl_IndexController extends Module_Acl_Controller_Action_Frontend {
     $this->view->form = $form;
 
     App::header()->add_jquery_events("
-      jQuery('form#login span#captcha-refresh').click(function(){
+      //jQuery('form#login span#captcha-refresh').click(function(){
+      jQuery('button#captcha-refresh').click(function(){
         jQuery.ajax({
           url: baseUrl  + 'captcha-contact-refresh',
           dataType:'json',

@@ -10,20 +10,20 @@ class Module_Acl_Repository_Model_Acl_Forms_Login extends Core_Model_Repository_
     $form->addElement('text', 'user', array(
                       'required'    => true,
                       'validators'  => array( array( 'stringLength', true, array(6))),
-                      'class'       => 'input-xlarge'
+                      'class'       => 'form-control'
     ));
     $form->getElement("user")->setAttrib('placeholder', App::xlat('form_placeholder_user') );
 
     $form->addElement('password', 'password', array(
                       'required'    => true,
                       'validators'  => array( array( 'stringLength', true, array(6))),
-                      'class'       => 'input-xlarge'
+                      'class'       => 'form-control'
     ));
     $form->getElement("password")->setAttrib('placeholder', App::xlat('form_placeholder_password') );
 
     $form->addElement('captcha', 'captcha', array(
         'required'   => true,
-        'class'      => 'span1',
+        'class'      => 'form-control',
         'maxlength'  => 3,
         'captcha'    => array(
             'captcha' => 'Image',

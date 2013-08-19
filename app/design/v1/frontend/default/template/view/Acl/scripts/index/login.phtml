@@ -11,7 +11,7 @@
 
 
 
-    <div class="col-lg-6 col-sm-6 sections">
+    <div class="col-lg-6 col-sm-6 sections login">
       <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
@@ -20,27 +20,45 @@
 
       <h3><?=App::xlat('login')?></h3>
 
-      <div class="login">
-        <div id="sidebar"> <img src="<?=App::media('/images/places-to-go-logo.png')?>" title="<?=App::getConfig('website_name')?>" alt="<?=App::getConfig('website_name')?>" /> </div>
-        <form id="login" method="post" enctype="application/x-www-form-urlencoded">
-          <div class="input-append">
-            <span class="add-on">
-              <i class="icon-user"></i>
-            </span>
-            <?=$this->form->user?>
-          </div>
-          <div class="input-append">
-            <span class="add-on">
-              <i class="icon-lock"></i>
-            </span>
-            <?=$this->form->password?>
-          </div>
-          <?=$this->form->captcha?>
-          <span id="captcha-refresh" class="icon-refresh" title="<?=App::xlat('captcha_generate')?>"></span>
-          <?=$this->form->button?>
-        </form>
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+
+          <form id="login" method="post" enctype="application/x-www-form-urlencoded" class="form-horizontal">
+          
+            <div class="form-group">
+              <label for="inputEmail1" class="col-lg-2 control-label"><span class="icon-user"></span></label>
+              <div class="col-lg-10">
+                <?=$this->form->user?>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword1" class="col-lg-2 control-label"><span class="icon-key"></span></label>
+              <div class="col-lg-10">
+                <?=$this->form->password?>
+              </div>
+            </div>
+          
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <?=$this->form->captcha?>
+              </div>
+            </div>
+          
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button type="button" class="btn btn-default" id="captcha-refresh"><?=App::xlat('captcha_generate')?></button>
+                <button type="submit" class="btn btn-default btn-success"><?=App::xlat('login')?></button>
+              </div>
+            </div>
+            
+          </form>
+
+        </div>
       </div>
-      
+
     </div>
 
 
