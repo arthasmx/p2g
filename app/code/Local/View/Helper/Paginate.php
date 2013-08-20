@@ -36,7 +36,7 @@ class Local_View_Helper_Paginate {
 			// Intentamos calcular el base url de forma automática
 				$this->url=str_replace("/page/".$this->page_current,null,@$_SERVER["REQUEST_URI"]);
 		}
-		return $this->url;
+		return preg_replace('%([^:])([/]{2,})%', '\\1/', $this->url);
 	}
 
     /**
@@ -77,7 +77,7 @@ class Local_View_Helper_Paginate {
 
     $this->page_param_tpl = $this->paginator_page_name . "/:page";
     $pages=$this->getPages();
-    $pages_to_render = '<div class="pagination pagination-centered"><ul>';
+    $pages_to_render = '<ul class="pagination pagination-sm">';
 
     foreach ($pages as $key=>$page) {
       if ('pages'===$key) {
@@ -98,7 +98,7 @@ class Local_View_Helper_Paginate {
       }
     }
 
-    return $pages_to_render . "</ul></div>";
+    return $pages_to_render . "</ul>";
   }
 
     /**
