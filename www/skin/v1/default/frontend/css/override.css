@@ -257,7 +257,12 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .events figure figcaption h1{color: white; font-size: 12px; margin: 0 0 10px;}
     .events figure figcaption time{color:#1C7DB2; font-weight: bold;}
     .events figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:5px;}
-  
+
+  /* EVENT READING */
+    .sections.read-event figure{width: auto;}
+    .sections.read-event figure figcaption{text-align: right; background-color: #2B2B29;}
+    .read-event p{text-align: justify; color: white; font-size: 14px !important; }
+
   
   
   
