@@ -12,13 +12,13 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     $this->folder_config = $this->_module->getConfig('core','folders');
   }
 
-  private function get( $date=null, $enabled_only = true){
+  private function get( $date=null, $enabled_only = true, $limit_by_aside = null){
     $select  = $this->core->_db->select()
                     ->from(array('va' => 'view_articles' ) )
                     ->where( 'va.type = ?', App::xlat( 'eventos' ) )
                     ->where( 'va.language = ?', App::locale()->getLang() )
-                    ->order( 'va.event_date DESC')
-                    ->limit( '15' );
+                    ->order( 'va.event_date DESC');
+                    // ->limit( '15' );
 
     if( ! empty($date) ){
       $select->where( 'va.event_date = ?', $date );
@@ -26,26 +26,37 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     if( $enabled_only === true){
       $select->where('va.status = ?', 'enabled');
     }
+    if( $limit_by_aside=== true){
+      $select->limit('3');
+    }else{
+      $select->limit('15');
+    }
 
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }
 
-  function today(){
-    return $this->get( date('Y-m-d') );
+  function today($aside=null){
+    return $this->get( date('Y-m-d'),true, empty($aside)?null:true );
   }
-  function tomorrow(){
-    return $this->get( App::module('Core')->getModel('Dates')->tomorrow() );
+  function tomorrow($aside=null){
+    return $this->get( App::module('Core')->getModel('Dates')->tomorrow(), true, empty($aside)?null:true );
   }
-  function month($date_start=null,$date_end=null,$enabled_only=true){
+  function month($date_start=null,$date_end=null,$aside=null, $enabled_only=true){
 
     $select  = $this->core->_db->select()
                           ->from(array('va' => 'view_articles' ) )
                           ->where( 'va.type = ?', App::xlat( 'eventos' ) )
                           ->where( 'va.language = ?', App::locale()->getLang() )
                           ->where( "va.event_date BETWEEN '$date_start' AND '$date_end'" )
-                          ->order( 'va.created DESC')
-                          ->limit( '15' );
+                          ->order( 'va.created DESC');
+                          // ->limit( '15' );
+    if( empty($aside) ){
+      $select->limit( '15' );
+    }else{
+      $select->limit( '3' );
+    }
+
     if( $enabled_only === true){
       $select->where('va.status = ?', 'enabled');
     }
@@ -53,7 +64,28 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }
-
+  function past($aside=null, $enabled_only=true){
+  
+    $select  = $this->core->_db->select()
+    ->from(array('va' => 'view_articles' ) )
+    ->where( 'va.type = ?', App::xlat( 'eventos' ) )
+    ->where( 'va.language = ?', App::locale()->getLang() )
+    ->where( "va.event_date < now()" )
+    ->order( 'va.created DESC');
+    // ->limit( '15' );
+    if( empty($aside) ){
+      $select->limit( '15' );
+    }else{
+      $select->limit( '3' );
+    }
+  
+    if( $enabled_only === true){
+      $select->where('va.status = ?', 'enabled');
+    }
+  
+    $events = $this->core->_db->query( $select )->fetchAll();
+    return empty($events)? null : $events;
+  }
 
 
   function event_list_grid(){

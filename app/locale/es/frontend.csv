@@ -32,11 +32,15 @@
 
 
 "event_where_when_time","Donde ? Cuando ? A que hora ?"
+"events_today","Hoy"
+"events_next","Proximos"
+"events_month","Pasados"
 
 
 ; GENERIC CONTENT
 
   "read_more","leer más..."
+  "view_more","ver más..."
   "contact_us","Contáctenos"
   "phone_sos","Telefonos de Emergencia"
   "how_does_this_work","Cómo funciona ?"

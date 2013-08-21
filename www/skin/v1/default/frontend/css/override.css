@@ -201,7 +201,7 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     article h5 a:hover{color: #004151;}
     article h5 a.news-topic:hover{color: #aaa;}
 
-    .event_info, .event_list_info{ background-color: #000000; color: gray; padding: 10px; text-align: right; position: relative; top:-3px; font-size: 11px;}
+    .event_info, .event_list_info{ background-color: #000000; color: gray; padding: 10px; text-align: right; position: relative; top:-3px; font-size: 11px; max-width: 370px;}
 
 
 /* LEFT MENU */
@@ -251,6 +251,9 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
   /* ABOUT US */
   .about-us p{color: white;}
 
+/***********/
+/* EVENTOS */
+
 
   /* EVENTOS LISTING */
     .events figure{width: 160px; float: left;}
@@ -262,6 +265,19 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .sections.read-event figure{width: auto;}
     .sections.read-event figure figcaption{text-align: right; background-color: #2B2B29;}
     .read-event p{text-align: justify; color: white; font-size: 14px !important; }
+
+  /* TODAY, NEXT, MONTH ASIDE BLOCK */
+    ul.events_w8{border:none;}
+    .events_w8 li{width: 33%;}
+    .events_w8 li a{color:white; background-color: #292929; text-align:center; border:none; -webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
+    .events_w8 li.active a, .events_w8 li a.active, .events_w8 > li.active > a:focus, .events_w8 > li.active > a:hover{background-color: #393939 !important; border: none !important; color: #ccc;}
+    .events_w8 > li > a:hover{background-color: #393939 !important;}
+
+    .events_w8_content h5 a{color: #1C7DB2;}
+    .events_w8_content h5 a:hover{color: #9E9E9E;}
+    .events_w8_content{background-color: #393939; padding:0;}
+    .events_w8_content #today, .events_w8_content #tomorrow, .events_w8_content #month{padding: 10px;}
+    .events_w8_content article h6{color: white;}
 
   
   
@@ -306,4 +322,9 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
         article time{color:#ddd;}
         article.news img{float: left; padding-right:10px;}
         .btn{font-weight: lighter; padding:2px 5px !important; font-size: 10px !important; display: block !important;}
+
+      /* EVENTS */
+        .events figure{width: 158px;}
+
+
   }

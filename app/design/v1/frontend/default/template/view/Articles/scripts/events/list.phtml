@@ -13,40 +13,54 @@
     <div class="col-lg-8 col-sm-9 sections events">
 
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
-      <ol class="breadcrumb">
-        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-        <li class="active"> <span class="icon-music"></span> <?=App::xlat('event_list')?> </li>
-      </ol>
 
-      <h3><?=App::xlat('event_list')?></h3>
 
-       <?php if( ! empty($this->events['items']) ): ?>
-         <?php $dates = App::module('Core')->getModel('Dates'); ?>
+        <div class="container">
+          <div class="col-lg-8 col-sm-7 sections events">
 
-         <?php foreach($this->events['items'] AS $event): ?>
+            <ol class="breadcrumb">
+              <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+              <li class="active"> <span class="icon-music"></span> <?=App::xlat('event_list')?> </li>
+            </ol>
 
-           <figure class="round-bottom" >
-             <a href="<?=App::www( App::xlat('eventos_singular') . '/' . $event['seo'] )?>">
-               <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
-                 <?php $img = App::media( $event['folder']."/gallery/category.jpg" ); ?>
-               <?php else: ?>
-                 <?php $img = App::media('/images/missing-category.png'); ?>
-               <?php endif; ?>
-               <img class="img-responsive" src="<?=$img?>" alt="<?=App::xlat($event['title'])?>" />
-             </a>
-             <figcaption>
-               <h1><?=$event['address']?></h1>
-               <time><?=$dates->toDate(13,$event['created'])?></time><br />
-               <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
-             </figcaption>
-           </figure>
-         <?php endforeach; ?>
+            <h3><?=App::xlat('event_list')?></h3>
 
-         <?=$this->events['pagination_html']?>
+            <?php if( ! empty($this->events['items']) ): ?>
+              <?php $dates = App::module('Core')->getModel('Dates'); ?>
 
-       <?php else:?>
-         <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
-       <?php endif;?>
+              <?php foreach($this->events['items'] AS $event): ?>
+
+                <figure>
+                  <a href="<?=App::www( App::xlat('eventos_singular') . '/' . $event['seo'] )?>">
+                    <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
+                      <?php $img = App::media( $event['folder']."/gallery/category.jpg" ); ?>
+                    <?php else: ?>
+                      <?php $img = App::media('/images/missing-category.png'); ?>
+                    <?php endif; ?>
+                    <img class="img-responsive" src="<?=$img?>" alt="<?=App::xlat($event['title'])?>" />
+                  </a>
+                  <figcaption>
+                    <h1><?=$event['address']?></h1>
+                    <time><?=$dates->toDate(13,$event['created'])?></time><br />
+                    <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
+                  </figcaption>
+                </figure>
+
+              <?php endforeach; ?>
+
+               <?=$this->events['pagination_html']?>
+
+            <?php else:?>
+              <p>Nada que mostrar</p>
+            <?php endif;?>
+
+          </div>
+          <div class="col-lg-4 col-sm-5 sections events">
+            <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+          </div>
+        </div>
+
+
 
     </div>
 
