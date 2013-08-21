@@ -407,6 +407,17 @@ class Module_Core_Repository_Model_Libraries extends Core_Model_Repository_Model
       });");
   }
 
+  function aside_tags($target=null){
+    if( ! empty($target)){
+      App::header()->add_jquery_events("
+          $.fn.tagcloud.defaults = {
+            size: {start: 10, end: 14, unit: 'px'},
+            color: {start: '#777', end: '#ddd'}
+          };
+        $('".$target."').tagcloud();
+      ");
+    }
+  }
 
 
   function jquery_ui($theme="humanity"){

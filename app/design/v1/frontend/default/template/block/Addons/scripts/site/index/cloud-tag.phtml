@@ -1,0 +1,11 @@
+
+<div class="panel panel-default no-round cloud-tag">
+  <div class="panel-heading no-round">
+    <h3 class="panel-title"><?=App::xlat('tag_title')?></h3>
+  </div>
+  <div class="panel-body">
+    <?php for($tags = 1; $tags<=25; $tags++): ?>
+      <a href="<?=App::base( App::xlat('tag_url_' . $tags) )?>" rel="<?=App::xlat('tag_rel_' . $tags)?>"> <?=App::xlat('tag_name_' . $tags)?> </a>
+    <?php endfor;?>
+  </div>
+</div>

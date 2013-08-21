@@ -88,8 +88,14 @@ class Addons_Site_IndexBlockController extends Core_Controller_Block {
     }
   }
 
+  /* TAGS */
   function cloudAction(){
     $this->view->direction = $this->getParam('direction');
+  }
+
+  function cloudTagAction(){
+    App::module('Core')->getModel('Libraries')->aside_tags('.cloud-tag div.panel-body a');
+    $this->view->chars = $this->getParam('chars');
   }
 
 }

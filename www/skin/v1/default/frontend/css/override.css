@@ -146,11 +146,14 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 /********/  
 /* site */
 
-
+/* PANELES ASIDE */
+  .panel-default{padding: 15px; margin-top: 15px !important;}
+  .panel-default h3.panel-title{font-size: 12px; margin: 0;}
 
 
 /* cloud */
   .cloud-left, .cloud-right{line-height: 10px;}
+
 
 /* logo */
   .logo{margin-top:50px !important;}

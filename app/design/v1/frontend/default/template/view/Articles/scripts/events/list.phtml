@@ -57,6 +57,7 @@
           </div>
           <div class="col-lg-4 col-sm-5 sections events">
             <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+            <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
           </div>
         </div>
 
