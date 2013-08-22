@@ -46,6 +46,8 @@
 
         <?=$this->event['article']?>
 
+        <?=App::module('Articles')->renderBlock("addons/index","article-addons", array('id' => $this->event['article_id'], 'created'=> $this->event['created'], 'folders'=>$this->folders ))?>
+
     </div>
 
 
