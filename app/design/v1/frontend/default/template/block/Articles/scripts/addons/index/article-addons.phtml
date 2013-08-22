@@ -1,5 +1,6 @@
 
 <?php if( ! empty($this->addons) ): ?>
+
   <?php $addon_icon = array('link'=>'link','audio'=>'play','video'=>'facetime-video','files'=>'file-alt ','gallery'=>'picture','map'=>'map-marker');  ?>
 
   <div class="addons">
@@ -9,37 +10,73 @@
     <?php endif; ?>
 
     <?php if( array_key_exists('map',$this->addons) ): ?>
-      <h3><span class="icon-map-marker"></span> <?=App::xlat('addon_map')?></h3>
-      <div id="googleMap" style="width:49em;height:22em;"></div>
+
+      <div class="panel panel-default no-round addon-map">
+        <div class="panel-heading no-round">
+          <h3 class="panel-title"><span class="icon-map-marker"></span> <?=App::xlat('addon_map')?></h3>
+        </div>
+        <div class="panel-body">
+          <div id="googleMap" style="width:49em;height:22em;"></div>      
+        </div>
+      </div>
+
     <?php endif; ?>
 
     <?php if( array_key_exists('video',$this->addons) ): ?>
-      <h3><span class="icon-play"></span> <?=App::xlat('addon_video')?></h3>
-      <?php foreach($this->addons['video'] AS $child_addon): ?>
-        <?=App::module('Addons')->renderBlock("video/index","show-video",array('id'=>$child_addon['reference'],'embed'=>'yes'))?>
-      <?php endforeach;?>
+      <div class="panel panel-default no-round addon-video">
+        <div class="panel-heading no-round">
+          <h3 class="panel-title">
+            <span class="icon-play"></span> <?=App::xlat('addon_video')?>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <?php foreach($this->addons['video'] AS $child_addon): ?>
+            <?=App::module('Addons')->renderBlock("video/index","show-video",array('id'=>$child_addon['reference'],'embed'=>'yes'))?>
+          <?php endforeach;?>
+        </div>
+      </div>
+
     <?php endif; ?>
 
     <?php if( array_key_exists('files',$this->addons) ): ?>
-      <h3><span class="icon-file"></span> <?=App::xlat('addon_files')?></h3>
-      <ol class="submenu">
-        <?php foreach($this->addons['files'] AS $child_addon): ?>
-          <li>
-            <?=get_addon_link('files',$child_addon['reference'],$child_addon['description'],$child_addon['class'],$child_addon['article_id'],$this->created)?>
-          </li>
-        <?php endforeach;?>
-      </ol>
+
+      <div class="panel panel-default no-round addon-files">
+        <div class="panel-heading no-round">
+          <h3 class="panel-title">
+            <span class="icon-file"></span> <?=App::xlat('addon_files')?>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <ol class="submenu">
+            <?php foreach($this->addons['files'] AS $child_addon): ?>
+              <li>
+                <?=get_addon_link('files',$child_addon['reference'],$child_addon['description'],$child_addon['class'],$child_addon['article_id'],$this->created)?>
+              </li>
+            <?php endforeach;?>
+          </ol>
+        </div>
+      </div>
+
     <?php endif; ?>
 
     <?php if( array_key_exists('link',$this->addons) ): ?>
-      <h3><span class="icon-link"></span> <?=App::xlat('addon_links')?></h3>
-      <ol class="submenu">
-        <?php foreach($this->addons['link'] AS $child_addon): ?>
-          <li>
-            <?=get_addon_link('link',$child_addon['reference'],$child_addon['description'],$child_addon['class'],$child_addon['article_id'],$this->created)?>
-          </li>
-        <?php endforeach;?>
-      </ol>
+      <div class="panel panel-default no-round addon-links">
+        <div class="panel-heading no-round">
+          <h3 class="panel-title">
+            <span class="icon-link"></span> <?=App::xlat('addon_links')?>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <ol class="submenu">
+            <?php foreach($this->addons['link'] AS $child_addon): ?>
+              <li>
+                <?=get_addon_link('link',$child_addon['reference'],$child_addon['description'],$child_addon['class'],$child_addon['article_id'],$this->created)?>
+              </li>
+            <?php endforeach;?>
+          </ol>
+        </div>
+      </div>
+
     <?php endif; ?>
 
   </div>
