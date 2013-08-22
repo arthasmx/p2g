@@ -266,10 +266,10 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .events figure figcaption time, .news figure figcaption time{color:#1C7DB2; font-weight: bold;}
     .events figure figcaption, .news figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:2px;}
 
-  /* EVENT READING */
-    .sections.read-event figure{width: auto;}
-    .sections.read-event figure figcaption{text-align: right; background-color: #2B2B29;}
-    .read-event p{text-align: justify; color: white; font-size: 14px !important; }
+  /* EVENT / NEWS READING */
+    .sections.read-event figure, .sections.read-new figure{width: auto;}
+    .sections.read-event figure figcaption, .sections.read-new figure figcaption{text-align: right; background-color: #2B2B29;}
+    .read-event p, .read-new p{text-align: justify; color: white; font-size: 14px !important; }
 
   /* TODAY, NEXT, MONTH ASIDE BLOCK */
     ul.events_w8{border:none;}
