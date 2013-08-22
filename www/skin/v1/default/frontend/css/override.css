@@ -16,6 +16,8 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
  ul.pagination li a {-webkit-border-radius: 0px !important;-moz-border-radius: 0px !important;border-radius: 0px !important; border:0 !important; background-color: #393939 !important; margin-right: 1px !important; }
  ul.pagination li a:hover{color: #30B6F3;}
 
+/* botones */
+ .btn-xs{font-weight: lighter;}
 
 /* colors */
 .l_red {background-color: red !important;}
@@ -148,7 +150,7 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
 /* PANELES ASIDE */
   .panel-default{padding: 15px; margin-top: 15px !important;}
-  .panel-default h3.panel-title{font-size: 12px; margin: 0;}
+  .panel-default h3.panel-title{font-size: 12px; margin: 0; color: white;}
 
 
 /* cloud */
@@ -259,10 +261,10 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
 
   /* EVENTOS LISTING */
-    .events figure{width: 160px; float: left;}
+    .events figure, .news figure{width: 160px; float: left;}
     .events figure figcaption h1{color: white; font-size: 12px; margin: 0 0 10px;}
-    .events figure figcaption time{color:#1C7DB2; font-weight: bold;}
-    .events figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:5px;}
+    .events figure figcaption time, .news figure figcaption time{color:#1C7DB2; font-weight: bold;}
+    .events figure figcaption, .news figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:2px;}
 
   /* EVENT READING */
     .sections.read-event figure{width: auto;}

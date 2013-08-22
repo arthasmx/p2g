@@ -10,51 +10,55 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections">
 
-      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+    <div class="col-lg-6 col-sm-6 sections news">
+      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('about_us')?> </li>
+        <li class="active"> <span class="icon-file"></span> <?=App::xlat('news_list')?> </li>
       </ol>
 
-      <h3><?=App::xlat('about_us')?></h3>
+      <h3><?=App::xlat('news_list')?></h3>
 
-           <?php if( ! empty($this->articles['items']) ): ?>
+      <?php if( ! empty($this->articles['items']) ): ?>
+        <?php $dates = App::module('Core')->getModel('Dates'); ?>
 
-             <?php foreach($this->articles['items'] AS $article): ?>
-                <article class="event_list">
-                  <h3> <a class="topic" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"><?=$article['title']?></a> </h3>
+        <?php foreach($this->articles['items'] AS $article): ?>
 
-                  <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
-                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
-                      <img src="<?=App::media( $article['folder']."/gallery/article.jpg" )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
-                    </a>
-                  <?php else: ?>
-                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
-                      <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
-                    </a>
-                  <?php endif;?>
+          <figure>
+            <a href="<?=App::www( App::xlat('articulos_singular') . '/' . $article['seo'] )?>">
+              <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
+                <?php $img = App::media( $article['folder']."/gallery/category.jpg" ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/missing-category.png'); ?>
+              <?php endif; ?>
+              <img class="img-responsive" src="<?=$img?>" alt="<?=$article['title']?>" />
+            </a>
+            <figcaption>
+              <time><?=$dates->toDate(13,$article['created'])?></time><br />
+              <p>
+                <?=trim(substr( strip_tags($article['article']) , 0, 80)); ?>...
+                <br /><a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat( 'articulos_singular' ) ."/". $article['seo'] )?>"> <?=App::xlat('read_more')?> <span class="icon-chevron-right"></span> </a>
+              </p>
+            </figcaption>
+          </figure>
 
-                  <div class="event_list_info">
-                    <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $article['publicated'] ,'long')?> <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$article['author']?> 
-                    <?php if( App::getEnvironment()!=='devel' ):?>
-                      <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-comments gray"></span> <fb:comments-count href="<?=App::www( App::xlat('articulos_singular').'/'. $article['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
-                    <?php endif;?>
-                  </div>
-                  <?=$article['article']?>
-                </article>
-    
-             <?php endforeach; ?>
-             <?= empty($this->articles['pagination_html']) ? '' : $this->articles['pagination_html'];?>
-    
-           <?php else:?>
-             <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
-           <?php endif;?>
+        <?php endforeach; ?>
+
+         <?=$this->articles['pagination_html']?>
+
+      <?php else:?>
+        <p>Nada que mostrar</p>
+      <?php endif;?>
 
     </div>
 
 
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>
