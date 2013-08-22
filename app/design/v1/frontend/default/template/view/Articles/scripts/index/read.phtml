@@ -12,7 +12,7 @@
 
 
     <div class="col-lg-6 col-sm-6 sections read-new">
-      <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
         <li> <span class="icon-file"></span> <a href="<?=App::www( App::xlat('articulos') )?>"><?=App::xlat('news_list')?></a></li>

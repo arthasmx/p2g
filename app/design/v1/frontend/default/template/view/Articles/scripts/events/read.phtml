@@ -10,8 +10,8 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections read-event">
 
+    <div class="col-lg-6 col-sm-6 sections read-new">
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
@@ -19,10 +19,7 @@
         <li class="active"> <span class="icon-music"></span> <?=$this->event['title']?> </li>
       </ol>
 
-      <?php $dates = App::module('Core')->getModel('Dates'); ?>
-
       <h3> <?=$this->event['title']?> </h3>
-
       <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
       <figure class="round-bottom" >
       <?php if( file_exists( WP.DS.'media'.DS.$this->event['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
@@ -50,7 +47,10 @@
 
     </div>
 
-
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>

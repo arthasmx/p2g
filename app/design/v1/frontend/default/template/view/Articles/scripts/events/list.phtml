@@ -10,62 +10,52 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections events">
+    <div class="col-lg-6 col-sm-6 sections events">
 
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
 
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li class="active"> <span class="icon-music"></span> <?=App::xlat('event_list')?> </li>
+      </ol>
 
-        <div class="container">
-          <div class="col-lg-8 col-sm-7 sections events">
+      <h3><?=App::xlat('event_list')?></h3>
 
-            <ol class="breadcrumb">
-              <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-              <li class="active"> <span class="icon-music"></span> <?=App::xlat('event_list')?> </li>
-            </ol>
+      <?php if( ! empty($this->events['items']) ): ?>
+        <?php $dates = App::module('Core')->getModel('Dates'); ?>
 
-            <h3><?=App::xlat('event_list')?></h3>
+        <?php foreach($this->events['items'] AS $event): ?>
 
-            <?php if( ! empty($this->events['items']) ): ?>
-              <?php $dates = App::module('Core')->getModel('Dates'); ?>
+          <figure>
+            <a href="<?=App::www( App::xlat('eventos_singular') . '/' . $event['seo'] )?>">
+              <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
+                <?php $img = App::media( $event['folder']."/gallery/category.jpg" ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/missing-category.png'); ?>
+              <?php endif; ?>
+              <img class="img-responsive" src="<?=$img?>" alt="<?=App::xlat($event['title'])?>" />
+            </a>
+            <figcaption>
+              <h1><?=$event['address']?></h1>
+              <time><?=$dates->toDate(13,$event['created'])?></time><br />
+              <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
+            </figcaption>
+          </figure>
 
-              <?php foreach($this->events['items'] AS $event): ?>
+        <?php endforeach; ?>
 
-                <figure>
-                  <a href="<?=App::www( App::xlat('eventos_singular') . '/' . $event['seo'] )?>">
-                    <?php if( file_exists( WP.DS.'media'.DS.$event['folder'].DS.'gallery'.DS.'category.jpg' ) ): ?>
-                      <?php $img = App::media( $event['folder']."/gallery/category.jpg" ); ?>
-                    <?php else: ?>
-                      <?php $img = App::media('/images/missing-category.png'); ?>
-                    <?php endif; ?>
-                    <img class="img-responsive" src="<?=$img?>" alt="<?=App::xlat($event['title'])?>" />
-                  </a>
-                  <figcaption>
-                    <h1><?=$event['address']?></h1>
-                    <time><?=$dates->toDate(13,$event['created'])?></time><br />
-                    <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
-                  </figcaption>
-                </figure>
+         <?=$this->events['pagination_html']?>
 
-              <?php endforeach; ?>
-
-               <?=$this->events['pagination_html']?>
-
-            <?php else:?>
-              <p>Nada que mostrar</p>
-            <?php endif;?>
-
-          </div>
-          <div class="col-lg-4 col-sm-5 sections events">
-            <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
-            <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
-          </div>
-        </div>
-
-
+      <?php else:?>
+        <p>Nada que mostrar</p>
+      <?php endif;?>
 
     </div>
 
-
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>
