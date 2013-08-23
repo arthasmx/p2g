@@ -54,6 +54,8 @@
 
   "event_list","Listado de eventos"
   "news_list","Listado de noticias"
+  "promotion_list","Listado de promociones"
+    "promotion_reading_title"," te ofrece la siguiente promoción:"
 
   "preaching_empty", "No se han encontrado predicaciones"
   "download","Descargar"

@@ -1,34 +1,55 @@
 
-<div class="container">
-  <article class="row">
+  <div class="row">
 
-    <section class="three fifths right-one padded no-top-pad">
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
 
-          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
 
-          <article class="read-new">
-            <?php $file = WP . str_replace('/', DS, $this->promo['path']) . $this->promo['picture']; ?>
-            <?php if( file_exists( $file ) ): ?>
-              <?php $image = App::www( $this->promo['path'].$this->promo['picture'] ); ?>
-            <?php else: ?>
-              <?php $image = App::media( '/promotions/promo-preview.jpg' ); ?>
-            <?php endif;?>
 
-            <img src="<?=$image?>" alt="<?=$this->promo['author']?>"  title="<?=$this->promo['author']?>" class="article" />
-            <?=$this->promo['description']?>
-          </article>
+    <div class="col-lg-6 col-sm-6 sections promotion-reading">
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li> <span class="icon-gift"></span> <a href="<?=App::www( App::xlat('promociones') )?>"><?=App::xlat('promotion_list')?></a></li>
+      </ol>
 
-    </section>
-    <aside class="one fifth left-three desktop-only">
-        <?=App::module('Addons')->renderBlock("site/index","logo")?>
-        <?=App::module('Addons')->renderBlock("site/index","menu")?>
-      </aside>
-    <aside class="one fifth">
-        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-      </aside>
-  </article>
+      <h4><?=$this->promo['author'].App::xlat('promotion_reading_title')?></h4>
+      
+      <figure>
+        <?php $file = WP . str_replace('/', DS, $this->promo['path']) . $this->promo['picture']; ?>
+        <?php if( file_exists( $file ) ): ?>
+          <?php $image = App::www( $this->promo['path'].$this->promo['picture'] ); ?>
+        <?php else: ?>
+          <?php $image = App::media( '/promotions/promo-preview.jpg' ); ?>
+        <?php endif;?>
+        <img class="img-responsive" src="<?=$image?>" alt="<?=$this->promo['author']?>"  title="<?=$this->promo['author']?>" class="article" />
+        <figcaption>
+        <!-- 
+          <span class="icon-home gray"></span> <?=$this->event['address']?>
+          <span class="hide-on-mobile">|</span> <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $this->event['publicated'] ,'long')?>
+          <span class="hide-on-mobile">|</span> <span class="icon-time gray"></span> <?=$this->event['hours'].':'.$this->event['min']?>
+          <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$this->event['author']?>
+           -->
+          <?=$this->promo['description']?>
+        </figcaption>
+      </figure>
 
-</div>
+    </div>
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
+
+  </div>
 
 <?php 
 /*
@@ -54,4 +75,5 @@ Array
   [status] => enabled
 )
  */
+
 ?>

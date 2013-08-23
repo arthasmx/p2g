@@ -236,6 +236,7 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
   .sections ol.breadcrumb a:hover{color: #ccc;}
 
   .sections h3{margin:0 0 10px; color:white;}
+  .sections h4{color: white;}
 
   .sections figure{display:inline-block; width: 170px; text-align: center; margin:10px 5px;}
     .sections.town-list figure{width: 265px;}
@@ -267,9 +268,9 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .events figure figcaption, .news figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:2px;}
 
   /* EVENT / NEWS READING / BUSINESS */
-    .sections.read-event figure, .sections.read-new figure, .sections.business-reading figure{width: 100%;}
-    .sections.read-event figure figcaption, .sections.read-new figure figcaption, .sections.business-reading figure figcaption{text-align: right; background-color: #2B2B29;}
-    .read-event p, .read-new p, .business-reading p{text-align: justify; color: white; font-size: 14px !important; }
+    .sections.read-event figure, .sections.read-new figure, .sections.business-reading figure, .sections.promotion-reading figure{width: 100%;}
+    .sections.read-event figure figcaption, .sections.read-new figure figcaption, .sections.business-reading figure figcaption, .sections.promotion-reading figure figcaption{text-align: right; background-color: #2B2B29;}
+    .read-event p, .read-new p, .business-reading p, .promotion-reading p{text-align: justify; color: white; font-size: 14px !important; }
     
     .addon-promotions .panel-body figure, .addon-social .panel-body figure{width: 46% !important;}
 
