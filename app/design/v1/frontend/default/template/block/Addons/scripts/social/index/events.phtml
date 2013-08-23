@@ -1,23 +1,34 @@
 
   <?php if( ! empty( $this->events ) ): ?>
   <?php $separator = "/"; ?>
-  <div class="desktop-only show-on-mini">
-    <h3><span class="icon-star-empty"></span> <?=App::xlat('business_social')?></h3>
-    <div class="row business-social">
-      <?php foreach( $this->events AS $social ): ?>
-        <div class="four mobile twelfths promo-img">
-          <a class="sGal_<?=$social['id']?>_btn">
-            <img src="<?=App::media( '/social'. App::module('Core')->getModel('Dates')->toDate(12, $social['created'] ) . $social['id'] . '/gallery/social.jpg' )?>" alt="<?=$social['description']?>" title="<?=$social['description']?>" />
-          </a>
-          <p class="hide-on-mini date">
-            <?=App::module('Core')->getModel('Dates')->toDate(7, $social['event'] )?> <span class="icon-calendar"></span>
-          </p>
-          <p class="hide-on-mini description"><?=$social['description']?></p>
-          <?=App::module('Addons')->renderBlock("social/index","hidden-images", array('id' => $social['id'], 'created' => $social['created'] ))?>
-        </div>
-      <?php endforeach;?>
+
+    <div class="panel panel-default no-round addon-social">
+      <div class="panel-heading no-round">
+        <h3 class="panel-title"><span class="icon-star-empty"></span> <?=App::xlat('business_social')?></h3>
+      </div>
+      <div class="panel-body">
+        <?php foreach( $this->events AS $social ): ?>
+
+          <?php $path = '/social'. App::module('Core')->getModel('Dates')->toDate(12, $social['created'] ) . $social['id'] . '/gallery/social.jpg'; ?>
+            <figure>
+              <?php if( file_exists( WP.DS.'media'.$path ) ): ?>
+                <?php $img = App::media( $path ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/article-promotion.jpg'); ?>
+              <?php endif; ?>
+              <a class="sGal_<?=$social['id']?>_btn">
+                <img class="img-responsive" src="<?=$img?>" alt="<?=$social['description']?>" title="<?=$social['description']?>" />
+              </a>
+              <figcaption>
+                <time><span class="icon-calendar"></span> <?=App::module('Core')->getModel('Dates')->toDate(7, $social['event'] )?></time><br />
+                <?=$social['description']?>
+              </figcaption>
+            </figure>
+            <?=App::module('Addons')->renderBlock("social/index","hidden-images", array('id' => $social['id'], 'created' => $social['created'] ))?>
+
+        <?php endforeach;?>
+      </div>
     </div>
-  </div>
   <?php endif;?>
 
 <?php

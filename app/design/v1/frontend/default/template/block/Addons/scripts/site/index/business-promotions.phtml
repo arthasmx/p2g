@@ -1,16 +1,27 @@
 
   <?php if( ! empty( $this->promotions ) ): ?>
   <?php $separator = "/"; ?>
-    <h3><span class="icon-link"></span> <?=App::xlat('business_promotions')?></h3>
-    <div class="row business-promotions">
-      <?php foreach( $this->promotions AS $promotion ): ?>
-        <div class="four mobile twelfths promo-img">
-          <a href="<?=App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] )?>">
-            <img src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$promotion['description']?>" title="<?=$promotion['description']?>" />
-          </a>
-          <p class="hide-on-desktop hide-on-mini"><?=$promotion['description']?></p>
-        </div>
-      <?php endforeach;?>
+    <div class="panel panel-default no-round addon-promotions">
+      <div class="panel-heading no-round">
+        <h3 class="panel-title"><span class="icon-link"></span> <?=App::xlat('business_promotions')?></h3>
+      </div>
+      <div class="panel-body">
+        <?php foreach( $this->promotions AS $promotion ): ?>
+          <figure>
+          <?php if( file_exists( WP.DS.$promotion['path'].'mobile/'. $promotion['picture'] ) ): ?>
+            <?php $img = App::www( $promotion['path'].'mobile/'. $promotion['picture'] ); ?>
+          <?php else: ?>
+            <?php $img = App::media('/images/article-promotion.jpg'); ?>
+          <?php endif; ?>
+            <a href="<?=App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] )?>">
+              <img class="img-responsive" src="<?=$img?>" alt="<?=$promotion['description']?>" title="<?=$promotion['description']?>" />
+            </a>
+            <figcaption>
+              <?=$promotion['description']?>
+            </figcaption>
+          </figure>
+        <?php endforeach;?>
+      </div>
     </div>
   <?php endif;?>
 

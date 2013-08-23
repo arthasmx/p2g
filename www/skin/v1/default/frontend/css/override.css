@@ -266,10 +266,12 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .events figure figcaption time, .news figure figcaption time{color:#1C7DB2; font-weight: bold;}
     .events figure figcaption, .news figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:2px;}
 
-  /* EVENT / NEWS READING */
-    .sections.read-event figure, .sections.read-new figure{width: 100%;}
-    .sections.read-event figure figcaption, .sections.read-new figure figcaption{text-align: right; background-color: #2B2B29;}
-    .read-event p, .read-new p{text-align: justify; color: white; font-size: 14px !important; }
+  /* EVENT / NEWS READING / BUSINESS */
+    .sections.read-event figure, .sections.read-new figure, .sections.business-reading figure{width: 100%;}
+    .sections.read-event figure figcaption, .sections.read-new figure figcaption, .sections.business-reading figure figcaption{text-align: right; background-color: #2B2B29;}
+    .read-event p, .read-new p, .business-reading p{text-align: justify; color: white; font-size: 14px !important; }
+    
+    .addon-promotions .panel-body figure, .addon-social .panel-body figure{width: 46% !important;}
 
   /* TODAY, NEXT, MONTH ASIDE BLOCK */
     ul.events_w8{border:none;}
@@ -286,7 +288,6 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
 
     /* ADDONS */
-    .addons{margin-top:50px;}
     .addons h3.panel-title{font-size: 1.2em;}
     .addons div#googleMap{width: auto !important;}
     .addon-video .panel-body{ position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;}

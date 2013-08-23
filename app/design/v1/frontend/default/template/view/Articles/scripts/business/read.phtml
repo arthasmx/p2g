@@ -10,8 +10,8 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections business-read">
 
+    <div class="col-lg-6 col-sm-6 sections business-reading">
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
@@ -20,18 +20,36 @@
       </ol>
 
       <h3> <?=$this->article['title']?> </h3>
+      <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
+      <figure class="round-bottom" >
+      <?php if( file_exists( WP.DS.'media'.DS.$this->article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+        <?php $img = App::media( $this->article['folder']."/gallery/article.jpg" ); ?>
+      <?php else: ?>
+        <?php $img = App::media('/images/article-preview.png'); ?>
+      <?php endif; ?>
+      <img class="img-responsive" src="<?=$img?>" alt="<?=$this->article['title']?> title="<?=$this->article['title']?>" />
 
-      <article class="read-new">
-        <?=App::module('Articles')->renderBlock("addons/index","article-slide-gallery", array('id' => $this->article['article_id'], 'created'=> $this->article['created'], 'folders'=>$this->folders ) )?>
+        <figcaption>
+          <span class="icon-calendar"></span> <?=App::locale()->toDate( $this->article['created'] ,'long')?>
+          <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$this->article['author']?>
+          <?php if( App::getEnvironment()!=='devel' ):?>
+            <span class="hide-on-mobile">|</span>  <span class="icon-comments  gray"></span> <fb:comments-count href="<?=App::base( App::xlat('eventos_singular').'/'. $this->article['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
+          <?php endif;?>
+        </figcaption>
+
+      </figure>
+
         <?=$this->article['article']?>
         <?=App::module('Addons')->renderBlock("site/index","business-promotions", array('business' => $this->article['username'] ))?>
         <?=App::module('Addons')->renderBlock("social/index","events", array('business' => $this->article['username'] ))?>
-        <?=App::module('Articles')->renderBlock("addons/index","article-addons", array('id' => $this->article['article_id'] ))?>
-      </article>
+        <?=App::module('Articles')->renderBlock("addons/index","article-addons", array('id' => $this->article['article_id'], 'created'=> $this->article['created'], 'folders'=>$this->folders ))?>
 
     </div>
 
-
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>

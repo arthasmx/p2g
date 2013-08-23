@@ -37,7 +37,7 @@ class Articles_Addons_IndexBlockController extends Core_Controller_Block {
     $folders           = $this->getParam('folders');
     $this->view->files = App::module('Articles')->getModel('Files')->get_gallery_thumbnails( $folders['gallery'] );
     $this->view->path  = $folders['url'] . 'gallery/';
-    App::module('Core')->getModel('Libraries')->cycle2();
+    // App::module('Core')->getModel('Libraries')->cycle2();
   }
 
   function articleAddonsAction(){

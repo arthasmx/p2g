@@ -132,7 +132,7 @@ class Module_Addons_Repository_Model_Cud_Social extends Module_Core_Repository_M
       $this->set_table('site_social');
       $data = array(
           'city'     => $this->user->user['city'],
-          'username' => empty( $is_admin ) ? null:$this->user->user['username'],
+          'username' => empty( $is_admin ) ? '':$this->user->user['username'],
           'event'    => $this->created,
           'created'  => $this->created);
       $this->table->insert($data);
