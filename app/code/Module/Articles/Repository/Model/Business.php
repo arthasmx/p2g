@@ -81,22 +81,11 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
   function get_business_list( $current_page = null, $type=null, $status="all", $publicated=false, $written_only=false){
     $select  = $this->core->_db->select()
                     ->from( array('va' => 'view_articles' ) )
-                    ->join( array('at' => 'articles_tags'), 'at.article_id = va.article_id',  array() )
                     ->where( 'va.language = ?', App::locale()->getLang() )
-                    ->where( 'at.tag = ?', $type )
+                    ->where( 'va.type = ?', App::xlat('empresas') )
+                    ->where( 'va.status = ?', 'enabled' )
                     ->order( 'va.created DESC');
-
-    if( $status!=="all" ){
-      $select->where( 'va.status = ?', $status );
-    }
-    if( $publicated===true ){
-      $select->where( 'va.publicated <= ?', date("Y-m-d h:i:s") );
-    }
-
-    if( $written_only===true ){
-      $select->where( 'va.written = 1' );
-    }
-
+    
     return $this->core->setPaginator_page($current_page)->paginate_query( $select );
   }
 

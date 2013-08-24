@@ -1,52 +1,113 @@
 
-  <div class="container">
-    <article class="row">
+  <div class="row">
 
-      <section class="three fifths right-one padded no-top-pad">
-          <?=App::module('Addons')->renderBlock("site/index","top-menu")?>
-
-           <?php if( ! empty($this->articles['items']) ): ?>
-
-             <?php foreach($this->articles['items'] AS $article): ?>
-                <article class="event_list">
-                  <h3> <a class="topic" href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>"><?=$article['title']?></a> </h3>
-
-                  <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
-                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
-                      <img src="<?=App::media( $article['folder']."/gallery/article.jpg" )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
-                    </a>
-                  <?php else: ?>
-                    <a href="<?=App::www( App::xlat( $article['type'].'_singular' ) ."/". $article['seo']  )?>">
-                      <img src="<?=App::media( '/images/article-preview.jpg' )?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
-                    </a>
-                  <?php endif;?>
-
-                  <div class="event_list_info">
-                    <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $article['publicated'] ,'long')?> <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$article['author']?> 
-                    <?php if( App::getEnvironment()!=='devel' ):?>
-                      <br class="hide-on-desktop hide-on-portrait" /> <span class="hide-on-mobile">|</span> <span class="icon-comments gray"></span> <fb:comments-count href="<?=App::www( App::xlat('articulos_singular').'/'. $article['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
-                    <?php endif;?>
-                  </div>
-                  <?=$article['article']?>
-                </article>
-    
-             <?php endforeach; ?>
-             <?= empty($this->articles['pagination_html']) ? '' : $this->articles['pagination_html'];?>
-    
-           <?php else:?>
-             <div class="well"> <?=App::xlat('no_data_found')?> [list#37] </div>
-           <?php endif;?>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'left'))?>
+    </div>
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Addons')->renderBlock("site/index","logo")?>
+      <?=App::module('Addons')->renderBlock("site/index","menu")?>
+    </div>
 
 
 
-      </section>
-      <aside class="one fifth left-three desktop-only">
-        <?=App::module('Addons')->renderBlock("site/index","logo")?>
-        <?=App::module('Addons')->renderBlock("site/index","menu")?>
-      </aside>
-      <aside class="one fifth">
-        <?=App::module('Addons')->renderBlock("site/index","promotions")?>
-      </aside>
-    </article>
+    <div class="col-lg-6 col-sm-6 sections business-listing">
+      <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
+      <ol class="breadcrumb">
+        <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
+        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('business_list')?> </li>
+      </ol>
+
+      <h3> <?=App::xlat('business_list')?> </h3>
+
+      <?php if( ! empty($this->articles['items']) ): ?>
+
+        <?php foreach($this->articles['items'] AS $business): ?>
+          <figure>
+            <?php if( file_exists( WP.DS.'media'.DS.$business['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+              <?php $image = App::media( $business['folder']."/gallery/article.jpg" ); ?>
+            <?php else: ?>
+              <?php $image = App::media( '/images/article-preview.jpg' ); ?>
+            <?php endif;?>
+
+            <?php 
+              $url=App::xlat( 'empresas_singular' ) ."/". $business['seo'];
+              $description=strip_tags($business['article']);
+            ?>
+
+            <a href="<?=App::www( $url  )?>">
+              <img class="img-responsive" src="<?=$image?>" alt="<?=$description?>"  title="<?=$description?>" />
+            </a>
+
+            <figcaption>
+              <a href="<?=App::www( $url )?>">
+                <span class="icon-user"></span> <?=strtolower($business['title'])?>
+              </a>
+              <time> <span class="icon-calendar"></span> <?=App::xlat('business_registered')?> <?=App::module('Core')->getModel('Dates')->toDate(6, $business['created'] )?> </time>
+            </figcaption>
+          </figure>
+
+         <?php endforeach; ?>
+         <?= empty($this->articles['pagination_html']) ? '' : $this->articles['pagination_html'];?>
+
+       <?php endif;?>
+
+
+
+    </div>
+
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
+    <div class="col-lg-1 visible-lg no-padding">
+      <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
+    </div>
 
   </div>
+
+<?php 
+/*
+Array
+(
+  [items] => Array
+    (
+      [0] => Array
+        (
+          [id] => 12
+          [article_id] => 12
+          [title] => Empresa para probar todo
+          [seo] => empresa-para-probar-todo
+          [article] =>  Soy feliz...muy feliz!
+          [phone] => 
+          [address] => 
+          [type_id] => 76
+          [type] => empresas
+          [type_name] => Empresas
+          [created] => 2013-08-23 13:54:38
+          [publicated] => 
+          [event_date] => 
+          [event_hours] => 
+          [stop_publication] => 
+          [username] => roberto
+          [author] => Empresa para probar todo  
+          [language] => es
+          [written] => 1
+          [folder] => /business/2013/08/12/
+          [promote] => enabled
+          [mobile] => enabled
+          [addon] => enabled
+          [status] => enabled
+)
+[pagination] => Array
+        (
+            [page_current] => 1
+            [items_per_page] => 10
+            [items_total] => 2
+            [page_total] => 1
+        )
+
+    [pagination_html] => 
+)
+ */
+?>

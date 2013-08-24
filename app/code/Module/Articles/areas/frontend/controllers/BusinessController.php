@@ -16,10 +16,7 @@ class Articles_BusinessController extends Module_Articles_Controller_Action_Fron
   }
 
   function listAction(){
-//    App::module('Core')->getModel('Libraries')->jquery_vegas_default('hotels');
-
-    $this->view->lodging         = $this->_module->getModel('Business')->get_business_list( $this->getRequest()->getParam( App::xlat('route_paginator_page') ), $this->getRequest()->getParam('type'), 'enabled' );
-    $this->view->pageBreadcrumbs = array('title'=> ucwords( App::xlat('hospedaje') ), 'icon'=>'icon-file');
+    $this->view->articles        = $this->_module->getModel('Business')->get_business_list( $this->getRequest()->getParam( App::xlat('route_paginator_page') ), null, 'enabled' );
   }
 
   function readPromoAction(){
