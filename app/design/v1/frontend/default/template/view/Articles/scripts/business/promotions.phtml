@@ -10,8 +10,8 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections promotions">
 
+    <div class="col-lg-6 col-sm-6 sections promotion-listing">
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
@@ -20,53 +20,50 @@
 
       <h3> <?=App::xlat('business_promotions')?> </h3>
 
-           <?php if( ! empty($this->promotions['items']) ): ?>
+      <?php if( ! empty($this->promotions['items']) ): ?>
 
-             <?php foreach($this->promotions['items'] AS $promotion): ?>
-                <article class="promotions_list">
+        <?php foreach($this->promotions['items'] AS $promotion): ?>
+          <?php $promotion['picture'] = empty($promotion['picture'])?'missing-image.jpg':$promotion['picture']; ?>
+          <figure>
+            <?php if( file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
+              <?php $image = App::www( $promotion['path']."mobile/".$promotion['picture'] ); ?>
+            <?php else: ?>
+              <?php $image = App::media( '/images/article-promotion.jpg' ); ?>
+            <?php endif;?>
 
-                  <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
-                    <a class="promo-info" href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] ."/". App::xlat('promociones_singular') ."/". $promotion['id'] )?>">
-                      <img src="<?=App::www( $promotion['path']."mobile/".$promotion['picture'] )?>" alt="<?=$promotion['description']?>" title="<?=$promotion['description']?>" />
-                    </a>
-                    <div class="promo-info">
-                      <?=$promotion['description']?>
-                      <br />
-                      <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] )?>" class="business no-padding">
-                        <span class="icon-user"></span> <?=strtolower($promotion['author'])?>
-                      </a>
-                       |
-                      <time> <span class="icon-calendar"></span>  <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6,$promotion['finish'])?> </time>
-                    </div>
-                  <?php else: ?>
-                    <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] ."/". App::xlat('promociones_singular') ."/". $promotion['id'] )?>" class="topic">
-                      <?=$promotion['description']?>
-                    </a>
-                    <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] )?>" class="business">
-                      <span class="icon-user"></span> <?=strtolower($promotion['author'])?>
-                    </a>
-                     |
-                     <time> <span class="icon-calendar"></span>  <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6,$promotion['finish'])?> </time>
-                  <?php endif;?>
+            <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] ."/". App::xlat('promociones_singular') ."/". $promotion['id'] )?>" class="business no-padding">
+              <img class="img-responsive" src="<?=$image?>" alt="<?=$promotion['description']?>"  title="<?=$promotion['description']?>" />
+            </a>
 
-                </article>
+            <figcaption>
+             <time> <span class="icon-calendar"></span> <?=App::xlat('business_pomotion_ends')?> <?=App::module('Core')->getModel('Dates')->toDate(6, $promotion['finish'] )?> </time>
+             <em>
+              <a href="<?=App::www( App::xlat( 'empresas_singular' ) ."/". $promotion['seo'] )?>" class="business no-padding">
+                <span class="icon-user"></span> <?=strtolower($promotion['author'])?>
+              </a>
+             </em>
+            </figcaption>
+          </figure>
 
-             <?php endforeach; ?>
-             <?= empty($this->promotions['pagination_html']) ? '' : $this->promotions['pagination_html'];?>
+         <?php endforeach; ?>
+         <?= empty($this->promotions['pagination_html']) ? '' : $this->promotions['pagination_html'];?>
 
-           <?php endif;?>
+       <?php endif;?>
+
 
 
     </div>
 
-
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>
 
   </div>
- 
-  
+
 <?php 
 /*
 Array
@@ -111,5 +108,4 @@ Array
 )
 
  */
-
 ?>
