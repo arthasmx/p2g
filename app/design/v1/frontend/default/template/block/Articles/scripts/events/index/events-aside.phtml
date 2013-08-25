@@ -36,7 +36,7 @@
         <?php endforeach; ?>
       <?php else: ?>
         <article class="events_today">
-          <h6>No se han encontrado eventos para hoy</h6>
+          <h6><?=App::xlat('no_data_found')?></h6>
         </article>
       <?php endif; ?>
 
@@ -72,7 +72,7 @@
         <?php endforeach; ?>
       <?php else: ?>
         <article class="events_tomorrow">
-          <h6>No se han encontrado eventos para esta fecha</h6>
+          <h6><?=App::xlat('no_data_found')?></h6>
         </article>
       <?php endif; ?>
 
