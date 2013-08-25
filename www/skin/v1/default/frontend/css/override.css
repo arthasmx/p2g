@@ -16,6 +16,14 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
  ul.pagination li a {-webkit-border-radius: 0px !important;-moz-border-radius: 0px !important;border-radius: 0px !important; border:0 !important; background-color: #393939 !important; margin-right: 1px !important; }
  ul.pagination li a:hover{color: #30B6F3;}
 
+/* image slider */
+  .carousel-control .icon-chevron-left, .carousel-control .icon-chevron-right{
+    position: absolute;
+    top: 50%;
+  }
+  
+
+ 
 /* botones */
  .btn-xs{font-weight: lighter;}
 
