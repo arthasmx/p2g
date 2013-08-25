@@ -196,37 +196,31 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     li#n2{background-color: #607C95;}
     li#n3{background-color: #41A6AB;}
 
-    .nested_events_content article h5{margin: 0; font-size: 12px;}
-    .events_content, .news_content{padding-left: 5px !important;}
+    .nested_events_content article h5, .news_content article h5{margin: 0; font-size: 12px;}
+    .events_content{padding-left: 5px !important;}
 
       ul.nested_events{padding-top:5px !important;}
       ul.nested_events_content{padding:0 5px 5px 0 !important;}
 
-      .nested_events_content article, .nested_events_content article figure{display: inline-block; width: 100%;}
-      .nested_events_content figure figcaption{height: auto !important; font-size: 10px; margin-top: 0 !important; padding:5px; margin-bottom: 10px;}
-
-
-/*
-  ul.nested_events_content{padding: 0;}
-  ul.events_content{padding-left: 20px;}
-    li#n1{padding: 20px; background-color: #0095D8;}
-    li#n2{padding: 20px; background-color: #607C95;}
-    li#n3{padding: 20px; background-color: #41A6AB;}
-  */    
-
   /* news */
-    ul.news_content{ background-color: #555;}
+    ul.news_content{ background-color: #555; padding: 5px;}
       .news > li.active > a, .news > li.active > a:hover, .news > li.active > a:focus{background-color: #555; border: none;}
-    h6.no-news{padding:10px; text-align: center; color:white; margin:0;}
+      .news_content p{font-size: 11px; text-align: justify; }
 
-  /* shared code events, news, social and so on... */          
+      .news_content article h5 a:hover{color: #aaa;}
+      .news_content figure figcaption{background-color: #555 !important;}
+      .news_content time{color:white !important; }
+      .news_content .btn{font-weight: lighter; padding:2px 5px !important; font-size: 10px !important; display: block !important;}
+
+
+  /* shared code events, news, social and so on... */
+    .nested_events_content article h6, .news_content article h6{color: white; text-align: center;}          
     article h5 a{ color:white; }
     article h5 a:hover{color: #004151;}
-    article h5 a.news-topic:hover{color: #aaa;}
 
-    .nested_events_content article h6{color: white; text-align: center;}
-    
-    .event_info, .event_list_info{ background-color: #000000; color: gray; padding: 10px; text-align: right; position: relative; top:-3px; font-size: 11px; max-width: 370px;}
+    .nested_events_content article, .nested_events_content article figure, .news_content article, .news_content article figure{display: inline-block; width: 100%;}
+    .nested_events_content figure figcaption, .news_content figure figcaption {height: auto !important; font-size: 10px; margin-top: 0 !important; padding:5px; margin-bottom: 10px;}
+
 
 
 /* LEFT MENU */
@@ -287,6 +281,7 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
     .events figure figcaption time, .news figure figcaption time{color:#1C7DB2; font-weight: bold;}
     .events figure figcaption, .news figure figcaption{background-color: #393939; color:#9E9E9E; height: 150px; margin-top:2px;}
 
+
   /* EVENT / NEWS READING / BUSSINESS / PROMOTIONS */
     .sections.read-event figure, .sections.read-new figure, .sections.business-reading figure, .sections.promotion-reading figure{width: 100%;}
     .sections.read-event figure figcaption, .sections.read-new figure figcaption, .sections.business-reading figure figcaption, .sections.promotion-reading figure figcaption{text-align: right; background-color: #2B2B29;}
@@ -337,7 +332,7 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
   @media (min-width: 150px) and (max-width: 468px){
     div.content-p2g-block .col-6{width: 100% !important;}
-    .nested_events_content img{width: 100% !important;}
+    .nested_events_content img, .news_content img{width: 100% !important;}
   }
 
   @media (min-width: 768px) and (max-width: 1280px){
@@ -360,13 +355,13 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
         article time, article.news p{font-size:11px !important; text-align: justify; color:#aaa;}
         article time{color:#ddd;}
         article.news img{float: left; padding-right:10px;}
-        .btn{font-weight: lighter; padding:2px 5px !important; font-size: 10px !important; display: block !important;}
 
       /* EVENTS */
 
   }
     @media (min-width: 468px) and (max-width: 767px){
       .content-p2g-block .events{padding-right:5px;}
+      .content-p2g-block .news{padding-left:5px;}
       .nested_events_content img{width: 100% !important;}
     }
     @media (min-width: 768px) and (max-width: 822px){
