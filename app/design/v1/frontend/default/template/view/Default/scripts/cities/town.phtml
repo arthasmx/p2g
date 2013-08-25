@@ -10,24 +10,24 @@
     </div>
 
 
-    <div class="col-lg-8 col-sm-9 sections about-us">
 
+    <div class="col-lg-6 col-sm-6 sections read-new">
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-        <li class="active"> <span class="icon-envelope"></span> <?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?> </li>
+        <li> <span class="icon-question-sign"></span> <a href="<?=App::www('mazatlan/municipio/mazatlan')?>"><?=$this->town['name']?></a></li>
+        <li class="active"> <span class="icon-envelope"></span> <?=App::xlat($this->town['section'])?> </li>
       </ol>
 
-      <h3><?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?></h3>
-
-      <article class="read-new">
-        <?=App::module('Addons')->renderBlock("site/index","town-gallery", array( 'town'=>$this->town['town'], 'folder'=>$this->town['folder'], 'city'=>$this->town['city'] ))?>
-        <?=$this->town['article']?>
-      </article>
-
+      <h3> <?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?> </h3>
+      <?=App::module('Addons')->renderBlock("site/twitterbootstrap","image-slider", array( 'target'=>'#city-section', 'folder'=> '/cities'.$this->town['folder'].'gallery/', 'path'=> WP.'/media' ))?>
+      <?=$this->town['article']?>
     </div>
 
-
+    <div class="col-lg-2 col-sm-3 pad-left-right-5">
+      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+    </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
     </div>
@@ -50,4 +50,6 @@ Array
     [folder] => /mazatlan/towns/cuan-grande-es-dios/
 )
  */
+
+?>
 ?>
