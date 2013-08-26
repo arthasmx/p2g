@@ -173,6 +173,12 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
                    ->from( array('va' => 'view_articles'), array('article_id','title','seo','created','publicated','event_date','stop_publication','author','status','language','promote','mobile') )
                    ->where('va.type = ?', App::xlat('type_events') );
 
+    $is_admin = App::module('Acl')->getModel('Acl')->is_logged_user_admin_from_session();
+    if( empty($is_admin) ){
+      $usr = App::module('Core')->getModel('Namespace')->get( 'user' );
+      $select->where( 'va.username = ?', $usr->user['username'] );
+    }
+
     return $this->core->setPaginator_page( @$params['page'] )
                 ->setItems_per_page( @$params['rows'] )
                 ->setGrid_id_container('article_id')
