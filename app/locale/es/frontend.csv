@@ -68,6 +68,9 @@
   "news_latest","+ nuevos"
   "news_aside_block_title","Noticias"
   "events_aside_block_title","Eventos"
+  "promotions_aside_block_title","Promociones"
+  "promotion_from","Del "
+  "promotion_to"," al "
 
   "business_promotions","Promociones vigentes"
   "business_pomotion_ends","Válida hasta el "

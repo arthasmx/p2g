@@ -20,7 +20,7 @@
 
       <?php if( ! empty($this->most_readed) ): ?>
         <?php foreach($this->most_readed AS $most_readed): ?>
-          <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+          <article>
 
             <h5> <a href="<?=App::www( App::xlat( $most_readed['type'].'_singular' ) ."/". $most_readed['seo']  )?>"> <?=$most_readed['title']?> </a> </h5>
             <figure>
@@ -58,7 +58,7 @@
       <?php if( ! empty($this->articles) ): ?>
         <?php $class=true;?>
         <?php foreach($this->articles AS $article): ?>
-          <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+          <article>
 
             <h5> <a href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>"> <?=$article['title']?> </a> </h5>
             <figure>

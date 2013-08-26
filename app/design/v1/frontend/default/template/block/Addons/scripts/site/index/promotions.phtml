@@ -1,42 +1,55 @@
 
-<section>
-  <div class="promotions">
-    <p>promociones</p>
+<div class="panel panel-default no-round aside_block">
+  <div class="panel-heading no-round">
+    <h3 class="panel-title"><?=App::xlat('promotions_aside_block_title')?></h3>
+  </div>
+  <div class="panel-body promotions">
 
-      <?php if( ! empty( $this->promotions ) ): ?>
-        <?php $separator = "/"; ?>
-        <?php foreach( $this->promotions AS $promotion ): ?>
-          <?php $description = App::module('Core')->getModel('Parser')->truncate_string($promotion['description'],50); ?>
-          <?php if( $promotion['onclick_action']=='link' && ! empty($promotion['onclick_url'])  ):  ?>
-            <?php $url = $promotion['onclick_url'];?>
-          <?php else:?>
-            <?php $url = App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] );?>
-          <?php endif;?>
+    <?php if( ! empty( $this->promotions ) ): ?>
+      <?php $separator = "/"; $date = App::module('Core')->getModel('Dates'); ?>
+      <?php foreach( $this->promotions AS $promotion ): ?>
+        <?php $description = App::module('Core')->getModel('Parser')->truncate_string($promotion['description'],50); ?>
+        <?php if( $promotion['onclick_action']=='link' && ! empty($promotion['onclick_url'])  ):  ?>
+          <?php $url = $promotion['onclick_url'];?>
+        <?php else:?>
+          <?php $url = App::www( App::xlat('empresas_singular') .$separator. $promotion['seo'] .$separator. App::xlat('promociones_singular') .$separator. $promotion['id'] );?>
+        <?php endif;?>
 
-          <article>
-
-            <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
-              <a href="<?=$url?>">
-                <img class="img-responsive" src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$promotion['author']?>" title="<?=$promotion['author']?>" />
-              </a>
-              <p><?=$description?></p>
-            <?php else: ?>
-              <p class="capitalize"> <span class="icon-certificate"></span> <a href="<?=$url?>"> <?=$description?> </a> </p>
-
-            <?php endif;?>
-
-          </article>
-
-        <?php endforeach;?>
-
-      <?php else:?>
         <article>
-          <p>No existen promociones vigentes</p>
+          <?php if( ! empty($promotion['picture']) && file_exists( WP.$promotion['path'].$promotion['picture'] ) ): ?>
+            <figure>
+              <a href="<?=$url?>">
+                <img class="img-responsive" src="<?=App::www( $promotion['path'] .'mobile/'. $promotion['picture'] )?>" alt="<?=$description?>" title="<?=$description?>" />
+              </a>
+              <figcaption>
+                <span class="icon-user"></span> <?=$promotion['author']?><br>
+                <span class="icon-time"></span> <?=App::xlat('promotion_from').$date->toDate(13,$promotion['start']).App::xlat('promotion_to').$date->toDate(13,$promotion['finish'])?>
+              </figcaption>
+            </figure>
+          <?php else: ?>
+            <figure>
+              <a href="<?=$url?>">
+                <?=$description?>
+              </a>
+              <figcaption>
+                <span class="icon-user"></span> <?=$promotion['author']?><br>
+                <span class="icon-time"></span> <?=App::xlat('promotion_from').$date->toDate(13,$promotion['start']).App::xlat('promotion_to').$date->toDate(13,$promotion['finish'])?>
+              </figcaption>
+            </figure>
+          <?php endif;?>
         </article>
-      <?php endif;?>
+      <?php endforeach; ?>
+
+    <?php else: ?>
+      <article class="most_readed">
+        <h6><?=App::xlat('no_data_found')?></h6>
+      </article>
+    <?php endif; ?>
+
+    <a href="<?=App::www( App::xlat('promociones') )?>" class="btn btn-primary btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
 
   </div>
-</section>
+</div>
 
 <?php 
 /*

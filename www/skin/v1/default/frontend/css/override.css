@@ -265,10 +265,10 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
 
 
 /* PROMOTIONS */
-  div.promotions{padding-top:10px; padding-bottom:1px; color:white; text-align: center; background-color: #555555;}
-  div.promotions article{background-color: #000; padding: 15px 0; margin-bottom: 1px;}
-  div.promotions article p{font-size: 10px; font-weight: lighter; text-transform: lowercase; margin:0; text-align: justify;}
-  div.promotions article p a{color: #aaa;}
+  div.promotions{padding:10px 0; padding-bottom:1px; color:white; text-align: center; background-color: #555555;}
+  div.promotions article{ border-bottom: 1px solid gray; margin: 0 !important; padding: 10px 0;}
+  div.promotions article a{font-size: 11px; color: #aaa;}
+  div.promotions figcaption{padding:5px 0 0 5px;}
 
 
 /* SECTIONS */
