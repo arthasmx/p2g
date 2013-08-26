@@ -14,21 +14,18 @@ class Articles_Events_IndexBlockController extends Core_Controller_Block {
   }
 
   function eventsAsideAction(){
-    $this->view->today    = $this->_module->getModel('Event')->today( true );
-    $this->view->tomorrow = $this->_module->getModel('Event')->tomorrow( true );
-
-    $days               = cal_days_in_month(CAL_GREGORIAN, date('n'), date('Y') );
-    $this->view->month  = $this->_module->getModel('Event')->past(true);
+    $this->view->today  = $this->_module->getModel('Event')->today( $this->getParam('limit') );
+    $this->view->next   = $this->_module->getModel('Event')->next( $this->getParam('limit') );
+    $this->view->past   = $this->_module->getModel('Event')->past( $this->getParam('limit') );
     $this->view->mobile = $this->getParam('mobile');
   }
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   /*
   
   function latestAction(){

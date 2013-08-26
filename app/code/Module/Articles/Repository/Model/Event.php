@@ -40,9 +40,11 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
   function today($limit=null){
     return $this->get( date('Y-m-d'),true, empty($limit)?null:$limit);
   }
+
   function tomorrow($limit=null){
     return $this->get( App::module('Core')->getModel('Dates')->tomorrow(), true, empty($limit)?null:$limit );
   }
+
   function month($date_start=null,$date_end=null,$limit=null, $enabled_only=true){
 
     $select  = $this->core->_db->select()
@@ -65,14 +67,36 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }
+
+  function next($limit=null, $enabled_only=true){
+    $select  = $this->core->_db->select()
+                    ->from(array('va' => 'view_articles' ) )
+                    ->where( 'va.type = ?', App::xlat( 'eventos' ) )
+                    ->where( 'va.language = ?', App::locale()->getLang() )
+                    ->where( 'va.event_date >= ?', App::module('Core')->getModel('Dates')->tomorrow() )
+                    ->order( 'va.event_date DESC');
+
+    if( $enabled_only === true){
+      $select->where('va.status = ?', 'enabled');
+    }
+    if( empty($limit) ){
+      $select->limit($this->max_results);
+    }else{
+      $select->limit($limit);
+    }
+
+    $events = $this->core->_db->query( $select )->fetchAll();
+    return empty($events)? null : $events;
+  }
+
   function past($limit=null, $enabled_only=true){
 
     $select  = $this->core->_db->select()
                     ->from(array('va' => 'view_articles' ) )
                     ->where( 'va.type = ?', App::xlat( 'eventos' ) )
                     ->where( 'va.language = ?', App::locale()->getLang() )
-                    ->where( "va.event_date < now()" )
-                    ->order( 'va.created DESC');
+                    ->where( "va.event_date < ?",date('Y-m-d') )
+                    ->order( 'va.created ASC');
 
     if( empty($limit) ){
       $select->limit( $this->max_results );

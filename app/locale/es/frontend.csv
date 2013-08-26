@@ -34,7 +34,7 @@
 "event_where_when_time","Donde ? Cuando ? A que hora ?"
 "events_today","Hoy"
 "events_next","Proximos"
-"events_month","Pasados"
+"events_past","Pasados"
 
 
 ; GENERIC CONTENT
@@ -67,6 +67,7 @@
   "news_most_readed","+ leídos"
   "news_latest","+ nuevos"
   "news_aside_block_title","Noticias"
+  "events_aside_block_title","Eventos"
 
   "business_promotions","Promociones vigentes"
   "business_pomotion_ends","Válida hasta el "

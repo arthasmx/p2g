@@ -47,7 +47,7 @@
 
 
     <div class="col-lg-2 col-sm-3 pad-left-right-5">
-      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Articles')->renderBlock("events/index","events-aside",array('limit'=>3))?>
       <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
       <?=App::module('Articles')->renderBlock("index","latest-aside",array('limit'=>3))?>
     </div>

@@ -3,119 +3,132 @@
   $class = true;
 ?>
 
-  <ul class="nav nav-tabs events_w8">
-    <li class="active"><a href="#today" data-toggle="tab" class="today"> <?=App::xlat('events_today')?> </a></li>
-    <li><a href="#tomorrow" data-toggle="tab" class="tomorrow"> <?=App::xlat('events_next')?> </a></li>
-    <li><a href="#month" data-toggle="tab" class="month"> <?=App::xlat('events_month')?> </a></li>
-  </ul>
-  <ul class="tab-content events_w8_content">
+<div class="panel panel-default no-round aside_block">
+  <div class="panel-heading no-round">
+    <h3 class="panel-title"><?=App::xlat('events_aside_block_title')?></h3>
+  </div>
+  <div class="panel-body">
 
-    <li class="tab-pane active <?=$this->mobile?>" id="today">
+    <ul class="nav nav-tabs events_w8">
+      <li class="active"><a href="#today" data-toggle="tab" class="today"> <?=App::xlat('events_today')?> </a></li>
+      <li><a href="#next" data-toggle="tab" class="next"> <?=App::xlat('events_next')?> </a></li>
+      <li><a href="#past" data-toggle="tab" class="past"> <?=App::xlat('events_past')?> </a></li>
+    </ul>
+    <ul class="tab-content events_w8_content">
 
-      <?php if( ! empty($this->today) ): ?>
-        <?php foreach($this->today AS $today): ?>
-          <article class="events_today <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
-             <h5>
-              <a class="events_link" href="<?=App::www( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>">
-                <?=$today['title']?>
-              </a>
-            </h5>
-            <?php if( file_exists( WP.DS.'media'.DS.$today['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
-              <a href="<?=App::www( App::xlat( $today['type'].'_singular' ) ."/". $today['seo']  )?>">
-                <img class="img-responsive"  src="<?=App::media( $today['folder']."/gallery/aside-big.jpg" )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
-              </a>
-            <?php else: ?>
-              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $today['seo']  )?>">
-                <img class="img-responsive"  src="<?=App::media( '/images/article-preview-listing.jpg' )?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
-              </a>
-            <?php endif;?>
-            <div class="event_list_info">
-              <span class="icon-calendar gray"></span> <?=$date->toDate(3, $today['event_date'])?> <span class="hide-from-small">|</span>  <span class="icon-time gray"></span> <?=$today['event_hours']?>
-            </div>
+      <li class="tab-pane active <?=$this->mobile?>" id="today">
+
+        <?php if( ! empty($this->today) ): ?>
+          <?php $class=true;?>
+          <?php foreach($this->today AS $today): ?>
+            <article>
+
+              <h5> <a href="<?=App::www( App::xlat('eventos_singular' ) ."/". $today['seo']  )?>"> <?=$today['title']?> </a> </h5>
+              <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
+              <figure>
+                <?php if( file_exists( WP.DS.'media'.DS.$today['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
+                  <?php $img = App::media( $today['folder']."/gallery/listing.jpg" ); ?>
+                <?php else: ?>
+                  <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+                <?php endif; ?>
+                <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $today['seo']  )?>">
+                  <img class="img-responsive" src="<?=$img?>" alt="<?=$today['title']?>" title="<?=$today['title']?>" />
+                </a>
+                <figcaption>
+                  <span class="icon-home"></span> <?=$today['address']?> <br />
+                  <span class="icon-calendar"></span> <?=$date->toDate(3, $today['event_date'])?> | <span class="icon-time"></span> <?=$today['event_hours']?>
+                </figcaption>
+
+              </figure>
+            </article>
+          <?php endforeach; ?>
+
+        <?php else: ?>
+          <article>
+            <h6><span class="icon-search"></span> <?=App::xlat('no_data_found')?></h6>
           </article>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <article class="events_today">
-          <h6><?=App::xlat('no_data_found')?></h6>
-        </article>
-      <?php endif; ?>
+        <?php endif; ?>
 
-      <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-primary btn-xs"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
+        <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-default btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
 
-    </li>
+      </li>
 
 
-    <li class="tab-pane <?=$this->mobile?>" id="tomorrow">
-      <?php if( ! empty($this->tomorrow) ): ?>
-       <?php $class=true;?>
-        <?php foreach($this->tomorrow AS $tomorrow): ?>
-          <article class="events_tomorrow <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
-             <h5>
-              <a class="tomorrow-topic" href="<?=App::www( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>">
-                <?=$tomorrow['title']?>
-              </a>
-            </h5>
-            <?php if( file_exists( WP.DS.'media'.DS.$tomorrow['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
-              <a href="<?=App::www( App::xlat( $tomorrow['type'].'_singular' ) ."/". $tomorrow['seo']  )?>">
-                <img class="img-responsive"  src="<?=App::media( $tomorrow['folder']."/gallery/aside-big.jpg" )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
-              </a>
-            <?php else: ?>
-              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $tomorrow['seo']  )?>">
-                <img class="img-responsive"  src="<?=App::media( '/images/article-preview-listing.jpg' )?>" alt="<?=$tomorrow['title']?>" title="<?=$tomorrow['title']?>" />
-              </a>
-            <?php endif;?>
-            <div class="event_list_info">
-              <span class="icon-calendar gray"></span> <?=$date->toDate(3, $tomorrow['event_date'])?>
-              <span class="hide-from-small">|</span>  <span class="icon-time gray"></span> <?=$tomorrow['event_hours']?>
-            </div>
+      <li class="tab-pane <?=$this->mobile?>" id="next">
+
+        <?php if( ! empty($this->next) ): ?>
+          <?php $class=true;?>
+          <?php foreach($this->next AS $next): ?>
+            <article>
+
+              <h5> <a href="<?=App::www( App::xlat('eventos_singular' ) ."/". $next['seo']  )?>"> <?=$next['title']?> </a> </h5>
+              <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
+              <figure>
+                <?php if( file_exists( WP.DS.'media'.DS.$next['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
+                  <?php $img = App::media( $next['folder']."/gallery/listing.jpg" ); ?>
+                <?php else: ?>
+                  <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+                <?php endif; ?>
+                <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $next['seo']  )?>">
+                  <img class="img-responsive" src="<?=$img?>" alt="<?=$next['title']?>" title="<?=$next['title']?>" />
+                </a>
+                <figcaption>
+                  <span class="icon-home"></span> <?=$next['address']?> <br />
+                  <span class="icon-calendar"></span> <?=$date->toDate(3, $next['event_date'])?> | <span class="icon-time"></span> <?=$next['event_hours']?>
+                </figcaption>
+
+              </figure>
+            </article>
+          <?php endforeach; ?>
+
+        <?php else: ?>
+          <article>
+            <h6><span class="icon-search"></span> <?=App::xlat('no_data_found')?></h6>
           </article>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <article class="events_tomorrow">
-          <h6><?=App::xlat('no_data_found')?></h6>
-        </article>
-      <?php endif; ?>
+        <?php endif; ?>
 
-      <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-primary btn-xs"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
-
-    </li>
-
-
-    <li class="tab-pane <?=$this->mobile?>" id="month">
-      <?php if( ! empty($this->month) ): ?>
-        <?php $class=true;?>
-        <?php foreach($this->month AS $month): ?>
-          <article class="events_month <?php if(empty($class)){ echo 'zebra-on'; $class=true; }else{$class=null;}?> ">
-             <h5>
-              <a class="month-topic" href="<?=App::www( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>">
-                <?=$month['title']?>
-              </a>
-            </h5>
-            <?php if( file_exists( WP.DS.'media'.DS.$month['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
-              <a href="<?=App::www( App::xlat( $month['type'].'_singular' ) ."/". $month['seo']  )?>">
-                <img class="img-responsive" src="<?=App::media( $month['folder']."/gallery/aside-big.jpg" )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
-              </a>
-            <?php else: ?>
-              <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $month['seo']  )?>">
-                <img class="img-responsive" src="<?=App::media( '/images/article-preview-listing.jpg' )?>" alt="<?=$month['title']?>" title="<?=$month['title']?>" />
-              </a>
-            <?php endif;?>
-            <div class="event_list_info">
-              <span class="icon-calendar gray"></span> <?=$date->toDate(3, $month['event_date'])?>
-              <span class="hide-from-small">|</span>  <span class="icon-time gray"></span> <?=$month['event_hours']?>
-            </div>
-          </article>
-        <?php endforeach; ?>
-
-      <?php else: ?>
-        <article class="events_month">
-          <h6>No se han encontrado eventos para este mes</h6>
-        </article>
-      <?php endif; ?>
-      
-      <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-primary btn-xs"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
-      
-    </li>
-
-  </ul>
+        <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-default btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
   
+      </li>
+  
+  
+      <li class="tab-pane <?=$this->mobile?>" id="past">
+        <?php if( ! empty($this->past) ): ?>
+          <?php $class=true;?>
+          <?php foreach($this->past AS $past): ?>
+            <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+
+              <h5> <a href="<?=App::www( App::xlat('eventos_singular' ) ."/". $past['seo']  )?>"> <?=$past['title']?> </a> </h5>
+              <?php $file = $full_path = str_replace('\\', DS , $this->folders['gallery'].DS.'article.jpg' ); ?>
+              <figure>
+                <?php if( file_exists( WP.DS.'media'.DS.$past['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
+                  <?php $img = App::media( $past['folder']."/gallery/listing.jpg" ); ?>
+                <?php else: ?>
+                  <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+                <?php endif; ?>
+                <a href="<?=App::www( App::xlat( 'eventos_singular' ) ."/". $past['seo']  )?>">
+                  <img class="img-responsive" src="<?=$img?>" alt="<?=$past['title']?>" title="<?=$past['title']?>" />
+                </a>
+                <figcaption>
+                  <span class="icon-home"></span> <?=$past['address']?> <br />
+                  <span class="icon-calendar"></span> <?=$date->toDate(3, $past['event_date'])?> | <span class="icon-time"></span> <?=$past['event_hours']?>
+                </figcaption>
+
+              </figure>
+            </article>
+          <?php endforeach; ?>
+
+        <?php else: ?>
+          <article>
+            <h6><span class="icon-search"></span> <?=App::xlat('no_data_found')?></h6>
+          </article>
+        <?php endif; ?>
+
+        <a href="<?=App::www( App::xlat('eventos') )?>" class="btn btn-default btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
+
+      </li>
+
+    </ul>
+
+  </div>
+</div>
