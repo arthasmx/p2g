@@ -23,10 +23,10 @@
         <div class="container top-mar-20 content-p2g-block">
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-6 events">
-              <?=App::module('Articles')->renderBlock("events/index","events")?>
+              <?=App::module('Articles')->renderBlock("events/index","events",array('limit'=>3))?>
             </div>
             <div class="col-lg-6 col-sm-6 col-6 news">
-              <?=App::module('Articles')->renderBlock("index","latest")?>
+              <?=App::module('Articles')->renderBlock("index","latest",array('limit'=>3))?>
             </div>
           </div>
         </div>

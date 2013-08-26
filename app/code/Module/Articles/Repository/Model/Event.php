@@ -6,19 +6,20 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
   private   $image_config   = null;
   private   $folder_config  = null;
 
+  private $max_results      = 10;
+
   function init(){
     $this->core          = App::module('Core')->getModel('Abstract');
     $this->session       = App::module('Core')->getModel('Namespace')->get( 'event' );
     $this->folder_config = $this->_module->getConfig('core','folders');
   }
 
-  private function get( $date=null, $enabled_only = true, $limit_by_aside = null){
+  private function get( $date=null, $enabled_only = true, $limit = null){
     $select  = $this->core->_db->select()
                     ->from(array('va' => 'view_articles' ) )
                     ->where( 'va.type = ?', App::xlat( 'eventos' ) )
                     ->where( 'va.language = ?', App::locale()->getLang() )
                     ->order( 'va.event_date DESC');
-                    // ->limit( '15' );
 
     if( ! empty($date) ){
       $select->where( 'va.event_date = ?', $date );
@@ -26,23 +27,23 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     if( $enabled_only === true){
       $select->where('va.status = ?', 'enabled');
     }
-    if( $limit_by_aside=== true){
-      $select->limit('3');
+    if( empty($limit) ){
+      $select->limit($this->max_results);
     }else{
-      $select->limit('15');
+      $select->limit($limit);
     }
 
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }
 
-  function today($aside=null){
-    return $this->get( date('Y-m-d'),true, empty($aside)?null:true );
+  function today($limit=null){
+    return $this->get( date('Y-m-d'),true, empty($limit)?null:$limit);
   }
-  function tomorrow($aside=null){
-    return $this->get( App::module('Core')->getModel('Dates')->tomorrow(), true, empty($aside)?null:true );
+  function tomorrow($limit=null){
+    return $this->get( App::module('Core')->getModel('Dates')->tomorrow(), true, empty($limit)?null:$limit );
   }
-  function month($date_start=null,$date_end=null,$aside=null, $enabled_only=true){
+  function month($date_start=null,$date_end=null,$limit=null, $enabled_only=true){
 
     $select  = $this->core->_db->select()
                           ->from(array('va' => 'view_articles' ) )
@@ -50,11 +51,11 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
                           ->where( 'va.language = ?', App::locale()->getLang() )
                           ->where( "va.event_date BETWEEN '$date_start' AND '$date_end'" )
                           ->order( 'va.created DESC');
-                          // ->limit( '15' );
-    if( empty($aside) ){
-      $select->limit( '15' );
+
+    if( empty($limit) ){
+      $select->limit( $this->max_results );
     }else{
-      $select->limit( '3' );
+      $select->limit( $limit );
     }
 
     if( $enabled_only === true){
@@ -64,25 +65,25 @@ class Module_Articles_Repository_Model_Event extends Core_Model_Repository_Model
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }
-  function past($aside=null, $enabled_only=true){
-  
+  function past($limit=null, $enabled_only=true){
+
     $select  = $this->core->_db->select()
-    ->from(array('va' => 'view_articles' ) )
-    ->where( 'va.type = ?', App::xlat( 'eventos' ) )
-    ->where( 'va.language = ?', App::locale()->getLang() )
-    ->where( "va.event_date < now()" )
-    ->order( 'va.created DESC');
-    // ->limit( '15' );
-    if( empty($aside) ){
-      $select->limit( '15' );
+                    ->from(array('va' => 'view_articles' ) )
+                    ->where( 'va.type = ?', App::xlat( 'eventos' ) )
+                    ->where( 'va.language = ?', App::locale()->getLang() )
+                    ->where( "va.event_date < now()" )
+                    ->order( 'va.created DESC');
+
+    if( empty($limit) ){
+      $select->limit( $this->max_results );
     }else{
-      $select->limit( '3' );
+      $select->limit( $limit );
     }
-  
+
     if( $enabled_only === true){
       $select->where('va.status = ?', 'enabled');
     }
-  
+
     $events = $this->core->_db->query( $select )->fetchAll();
     return empty($events)? null : $events;
   }

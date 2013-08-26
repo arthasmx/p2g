@@ -5,11 +5,11 @@ class Articles_Events_IndexBlockController extends Core_Controller_Block {
   function init() {}
 
   function eventsAction(){
-    $this->view->today    = $this->_module->getModel('Event')->today();
-    $this->view->tomorrow = $this->_module->getModel('Event')->tomorrow();
+    $this->view->today    = $this->_module->getModel('Event')->today( $this->getParam('limit') );
+    $this->view->tomorrow = $this->_module->getModel('Event')->tomorrow( $this->getParam('limit') );
 
     $days               = cal_days_in_month(CAL_GREGORIAN, date('n'), date('Y') );
-    $this->view->month  = $this->_module->getModel('Event')->month( date('Y-m-').'01', date('Y-m-').$days );
+    $this->view->month  = $this->_module->getModel('Event')->month( date('Y-m-').'01', date('Y-m-').$days, $this->getParam('limit') );
     $this->view->mobile = $this->getParam('mobile');
   }
 
