@@ -105,6 +105,7 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
                                ->from( array('va' => 'view_articles' ) )
                                ->join( array('at' => 'articles_tags'), 'at.article_id = va.article_id',  array() )
                                ->where( 'va.language = ?', App::locale()->getLang() )
+                               ->where( 'va.type = ?', 'empresas' )
                                ->where( 'at.tag = ?', $tag )
                                ->group( 'va.article_id' )
                                ->order( 'va.created DESC');
