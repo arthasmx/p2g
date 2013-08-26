@@ -37,7 +37,7 @@
             </a>
             <figcaption>
               <h1><?=$event['address']?></h1>
-              <time><?=$dates->toDate(13,$event['created'])?></time><br />
+              <time><?=$dates->toDate(13,$event['event_date'])?></time><br />
               <p><?=trim(substr( strip_tags($event['article']) , 0, 80)); ?>...</p>
             </figcaption>
           </figure>
