@@ -10,11 +10,6 @@ class Articles_IndexController extends Module_Articles_Controller_Action_Fronten
   function readAction(){
     $this->view->article  = $this->_module->getModel('Article')->read_full_article( $this->getRequest()->getParam('seo'),true,true );
     $this->view->folders  = $this->_module->getModel('Article')->set_article_folders($this->view->article['article_id'],$this->view->article['created'] );
-
-    $this->view->pageBreadcrumbs = array('title'=> $this->view->article['title'], 'icon'=>'icon-file', 'crumbs' => array( 
-      array( 'txt'=> ucwords($this->view->article['type']) ,'ico'=>'icon-copy','url'=> $this->view->article['type'])
-    ));
-    $this->view->small_bread = true;
   }
 
   function listAction(){

@@ -20,6 +20,19 @@ class Module_Articles_Repository_Model_Cud_Articles extends Module_Core_Reposito
     return true;
   }
 
+  /* increments counter value for statistics */
+  function register_article_reading($article=null){
+    if( empty($article) ){
+      return null;
+    }
+
+    $this->set_table('articles');
+    $data  = array('reading' => new Zend_Db_Expr('reading + 1') );
+    $where = $this->table->getAdapter()->quoteInto('article = ?', $article);
+    $this->table->update($data, $where);
+    return true;
+  }
+
   function save($params=array()){
     $required_params = array('action','btn','tags');
     $this->session   = App::module('Core')->getModel('Namespace')->get( 'user' );

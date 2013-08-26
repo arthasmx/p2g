@@ -1,0 +1,136 @@
+<?php
+  $date = App::module('Core')->getModel('Dates');
+  $class = true;
+?>
+
+
+<div class="panel panel-default no-round aside_block">
+  <div class="panel-heading no-round">
+    <h3 class="panel-title"><?=App::xlat('news_aside_block_title')?></h3>
+  </div>
+  <div class="panel-body">
+  
+  <ul class="nav nav-tabs news_w8">
+    <li class="active"><a href="#most_readed" data-toggle="tab" class="most_readed"> <?=App::xlat('news_most_readed')?> </a></li>
+    <li><a href="#articles" data-toggle="tab" class="articles"> <?=App::xlat('news_latest')?> </a></li>
+  </ul>
+  <ul class="tab-content news_w8_content">
+
+    <li class="tab-pane active <?=$this->mobile?>" id="most_readed">
+
+      <?php if( ! empty($this->most_readed) ): ?>
+        <?php foreach($this->most_readed AS $most_readed): ?>
+          <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+
+            <h5> <a href="<?=App::www( App::xlat( $most_readed['type'].'_singular' ) ."/". $most_readed['seo']  )?>"> <?=$most_readed['title']?> </a> </h5>
+            <figure>
+              <?php if( file_exists( WP.DS.'media'.DS.$most_readed['folder'].DS.'gallery'.DS.'listing.jpg' ) ): ?>
+                <?php $img = App::media( $most_readed['folder']."/gallery/listing.jpg" ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+              <?php endif; ?>
+
+              <a href="<?=App::www( App::xlat( $most_readed['type'].'_singular' ) ."/". $most_readed['seo']  )?>">
+                <img class="img-responsive" src="<?=$img?>" alt="<?=$most_readed['title']?>" title="<?=$most_readed['title']?>" />
+              </a>
+
+              <figcaption>
+                <time> <span class="icon-calendar"></span> <?=$date->toDate(3, $most_readed['publicated'])?> </time>
+                <p><?=App::module('Core')->getModel('Parser')->truncate_string($most_readed['article'],60);?>...</p>
+                <a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat('articulos_singular' ) ."/". $most_readed['seo']  )?>"> <?=App::xlat('continue_reading')?> <span class="icon-chevron-right"></span> </a>
+              </figcaption>
+
+            </figure>
+
+          </article>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <article class="most_readed">
+          <h6><?=App::xlat('no_data_found')?></h6>
+        </article>
+      <?php endif; ?>
+
+      <a href="<?=App::www( App::xlat('articulos') )?>" class="btn btn-default btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
+    </li>
+
+
+    <li class="tab-pane <?=$this->mobile?>" id="articles">
+      <?php if( ! empty($this->articles) ): ?>
+        <?php $class=true;?>
+        <?php foreach($this->articles AS $article): ?>
+          <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+
+            <h5> <a href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>"> <?=$article['title']?> </a> </h5>
+            <figure>
+              <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+                <?php $img = App::media( $article['folder']."/gallery/listing.jpg" ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+              <?php endif; ?>
+              <a href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>">
+                <img class="img-responsive" src="<?=$img?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+              </a>
+
+              <figcaption>
+                <time> <span class="icon-calendar"></span> <?=$date->toDate(3, $article['publicated'])?> </time>
+                <p><?=App::module('Core')->getModel('Parser')->truncate_string($article['article'],60);?>...</p>
+                <a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>"> <?=App::xlat('read_more')?> <span class="icon-chevron-right"></span> </a>
+              </figcaption>
+
+            </figure>
+
+          </article>
+        <?php endforeach; ?>
+
+      <?php else: ?>
+        <article class="pad-top-botom-20">
+          <h6><span class="icon-search"></span> <?=App::xlat('no_data_found')?></h6>
+        </article>
+      <?php endif; ?>      
+
+      <a href="<?=App::www( App::xlat('articulos') )?>" class="btn btn-default btn-xs top-mar-20"> <?=App::xlat('view_more')?> <span class="icon-chevron-right"></span> </a>
+    </li>
+
+  </ul>
+  
+  
+  </div>
+</div>
+
+
+  
+<?php 
+/*
+Array
+(
+[0] => Array
+    (
+  [id] => 9
+  [article_id] => 9
+  [title] => articulo nuevo uno
+  [seo] => articul
+  [email] => 
+  [phone] => 
+  [address] => 
+  [type_id] => 69
+  [type] => articulos
+  [type_name] => Articulos
+  [created] => 2013-08-21 19:46:19
+  [publicated] => 2013-08-21
+  [event_date] => 
+  [event_hours] => 
+  [stop_publication] => 
+  [username] => robe@gmail.com
+  [author] => Places to go! 
+  [language] => es
+  [reads] => 0
+  [written] => 1
+  [folder] => /articles/2013/08/9/
+  [promote] => enabled
+  [mobile] => enabled
+  [addon] => enabled
+  [status] => enabled
+)
+ */
+?>
+  

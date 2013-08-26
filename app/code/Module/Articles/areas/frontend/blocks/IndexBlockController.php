@@ -43,9 +43,15 @@ class Articles_IndexBlockController extends Core_Controller_Block {
 
 
   function latestAction(){
-    $this->view->articles = $this->_module->getModel('Article')->latest( App::xlat('articulos') );
-    //App::module('Core')->getModel('Libraries')->twitter_bootstrap_slider_autoplay('#latest-articles-carousel');
+    $this->view->articles = $this->_module->getModel('Article')->latest( App::xlat('articulos'), $this->getParam('limit') );
   }
+
+  function latestAsideAction(){
+    $this->latestAction();
+    $this->view->most_readed = $this->_module->getModel('Article')->most_visited( App::xlat('articulos'), $this->getParam('limit') );
+  }
+
+
 
   function promoteAction(){
     $this->view->promote  = $this->_module->getModel('Article')->get_article_basic_data( $this->getParam('seo') );

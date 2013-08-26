@@ -91,6 +91,7 @@ class Module_Articles_Repository_Model_Article extends Core_Model_Repository_Mod
       }
     }
 
+    App::module('Articles')->getModel('Cud/Articles')->register_article_reading( $article['article_id'] );
     return $article;
   }
 
@@ -125,13 +126,29 @@ class Module_Articles_Repository_Model_Article extends Core_Model_Repository_Mod
     return $article;
   }
 
-  function latest( $type='articulos' , $enabled_only = true){
+  function latest( $type='articulos', $max=15, $enabled_only = true){
     $select  = $this->core->_db->select()
                           ->from(array('va' => 'view_articles' ) )
                           ->where( 'va.type = ?', $type )
                           ->where( 'va.language = ?', App::locale()->getLang() )
                           ->order( 'va.publicated DESC')
-                          ->limit( 15 );
+                          ->limit( $max );
+
+    if( $enabled_only === true){
+      $select->where('va.status = ?', 'enabled');
+    }
+
+    $events = $this->core->_db->query( $select )->fetchAll();
+    return empty($events)? null : $events;
+  }
+
+  function most_visited( $type='articulos', $max=15, $enabled_only = true){
+    $select  = $this->core->_db->select()
+                    ->from(array('va' => 'view_articles' ) )
+                    ->where( 'va.type = ?', $type )
+                    ->where( 'va.language = ?', App::locale()->getLang() )
+                    ->order( 'va.reading DESC')
+                    ->limit( $max );
 
     if( $enabled_only === true){
       $select->where('va.status = ?', 'enabled');

@@ -41,6 +41,7 @@
 
   "read_more","leer más..."
   "view_more","ver más..."
+  "continue_reading","continuar leyendo..."
   "contact_us","Contáctenos"
   "phone_sos","Telefonos de Emergencia"
   "how_does_this_work","Cómo funciona ?"
@@ -63,6 +64,9 @@
   "download","Descargar"
   "latest_events","Últimos Eventos"
   "latest_articles","Últimos Artículos"
+  "news_most_readed","+ leídos"
+  "news_latest","+ nuevos"
+  "news_aside_block_title","Noticias"
 
   "business_promotions","Promociones vigentes"
   "business_pomotion_ends","Válida hasta el "

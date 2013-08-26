@@ -40,7 +40,6 @@
       </figure>
 
       <?=$this->article['article']?>
-
       <?=App::module('Articles')->renderBlock("addons/index","article-addons", array('id' => $this->article['article_id'], 'created'=> $this->article['created'], 'folders'=>$this->folders ))?>
 
     </div>
@@ -50,6 +49,7 @@
     <div class="col-lg-2 col-sm-3 pad-left-right-5">
       <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
       <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
+      <?=App::module('Articles')->renderBlock("index","latest-aside",array('limit'=>3))?>
     </div>
     <div class="col-lg-1 visible-lg no-padding">
       <?=App::module('Addons')->renderBlock("site/index","cloud",array('direction'=>'right'))?>
