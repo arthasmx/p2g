@@ -260,6 +260,6 @@
 // ERRORES
  //404
   "PUBLIC_ERROR_title","Página no encontrada!"
-  "PUBLIC_ERROR_advice","Lo sentimos, pero la página que usted esta buscando no ha sido encontrada; revisa posibles errores en la dirección o regresa al contenido anterior."
+  "PUBLIC_ERROR_advice","Lo sentimos, pero la página que usted esta buscando no ha sido encontrada;<br />revisa posibles errores en la dirección o regresa al contenido anterior."
   "ERROR_LOGIN_NOACTIVITY_NOPRIVILEGES",""
   "EXC_acl_no_password_given_to_generate_salted_pass","No se ha especificado el password para generar la clave correctamente"

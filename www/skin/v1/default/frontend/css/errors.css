@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+div.msg{ height: 300px; width: 100%; margin:0 auto; padding-top:50px; }
+
+.bk-image{ width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; z-index: -999;}
+.stretch{width: 100%; height: 100%;}
+
+  h1, p{ color: #FFFFFF; font-family: "Open Sans",helvetica,verdana,arial; font-size: 3em; font-weight: lighter; text-align: right; line-height:85px;}
+  p{ background-color: #000000; font-size: 1em; line-height: 30px; padding: 20px;}
+  h1{color: #000; font-weight: lighter;}
+
+@media (min-width: 150px) and (max-width: 468px){
+  h1{font-size:1.5em; line-height: 20px;}
+  p{font-size:12px; line-height: 13px;}
+  .msg{padding:0 10px !important;}
+}
+@media (min-width: 467px) and (max-width: 1024px){
+  h1{font-size:2.5em; line-height: 20px;}
+  p{font-size:12px; line-height: 13px;}
+}

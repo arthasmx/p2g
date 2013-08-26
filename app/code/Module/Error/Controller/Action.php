@@ -11,7 +11,6 @@ class Module_Error_Controller_Action extends Local_Controller_Action  {
 		$this->designManager()->setCurrentLayout( "error" );
 		$this->view->pageClass='page-error';
 		$this->view->menuSelectOption=null;
-		App::module('Core')->getModel('Libraries')->jquery_vegas_default('error');
 	}
 
     function errorAction() {
