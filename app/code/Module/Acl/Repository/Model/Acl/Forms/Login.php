@@ -29,7 +29,7 @@ class Module_Acl_Repository_Model_Acl_Forms_Login extends Core_Model_Repository_
             'captcha' => 'Image',
             'font'    => WP . DS .'skin'. DS.'v1'. DS.'default'. DS.'frontend'. DS.'font'. DS.'comfortaa_bold.ttf',
             'imgDir'  => WP . DS .'media' .DS. 'captchas' .DS,
-            'imgUrl'  => App::base("/media/captchas/"),
+            'imgUrl'  => App::media("/captchas/"),
             'GcFreq'  => '20',
             'wordLen' => 3,
             'dotNoiseLevel'=> 10,

@@ -33,7 +33,6 @@
           <span class="icon-home gray"></span> <?=$this->event['address']?>
           <span class="hide-on-mobile">|</span> <span class="icon-calendar gray"></span> <?=App::locale()->toDate( $this->event['event_date'] ,'long')?>
           <span class="hide-on-mobile">|</span> <span class="icon-time gray"></span> <?=$this->event['hours'].':'.$this->event['min']?>
-          <span class="hide-on-mobile">|</span> <span class="icon-user gray"></span> <?=$this->event['author']?>
           <?php if( App::getEnvironment()!=='devel' ):?>
             <span class="hide-on-mobile">|</span>  <span class="icon-comments  gray"></span> <fb:comments-count href="<?=App::base( App::xlat('eventos_singular').'/'. $this->event['seo'] )?>"></fb:comments-count> <?=App::xlat('comments')?>
           <?php endif;?>
@@ -48,7 +47,8 @@
     </div>
 
     <div class="col-lg-2 col-sm-3 pad-left-right-5">
-      <?=App::module('Articles')->renderBlock("events/index","events-aside")?>
+      <?=App::module('Articles')->renderBlock("events/index","events-aside",array('limit'=>3))?>
+      <?=App::module('Articles')->renderBlock("index","latest-aside",array('limit'=>3))?>
       <?=App::module('Addons')->renderBlock("site/index","cloud-tag",array('chars'=>25))?>
     </div>
     <div class="col-lg-1 visible-lg no-padding">

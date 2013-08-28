@@ -3,7 +3,7 @@
 
   <?php if( $this->direction==='left' ): ?>
 
-    <?php for($i = 1; $i<=10; $i++): ?>
+    <?php for($i = 1; $i<=6; $i++): ?>
       <?php for($tags = 1; $tags<=25; $tags++): ?>
         <a href="<?=App::base( App::xlat('tag_url_' . $tags) )?>" rel="<?=App::xlat('tag_rel_' . $tags)?>"> <?=App::xlat('tag_name_' . $tags)?> </a>
       <?php endfor;?>
@@ -11,7 +11,7 @@
 
   <?php else:?>
 
-    <?php for($i = 1; $i<=10; $i++): ?>
+    <?php for($i = 1; $i<=6; $i++): ?>
       <?php for($tags = 25; $tags>=1; $tags--): ?>
         <a href="<?=App::base( App::xlat('tag_url_' . $tags) )?>" rel="<?=App::xlat('tag_rel_' . $tags)?>"> <?=App::xlat('tag_name_' . $tags)?> </a>
       <?php endfor;?>

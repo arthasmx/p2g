@@ -24,7 +24,7 @@ class Acl_IndexController extends Module_Acl_Controller_Action_Frontend {
       //jQuery('form#login span#captcha-refresh').click(function(){
       jQuery('button#captcha-refresh').click(function(){
         jQuery.ajax({
-          url: baseUrl  + 'captcha-contact-refresh',
+          url: wwwUrl  + 'captcha-contact-refresh',
           dataType:'json',
           beforeSend:function(){
             jQuery( '#login input#captcha-input' ).val('');
