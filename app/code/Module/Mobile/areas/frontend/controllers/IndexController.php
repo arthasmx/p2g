@@ -15,4 +15,11 @@ class Mobile_IndexController extends Module_Mobile_Controller_Action_Frontend {
 
   function promocionesAction(){}
 
+  function importBusinessAction(){
+    $this->designManager()->setCurrentLayout('ajax');
+    $resp = App::module('Articles')->getModel('Business')->get_business_to_sync_with_mobile_app();
+     echo json_encode($resp);
+     exit;
+  }
+
 }

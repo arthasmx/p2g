@@ -167,4 +167,54 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
     return $session->business['folders'];
   }
 
+
+
+  /* MOBILE */
+  function get_business_to_sync_with_mobile_app(){
+    $select  = $this->core->_db->select()
+                    ->from( array('va' => 'view_articles' ) )
+                    ->where( 'va.type = ?', 'empresas')
+                    ->where( 'va.status = ?', 'enabled' );
+
+    $business = $this->core->_db->query( $select )->fetchAll();
+
+    if( empty($business) ){
+      return array('error'=>true);
+    }
+
+    $json = array();
+    foreach ($business AS $buss){
+      $json[] = array(
+          'id'               => $buss['id'],
+          'article_id'       => $buss['article_id'],
+          'title'            => $buss['title'],
+          'seo'              => $buss['seo'],
+          'article'          => strip_tags($buss['article']),
+          'email'            => $buss['email'],
+          'phone'            => $buss['phone'],
+          'address'          => $buss['address'],
+          'type_id'          => $buss['type_id'],
+          'type'             => $buss['type'],
+          'type_name'        => $buss['type_name'],
+          'created'          => $buss['created'],
+          'publicated'       => $buss['publicated'],
+          'event_date'       => $buss['event_date'],
+          'event_hours'      => $buss['event_hours'],
+          'stop_publication' => $buss['stop_publication'],
+          'username'         => $buss['username'],
+          'author'           => $buss['author'],
+          'language'         => $buss['language'],
+          'reading'          => $buss['reading'],
+          'written'          => $buss['written'],
+          'folder'           => '/media'.$buss['folder'],
+          'promote'          => $buss['promote'],
+          'mobile'           => $buss['mobile'],
+          'addon'            => $buss['addon'],
+          'status'           => $buss['status']
+      );
+    }
+
+    return $json;
+  }
+
 }
