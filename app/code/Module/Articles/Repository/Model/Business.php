@@ -173,6 +173,8 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
   function get_business_to_sync_with_mobile_app(){
     $select  = $this->core->_db->select()
                     ->from( array('va' => 'view_articles' ) )
+                    ->join( array('u'  => 'user'), 'u.username = va.username',  array() )
+                    ->join( array('st' => 'site_towns'), 'st.city = u.city ',  array('city_id'=>'city', 'city_name'=>'name') )
                     ->where( 'va.type = ?', 'empresas')
                     ->where( 'va.status = ?', 'enabled' );
 
@@ -184,12 +186,14 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
 
     $json = array();
     foreach ($business AS $buss){
+      $tags = $this->get_tags_for_json($buss['article_id']);
+
       $json[] = array(
           'id'               => $buss['id'],
           'article_id'       => $buss['article_id'],
           'title'            => $buss['title'],
           'seo'              => $buss['seo'],
-          'article'          => strip_tags($buss['article']),
+          'article'          => str_replace('"','', strip_tags($buss['article']) ) ,
           'email'            => $buss['email'],
           'phone'            => $buss['phone'],
           'address'          => $buss['address'],
@@ -210,11 +214,26 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
           'promote'          => $buss['promote'],
           'mobile'           => $buss['mobile'],
           'addon'            => $buss['addon'],
-          'status'           => $buss['status']
+          'status'           => $buss['status'],
+          'city_id'          => $buss['city_id'],
+          'city_name'        => $buss['city_name'],
+          'tags' =>          $tags
       );
     }
 
     return $json;
+  }
+
+  function get_tags_for_json($article='not-article-given'){
+    $tags = App::module('Articles')->getModel('Article')->get_tags( $article );
+    if( empty($tags) ){
+      return null;
+    }
+
+    foreach ($tags AS $tag){
+      $parsed[] = array( 'tag'=>$tag['name'],'tag_seo'=>$tag['seo']);
+    }
+    return $parsed;
   }
 
 }
