@@ -186,7 +186,8 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
 
     $json = array();
     foreach ($business AS $buss){
-      $tags = $this->get_tags_for_json($buss['article_id']);
+      $tags   = $this->get_tags_for_json($buss['article_id']);
+      $addons = $this->get_addons_for_json($buss['article_id'], $buss['addon']);
 
       $json[] = array(
           'id'               => $buss['id'],
@@ -217,7 +218,8 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
           'status'           => $buss['status'],
           'city_id'          => $buss['city_id'],
           'city_name'        => $buss['city_name'],
-          'tags' =>          $tags
+          'tags'             => $tags,
+          'addons'           => $addons
       );
     }
 
@@ -234,6 +236,23 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
       $parsed[] = array( 'tag'=>$tag['name'],'tag_seo'=>$tag['seo']);
     }
     return $parsed;
+  }
+
+  function get_addons_for_json($article='not-article-given', $get_addon=null){
+    if( $get_addon==='enabled' ){
+      $addons = App::module('Articles')->getModel('Article')->get_article_addons( $article );
+      if( empty($addons) ){
+        return null;
+      }
+
+      foreach ($addons AS $addon){
+        $parsed[] = array( 'type'=>$addon['type'], 'reference'=>$addon['reference'], 'description'=>$addon['description'], 'status'=>$addon['status'] );
+      }
+      return $parsed;
+    }else{
+      return null;
+    }
+
   }
 
 }
