@@ -10,4 +10,8 @@ class Addons_TownBlockController extends Core_Controller_Block {
     $this->view->files = $this->_module->getModel('Cities')->load_gallery();
   }
 
+  function sectionGalleryAction(){
+    $this->view->files = $this->_module->getModel('Cities')->section_load_gallery();
+  }
+
 }

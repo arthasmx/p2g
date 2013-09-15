@@ -19,8 +19,8 @@ var towns = {
     audio_reload_error   : "No fue posible cargar los archivos de sonido",
     files_reload_error   : "No fue posible cargar los documentos",
 
-    section_legend_1     : "Defina el tema { ",
-    section_legend_2     : " } para el municipio en turno",
+    section_legend_1     : "Describa '",
+    section_legend_2     : "' para el municipio en turno",
     
     response_seo         : "Link de municipio esta duplicado (SEO)!",
     response_username    : "Este correo ya ha sido utilizado!",
@@ -41,17 +41,21 @@ var towns = {
     listing_action_shared  : "span#listing_action",
 
     del_image_response     : "span.gp_response",
+    section_del_image_response : "span.gp_response_section",
     del_image_ul           : "ul.uploaded_images",
     del_image_span         : "span.iha_del",
+    section_del_image_span : "span.section_iha_del",
 
     gallery_uploaded       : "fieldset#gallery_uploaded div.uploaded_images",
+    section_gallery_uploaded : "fieldset#section_gallery_uploaded div.section_uploaded_images",
     main_pix               : "#main-pix-filelist",
     zipped_gallery         : "#zip-filelist",
 
     section_info           : "fieldset#section_info",
     daSection_instructions : "div#daSection div.instructions",
     daSectionCkeditor      : "div.daSectionCkeditor",
-    section_image_results  : "table.sections img"
+    section_image_results  : "table.sections img",
+    section_accordion      : "div#daSection #accordion"
   },
   tabs:{
     id    : "#add-town-tabs",
@@ -98,7 +102,9 @@ var towns = {
     del_coordinates    : baseUrl + '/towns/del-coordinates',
 
     del_image           : baseUrl + '/towns/delete-image',
+    section_del_image   : baseUrl + '/towns/delete-section-image',
     gallery_reload      : baseUrl + '/towns/reload-gallery',
+    section_gallery_reload : baseUrl + '/towns/section-reload-gallery',
 
     section_value       : baseUrl + '/towns/section-value',
     section_save        : baseUrl + '/towns/save-section',
@@ -204,7 +210,7 @@ var towns = {
         break;
     }
   },
-  
+
   clear_elements:function(){
     var self=this;
 
@@ -240,14 +246,20 @@ var towns = {
       url:  towns.url.section_value,
       data: {section:section},
       beforeSend : function (){
-        blockUI_ajax_saving(self.dom.section_info,"on",self.msg.load_section);
+        blockUI_ajax_saving(self.dom.section_info,"on",self.msg.load_section,'300px');
+        jQuery( self.dom.section_accordion ).accordion({ active: 0 });
+
+        var plUploader = jQuery('#uploader_f_section_gallery').pluploadQueue();
+        plUploader.splice();
       },
       success: function(response){
+        jQuery( towns.dom.section_accordion ).show();
         jQuery( towns.dom.section_info ).attr("data-section", section ).show();
         jQuery( towns.dom.section_info + ' legend' ).text( self.msg.section_legend_1 + section_desc + self.msg.section_legend_2 );
         jQuery( towns.dom.daSection_instructions ).hide();
         jQuery( towns.dom.daSectionCkeditor ).html(response)
-        CKEDITOR.replace( self.form.ckeditor_section, {toolbar : 'sectionCreate',height : '20em',language : 'es'});
+        CKEDITOR.replace( self.form.ckeditor_section, {toolbar : 'sectionCreate',height : '14em',language : 'es'});
+        self.reload_section_gallery();
 
         blockUI_ajax_saving(self.dom.section_info,"off");
       },
@@ -258,6 +270,7 @@ var towns = {
 
   disable_section_editor:function(){
     var self=this;
+    jQuery( towns.dom.section_accordion ).hide();
     jQuery( self.dom.section_info ).attr("data-section","").hide();
     jQuery( self.dom.daSection_instructions ).show();
   },
@@ -435,31 +448,45 @@ var towns = {
     });
   },
 
-  del:function(image,li){
+  del:function(image,li,type){
     var self=this;
+    if( type=='section' ){
+      var response = self.dom.section_del_image_response;
+      var url = self.url.section_del_image;
+      var gallery_uploaded = self.dom.section_gallery_uploaded;
+    }else{
+      var response = self.dom.del_image_response;
+      var url = self.url.del_image;
+      var gallery_uploaded = self.dom.gallery_uploaded;
+    }
+
     if( ! validate_param(image) ){
       return false;
     }
-    jQuery(self.dom.del_image_response).empty();
+    jQuery(response).empty();
 
     jQuery.ajax({
       type: 'post',
       data: {image:image},
       dataType: 'json',
-      url:  self.url.del_image,
+      url:  url,
       beforeSend : function (){
-        blockUI_ajax_saving(self.dom.gallery_uploaded,"on",self.msg.image_delete);
+        blockUI_ajax_saving(gallery_uploaded,"on",self.msg.image_delete);
       },
       success: function(response){
         if( response.status == true ){
-          //jQuery(self.dom.del_image_ul + " li").eq(li).remove();
-          self.reload_gallery();
+
+          if( type=='section' ){
+            self.reload_section_gallery();
+          }else{
+            self.reload_gallery();
+          }
         }
-        blockUI_ajax_saving(self.dom.gallery_uploaded,"off");
+        blockUI_ajax_saving(gallery_uploaded,"off");
       },
       error: function(jqXHR, exception){
-        jQuery(self.dom.del_image_response).html( self.msg.img_delete_error + " [" + exception + "]" ).addClass('error');
-        blockUI_ajax_saving(self.dom.gallery_uploaded,"off");
+        jQuery(response).html( self.msg.img_delete_error + " [" + exception + "]" ).addClass('error');
+        blockUI_ajax_saving(gallery_uploaded,"off");
       }
     });
   },
@@ -478,6 +505,22 @@ var towns = {
         jQuery( self.dom.gallery_uploaded ).html( self.msg.gallery_reload_error + "[" + exception + "]" );
       }
     });
+  },
+ 
+  reload_section_gallery:function(){
+    var self=this;
+
+    jQuery.ajax({
+      type: 'get',
+      url:  self.url.section_gallery_reload,
+      success: function(response){
+        jQuery( self.dom.section_gallery_uploaded ).html( response );
+        $('a.cBox-section_gallery').colorbox({rel:'cBox-section_gallery'});
+      },
+      error: function(jqXHR, exception){
+        jQuery( self.dom.section_gallery_uploaded ).html( self.msg.gallery_reload_error + "[" + exception + "]" );
+      }
+    });
   }
 
 };
@@ -490,7 +533,7 @@ jQuery(document).ready(function(){
     if( ! jQuery( towns.form.article_id ).is("[data-id]") ){
       jQuery(towns.tabs.id).tabs('select', 0);
     }
-    if( jQuery(this).index() == 3 && ! jQuery(towns.dom.map_coors).is('[data-initialized]') ){
+    if( jQuery(this).index() == 2 && ! jQuery(towns.dom.map_coors).is('[data-initialized]') ){
       initialize();
     }
 
@@ -516,7 +559,10 @@ jQuery(document).ready(function(){
   });
   /* delete uploaded images */
   jQuery(document).on('click', towns.dom.del_image_span, function(){
-    towns.del( jQuery(this).attr('data-id'), jQuery(this).parent().parent().index() );
+    towns.del( jQuery(this).attr('data-id'), jQuery(this).parent().parent().index(), "main" );
+  });
+  jQuery(document).on('click', towns.dom.section_del_image_span, function(){
+    towns.del( jQuery(this).attr('data-id'), jQuery(this).parent().parent().index(), "section" );
   });
 
   jQuery(document).on('click', 'table.sections a', function(){

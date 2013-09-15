@@ -40,7 +40,7 @@ span.ui-button:hover, button.ui-button:hover{
  border-radius: 0px;
 }
 #add-art-tabs .ui-state-active, #add-eve-tabs .ui-state-active, #add-emp-tabs .ui-state-active, #add-banner-tabs .ui-state-active, #add-promotions-tabs .ui-state-active, #add-town-tabs .ui-state-active, #add-social-tabs .ui-state-active{
- background: #abcf3a url(/js/jquery-ui/uiTabsArrow.png) no-repeat bottom center !important;
+ background: #BFD185 url(/js/jquery-ui/uiTabsArrow.png) no-repeat bottom center !important;
 }
 
 #add-art-tabs .ui-tabs-panel, #add-eve-tabs .ui-tabs-panel, #add-emp-tabs .ui-tabs-panel, #add-town-tabs .ui-tabs-panel { height: 43em; }

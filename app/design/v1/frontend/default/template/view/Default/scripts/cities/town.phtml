@@ -15,12 +15,14 @@
       <?=App::module('Addons')->renderBlock("site/index","top-menu",array('padding'=>true))?>
       <ol class="breadcrumb">
         <li> <span class="icon-home"></span> <a href="<?=App::www()?>"><?=App::xlat('home')?></a></li>
-        <li> <span class="icon-question-sign"></span> <a href="<?=App::www('mazatlan/municipio/mazatlan')?>"><?=$this->town['name']?></a></li>
+        <li> <span class="icon-road"></span> <a href="<?=App::www('pueblos')?>"><?=App::xlat('breadcrumb_town')?></a></li>
+        <li> <span class="icon-question-sign"></span> <a href="<?=App::www('mazatlan/municipio/'.$this->town['town'])?>"><?=$this->town['name']?></a></li>
         <li class="active"> <span class="icon-envelope"></span> <?=App::xlat($this->town['section'])?> </li>
       </ol>
 
       <h3> <?=$this->town['name']?> :: <?=App::xlat($this->town['section'])?> </h3>
-      <?=App::module('Addons')->renderBlock("site/twitterbootstrap","image-slider", array( 'target'=>'#city-section', 'folder'=> '/cities'.$this->town['folder'].'gallery/', 'path'=> WP.'/media' ))?>
+      <?php $path = '/cities'. $this->town['folder'].'sections/'.$this->town['section'].'/gallery/'; ?>
+      <?=App::module('Addons')->renderBlock("site/twitterbootstrap","image-slider", array( 'target'=>'#city-section', 'folder'=> $path, 'path'=> WP.'/media' ))?>
       <?=$this->town['article']?>
     </div>
 

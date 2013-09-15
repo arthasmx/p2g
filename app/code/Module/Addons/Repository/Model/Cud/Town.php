@@ -375,9 +375,19 @@ class Module_Addons_Repository_Model_Cud_Town extends Module_Core_Repository_Mod
 
   private function create_required_folders_to_town(){
     $file_system      = App::module('Core')->getModel('Filesystem');
-    $required_folders = array('towns', 'gallery', 'gallery'.DS.'thumbnails', 'gallery'.DS.'admin-thumbs' );
+    $required_folders = array('towns', 'sections', 'gallery', 'gallery'.DS.'thumbnails', 'gallery'.DS.'admin-thumbs' );
     foreach($required_folders AS $folder){
       $file_system->create_folder( $this->folders['base'], $this->folders['article'] . DS . $folder );
+    }
+    // section folders
+    $subfolders       =  array('gallery', 'gallery'.DS.'thumbnails', 'gallery'.DS.'admin-thumbs' );
+    $required_folders = array('municipios','informacion','historia','gastronomia','hoteles','restaurantes','antros-bares','artesanias','lugares-interes','personajes-ilustres','pueblos-cercanos','eventos-annio','playas','zona-turistica','malecon');
+    foreach($required_folders AS $folder){
+      $parent_folder = $this->folders['article'] .DS.'sections'.DS. $folder;
+      $file_system->create_folder( $this->folders['base'], $parent_folder );
+      foreach($subfolders AS $sub){
+        $file_system->create_folder( $this->folders['base'], $parent_folder . DS . $sub );
+      }
     }
     return true;
   }

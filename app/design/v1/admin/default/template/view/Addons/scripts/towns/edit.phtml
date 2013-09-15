@@ -9,7 +9,6 @@
     <ul class="tabs_title">
       <li><a href="#tabs-1"><?=App::xlat('article_tab_title_basic')?></a></li>
       <li><a href="#tabs-2"><?=App::xlat('article_tab_title_more_info')?></a></li>
-      <li><a href="#tabs-3"><?=App::xlat('article_tab_title_images')?></a></li>
       <li><a href="#tabs-4"><?=App::xlat('article_tab_title_addons')?></a></li>
     </ul>
 
@@ -84,19 +83,33 @@
 
           </div>      
 
-          <div class="right-fieldset">      
+          <div class="right-fieldset">
 
-
-            <fieldset id="ckeditor">
-              <legend><?=App::xlat('town_description')?></legend>
-
-              <dl class="element field-article type-textarea">
-                <dt class="label"></dt>
-                <dd class="field">
-                  <?=$this->basic_data->article?>
-                </dd>
-              </dl>
-            </fieldset>
+                <fieldset id="f_main_pix" class="no-margin">
+                  <legend><?=App::xlat('ARTICLE_FIELDSET_main_picture_title')?></legend>
+                    <p><?=App::xlat('ARTICLE_FIELDSET_main_picture_desc')?></p>
+                    <div id="uploader_f_main_pix">
+                      <div id="main-pix-filelist"></div>
+                      <a id="main-pix-pick" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_select')?> ]</a>
+                      <a id="main-pix-upload" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_upload')?> ]</a>
+                      <a id="mainpix_preview"  href="<?=App::base('/towns/main-pix-preview/')?>">[ <?=App::xlat('ARTICLE_main_picture_btn_preview')?> ]</a>
+                    </div>
+                </fieldset>
+                <fieldset id="f_gallery">
+                  <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_title')?></legend>
+                    <div id="uploader_f_gallery">
+                      <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+                    </div>
+                </fieldset>
+                <fieldset id="gallery_uploaded">
+                  <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_uploaded_images')?></legend>
+                    <span class="gp_response"></span>
+                    <div class="uploaded_images">
+                      <?php if( ! empty( $town_session->town['article_id'] ) ): ?>
+                        <?=App::module('Addons')->renderBlock("town","gallery");?>
+                      <?php endif;?>
+                    </div>
+                </fieldset>
 
           </div>
 
@@ -114,63 +127,38 @@
             <div id="daSection">
               <div class="instructions"><?=App::xlat('town_section_description')?></div>
 
-                <fieldset id="section_info">
-                <legend><?=App::xlat('FIELDSET_town_description')?></legend>
+                <div id="accordion">
+                  <h3><?=App::xlat('FIELDSET_town_description')?></h3>
+                  <div class="panel">
+                    <fieldset id="section_info">
+                      <legend></legend>
+                      <div class="daSectionCkeditor"></div>
+                    </fieldset>
+                  </div>
+                  <h3><?=App::xlat('ARTICLE_FIELDSET_gallery_title')?></h3>
+                  <div class="panel">
 
-                  <div class="daSectionCkeditor"></div>
+                    <fieldset id="f_section_gallery">
+                      <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_title')?></legend>
+                        <div id="uploader_f_section_gallery">
+                          <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
+                        </div>
+                    </fieldset>
+                    <fieldset id="section_gallery_uploaded">
+                      <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_uploaded_images')?></legend>
+                        <span class="gp_response_section"></span>
+                        <div class="section_uploaded_images">
+                          <?php if( ! empty( $town_session->town['section'] ) ): ?>
+                            <?=App::module('Addons')->renderBlock("town","section-gallery");?>
+                          <?php endif;?>
+                        </div>
+                    </fieldset>
 
-                </fieldset>
+                  </div>
+                </div>
 
             </div>
         </fieldset>
-      </form>
-    </div>
-
-    <div id="tabs-3">
-      <form id="main-pix">
-
-        <div class="left-fieldset">
-          <fieldset id="f_gallery_zipped">
-            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_zipped_title')?></legend>
-              <p><?=App::xlat('ARTICLE_FIELDSET_gallery_zipped_desc')?></p>
-              <div id="uploader_f_zipped">
-                <div id="zip-filelist"></div>
-                <a id="zipped-file-pick" href="#">[ <?=App::xlat('ARTICLE_zipped_gallery_btn_select')?> ]</a>
-                <a id="zip-upload" href="#">[ <?=App::xlat('ARTICLE_zipped_gallery_btn_upload')?> ]</a>
-              </div>
-          </fieldset>
-
-          <fieldset id="f_gallery">
-            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_title')?></legend>
-              <div id="uploader_f_gallery">
-                <p><?=App::xlat('ARTICLE_FIELDSET_plupload_browser_not_supported')?></p>
-              </div>
-          </fieldset>
-        </div>
-
-        <div class="right-fieldset">
-          <fieldset id="f_main_pix">
-            <legend><?=App::xlat('ARTICLE_FIELDSET_main_picture_title')?></legend>
-              <p><?=App::xlat('ARTICLE_FIELDSET_main_picture_desc')?></p>
-
-              <div id="uploader_f_main_pix">
-                <div id="main-pix-filelist"></div>
-                <a id="main-pix-pick" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_select')?> ]</a>
-                <a id="main-pix-upload" href="#">[ <?=App::xlat('ARTICLE_main_picture_btn_upload')?> ]</a>
-                <a id="mainpix_preview"  href="<?=App::base('/towns/main-pix-preview/')?>">[ <?=App::xlat('ARTICLE_main_picture_btn_preview')?> ]</a>
-              </div>
-          </fieldset>
-          <fieldset id="gallery_uploaded">
-            <legend><?=App::xlat('ARTICLE_FIELDSET_gallery_uploaded_images')?></legend>
-              <span class="gp_response"></span>
-              <div class="uploaded_images">
-                <?php if( ! empty( $town_session->town['article_id'] ) ): ?>
-                  <?=App::module('Addons')->renderBlock("town","gallery");?>
-                <?php endif;?>
-              </div>
-          </fieldset>
-        </div>
-
       </form>
     </div>
 

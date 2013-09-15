@@ -302,11 +302,18 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     return empty( $cities ) ? null : $cities;
   }
 
+  // main gallery
   function load_gallery( $page=1,$max_files_to_show=28 ){
     $files = App::module('Core')->getModel('Filesystem')->get_files_from_path( $this->town_session->town['folders']['thumbnails'], array( "include" => "/\.jpg$/i") );
     if ( empty( $files ) ){
       return null;
     }
+
+    $session_files = App::module('Core')->getModel('Namespace')->get( 'files' );
+    unset($session_files->files['admin_gallery']);
+
+    $session_files->files['admin_gallery']['path']  = '/' . $this->folder_config['cities'] . $this->town_session->town['folders']['url'];
+    $session_files->files['admin_gallery']['files'] = $files;
 
     // sets file name counter (edit required)
     if( empty( $this->town_session->town['file_name_counter'] ) ){
@@ -320,6 +327,36 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     return array('files' => $files
                 ,'path'  => '/' . $this->folder_config['cities'] .'/' . $this->town_session->town['folders']['url'] );
   }
+
+  function section_load_gallery( $page=1,$max_files_to_show=28 ){
+    $path                      = $this->town_session->town['folders']['path'].'sections'.DS.$this->town_session->town['section'].DS.'gallery'.DS.'admin-thumbs';
+    $section_in_session        = 'admin_gallery_section_'.$this->town_session->town['section'];
+    $file_name_counter_section = 'file_name_counter_section_'.$this->town_session->town['section'];
+
+    $files = App::module('Core')->getModel('Filesystem')->get_files_from_path($path , array( "include" => "/\.jpg$/i") );
+    if ( empty( $files ) ){
+      return null;
+    }
+
+    $session_files = App::module('Core')->getModel('Namespace')->get( 'files' );
+    unset($session_files->files[$section_in_session]);
+
+    $session_files->files[$section_in_session]['path']  = '/' . $this->folder_config['cities'] . $this->town_session->town['folders']['url'].'sections/'.$this->town_session->town['section'].'/';
+    $session_files->files[$section_in_session]['files'] = $files;
+
+    // sets file name counter (edit required)
+    if( empty( $this->town_session->town[$file_name_counter_section] ) ){
+      $this->town_session->town[ $file_name_counter_section ] = count($files) + 100;
+    }
+
+    if( count($files) > $max_files_to_show ){
+      return App::module('Core')->getModel('Filesystem')->paginate_files_in_folder($section_in_session,$page,$max_files_to_show);
+    }
+
+    return array('files' => $files
+                ,'path'  => '/' . $this->folder_config['cities'] . $this->town_session->town['folders']['url'].'sections/'.$this->town_session->town['section'].'/' );
+  }
+
 
   function main_pix_preview(){
     if( empty( $this->town_session->town['folders'] ) ){
@@ -404,6 +441,36 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
   }
 
+  function image_to_section_gallery(){
+    $current_image_name = $this->get_image_name();
+    $path          = $this->town_session->town['folders']['path'] . 'sections' .DS. $this->town_session->town['section'] .DS. 'gallery';
+    $uploaded_file = App::module('Core')->getModel('Filesystem')->plUploader_upload( $path .DS , $current_image_name );
+
+    $image = App::module('Core')->getModel('Image');
+    // thumbs (for admin section)
+    $image->resize_image($uploaded_file, $this->image_config['thumb_width'], $this->image_config['thumb_height'],'crop');
+    $image->saveImage( $path .DS.'admin-thumbs' . DS . $current_image_name, 80 );
+    // thumbnails (mini-gallery)
+    $image->resize_image($uploaded_file, $this->image_config['thumbnails_width'], $this->image_config['thumbnails_height'],'crop');
+    $image->saveImage( $path .DS. 'thumbnails' . DS . $current_image_name, 80 );
+
+    // category default
+    $main_file = $this->town_session->town['folders']['path'] . 'sections' .DS. $this->town_session->town['section'] .DS.'main.jpg';
+    if( ! file_exists($main_file) ){
+      $image->resize_image($uploaded_file, $this->image_config['category_width'], $this->image_config['category_height'],'crop');
+      $image->saveImage( $main_file, 90 );
+    }
+
+    // image
+    $image->resize_image($uploaded_file, $this->image_config['gallery_width'], $this->image_config['gallery_height'],'exact');
+    $image->saveImage( $uploaded_file, 90 );
+
+//    $this->relate_addon_to_article('gallery');
+
+    die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+  }
+
+
   private function get_image_name(){
     return $this->get_new_name('file','.jpg');
   }
@@ -428,6 +495,25 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     if( ! $fSys->check_folder( $file ) || $fSys->delete($thumb)===false || $fSys->delete($thumb_admin)===false ){
       die('{"status":false, "message":"'. App::xlat('jSon_error_image_deleted') .'"}');
     }
+    $fSys->delete( $file );
+    die('{"status":true, "message":"'. App::xlat('jSon_success_image_deleted') .'"}');
+  }
+
+  function delete_section_image($image=null){
+    if( empty( $this->town_session->town['section'] ) || empty($image) ){
+      die('{"status":false, "message":"'. App::xlat('jSon_error_image_deleted') .'"}');
+    }
+
+    $path        = $this->town_session->town['folders']['path'] . 'sections' .DS. $this->town_session->town['section'] .DS. 'gallery' . DS;
+    $file        = $path . $image;
+    $thumb       = $path . $this->folder_config['thumbnails'].DS.$image;
+    $thumb_admin = $path . $this->folder_config['thumb'].DS.$image;
+    $fSys        = App::module('Core')->getModel('Filesystem');
+
+    if( ! $fSys->check_folder( $file ) || $fSys->delete($thumb)===false || $fSys->delete($thumb_admin)===false ){
+      die('{"status":false, "message":"'. App::xlat('jSon_error_image_deleted') .'"}');
+    }
+
     $fSys->delete( $file );
     die('{"status":true, "message":"'. App::xlat('jSon_success_image_deleted') .'"}');
   }

@@ -30,40 +30,9 @@ jQuery(document).ready(function(){
 //main picture
 // ** END **
 
-//gallery zip file
-  var zip_filelist = '#zip-filelist';
-  var zip_up_btn   = '#zip-upload';
-  var zip_uploader = new plupload.Uploader( get_shared_options( baseUrl + '/towns-up/zip-gallery','uploader_f_zipped','zipped-file-pick','zip') );
-  jQuery(zip_up_btn).click(function(e) {
-    zip_uploader.start();
-    e.preventDefault();
-  });
-  zip_uploader.init();
-  zip_uploader.bind('FilesAdded', function(up, files) {
-    jQuery(zip_filelist).empty();
-    if( up.files.length > 1 ){
-      zip_uploader.removeFile(zip_uploader.files[0]);
-    }
-    jQuery(zip_filelist).append('<div id=' + files[0].id + '>' + files[0].name + ' (' + plupload.formatSize(files[0].size) + ') <b>0%</b>' + '</div>');
-    up.refresh();
-  });
-  zip_uploader.bind('UploadProgress', function(up, file) {
-    jQuery('#' + file.id + ' b').html(file.percent + '%');
-  });
-  zip_uploader.bind('Error', function(up, err) {
-    jQuery(zip_filelist).html('<div>Error: ' + err.code + ', Message: ' + err.message + '</div>' );
-    up.refresh();
-  });
-  zip_uploader.bind('FileUploaded', function(up, file) {
-    jQuery('#' + file.id + ' b').html('100%');
-    towns.reload_gallery();
-  });
-// gallery zip file
-// ** END **
-
-
 // gallery
   jQuery('#uploader_f_gallery').pluploadQueue( get_shared_jqUIwidget_options('/towns-up/images-to-gallery','jpg','5','100', 'gallery',false,true) );
+  jQuery('#uploader_f_section_gallery').pluploadQueue( get_shared_jqUIwidget_options('/towns-up/images-to-section-gallery','jpg','5','100', 'section',false,true) );
 });
 
 function get_shared_options(route,container,btn,ext){
@@ -98,6 +67,9 @@ function get_shared_jqUIwidget_options(route,ext,size,files,reload_container,ren
           switch(reload_container){
             case 'gallery':
               towns.reload_gallery();
+              break;
+            case 'section':
+              towns.reload_section_gallery();
               break;
             case 'audio':
               towns.reload_audio();

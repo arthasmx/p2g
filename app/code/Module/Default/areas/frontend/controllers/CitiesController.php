@@ -4,12 +4,14 @@ require_once 'Module/Default/Controller/Action/Frontend.php';
 class CitiesController extends Module_Default_Controller_Action_Frontend {
 
   function townAction(){
+    $this->view->city = $this->getRequest()->getParam('city');
     $this->view->town = App::module('Addons')->getModel('Cities')->section( $this->getRequest()->getParam('town'), $this->getRequest()->getParam('section') );
   }
 
   function municipalityAction(){
     $this->view->sections = App::module('Addons')->getModel('Cities')->get_town_sections( $this->getRequest()->getParam('town'), false );
     $this->view->town     = ucfirst( str_replace('-', ' ', $this->getRequest()->getParam('town')) );
+    $this->view->city     = $this->getRequest()->getParam('city');
   }
 
   function townListAction(){

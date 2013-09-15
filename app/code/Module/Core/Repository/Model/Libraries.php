@@ -581,8 +581,12 @@ class Module_Core_Repository_Model_Libraries extends Core_Model_Repository_Model
 
   }
 
-  function ckeditor($id,$options=null){
+  function ckeditor_to_dom(){
     App::header()->addScript(App::url()->get('/ckeditor/ckeditor.js','js'));
+  }
+  
+  function ckeditor($id,$options=null){
+    $this->ckeditor_to_dom();
 
     if( is_array($options) ){
       $parsed_options = array();

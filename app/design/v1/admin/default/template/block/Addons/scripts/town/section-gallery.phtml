@@ -1,0 +1,26 @@
+
+<?php if( ! empty($this->files) ):
+  $paginator=null; ?>
+
+  <?php if( ! empty($this->files['html']) ): ?>
+    <?php $paginator = $this->files['html'];?>
+  <?php endif;?>
+
+    <?=empty($paginator) ? null:$paginator?>
+    <ul class='section_uploaded_images'>
+    <?php foreach($this->files['files'] AS $image): ?>
+      <li class='img_hover_actions'>
+        <a class="cBox-section_gallery" href="<?=App::media( $this->files['path'] ."gallery/". $image );?>">
+  	      <img width="144" height="96" title="" alt="" src="<?=App::media( $this->files['path'] .'gallery/admin-thumbs/'. $image );?>" />
+        </a>
+          <span class="info">
+            <span class="section_iha_del" data-id="<?=$image?>"><small>[ <?=strtolower(App::xlat('del_alt'))?> ]</small></span>
+          </span>
+      </li>
+    <?php endforeach;?>
+    </ul>
+    <?=$paginator?>
+
+    <?php App::header()->add_jquery_events("$('a.cBox-section_gallery').colorbox({rel:'cBox-section_gallery'});"); ?>
+
+<?php endif;?>

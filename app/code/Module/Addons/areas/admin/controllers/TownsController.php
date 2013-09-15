@@ -98,7 +98,7 @@ class Addons_TownsController extends Module_Addons_Controller_Action_Admin {
 
     $libraries->tags("tags");
 
-    $libraries->ckeditor('article',array('toolbar'=>'articleCreate', 'height'=>'31em', 'language'=>App::locale()->getLang() ));
+    $libraries->ckeditor_to_dom();
 
     $libraries->colorbox();
     $libraries->plUploadQueue();
@@ -115,6 +115,8 @@ class Addons_TownsController extends Module_Addons_Controller_Action_Admin {
     App::header()->add_jquery_events("
       jQuery('a#mainpix_preview').colorbox({width:'1050',height:'768',iframe:true});
       jQuery('span#article_preview').colorbox({width:'780',height:'768',iframe:true, href: '". App::base('/articles/preview/') ."'});
+      towns.reload_gallery();
+      jQuery('div#daSection #accordion').accordion();
     ");
 
   }
@@ -141,6 +143,9 @@ class Addons_TownsController extends Module_Addons_Controller_Action_Admin {
     $this->designManager()->setCurrentLayout('ajax');
     $this->view->section = $this->getRequest()->getParam('section');
     $this->view->form    = $this->_module->getModel('Forms/Section')->get( $this->view->section );
+
+    $session = App::module('Core')->getModel('Namespace')->get( 'town' );
+    $session->town['section'] = $this->getRequest()->getParam('section');
   }
 
   function saveSectionAction(){
@@ -178,13 +183,32 @@ class Addons_TownsController extends Module_Addons_Controller_Action_Admin {
     $this->_module->getModel('Cities')->image_to_gallery();
   }
 
+  function imagesToSectionGalleryAction(){
+    $this->_module->getModel('Cities')->image_to_section_gallery();
+  }
+
+
   function reloadGalleryAction(){
     $this->designManager()->setCurrentLayout('ajax');
     $this->view->files = $this->_module->getModel('Cities')->load_gallery();
   }
 
+  function sectionReloadGalleryAction(){
+    $this->designManager()->setCurrentLayout('ajax');
+    $this->view->files = $this->_module->getModel('Cities')->section_load_gallery();
+  }
+
+
+  function paginateGalleryAction(){
+    $this->designManager()->setCurrentLayout('ajax');
+    $this->view->files = $this->_module->getModel('Cities')->load_gallery( $this->getRequest()->getParam('page') );
+  }
+
   function deleteImageAction(){
     $this->_module->getModel('Cities')->delete_image( $this->getRequest()->getParam('image') );
+  }
+  function deleteSectionImageAction(){
+    $this->_module->getModel('Cities')->delete_section_image( $this->getRequest()->getParam('image') );
   }
 
   function linksRelAction(){

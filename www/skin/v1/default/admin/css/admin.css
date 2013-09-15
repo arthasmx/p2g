@@ -3,7 +3,7 @@
 .record-enabled, .span-button-no, .record-yes, .record-no{ display: inline-block; height: 30px; width: 70px;  background-color: #C7DB8A; }
 .record-disabled, .record-no{ background-color: #eee; }
 .hidden{display: none;}
-
+.no-margin{margin: 0 !important;}
 
 body{
   background: #f3f3f3 url(/skin/v1/default/admin/art/bks/bk.jpg) repeat-x;
@@ -161,6 +161,21 @@ body header, body header nav{
           form#add-event dl.field-tags{float: left;}
           form#add-business .chzn-container-multi .chzn-choices{height: 95px;}
 
+          /* add town */
+          form#add-town fieldset#f_gallery{width: 57.5em; height: 19em;}
+          form#add-town fieldset#f_main_pix{width: 57.5em;}
+          form#add-town fieldset#gallery_uploaded{width: 57.5em; height: 10.1em;}
+            form#add-town fieldset#gallery_uploaded div.uploaded_images{height: 8em; width: 57.5em}
+          form#add-town ul#uploader_f_gallery_filelist{height: 8em;}
+
+          div#daSection #accordion{display: none; width: 700px;}
+          div#daSection #accordion div.panel{height: 356px;}
+          div#daSection div.instructions{margin-left:2em;}
+          form#add-section fieldset#town_sections{width: 93em;}
+          
+          fieldset#f_section_gallery{width: 605px; margin:0;}
+          fieldset#f_section_gallery ul#uploader_f_section_gallery_filelist{height: 10em;}
+
     /* options */
         fieldset#options{ width: 33em; height: 14em; }
           form#add-event fieldset#options{ height: 13.2em; }
@@ -184,7 +199,7 @@ body header, body header nav{
     /* towns */
       fieldset#town_sections{ height:41em; }
         #town_sections table.sections{ padding: 20px;}
-        #daOption{ float: left; background-image: url("/media/images/llave.jpg"); background-repeat: no-repeat; background-position: right; height: 37em; margin-right: 3em; width: 34em; overflow-y: scroll; }
+        #daOption{ float: left; background-image: url("/media/images/llave.jpg"); background-repeat: no-repeat; background-position: right; height: 37em; margin-right: 1em; width: 34em; overflow-y: scroll; }
         #daSection{ float: left; width: 56em;}
           table.sections tr{  }
           table.sections td:first-child{}
@@ -193,9 +208,9 @@ body header, body header nav{
           table.sections a:hover{ background-color: #abcf3a; }
           
           /* town section form */
-          form#add-section fieldset#section_info{display: none; margin: 0!important; height: 35em !important;}
+          form#add-section fieldset#section_info{display: none; margin: 0!important; height: 28em !important;}
           ol.section-list{list-style:none outside square !important;}
-          fieldset#section_info span.ui-button{margin-top:20px; float: right;}
+          fieldset#section_info span.ui-button{margin-top:13px; float: right;}
 
     /* social */
       div#add-social-tabs div.left-fieldset{width: 40em;}
