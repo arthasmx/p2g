@@ -14,6 +14,7 @@
   	      <img width="144" height="96" title="" alt="" src="<?=App::media( $this->files['path'] .'gallery/admin-thumbs/'. $image );?>" />
         </a>
           <span class="info">
+            <span id="section_mp" class="section_mp" data-id="<?=$image?>"><small>[ <?=strtolower(App::xlat('main_section'))?> ]</small></span>
             <span class="section_iha_del" data-id="<?=$image?>"><small>[ <?=strtolower(App::xlat('del_alt'))?> ]</small></span>
           </span>
       </li>

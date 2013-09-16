@@ -453,19 +453,9 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     // thumbnails (mini-gallery)
     $image->resize_image($uploaded_file, $this->image_config['thumbnails_width'], $this->image_config['thumbnails_height'],'crop');
     $image->saveImage( $path .DS. 'thumbnails' . DS . $current_image_name, 80 );
-
-    // category default
-    $main_file = $this->town_session->town['folders']['path'] . 'sections' .DS. $this->town_session->town['section'] .DS.'main.jpg';
-    if( ! file_exists($main_file) ){
-      $image->resize_image($uploaded_file, $this->image_config['category_width'], $this->image_config['category_height'],'crop');
-      $image->saveImage( $main_file, 90 );
-    }
-
     // image
     $image->resize_image($uploaded_file, $this->image_config['gallery_width'], $this->image_config['gallery_height'],'exact');
     $image->saveImage( $uploaded_file, 90 );
-
-//    $this->relate_addon_to_article('gallery');
 
     die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
   }
@@ -518,4 +508,19 @@ class Module_Addons_Repository_Model_Cities extends Module_Core_Repository_Model
     die('{"status":true, "message":"'. App::xlat('jSon_success_image_deleted') .'"}');
   }
 
+  function image_to_section($image=null){
+    if( empty($image) ){
+      die('{"status":false, "message":"'. App::xlat('jSon_error_setting_section_main_category_image') .'"}');
+    }
+
+    $path     = $this->town_session->town['folders']['path'] . 'sections' .DS. $this->town_session->town['section'] .DS;
+    $new_file = $path . 'main.jpg';
+    $the_file = $path . 'gallery' .DS. $image;
+    $image    = App::module('Core')->getModel('Image');
+
+    $image->resize_image($the_file, $this->image_config['category_width'], $this->image_config['category_height'],'crop');
+    $image->saveImage( $new_file, 90 );
+
+    die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+  }
 }

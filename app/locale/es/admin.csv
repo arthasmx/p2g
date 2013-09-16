@@ -178,6 +178,7 @@
   "town_section_description","<h1>Instrucciones</h1> <ol class='section-list'><li>Dá click sobre el tema que te interese definir para  tu municipio</li> <li>Describe el tema seleccionado dentro del editor que aparecera</li> <li><strong>importante:</strong> cada vez que completes un tema, dá click al boton <strong>GUARDAR TEMA</strong>, pues los temas son independientes y es necesario que se guarden antes de querer definir otro tema.</li> <li><strong>disponible</strong> / <strong>no disponible</strong>, indican que el tema ya ha sido definido con anterioridad o aún no, respectivamente.</li> </ol> <p>&nbsp;</p> <p>Recuerde, esta información es de vital importancia para los buscadores; a más información, mejores resultados de búsqueda para tu página.</p>"
   "FIELDSET_town_description","Descripción de municipio"
   "town_main_gallery","Galería principal del municipio"
+  "main_section","default"
 
 
 ; FORMS
@@ -295,6 +296,7 @@
 "jSon_success_audio_deleted","Archivo de audio eliminado"
 "jSon_success_file_deleted","Documento eliminado"
 "jSon_error_category_updated","Categoría actualizada correctamente"
+"jSon_error_setting_section_main_category_image","Imágen no se pudo establecer"
 
 ; jSon Errors
 "jSon_error_all_fields_are_required","Todos los campos son necesarios"

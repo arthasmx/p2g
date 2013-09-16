@@ -208,8 +208,10 @@ div.message {
     right: 0;
   }
   li.img_hover_actions:hover{border:4px solid #FC761C; }
-  li.img_hover_actions:hover span.info{ background-color:#FC761C; cursor: pointer;}
+  li.img_hover_actions:hover span.info{ background-color:#FC761C;}
   li.img_hover_actions:hover span.info span.iha_del small{ color:#fff;}
+    li.img_hover_actions:hover span.info span { cursor:pointer;}
+    span.info small:hover {color: white;}
 
 div.pagination, div.f-pagination { display:block; text-align:center; height:22px; clear:both; padding:20px; }
   div.f-pagination{ padding:10px; }

@@ -28,16 +28,16 @@ html,body{height: 100%; margin: 0; padding: 0; background-color: #1a1818; font-f
  .btn-xs{font-weight: lighter;}
 
 /* colors */
-.l_red {background-color: red !important;}
-.l_orange {background-color: orange !important;}
-.l_brown {background-color: brown !important;}
+.l_red {background-color: #F4375F !important;}
+.l_orange {background-color: #E63E00 !important;}
+.l_brown {background-color: #8A6B57 !important;}
 .l_gray {background-color: gray !important;}
-.l_blue {background-color: blue !important;}
-.l_yellow {background-color: yellow !important;}
-.l_cyan {background-color: cyan !important;}
-.l_purple {background-color: purple !important;}
-.l_pink {background-color: pink !important;}
-.l_green {background-color: green !important;}
+.l_blue {background-color: #3DC0FF !important;}
+.l_yellow {background-color: #F6C306 !important;}
+.l_cyan {background-color: #55A0B5 !important;}
+.l_purple {background-color: #A88BC1 !important;}
+.l_pink {background-color: #EE478D !important;}
+.l_green {background-color: #A6D017 !important;}
 .white{color: white;}
 
 .upper{text-transform: uppercase !important;}

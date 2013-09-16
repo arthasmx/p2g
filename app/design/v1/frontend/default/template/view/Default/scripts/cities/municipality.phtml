@@ -29,11 +29,18 @@
         <?php foreach( $this->sections AS $section ): ?>
           <figure  class="<?=$colors[$loop]?> round-top">
             <header><?=App::xlat($section['section'])?></header>
+
+            <?php if( file_exists( WP . DS . 'media/cities' . $section['folder']. 'sections/'.$section['section'].'/main.jpg' ) ): ?>
+              <?php $img = App::media('/cities' . $section['folder']. 'sections/'.$section['section'].'/main.jpg'); ?>
+            <?php else: ?>
+              <?php $img = App::media('/images/missing-category.png'); ?>
+            <?php endif; ?>
+
             <a href="<?=App::www( $this->city . '/municipio/' . $section['town'] . '/' . $section['section'] )?>">
-              <img width="160" class="img-responsive" src="<?=App::media('/cities' . $section['folder']. 'sections/'.$section['section'].'/main.jpg')?>" alt="<?=App::xlat($section['section'])?>" />
+              <img width="160" class="img-responsive" src="<?=$img?>" />
             </a>
             <figcaption>
-              <?=substr( $section['article'] , 0, 100)?>...
+              <?=substr( strip_tags($section['article']) , 0, 100)?>...
             </figcaption>
           </figure>
           <?php $loop=($loop>=9)?0:$loop+1;?>

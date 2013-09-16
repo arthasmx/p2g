@@ -6,6 +6,7 @@ var towns = {
     save_section : "Guardando tema...",
 
     image_delete : "Eliminando imagen...",
+    setting_main_section_image : "Estableciendo foto principal...",
     
     error_saving : "No fue posible guardar el municipio. Favor de reportar este error lo mas pronto posible.",
     relate_error : "No se pudo guardar la relación",
@@ -55,7 +56,8 @@ var towns = {
     daSection_instructions : "div#daSection div.instructions",
     daSectionCkeditor      : "div.daSectionCkeditor",
     section_image_results  : "table.sections img",
-    section_accordion      : "div#daSection #accordion"
+    section_accordion      : "div#daSection #accordion",
+    section_mp             : "span#section_mp"
   },
   tabs:{
     id    : "#add-town-tabs",
@@ -105,6 +107,7 @@ var towns = {
     section_del_image   : baseUrl + '/towns/delete-section-image',
     gallery_reload      : baseUrl + '/towns/reload-gallery',
     section_gallery_reload : baseUrl + '/towns/section-reload-gallery',
+    image_to_section    : baseUrl + '/towns/image-to-section',
 
     section_value       : baseUrl + '/towns/section-value',
     section_save        : baseUrl + '/towns/save-section',
@@ -521,6 +524,26 @@ var towns = {
         jQuery( self.dom.section_gallery_uploaded ).html( self.msg.gallery_reload_error + "[" + exception + "]" );
       }
     });
+  },
+
+  set_main_image_to_section:function(image,li){
+    var self=this;
+    jQuery.ajax({
+      type: 'post',
+      data: {image:image},
+      dataType: 'json',
+      url:  self.url.image_to_section,
+      beforeSend : function (){
+        blockUI_ajax_saving( "fieldset#section_gallery_uploaded" ,"on",self.msg.setting_main_section_image);
+      },
+      success: function(response){
+        self.reload_section_gallery();
+        blockUI_ajax_saving("fieldset#section_gallery_uploaded","off");
+      },
+      error: function(jqXHR, exception){
+        blockUI_ajax_saving("fieldset#section_gallery_uploaded","off");
+      }
+    });
   }
 
 };
@@ -563,6 +586,11 @@ jQuery(document).ready(function(){
   });
   jQuery(document).on('click', towns.dom.section_del_image_span, function(){
     towns.del( jQuery(this).attr('data-id'), jQuery(this).parent().parent().index(), "section" );
+  });
+
+  /* setting main image for section */
+  jQuery(document).on('click', towns.dom.section_mp, function(){
+    towns.set_main_image_to_section( jQuery(this).attr('data-id'), jQuery(this).parent().parent().index() );
   });
 
   jQuery(document).on('click', 'table.sections a', function(){

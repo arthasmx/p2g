@@ -211,6 +211,11 @@ class Addons_TownsController extends Module_Addons_Controller_Action_Admin {
     $this->_module->getModel('Cities')->delete_section_image( $this->getRequest()->getParam('image') );
   }
 
+  function imageToSectionAction(){
+    $this->designManager()->setCurrentLayout('ajax');
+    $this->_module->getModel('Cities')->image_to_section( $this->getRequest()->getParam('image') );
+  }
+  
   function linksRelAction(){
     $this->_module->getModel('Cud/Town')->add_link( $this->getRequest()->getParam('links') );
   }
