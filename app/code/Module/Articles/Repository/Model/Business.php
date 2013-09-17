@@ -205,6 +205,7 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
           'type'             => $buss['type'],
           'type_name'        => $buss['type_name'],
           'created'          => $buss['created'],
+          'updated'          => $buss['updated'],
           'publicated'       => $buss['publicated'],
           'event_date'       => $buss['event_date'],
           'event_hours'      => $buss['event_hours'],
