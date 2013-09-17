@@ -170,13 +170,16 @@ class Module_Articles_Repository_Model_Business extends Core_Model_Repository_Mo
 
 
   /* MOBILE */
-  function get_business_to_sync_with_mobile_app(){
+  function get_business_to_sync_with_mobile_app($city='mazatlan'){
     $select  = $this->core->_db->select()
                     ->from( array('va' => 'view_articles' ) )
                     ->join( array('u'  => 'user'), 'u.username = va.username',  array() )
+                    ->join( array('a'  => 'acl'), 'a.username = u.username',  array('a.updated') )
                     ->join( array('st' => 'site_towns'), 'st.city = u.city ',  array('city_id'=>'city', 'city_name'=>'name') )
-                    ->where( 'va.type = ?', 'empresas')
-                    ->where( 'va.status = ?', 'enabled' );
+                    ->where( 'va.type = ?', 'empresas' )
+                    ->where( 'va.status = ?', 'enabled' )
+                    ->where( 'u.city = ?', $city )
+                    ->group( 'va.id' );
 
     $business = $this->core->_db->query( $select )->fetchAll();
 
