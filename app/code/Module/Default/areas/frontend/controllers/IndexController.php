@@ -17,6 +17,7 @@ class IndexController extends Module_Default_Controller_Action_Frontend {
     $libraries = App::module('Core')->getModel('Libraries');
     $libraries->contact();
     $libraries->block_ui();
+    $libraries->js_shared_methods();
 
     $this->view->current_menu    = $this->getRequest()->getParam('action');
     $this->view->form            = $this->_module->getModel('Forms/Contact')->get();

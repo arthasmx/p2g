@@ -1,21 +1,22 @@
 var contact = {
  div     : "div#guestbook-form",
  form    : "form#contact",
+ result  : "form#contact .result",
  button  : "button#button",
- blockUI : "div.contact-area .span8",
+ blockUI : ".block-ui",
  captcha:{
    id      : '#captcha-id',
    input   : '#captcha-input',
    refresh : '#captcha-refresh'
  },
  url:{
-   send    : baseUrl  + 'contact',
-   refresh : baseUrl  + 'captcha-contact-refresh',
+   send    : wwwUrl  + 'contact',
+   refresh : wwwUrl  + 'captcha-contact-refresh',
  },     
  msg:{
    sending       : "Enviando mensaje, espere por favor...",
-   error_sending : "No se pudo enviar el mensaje, revisa el formulario",
-   success       : "<fieldset><h2 class='span12'><span class='icon-ok'></span> Mensaje enviado!</h2><p class='span12'>Tendrá una respuesta a su comentario lo mas pronto posible, muchas gracias</p></fieldset>"
+   error_sending : "No se pudo enviar el mensaje, completa el formulario e intentalo de nuevo",
+   success       : "<div class='alert alert-success'><span class='icon-ok'></span> Mensaje enviado!</h2><p class='span12'>Tendrá una respuesta a su comentario lo mas pronto posible, muchas gracias</p></div>"
  },
 
 	send:function(){
@@ -27,7 +28,7 @@ var contact = {
      dataType: 'json',
      url:  self.url.send,
      beforeSend: function(objeto){
-       jQuery(self.form + ' input, ' + self.form + ' textarea').removeClass('field-missing');
+       jQuery(self.form + ' input, ' + self.form + ' textarea').removeClass('missing-field');
        blockUI_ajax_saving( self.blockUI ,"on",self.msg.sending,'70%',0,false);
      },
      success: function(response){
@@ -40,12 +41,13 @@ var contact = {
          jQuery.each(response, function(i,item) {
 
            if( response[i].field == 'captcha' ){
-             jQuery(self.form + ' input[id^=captcha]').addClass("field-missing");
+             jQuery(self.form + ' input[id^=captcha]').addClass("missing-field");
            }else{
-             jQuery( self.form + " #" + response[i].field).addClass("field-missing");
+             jQuery( self.form + " #" + response[i].field).addClass("missing-field");
            }
 
          });
+         jQuery( self.result ).html( '<div class="alert alert-danger"> ' + self.msg.error_sending + '</div>' );
        }
        blockUI_ajax_saving( self.blockUI ,"off");
 

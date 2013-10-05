@@ -497,6 +497,9 @@ class Module_Core_Repository_Model_Libraries extends Core_Model_Repository_Model
   }
 
 
+  function js_shared_methods(){
+    App::header()->addScript(App::url()->get('/shared_methods.js','js'));
+  }
 
   function block_ui(){
     App::header()->addScript(App::url()->get('/jquery.blockUI.js','js'));

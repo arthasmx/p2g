@@ -18,7 +18,46 @@
         <li class="active"> <span class="icon-envelope"></span> <?=App::xlat('contact_us')?> </li>
       </ol>
 
-      <h3><?=App::xlat('contact_us')?></h3>
+
+      <div class="panel panel-default no-round addon-promotions">
+        <div class="panel-heading no-round">
+          <h3 class="panel-title"><span class="icon-envelope-alt"></span> <?=App::xlat('contact_us')?></h3>
+        </div>
+        <div class="panel-body block-ui">
+
+          <form id="contact">
+            <div class="result"></div>
+            <div class="input-append">
+              <span class="add-on">
+                <span class="the-icon icon-user"></span>
+              </span>
+              <?=$this->form->name?>
+            </div>
+            <div class="input-append">
+              <span class="add-on">
+                <span class="the-icon icon-envelope-alt"></span>
+              </span>
+              <?=$this->form->email?>
+            </div>
+            <div class="input-append">
+              <span class="add-on">
+                <span class="the-icon icon-comments-alt"></span>
+              </span>
+              <?=$this->form->comments?>
+            </div>
+            <div class="input-append">
+              <span class="add-on">
+                <span class="the-icon icon-unlock"></span>
+              </span>
+              <?=$this->form->captcha?>
+              <span id="captcha-refresh" class="icon-refresh" title="<?=App::xlat('captcha_generate')?>"></span>
+              <?=$this->form->button?>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
 
     </div>
 

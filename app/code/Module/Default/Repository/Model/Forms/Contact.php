@@ -11,6 +11,7 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
     $form->addElement(  'text', 'name', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
+//'value' => 'el nombre aqui',
         'class'       => 'input-xlarge'
     ));
     $form->getElement("name")->setAttrib('placeholder', App::xlat('form_placeholder_name') );
@@ -18,6 +19,7 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
     $form->addElement(  'text', 'email', array(
         'required'    => true,
         'validators'  => array( 'EmailAddress', array( 'stringLength', true, array(6))),
+//'value' => 'mi_email@gmail.com',
         'class'       => 'input-xlarge'
     ));
     $form->getElement("email")->setAttrib('placeholder', App::xlat('form_placeholder_email') );
@@ -26,6 +28,7 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(10))),
         'class'       => 'span12',
+//'value' => 'Este el contenido del mensaje que llegara al correo',
         'rows'        => 8
     ));
     $form->getElement("comments")->setAttrib('placeholder', App::xlat('form_placeholder_msg') );
