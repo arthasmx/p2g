@@ -149,7 +149,7 @@ body header, body header nav{
           fieldset#access dl.field-pass{margin-left: 10px;}
 
     /* info */
-        fieldset#info{ width: 33em; height: 30em; }
+        fieldset#info{ width: 33em; height: 46em; }
           form#add-article fieldset#info input[type="text"], form#add-event fieldset#info input[type="text"], form#add-business fieldset#info input[type="text"], form#add-town fieldset#info input[type="text"]{ width: 32em; }
           input#event_date, input#publicate_at, input#stop_publicate, input#stop_publication{ width: 10em !important; margin-right: 7px; }
           form#add-event input#event_date, form#add-event input#publicate_at, form#add-event input#stop_publication{ width: 7em !important; }

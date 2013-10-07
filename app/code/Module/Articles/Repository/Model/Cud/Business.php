@@ -50,13 +50,13 @@ class Module_Articles_Repository_Model_Cud_Business extends Module_Core_Reposito
           'language'         => $this->params['language'],
           'title'            => $this->params['title'],
           'seo'              => $this->params['seo'],
+          'phone'            => $this->params['phone'],
+          'address'          => $this->params['address'],
           'article'          => $this->params['article'],
           'created'          => $created,
           'publicated'       => ( empty($this->params['publicate_at']) ? null:$this->params['publicate_at'] ),
           'event_date'       => ( empty($this->params['event_date']) ? null:$this->params['event_date'] ),
           'stop_publication' => ( empty($this->params['stop_publication']) ? null:$this->params['stop_publication'] ),
-          'promote'          => $this->params['promote'],
-          'mobile'           => $this->params['mobile'],
           'username'         => $this->params['username']);
       $this->table->insert($data);
 
@@ -175,9 +175,9 @@ class Module_Articles_Repository_Model_Cud_Business extends Module_Core_Reposito
           'language'         => $this->params['language'],
           'title'            => $this->params['title'],
           'seo'              => $this->params['seo'],
-          'article'          => $this->params['article'],
-          'promote'          => $this->params['promote'],
-          'mobile'           => $this->params['mobile'] );
+          'phone'            => $this->params['phone'],
+          'address'          => $this->params['address'],
+          'article'          => $this->params['article'] );
       $where = $this->table->getAdapter()->quoteInto('article_id = ?', $this->article);
 
       // publicate ?
@@ -217,7 +217,7 @@ class Module_Articles_Repository_Model_Cud_Business extends Module_Core_Reposito
       $business_session  = $session->get( 'business' );
 
       $fields = array();
-      $fields_to_store_in_session = array('username','pass','title','seo','email','promote','mobile','tags','language','article');
+      $fields_to_store_in_session = array('username','pass','title','seo','phone','address','email','tags','language','article');
       foreach ($this->params as $key=>$value) {
         if ( in_array($key, $fields_to_store_in_session) ) {
           $fields[$key] = $value;

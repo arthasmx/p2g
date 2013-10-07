@@ -81,6 +81,22 @@ class Module_Articles_Repository_Model_Forms_Business extends Core_Model_Reposit
                       ,'class'       => 'required'
     ));
 
+    // PHONE
+    $form->addElement('text', 'phone', array(
+        'required'     => true
+        ,'validators'   => array( array('stringLength', true, array(5) ) )
+        ,'value'        => empty($business_session->business['phone'])? null : $business_session->business['phone']
+        ,'class'        => 'required'
+    ));
+
+    // ADDRESS
+    $form->addElement('text', 'address', array(
+        'required'     => true
+        ,'validators'   => array( array('stringLength', true, array(5) ) )
+        ,'value'        => empty($business_session->business['address'])? null : $business_session->business['address']
+        ,'class'        => 'required'
+    ));
+
     // TAGS
     $tags = App::module('Addons')->getModel('Categories')->get_family_grouped_for_select('etiquetas');
     $form->addElement('multiselect', 'tags', array(

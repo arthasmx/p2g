@@ -64,6 +64,20 @@
                   <dd class="hint"></dd>
                 </dl>
 
+                <dl class="element field-phone type-text">
+                  <dt class="label"><label for="phone"><?=App::xlat('FORM_phone')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->phone?>
+                  </dd>
+                </dl>
+
+                <dl class="element field-address type-text">
+                  <dt class="label"><label for="address"><?=App::xlat('FORM_full_address')?></label></dt>
+                  <dd class="field">
+                    <?=$this->form->address?>
+                  </dd>
+                </dl>
+
                 <dl class="element field-tags type-tags">
                   <dt class="label"><label for="tags"><?=App::xlat('FORM_tags_category_title')?></label></dt>
                   <dd class="field">
@@ -72,31 +86,10 @@
                   <dd class="hint"><?=App::xlat('FORM_tags_category_desc')?></dd>
                 </dl>
 
-            </fieldset>
-
-            <fieldset class="group options" id="options">
-              <legend><?=App::xlat('article_tab_basic_FIELDSET_options')?></legend>
-
                 <dl class="element field-language type-select">
                   <dt class="label"><label for="language"><?=App::xlat('FORM_language')?></label></dt>
                   <dd class="field">
                     <?=$this->form->language?>
-                  </dd>
-                </dl>
-
-                <dl class="element field-mobile type-checkbox">
-                  <dt class="label"></dt>
-                  <dd class="field">
-                    <?=$this->form->mobile?>
-                    <span class="add append"><label for="mobile"><?=App::xlat('FORM_business_mobile')?></label></span>
-                  </dd>
-                </dl>
-
-                <dl class="element field-promote type-checkbox">
-                  <dt class="label"></dt>
-                  <dd class="field">
-                    <?=$this->form->promote?>
-                    <span class="add append"><label for="promote"><?=App::xlat('FORM_business_promote')?></label></span>
                   </dd>
                 </dl>
 
