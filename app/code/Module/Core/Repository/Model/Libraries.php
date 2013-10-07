@@ -914,4 +914,11 @@ class Module_Core_Repository_Model_Libraries extends Core_Model_Repository_Model
   function contact(){
     App::header()->addScript(App::url()->get('/contact.js','js'));
   }
+
+  // REGISTER (frontend)
+
+  function register(){
+    App::header()->addScript(App::url()->get('/register.js','js'));
+  }
+
 }

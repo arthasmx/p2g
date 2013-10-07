@@ -54,7 +54,7 @@
         <!-- Default -->
           <module_default_contacto>default/contact</module_default_contacto> <!-- Captura el envío de email de contacto -->
           <module_default_flexar>default/flexar</module_default_flexar>
-          <module_acl_business_register>business/register</module_acl_business_register>
+          <module_default_business_register>default/register</module_default_business_register>
 
       </observers>
     </Email>

@@ -298,11 +298,14 @@ h1.blockUI{font-size:12px !important; margin:0; padding:10px;}
     .panel #captcha-input{width: 5em; display: inline-block;}
 
   /* CONTACT */
-    form#contact input, form#contact textarea{width: 95% !important;}
+    form#contact input, form#contact textarea, form#register input, form#register textarea{width: 95% !important;}
     form#contact span.the-icon{width: 50px;}
-    form#contact div.input-append{padding: 10px;}
-    form#contact #captcha-input{width: 50px !important;}
+    form#contact div.input-append, form#register div.input-append{padding: 10px;}
+    form#contact #captcha-input, form#register #captcha-input{width: 50px !important;}
     span#captcha-refresh{cursor: pointer;}
+
+  /* REGISTER */
+    
 
   /* ABOUT US */
   .about-us p{color: white;}

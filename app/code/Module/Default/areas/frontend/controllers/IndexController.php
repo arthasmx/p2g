@@ -56,8 +56,35 @@ class IndexController extends Module_Default_Controller_Action_Frontend {
     exit;
   }
 
+  function registerBusinessAction(){
+    $libraries = App::module('Core')->getModel('Libraries');
+    $libraries->register();
+    $libraries->block_ui();
+    $libraries->js_shared_methods();
+
+    $this->view->form = $this->_module->getModel('Forms/Register')->get();
+  }
+
   function registerAction(){
-    
+    $this->designManager()->setCurrentLayout('ajax');
+    $request = $this->getRequest();
+    $form    = $this->_module->getModel('Forms/Register')->get();
+
+    if ( $request->isPost() ){
+
+      if( $form->isValid($_POST) ){
+        App::events()->dispatch('module_default_business_register',array("to"=>App::module('Email')->getConfig('core','frontend_contact'), "comment"=>$request->getParam('comments'), "business"=>$request->getParam('business'), "name"=>$request->getParam('name'), "email"=>$request->getParam('email')));
+        $answer = date('Y');
+      }else{
+        $answer = App::module('Core')->getModel('Form')->get_json_error_fields($form);
+      }
+    }
+    echo $answer;
+    exit;
+  }
+
+  function captchaRegisterRefreshAction(){
+    $this->captchaContactRefreshAction();
   }
 
   function phoneSosAction(){
