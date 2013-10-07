@@ -11,7 +11,6 @@ class Module_Default_Repository_Model_Forms_Register extends Core_Model_Reposito
     $form->addElement(  'text', 'business', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
-'value' => 'Empresa',
         'class'       => 'input-xlarge'
     ));
     $form->getElement("business")->setAttrib('placeholder', App::xlat('form_placeholder_business') );
@@ -19,7 +18,6 @@ class Module_Default_Repository_Model_Forms_Register extends Core_Model_Reposito
     $form->addElement(  'text', 'name', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
-'value' => 'persona a contactar',
         'class'       => 'input-xlarge'
     ));
     $form->getElement("name")->setAttrib('placeholder', App::xlat('form_placeholder_name') );
@@ -27,7 +25,6 @@ class Module_Default_Repository_Model_Forms_Register extends Core_Model_Reposito
     $form->addElement(  'text', 'email', array(
         'required'    => true,
         'validators'  => array( 'EmailAddress', array( 'stringLength', true, array(6))),
-'value' => 'mi_email@gmail.com',
         'class'       => 'input-xlarge'
     ));
     $form->getElement("email")->setAttrib('placeholder', App::xlat('form_placeholder_email') );
@@ -36,7 +33,6 @@ class Module_Default_Repository_Model_Forms_Register extends Core_Model_Reposito
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(10))),
         'class'       => 'span12',
-'value' => 'Este el contenido del mensaje que llegara al correo',
         'rows'        => 8
     ));
     $form->getElement("comments")->setAttrib('placeholder', App::xlat('form_placeholder_msg') );
