@@ -12,7 +12,7 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
 //'value' => 'el nombre aqui',
-        'class'       => 'input-xlarge'
+        'class'       => 'form-control'
     ));
     $form->getElement("name")->setAttrib('placeholder', App::xlat('form_placeholder_name') );
 
@@ -20,14 +20,14 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
         'required'    => true,
         'validators'  => array( 'EmailAddress', array( 'stringLength', true, array(6))),
 //'value' => 'mi_email@gmail.com',
-        'class'       => 'input-xlarge'
+        'class'       => 'form-control'
     ));
     $form->getElement("email")->setAttrib('placeholder', App::xlat('form_placeholder_email') );
 
     $form->addElement(  'textarea', 'comments', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(10))),
-        'class'       => 'span12',
+        'class'       => 'form-control',
 //'value' => 'Este el contenido del mensaje que llegara al correo',
         'rows'        => 8
     ));
@@ -35,7 +35,7 @@ class Module_Default_Repository_Model_Forms_Contact extends Core_Model_Repositor
 
     $form->addElement('captcha', 'captcha', array(
         'required'   => true,
-        'class'      => 'span1',
+        'class'      => 'form-control',
         'maxlength'  => 3,
         'captcha'    => array(
             'captcha' => 'Image',

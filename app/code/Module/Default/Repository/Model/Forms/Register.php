@@ -11,35 +11,35 @@ class Module_Default_Repository_Model_Forms_Register extends Core_Model_Reposito
     $form->addElement(  'text', 'business', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
-        'class'       => 'input-xlarge'
+        'class'       => 'form-control'
     ));
     $form->getElement("business")->setAttrib('placeholder', App::xlat('form_placeholder_business') );
 
     $form->addElement(  'text', 'name', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(6))),
-        'class'       => 'input-xlarge'
+        'class'       => 'form-control'
     ));
     $form->getElement("name")->setAttrib('placeholder', App::xlat('form_placeholder_name') );
 
     $form->addElement(  'text', 'email', array(
         'required'    => true,
         'validators'  => array( 'EmailAddress', array( 'stringLength', true, array(6))),
-        'class'       => 'input-xlarge'
+        'class'       => 'form-control'
     ));
     $form->getElement("email")->setAttrib('placeholder', App::xlat('form_placeholder_email') );
 
     $form->addElement(  'textarea', 'comments', array(
         'required'    => true,
         'validators'  => array( array( 'stringLength', true, array(10))),
-        'class'       => 'span12',
+        'class'       => 'form-control',
         'rows'        => 8
     ));
     $form->getElement("comments")->setAttrib('placeholder', App::xlat('form_placeholder_msg') );
 
     $form->addElement('captcha', 'captcha', array(
         'required'   => true,
-        'class'      => 'span1',
+        'class'      => 'form-control',
         'maxlength'  => 3,
         'captcha'    => array(
             'captcha' => 'Image',

@@ -27,28 +27,30 @@
 
           <form id="contact">
             <div class="result"></div>
-            <div class="input-append">
-              <span class="add-on">
-                <span class="the-icon icon-user"></span>
-              </span>
-              <?=$this->form->name?>
+  
+            <div class="form-group">
+              <label class="col-lg-1 control-label" for="name"><span class="icon-user"></span></label>
+              <div class="col-lg-11">
+               <?=$this->form->name?>
+              </div>
             </div>
-            <div class="input-append">
-              <span class="add-on">
-                <span class="the-icon icon-envelope-alt"></span>
-              </span>
-              <?=$this->form->email?>
+
+            <div class="form-group">
+              <label class="col-lg-1 control-label" for="email"><span class="icon-envelope-alt"></span></label>
+              <div class="col-lg-11">
+                <?=$this->form->email?>
+              </div>
             </div>
-            <div class="input-append">
-              <span class="add-on">
-                <span class="the-icon icon-comments-alt"></span>
-              </span>
-              <?=$this->form->comments?>
+
+            <div class="form-group">
+              <label class="col-lg-1 control-label" for="comments"><span class="icon-comments-alt"></span></label>
+              <div class="col-lg-11">
+                <?=$this->form->comments?>
+              </div>
             </div>
-            <div class="input-append">
-              <span class="add-on">
-                <span class="the-icon icon-unlock"></span>
-              </span>
+
+            <div class="form-group">
+              <label class="col-lg-1 control-label" for="captcha-input"><span class="icon-unlock"></span></label>
               <?=$this->form->captcha?>
               <span id="captcha-refresh" class="icon-refresh" title="<?=App::xlat('captcha_generate')?>"></span>
               <?=$this->form->button?>
