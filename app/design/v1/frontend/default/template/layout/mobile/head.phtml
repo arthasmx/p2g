@@ -7,8 +7,11 @@
 
 
 <!--Links-->
-    <link href="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/css/groundwork.css')?>" rel="stylesheet" />
-    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/frontend-intro.css');?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/css/normalize.css')?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" />
+    <link href="<?=App::getDesign()->getRelativeJsPath('/bootstrap/icons/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" />
+
+    <link href="<?=App::getDesign()->getRelativeSkinPath('/css/override.css');?>" rel="stylesheet" />
 
 	<?= App::header()->getLinks();?>
 
@@ -20,9 +23,7 @@
   <![endif]-->
     <script src="<?=App::getDesign()->getRelativeJsPath('/jquery-1.9.1.min.js','js');?>" ></script>
 
-    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/libs/modernizr-2.6.2.min.js','js');?>" ></script>
-    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/plugins/jquery.magnific-popup.js','js');?>" ></script>
-    <script src="<?=App::getDesign()->getRelativeJsPath('/groundwork-master/js/groundwork.all.js','js');?>" ></script>
+    <script src="<?=App::getDesign()->getRelativeJsPath('/bootstrap/js/bootstrap.min.js','js');?>" ></script>
 
     <script>
         jQuery(document).ready(function(){
