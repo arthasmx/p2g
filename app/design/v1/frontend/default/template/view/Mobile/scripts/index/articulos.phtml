@@ -1,0 +1,49 @@
+
+<?php
+  $date  = App::module('Core')->getModel('Dates');
+  $class = true;
+?>
+
+<section>
+  <ul class="nav nav-tabs news">
+    <li class="active"><a href="#news" data-toggle="tab"> <img src="<?=App::media( '/images/mobile/noticias.png' )?>" /> </a></li>
+  </ul>
+  <ul class="tab-content news_content round-bottom">
+    <li class="tab-pane active" id="news">
+
+      <?php if( ! empty($this->articles) ): ?>
+        <?php $class=true;?>
+        <?php foreach($this->articles AS $article): ?>
+          <article <?php if(empty($class)){ echo 'class="zebra-on"'; $class=true; }else{$class=null;}?>>
+
+            <h5> <a href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>"> <?=$article['title']?> </a> </h5>
+            <figure>
+              <?php if( file_exists( WP.DS.'media'.DS.$article['folder'].DS.'gallery'.DS.'article.jpg' ) ): ?>
+                <?php $img = App::media( $article['folder']."/gallery/listing.jpg" ); ?>
+              <?php else: ?>
+                <?php $img = App::media('/images/article-preview-listing.jpg'); ?>
+              <?php endif; ?>
+              <a href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>">
+                <img class="img-responsive" src="<?=$img?>" alt="<?=$article['title']?>" title="<?=$article['title']?>" />
+              </a>
+
+              <figcaption>
+                <time> <span class="icon-calendar"></span> <?=$date->toDate(3, $article['publicated'])?> </time>
+                <p><?=App::module('Core')->getModel('Parser')->truncate_string($article['article'],130);?>...</p>
+                <a class="btn btn-primary btn-xs" href="<?=App::www( App::xlat('articulos_singular' ) ."/". $article['seo']  )?>"> <?=App::xlat('read_more')?> <span class="icon-chevron-right"></span> </a>
+              </figcaption>
+
+            </figure>
+
+          </article>
+        <?php endforeach; ?>
+
+      <?php else: ?>
+        <article class="pad-top-botom-20">
+          <h6><span class="icon-search"></span> <?=App::xlat('no_data_found')?></h6>
+        </article>
+      <?php endif; ?>      
+
+    </li>
+  </ul>
+</section>

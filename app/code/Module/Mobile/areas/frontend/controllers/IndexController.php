@@ -12,6 +12,10 @@ class Mobile_IndexController extends Module_Mobile_Controller_Action_Frontend {
   }
 
   function eventosAction(){}
+  
+  function articulosAction(){
+    $this->view->articles = App::module('Articles')->getModel('Article')->latest( App::xlat('articulos'), 5 );
+  }
 
   function promocionesAction(){}
 
